@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["kushnir.yb"]
   spec.email         = ["kushnir.yb@gmail.com"]
 
-  spec.summary       = %q{Ruby interface to the MaxMind minFraud v2.0 API service}
+  spec.summary       = %q{Ruby interface to the MaxMind minFraud v2.0 API services}
   spec.homepage      = "https://github.com/kushniryb/minfraud-api-v2"
   spec.license       = "MIT"
 
@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency 'faraday'
+  spec.add_runtime_dependency 'faraday_middleware'
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
