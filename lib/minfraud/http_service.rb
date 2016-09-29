@@ -4,6 +4,7 @@ require 'faraday_middleware'
 module Minfraud
   module HTTPService
     class << self
+      # @return [Hash] default HTTPService configuration
       def configuration
         {
           middleware: DEFAULT_MIDDLEWARE,
