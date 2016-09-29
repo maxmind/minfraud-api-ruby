@@ -7,7 +7,7 @@ module Minfraud
       def inspect(response)
         return response if response.status == 200
 
-        raise *STATUS_CODES.fetch(response.code.intern, [ServerError, 'Service not available'])
+        raise *STATUS_CODES.fetch(response.code&.intern, [ServerError, 'Service not available'])
       end
 
       # A hash that maps status codes returned by minFraud with errors & messages
