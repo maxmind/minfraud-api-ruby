@@ -1,8 +1,8 @@
-# Minfraud
+# Simple Ruby Wrapper to the MaxMind minFraud API
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/minfraud`. To experiment with that code, run `bin/console` for an interactive prompt.
+Compatible with version minFraud API v2.0
 
-TODO: Delete this and the text above, and describe your gem
+[minFraud API documentation](http://dev.maxmind.com/minfraud/)
 
 ## Installation
 
@@ -14,25 +14,84 @@ gem 'minfraud'
 
 And then execute:
 
-    $ bundle
+```ruby
+$ bundle
+```
 
 Or install it yourself as:
+```
+$ gem install minfraud
+```
 
-    $ gem install minfraud
+## Configuration
+
+User Id and License Key are required to work with minFraud API
+
+```ruby
+Minfraud.configure do |c|
+  c.license_key = 'your_license_key'
+  c.user_id     = 'your_user_id'
+end
+```
 
 ## Usage
+```ruby
+Minfraud.configure do |c|
+  c.user_id     = 'user_id' # your minFraud user id
+  c.license_key = 'license_key' # your minFraud license key
+end
 
-TODO: Write usage instructions here
+# You can either provide a hash of params to initializer
+assessment = Minfraud::Assessments.new(
+  device: {
+    ip_address: '1.2.3.4.5'
+  }
+)
+# or create a component and assign them to assessments object directly, e.g
+# There are multiple components that reflect minFraud request top level keys
+device = Minfraud::Components::Device.new(ip_address: '1.2.3.4.5')
+assessment = Minfraud::Assessments.new(device: device)
+# or
+assessment = Minfraud::Assessments.new
+assessment.device = device
 
-## Development
+# You can now call 3 different minFraud endpoints: score, insights, factors
+assessment.insights
+assessment.factors
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+result = assessment.score # => Minfraud::Response instance
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+result.status # => Response status code
+result.code # => minFraud specific response code
+result.body # => Mashified body
+result.headers # => Response headers
+
+# You can also change data inbetween requests
+first_request = assessment.insights
+assessment.device.ip_address = '22.22.22.33'
+assessment.insights
+```
+
+### Exception handling
+
+Gem is supplied with four different types of exceptions:
+```ruby
+# Raised if unpermitted key is provided to Minfraud::Assessments initializer
+class RequestFormatError < BaseError; end
+
+# Raised if IP address is absent / it is reserved / JSON body can not be decoded
+class ClientError < BaseError; end
+
+# Raised if there are some problems with the user id and / or license key
+class AuthorizationError < BaseError; end
+
+# Raised if minFraud returns an error, or if there is an HTTP error
+class ServerError < BaseError; end
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/minfraud. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/kushniryb/minfraud-api-v2]. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
