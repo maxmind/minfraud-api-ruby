@@ -1,6 +1,7 @@
 module Minfraud
   module Components
     class Event < Base
+      include ::Minfraud::Enum
       # @attribute transaction_id
       # @return [String] Internal ID for the transaction. Used to locate a specific transaction in minFraud logs
       attr_accessor :transaction_id
@@ -22,7 +23,14 @@ module Minfraud
       #   => recurring_purchase
       #   => referral
       #   => survey
-      attr_accessor :type
+      enum_accessor :type, {
+        :ACCOUNT_CREATION   => 'account_creation',
+        :ACCOUNT_LOGIN      => 'account_login',
+        :PURCHASE           => 'purchase',
+        :RECURRING_PURCHASE => 'recurring_purchase',
+        :REFERRAL           => 'referral',
+        :SURVEY             => 'survey'
+      }
 
       # Creates Minfraud::Components::Event instance
       # @param  [Hash] params hash of parameters

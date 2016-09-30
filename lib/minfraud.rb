@@ -1,4 +1,5 @@
 require 'minfraud'
+require 'minfraud/enum'
 require 'minfraud/components/base'
 require 'minfraud/components/account'
 require 'minfraud/components/addressable'
