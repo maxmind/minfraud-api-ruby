@@ -1,8 +1,24 @@
 module Minfraud
   module Enum
-
     def self.included(base)
       base.extend(ClassMethods)
+    end
+
+    class Accessor
+      attr_reader   :assignable_values
+      attr_accessor :current_value
+
+      def initialize(assignable_values)
+        @assignable_values = assignable_values
+      end
+
+      def value
+        assignable_values[current_value]
+      end
+
+      def to_s
+        value.to_s
+      end
     end
 
     module ClassMethods
@@ -10,28 +26,23 @@ module Minfraud
         @mapping ||= {}
       end
 
-      def assignable_values_for(attribute)
-        return mapping[attribute] unless mapping[attribute].is_a?(Hash)
-        return mapping[attribute].keys
-      end
-
       def enum_accessor(attribute, assignable_values)
-        mapping[attribute] = assignable_values
+        mapping[attribute] = Accessor.new(assignable_values)
 
-        self.instance_eval do
-          define_method "#{attribute}" do
-            self.instance_variable_get("@#{attribute}")
-          end
-
-          define_method "#{attribute}=" do |value|
-            raise NotEnumValueError, 'This value is not permitted' unless self.class.assignable_values_for(attribute).include?(value)
-            self.instance_variable_set("@#{attribute}", value)
+        self.class.instance_eval do
+          define_method "#{attribute}_values" do
+            mapping[attribute].assignable_values
           end
         end
 
-        self.singleton_class.class_eval do
-          define_method "#{attribute}_values" do
-            assignable_values_for(attribute)
+        self.class_eval do
+          define_method "#{attribute}" do
+            self.class.mapping[attribute]
+          end
+
+          define_method "#{attribute}=" do |value|
+            raise NotEnumValueError,  'Value is not permitted' unless self.class.mapping[attribute].assignable_values.include?(value)
+            self.class.mapping[attribute].current_value = value
           end
         end
       end
