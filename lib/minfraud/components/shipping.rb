@@ -8,12 +8,7 @@ module Minfraud
       #    => overnight
       #    => expedited
       #    => standard
-      enum_accessor :delivery_speed, {
-        :SAME_DAY  => 'same_day',
-        :OVERNIGHT => 'overnight',
-        :EXPEDITED => 'expedited',
-        :STANDARD  => 'standard'
-      }
+      enum_accessor :delivery_speed, [:same_day, :overnight, :expedited, :standard]
 
       # Creates Minfraud::Components::Shipping instance
       # @param  [Hash] params hash of parameters

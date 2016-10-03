@@ -23,7 +23,7 @@ module Minfraud
       # @param  [Hash] params hash of parameters.
       # @return [Farday::Response] Faraday::Response instance
       def perform(params)
-        resp = adapter.send(*params.values_at(:verb, :endpoint, :body))
+        adapter.send(*params.values_at(:verb, :endpoint, :body))
       end
 
       private

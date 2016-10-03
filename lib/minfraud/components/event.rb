@@ -23,14 +23,7 @@ module Minfraud
       #   => recurring_purchase
       #   => referral
       #   => survey
-      enum_accessor :type, {
-        :ACCOUNT_CREATION   => 'account_creation',
-        :ACCOUNT_LOGIN      => 'account_login',
-        :PURCHASE           => 'purchase',
-        :RECURRING_PURCHASE => 'recurring_purchase',
-        :REFERRAL           => 'referral',
-        :SURVEY             => 'survey'
-      }
+      enum_accessor :type, [:account_creation, :account_login, :purchase, :recurring_purchase, :referral, :survey]
 
       # Creates Minfraud::Components::Event instance
       # @param  [Hash] params hash of parameters

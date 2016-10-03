@@ -1,8 +1,8 @@
 module Minfraud
   module Resolver
     class << self
-      # @param [Object] context an object for variable assignment
-      # @param [Hash] params a hash of parameters
+      # @param  [Object] context an object for variable assignment
+      # @param  [Hash] params a hash of parameters
       # @return [Array] a list of supplied params
       # Note: Raises RequestFormatError once unpermitted key is met
       def assign(context:, params:)
