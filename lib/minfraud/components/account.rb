@@ -13,7 +13,7 @@ module Minfraud
 
       # Creates Minfraud::Components::Account instance
       # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::Account] a Account instance
+      # @return [Minfraud::Components::Account] an Account instance
       def initialize(params = {})
         @user_id      = params[:user_id]
         @username_md5 = params[:username_md5]

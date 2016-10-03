@@ -1,14 +1,20 @@
 module Minfraud
   module Enum
+
     def self.included(base)
       base.extend(ClassMethods)
     end
 
     module ClassMethods
+      # Returns a hash with in the following format: attribute_name => permitted_values
+      # @return [Hash] mapping
       def mapping
         @mapping ||= {}
       end
 
+      # Creates a set of methods for enum-like behaviour of the attribute
+      # @param [Symbol] attribute attribute name
+      # @param [Array] assignable_values a set of values which are permitted
       def enum_accessor(attribute, assignable_values)
         mapping[attribute] = assignable_values.map(&:to_s)
 

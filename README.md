@@ -1,5 +1,9 @@
 # Simple Ruby Wrapper to the MaxMind minFraud API
 
+[![Code Climate](https://codeclimate.com/github/kushniryb/minfraud-api-v2/badges/gpa.svg)](https://codeclimate.com/github/kushniryb/minfraud-api-v2)
+[![Coverage Status](https://coveralls.io/repos/github/kushniryb/minfraud-api-v2/badge.svg?branch=master)](https://coveralls.io/github/kushniryb/minfraud-api-v2?branch=master)
+[![Build Status](https://travis-ci.org/kushniryb/minfraud-api-v2.svg?branch=master)](https://travis-ci.org/kushniryb/minfraud-api-v2)
+
 Compatible with version minFraud API v2.0
 
 [minFraud API documentation](http://dev.maxmind.com/minfraud/)
