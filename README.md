@@ -48,13 +48,14 @@ assessment = Minfraud::Assessments.new(
   }
 )
 # or create a component and assign them to assessments object directly, e.g
-# There are multiple components that reflect minFraud request top level keys
 device = Minfraud::Components::Device.new(ip_address: '1.2.3.4.5')
 assessment = Minfraud::Assessments.new(device: device)
 # or
 assessment = Minfraud::Assessments.new
 assessment.device = device
 
+
+# There are multiple components that reflect minFraud request top level keys
 # You can now call 3 different minFraud endpoints: score, insights, factors
 assessment.insights
 assessment.factors
@@ -69,7 +70,7 @@ result.headers # => Response headers
 # You can also change data inbetween requests
 first_request = assessment.insights
 assessment.device.ip_address = '22.22.22.33'
-assessment.insights
+second_request = assessment.insights
 ```
 
 ### Exception handling
@@ -87,6 +88,9 @@ class AuthorizationError < BaseError; end
 
 # Raised if minFraud returns an error, or if there is an HTTP error
 class ServerError < BaseError; end
+
+# Raised if assigned value does not belong to enum list
+class NotEnumValueError < BaseError; end
 ```
 
 ## Contributing
