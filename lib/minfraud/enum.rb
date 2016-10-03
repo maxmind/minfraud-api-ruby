@@ -1,6 +1,5 @@
 module Minfraud
   module Enum
-
     def self.included(base)
       base.extend(ClassMethods)
     end
@@ -16,7 +15,7 @@ module Minfraud
       # @param [Symbol] attribute attribute name
       # @param [Array] assignable_values a set of values which are permitted
       def enum_accessor(attribute, assignable_values)
-        mapping[attribute] = assignable_values.map(&:to_s)
+        mapping[attribute] = assignable_values.map(&:intern)
 
         self.class.instance_eval do
           define_method("#{attribute}_values") { mapping[attribute] }
@@ -24,10 +23,9 @@ module Minfraud
 
         self.class_eval do
           define_method("#{attribute}") { instance_variable_get("@#{attribute}") }
-
           define_method "#{attribute}=" do |value|
-            raise NotEnumValueError,  'Value is not permitted' unless self.class.mapping[attribute].include?(value.to_s)
-            instance_variable_set("@#{attribute}", value.to_s)
+            raise NotEnumValueError,  'Value is not permitted' if value && !self.class.mapping[attribute].include?(value.intern)
+            instance_variable_set("@#{attribute}", value&.intern)
           end
         end
       end

@@ -25,10 +25,6 @@ describe Minfraud::Enum do
       expect(klass).to respond_to (:test_values)
     end
 
-    it 'should convert assignable values to string' do
-      expect(klass.test_values).to eq %w(foo bar)
-    end
-
     it 'should define attribute reader' do
       expect(instance).to respond_to :test
     end
@@ -41,9 +37,14 @@ describe Minfraud::Enum do
       expect { instance.test = :unpermitted_value }.to raise_error Minfraud::NotEnumValueError
     end
 
-    it 'should assign stringified value if it is permitted' do
+    it 'should convert string value to symbol' do
+      instance.test = 'foo'
+      expect(instance.test).to eq :foo
+    end
+
+    it 'should assign value if it is permitted' do
       instance.test = :foo
-      expect(instance.test).to eq 'foo'
+      expect(instance.test).to eq :foo
     end
   end
 end

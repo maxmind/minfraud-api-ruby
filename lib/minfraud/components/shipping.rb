@@ -14,7 +14,7 @@ module Minfraud
       # @param  [Hash] params hash of parameters
       # @return [Minfraud::Components::Shipping] Shipping instance
       def initialize(params = {})
-        @delivery_speed = params[:delivery_speed]
+        self.delivery_speed = params[:delivery_speed]
         super
       end
     end

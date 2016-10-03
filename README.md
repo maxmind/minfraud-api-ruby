@@ -40,11 +40,6 @@ end
 
 ## Usage
 ```ruby
-Minfraud.configure do |c|
-  c.user_id     = 'user_id' # your minFraud user id
-  c.license_key = 'license_key' # your minFraud license key
-end
-
 # You can either provide a hash of params to initializer
 assessment = Minfraud::Assessments.new(
   device: {
@@ -57,18 +52,22 @@ assessment = Minfraud::Assessments.new(device: device)
 # or
 assessment = Minfraud::Assessments.new
 assessment.device = device
-
-
 # There are multiple components that reflect minFraud request top level keys
+
+# Some components will raise an error if provided with the wrong values for attributes, e.g
+event = Minfraud::Components::Event.new(type: 'foobar') # => Minfraud::NotEnumValueError
+# You can check the list of permitted values for the attribute by calling a class method
+Minfraud::Components::Event.type_values # => ["account_creation", "account_login", ....]
+
 # You can now call 3 different minFraud endpoints: score, insights, factors
 assessment.insights
 assessment.factors
 
 result = assessment.score # => Minfraud::Response instance
 
-result.status # => Response status code
-result.code # => minFraud specific response code
-result.body # => Mashified body
+result.status  # => Response status code
+result.code    # => minFraud specific response code
+result.body    # => Mashified body
 result.headers # => Response headers
 
 # You can also change data inbetween requests
@@ -93,13 +92,13 @@ class AuthorizationError < BaseError; end
 # Raised if minFraud returns an error, or if there is an HTTP error
 class ServerError < BaseError; end
 
-# Raised if assigned value does not belong to enum list
+# Raised if an attribute value doesn't belong to the predefined set of values
 class NotEnumValueError < BaseError; end
 ```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/kushniryb/minfraud-api-v2]. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub [here](https://github.com/kushniryb/minfraud-api-v2). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

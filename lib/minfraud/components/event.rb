@@ -32,7 +32,7 @@ module Minfraud
         @transaction_id = params[:transaction_id]
         @shop_id        = params[:shop_id]
         @time           = params[:time]
-        @type           = params[:type]
+        self.type       = params[:type]
       end
     end
   end

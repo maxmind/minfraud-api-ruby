@@ -33,7 +33,7 @@ module Minfraud
       def initialize(params = {})
         @was_authorized = params[:was_authorized]
         @decline_code   = params[:decline_code]
-        @processor      = params[:processor]
+        self.processor  = params[:processor]
       end
     end
   end
