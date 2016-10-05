@@ -45,16 +45,20 @@ module Minfraud
 
     # @param  [Hash] params hash of parameters
     # @param  [Minfraud::Resolver] resolver resolver that maps params to components
+    # In case if params is a Hash of components it just assignes them to corresponding
+    # instance variables
     # @return [Minfraud::Assessments] Assessments instance
     def initialize(params = {}, resolver = ::Minfraud::Resolver)
       resolver.assign(context: self, params: params)
     end
 
-    # These methods correspond to the minFraud API endpoints and require the same set of params
-    # Raises an error in case of invalid response
-    # @return [Minfraud::HTTPService::Response] Wrapped minFraud response
-    %w(score insights factors).each do |endpoint|
-      define_method endpoint do
+    # @!macro [attach] define
+    #   @method $1
+    #   Makes a request to minFraud $1 endpoint.
+    #   Raises an error in case of invalid response
+    #   @return [Minfraud::HTTPService::Response] Wrapped minFraud response
+    def self.define(endpoint)
+      define_method(endpoint) do
         raw       = request.perform(verb: :post, endpoint: endpoint, body: request_body)
         response  = ::Minfraud::HTTPService::Response.new(
           status:  raw.status.to_i,
@@ -65,6 +69,10 @@ module Minfraud
         ::Minfraud::ErrorHandler.inspect(response)
       end
     end
+
+    define :score
+    define :insights
+    define :factors
 
     private
     # Creates a unified request body from components converted to JSON

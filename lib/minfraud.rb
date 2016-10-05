@@ -38,7 +38,7 @@ module Minfraud
       yield self
     end
 
-    # @return [Hash] with the current configuration
+    # @return [Hash] current Minfraud configuration
     def configuration
       {
         user_id:     @user_id,

@@ -13,10 +13,6 @@ module Minfraud
       # @return [Hash] HTTP response headers
       attr_reader :headers
 
-      # @attribute code
-      # @return [String] minFraud specific HTTP response code
-      attr_reader :code
-
       # Creates Minfraud::HTTPService::Response instance
       # @param  [Hash] params hash of parameters
       # @return [Minfraud::HTTPService::Response] Response instance

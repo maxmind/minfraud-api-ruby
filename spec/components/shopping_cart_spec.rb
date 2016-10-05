@@ -15,10 +15,17 @@ describe Minfraud::Components::ShoppingCart do
     end
 
     context 'with provided params' do
-      let(:instance) { described_class.new([{}]) }
-
-      it '@items is an array of Minfraud::Components::ShoppingCartItem instances' do
+      it 'works with array of hashes' do
+        instance = described_class.new([{}])
         expect(instance.items).to all(be_a Minfraud::Components::ShoppingCartItem)
+      end
+
+      it 'works with array of Minfraud::Components::ShoppingCartItem instances' do
+        expected = [Minfraud::Components::ShoppingCartItem.new({})]
+        instance = described_class.new(expected)
+
+        expect(instance.items).to all(be_a Minfraud::Components::ShoppingCartItem)
+        expect(instance.items).to eq expected
       end
     end
   end

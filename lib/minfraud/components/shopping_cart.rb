@@ -20,9 +20,10 @@ module Minfraud
       private
 
       # @param  [Hash] params hash of parameters for Minfraud::Components::ShoppingCartItem
+      # or Minfraud::Components::ShoppingCartItem instance
       # @return [Minfraud::Components::ShoppingCart] ShoppingCart instance
       def resolve(params)
-        ShoppingCartItem.new(params)
+        params.is_a?(ShoppingCartItem) ? params : ShoppingCartItem.new(params)
       end
     end
   end
