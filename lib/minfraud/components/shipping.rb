@@ -4,10 +4,6 @@ module Minfraud
       include ::Minfraud::Enum
       # @attribute delivery_speed
       # @return [String] The shipping delivery speed for the order. The valid values are:
-      #    => same_day
-      #    => overnight
-      #    => expedited
-      #    => standard
       enum_accessor :delivery_speed, [:same_day, :overnight, :expedited, :standard]
 
       # Creates Minfraud::Components::Shipping instance

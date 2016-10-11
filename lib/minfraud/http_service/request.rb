@@ -14,7 +14,7 @@ module Minfraud
       # Creates Minfraud::HTTPService::Request instance
       # @param  [Hash] params hash of parameters
       # @return [Minfraud::HTTPService::Request] Request instance
-      def initialize(params)
+      def initialize(params = {})
         @middleware = params[:middleware]
         @server     = params[:server]
       end

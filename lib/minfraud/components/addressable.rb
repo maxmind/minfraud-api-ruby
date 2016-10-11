@@ -46,7 +46,7 @@ module Minfraud
       attr_accessor :phone_country_code
 
       # Creates Minfraud::Components::Addressable instance
-      # This class is used as a parent class for Billing and Shipping components
+      # @note This class is used as a parent class for Billing and Shipping components
       # @param  [Hash] params hash of parameters
       # @return [Minfraud::Components::Addressable] an Addressable instance
       def initialize(params = {})

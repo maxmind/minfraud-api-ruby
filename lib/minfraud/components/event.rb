@@ -16,13 +16,7 @@ module Minfraud
       attr_accessor :time
 
       # @attribute type
-      # @return [String] The type of event being scored. The valid types are:
-      #   => account_creation
-      #   => account_login
-      #   => purchase
-      #   => recurring_purchase
-      #   => referral
-      #   => survey
+      # @return [String] The type of event being scored
       enum_accessor :type, [:account_creation, :account_login, :purchase, :recurring_purchase, :referral, :survey]
 
       # Creates Minfraud::Components::Event instance

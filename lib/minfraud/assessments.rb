@@ -45,11 +45,10 @@ module Minfraud
 
     # @param  [Hash] params hash of parameters
     # @param  [Minfraud::Resolver] resolver resolver that maps params to components
-    # In case if params is a Hash of components it just assignes them to corresponding
-    # instance variables
+    # @note In case when params is a Hash of components it just assigns them to the corresponding instance variables
     # @return [Minfraud::Assessments] Assessments instance
     def initialize(params = {}, resolver = ::Minfraud::Resolver)
-      resolver.assign(context: self, params: params)
+      resolver.assign(self, params)
     end
 
     # @!macro [attach] define
@@ -59,7 +58,7 @@ module Minfraud
     #   @return [Minfraud::HTTPService::Response] Wrapped minFraud response
     def self.define(endpoint)
       define_method(endpoint) do
-        raw       = request.perform(verb: :post, endpoint: endpoint, body: request_body)
+        raw       = request.perform(verb: :post, endpoint: endpoint.to_s, body: request_body)
         response  = ::Minfraud::HTTPService::Response.new(
           status:  raw.status.to_i,
           body:    raw.body,
@@ -78,7 +77,10 @@ module Minfraud
     # Creates a unified request body from components converted to JSON
     # @return [Hash] Request body
     def request_body
-      MAPPING.keys.inject({}) { |mem, e| mem.merge!(e.to_s => send(e)&.to_json) }
+      MAPPING.keys.inject({}) do |mem, e|
+        next mem unless value = send(e)
+        mem.merge!(e.to_s => value.to_json)
+      end
     end
 
     # Creates memoized Minfraud::HTTPService::Request instance

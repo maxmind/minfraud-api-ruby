@@ -16,16 +16,16 @@ module Minfraud
       # Creates Minfraud::HTTPService::Response instance
       # @param  [Hash] params hash of parameters
       # @return [Minfraud::HTTPService::Response] Response instance
-      def initialize(params)
+      def initialize(params = {})
         @status  = params[:status]
         @body    = params[:body]
         @headers = params[:headers]
       end
 
       # Returns minFraud specific response code
-      # @return [String] minFraud specific request code
+      # @return [Symbol] minFraud specific request code
       def code
-        body.code if body.respond_to?(:code)
+        body.code.intern if body.respond_to?(:code) && body.code
       end
     end
   end

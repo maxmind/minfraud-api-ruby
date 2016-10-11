@@ -25,7 +25,7 @@ module Minfraud
           define_method("#{attribute}") { instance_variable_get("@#{attribute}") }
           define_method "#{attribute}=" do |value|
             raise NotEnumValueError,  'Value is not permitted' if value && !self.class.mapping[attribute].include?(value.intern)
-            instance_variable_set("@#{attribute}", value&.intern)
+            instance_variable_set("@#{attribute}", value ? value.intern : nil)
           end
         end
       end

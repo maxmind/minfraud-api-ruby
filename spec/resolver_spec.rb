@@ -9,12 +9,11 @@ describe Minfraud::Resolver do
     end
 
     it 'raises RequestFormatError with unpermitted params' do
-      params = { context: context, params: { dummy: :data } }
-      expect { described_class.assign(params) }.to raise_error(Minfraud::RequestFormatError)
+      expect { described_class.assign(context, { dummy: :data }) }.to raise_error(Minfraud::RequestFormatError)
     end
 
     it 'correctly handles empty params' do
-      described_class.assign(context: context, params: {})
+      described_class.assign(context, {})
       expect(context.instance_variables.length).to be 0
     end
 
@@ -22,7 +21,7 @@ describe Minfraud::Resolver do
       allow(context).to receive(:account) { ::Minfraud::Components::Account.new }
       allow(context).to receive(:account=)
 
-      described_class.assign(context: context, params: { account: {} })
+      described_class.assign(context, { account: {} })
 
       expect(context).to respond_to(:account)
       expect(context.account).to be_an_instance_of ::Minfraud::Components::Account
