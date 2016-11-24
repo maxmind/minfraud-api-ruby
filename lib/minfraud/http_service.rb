@@ -26,6 +26,6 @@ module Minfraud
     end
 
     # Minfraud default server
-    DEFAULT_SERVER = 'https://minfraud.maxmind.com/minfraud/v2.0'
+    DEFAULT_SERVER = 'https://minfraud.maxmind.com/minfraud/v2.0'.freeze
   end
 end

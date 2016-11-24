@@ -18,9 +18,13 @@ module Minfraud
       # @return [String] The phone country code for the issuing bank as provided by the end user
       attr_accessor :bank_phone_country_code
 
-      # @attribute phone_phone_number
+      # @attribute bank_phone_number
       # @return [String] The phone number, without the country code, for the issuing bank as provided by the end user
       attr_accessor :bank_phone_number
+
+      #@attribute token
+      #@return [String] A token uniquely identifying the card. The token should consist of non-space printable ASCII characters.
+      attr_accessor :token
 
       # @attribute avs_result
       # @return [String] The address verification system (AVS) check result, as returned to you by the credit card processor
@@ -41,6 +45,7 @@ module Minfraud
         @bank_phone_number       = params[:bank_phone_number]
         @avs_result              = params[:avs_result]
         @cvv_result              = params[:cvv_result]
+        @token                   = params[:token]
       end
     end
   end
