@@ -16,8 +16,20 @@ module Minfraud
       # @return [Hash] a hash containing a JSON representation of instance variable name and it's value
       def populate!(hash, v_sym)
         return hash unless value = instance_variable_get(v_sym)
-        hash.merge!(v_sym.to_s.gsub(/@/, '') => value.to_s)
+
+        key = v_sym.to_s.gsub(/@/, '')
+        hash.merge!(key => represent(key, value))
       end
+
+      # param [Symbol] key instance variable symbol
+      # param [Object] value instance variable value
+      # @return [Object] value representation according to the request format
+      def represent(key, value)
+        BOOLS.include?(key) ? value : value.to_s
+      end
+
+      # Keys that have to remain boolean
+      BOOLS = %w(was_authorized is_gift has_gift_message)
     end
   end
 end

@@ -38,6 +38,7 @@ module Minfraud
       # @param  [Hash] params hash of parameters
       # @return [Minfraud::Components::Order] an Order instance
       def initialize (params = {})
+        @amount           = params[:amount]
         @has_gift_message = params[:has_gift_message]
         @affiliate_id     = params[:affiliate_id]
         @subaffiliate_id  = params[:subaffiliate_id]
