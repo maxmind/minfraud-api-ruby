@@ -14,7 +14,7 @@ module Minfraud
     end
 
     # Minfraud default middleware stack
-    DEFAULT_MIDDLEWARE = Proc.new do |builder|
+    DEFAULT_MIDDLEWARE = proc do |builder|
       builder.request    :json
 
       builder.basic_auth *::Minfraud.configuration.values

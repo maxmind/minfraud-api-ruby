@@ -23,10 +23,11 @@ module Minfraud
       # @param  [Hash] params hash of parameters.
       # @return [Farday::Response] Faraday::Response instance
       def perform(params)
-        adapter.send(*params.values_at(:verb, :endpoint, :body))
+        adapter.send *params.values_at(:verb, :endpoint, :body)
       end
 
       private
+
       # Creates memoized Faraday::Connection instance
       # @return [Faraday::Connection] Faraday::Connection instance
       def adapter

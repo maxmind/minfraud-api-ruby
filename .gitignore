@@ -1,5 +1,6 @@
 pkg
 .project
+coverage/
 Gemfile.lock
 .rvmrc
 *.rbc

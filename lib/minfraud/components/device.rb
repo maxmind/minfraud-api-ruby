@@ -22,17 +22,6 @@ module Minfraud
       # @attribute :session_id
       # @return [String] An ID that uniquely identifies a visitor’s session on the site.
       attr_accessor :session_id
-
-      # Creates Minfraud::Components::Device instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::Device] a Device instance
-      def initialize(params = {})
-        @ip_address      = params[:ip_address]
-        @user_agent      = params[:user_agent]
-        @accept_language = params[:accept_language]
-        @session_age     = params[:session_age]
-        @session_id      = params[:session_id]
-      end
     end
   end
 end

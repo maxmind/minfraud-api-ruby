@@ -1,3 +1,9 @@
+require 'minfraud/http_service'
+require 'minfraud/http_service/request'
+require 'minfraud/http_service/response'
+require 'minfraud/resolver'
+require 'minfraud/errors/handler'
+
 module Minfraud
   class Assessments
     include ::Minfraud::HTTPService
@@ -78,12 +84,13 @@ module Minfraud
     define :factors
 
     private
+
     # Creates a unified request body from components converted to JSON
     # @return [Hash] Request body
     def request_body
       MAPPING.keys.inject({}) do |mem, e|
         next mem unless value = send(e)
-        mem.merge!(e.to_s => value.to_json)
+        mem.merge!(e.to_s => value.as_json)
       end
     end
 

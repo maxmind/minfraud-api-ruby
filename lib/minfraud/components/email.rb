@@ -8,14 +8,6 @@ module Minfraud
       # @attribute domain
       # @return [String] The domain of the email address used in the transaction
       attr_accessor :domain
-
-      # Creates Minfraud::Components::Email instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::Email] an Email instance
-      def initialize(params = {})
-        @address = params[:address]
-        @domain  = params[:domain]
-      end
     end
   end
 end

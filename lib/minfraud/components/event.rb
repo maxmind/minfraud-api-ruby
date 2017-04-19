@@ -1,7 +1,9 @@
+require 'minfraud/enum'
+
 module Minfraud
   module Components
     class Event < Base
-      include ::Minfraud::Enum
+      extend ::Minfraud::Enum
       # @attribute transaction_id
       # @return [String] Internal ID for the transaction. Used to locate a specific transaction in minFraud logs
       attr_accessor :transaction_id
@@ -17,27 +19,16 @@ module Minfraud
 
       # @attribute type
       # @return [String] The type of event being scored
-      enum_accessor :type,
-        [
-          :account_creation,
-          :account_login,
-          :email_change,
-          :password_reset,
-          :purchase,
-          :recurring_purchase,
-          :referral,
-          :survey,
-        ]
-
-      # Creates Minfraud::Components::Event instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::Event] an Event instance
-      def initialize(params = {})
-        @transaction_id = params[:transaction_id]
-        @shop_id        = params[:shop_id]
-        @time           = params[:time]
-        self.type       = params[:type]
-      end
+      enum_accessor :type, %i[
+        account_creation
+        account_login
+        email_change
+        password_reset
+        purchase
+        recurring_purchase
+        referral
+        survery
+      ]
     end
   end
 end

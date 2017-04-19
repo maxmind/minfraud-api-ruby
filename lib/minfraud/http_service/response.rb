@@ -22,6 +22,10 @@ module Minfraud
         @headers = params[:headers]
       end
 
+      def ok?
+        status.to_i == 200
+      end
+
       # Returns minFraud specific response code
       # @return [Symbol] minFraud specific request code
       def code

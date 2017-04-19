@@ -35,10 +35,7 @@ describe Minfraud::Components::ShoppingCart do
 
     context 'with provided params' do
       let(:expected) do
-        [
-          { 'category' => 'test@example.com' },
-          { 'category' => 'superman@example.com' }
-        ]
+        ["{\"category\":\"test@example.com\"}", "{\"category\":\"superman@example.com\"}"]
       end
 
       it 'returns an array of items converted to json' do

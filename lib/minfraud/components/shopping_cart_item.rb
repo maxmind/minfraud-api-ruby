@@ -16,18 +16,6 @@ module Minfraud
       # @attribute price
       # @return [Float] The per-unit price of this item in the shopping cart. This should use the same currency as the order currency
       attr_accessor :price
-
-      # Creates Minfraud::Components::ShoppingCartItem instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::ShoppingCartItem] ShoppingCartItem instance
-      def initialize(params = {})
-        @category = params[:category]
-        @item_id  = params[:item_id]
-        @quantity = params[:quantity]
-        @price    = params[:price]
-      end
     end
   end
 end
-
-
