@@ -20,6 +20,7 @@ module Minfraud
       account:            ::Minfraud::Components::Account,
       billing:            ::Minfraud::Components::Billing,
       credit_card:        ::Minfraud::Components::CreditCard,
+      custom_inputs:      ::Minfraud::Components::CustomInputs,
       device:             ::Minfraud::Components::Device,
       email:              ::Minfraud::Components::Email,
       event:              ::Minfraud::Components::Event,
