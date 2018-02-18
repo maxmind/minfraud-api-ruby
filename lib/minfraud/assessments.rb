@@ -15,6 +15,10 @@ module Minfraud
     # @return [Minfraud::Components::CreditCard] CreditCard component
     attr_accessor :credit_card
 
+    # @attribute custom_inputs
+    # @return [Minfraud::Components::CustomInputs] CustomInputs component
+    attr_accessor :custom_inputs
+
     # @attribute device
     # @return [Minfraud::Components::Device] Device component
     attr_accessor :device

@@ -6,7 +6,7 @@ describe Minfraud::Assessments do
 
   before { allow(resolver).to receive(:assign) }
 
-  %w(account billing credit_card device email event order payment shipping shopping_cart).each do |attribute|
+  %w(account billing credit_card custom_inputs device email event order payment shipping shopping_cart).each do |attribute|
     it "responds_to #{attribute}" do
       expect(subject).to respond_to(attribute)
     end
