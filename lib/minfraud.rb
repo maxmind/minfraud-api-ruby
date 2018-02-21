@@ -27,7 +27,7 @@ require 'minfraud/assessments'
 module Minfraud
   class << self
     # @!attribute user_id
-    # @return [String] MaxMind username that is used for authorization
+    # @return [String] MaxMind account ID that is used for authorization
     attr_accessor :user_id
 
     # @!attribute license_key
