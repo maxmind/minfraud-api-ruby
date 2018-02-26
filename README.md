@@ -29,7 +29,7 @@ $ gem install minfraud
 
 ## Configuration
 
-User Id and License Key are required to work with minFraud API
+Account ID and License Key are required to work with minFraud API
 
 ```ruby
 Minfraud.configure do |c|
@@ -86,7 +86,7 @@ class RequestFormatError < BaseError; end
 # Raised if IP address is absent / it is reserved / JSON body can not be decoded
 class ClientError < BaseError; end
 
-# Raised if there are some problems with the user id and / or license key
+# Raised if there are some problems with the account ID and / or license key
 class AuthorizationError < BaseError; end
 
 # Raised if minFraud returns an error, or if there is an HTTP error
