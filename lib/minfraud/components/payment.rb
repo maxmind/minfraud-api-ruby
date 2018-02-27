@@ -5,18 +5,18 @@ module Minfraud
       # @attribute processor
       # @return [String] The payment processor used for the transaction
       enum_accessor :processor, [
-        :adyen, :altapay, :amazon_payments, :authorizenet, :balanced, :beanstream,
-        :bluepay, :braintree, :ccnow, :chase_paymentech, :cielo, :collector, :compropago,
-        :concept_payments, :conekta, :cuentadigital, :dalpay, :dibs, :digital_river, :ecomm365,
-        :elavon, :epay, :eprocessing_network, :eway, :first_data, :global_payments, :ingenico,
-        :internetsecure, :intuit_quickbooks_payments, :iugu, :mastercard_payment_gateway,
-        :mercadopago, :merchant_esolutions, :mirjeh, :mollie, :moneris_solutions, :nmi,
-        :openpaymx, :optimal_payments, :orangepay, :other, :pacnet_services, :payfast,
-        :paygate, :payone, :paypal, :payplus, :paystation, :paytrace, :paytrail, :payture,
-        :payu, :payulatam, :pinpayments, :princeton_payment_solutions, :psigate, :qiwi,
-        :quickpay, :raberil, :rede, :redpagos, :rewardspay, :sagepay, :simplify_commerce,
-        :skrill, :smartcoin, :sps_decidir, :stripe, :telerecargas, :towah, :usa_epay,
-        :verepay, :vindicia, :virtual_card_services, :vme, :worldpay
+        :adyen, :altapay, :amazon_payments, :american_express_payment_gateway, :authorizenet, :balanced, :beanstream, 
+        :bluepay, :bluesnap, :bpoint, :braintree, :ccnow, :chase_paymentech, :checkout_com, :cielo, :collector, :commdoo, 
+        :compropago, :concept_payments, :conekta, :cuentadigital, :curopayments, :cybersource, :dalpay, :dibs, 
+        :digital_river, :ebs, :ecomm365, :elavon, :emerchantpay, :epay, :eprocessing_network, :eway, :exact, :first_data, 
+        :global_payments, :heartland, :hipay, :ingenico, :internetsecure, :intuit_quickbooks_payments, :iugu, :lemon_way, 
+        :mastercard_payment_gateway, :mercadopago, :merchant_esolutions, :mirjeh, :mollie, :moneris_solutions, :nmi, 
+        :oceanpayment, :openpaymx, :optimal_payments, :orangepay, :other, :pacnet_services, :payfast, :paygate, :paymentwall, 
+        :payone, :paypal, :payplus, :paystation, :paytrace, :paytrail, :payture, :payu, :payulatam, :payway, :payza, 
+        :pinpayments, :princeton_payment_solutions, :psigate, :qiwi, :quickpay, :raberil, :rede, :redpagos, :rewardspay, 
+        :sagepay, :securetrading, :simplify_commerce, :skrill, :smartcoin, :solidtrust_pay, :sps_decidir, :stripe, 
+        :telerecargas, :towah, :transact_pro, :usa_epay, :vantiv, :verepay, :vericheck, :vindicia, :virtual_card_services, 
+        :vme, :vpos, :wirecard, :worldpay
       ]
 
       # @attribute was_authorized
