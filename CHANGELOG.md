@@ -1,5 +1,7 @@
 # Minfraud Changelog
 
+* Adds `:payout_change` as a type to `Minfraud::Components::Event`
+
 ## v1.0.4
 
 * Prevents boolean value conversion to string to avoid warnings
