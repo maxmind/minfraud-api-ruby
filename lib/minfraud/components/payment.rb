@@ -126,7 +126,7 @@ module Minfraud
         :vme,
         :vpos,
         :wirecard,
-        :worldpay,
+        :worldpay
       ]
 
       # @attribute was_authorized
