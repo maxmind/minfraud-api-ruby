@@ -23,6 +23,7 @@ module Minfraud
           :account_login,
           :email_change,
           :password_reset,
+          :payout_change,
           :purchase,
           :recurring_purchase,
           :referral,
