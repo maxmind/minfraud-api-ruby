@@ -19,7 +19,6 @@ module Minfraud
 
       builder.basic_auth *::Minfraud.configuration.values
 
-      builder.response   :mashify
       builder.response   :json, content_type: /\bjson$/
 
       builder.adapter    Faraday.default_adapter

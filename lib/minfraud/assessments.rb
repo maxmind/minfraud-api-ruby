@@ -52,6 +52,9 @@ module Minfraud
     # @note In case when params is a Hash of components it just assigns them to the corresponding instance variables
     # @return [Minfraud::Assessments] Assessments instance
     def initialize(params = {}, resolver = ::Minfraud::Resolver)
+      @locales = params.delete('locales')
+      @locales = ['en'] if @locales.nil?
+
       resolver.assign(self, params)
     end
 
@@ -64,9 +67,11 @@ module Minfraud
       define_method(endpoint) do
         raw       = request.perform(verb: :post, endpoint: endpoint.to_s, body: request_body)
         response  = ::Minfraud::HTTPService::Response.new(
-          status:  raw.status.to_i,
-          body:    raw.body,
-          headers: raw.headers
+          endpoint: endpoint,
+          locales:  @locales,
+          status:   raw.status.to_i,
+          body:     raw.body,
+          headers:  raw.headers
         )
 
         ::Minfraud::ErrorHandler.inspect(response)

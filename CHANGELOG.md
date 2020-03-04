@@ -1,5 +1,8 @@
 # Minfraud Changelog
 
+* Adds classes for the Score, Insights, and Factors responses. This allows
+  us to provide API documentation for the various response attributes.
+* Removes `hashie` as a required dependency.
 * Adds new processor types to `Minfraud::Components::Payment`: `:affirm`,
   `:afterpay`, `:ccavenue`, `:cetelem`, `:ct_payments`, `:dalenys`,
   `:datacash`, `:dotpay`, `:ecommpay`, `:g2a_pay`, `:gocardless`,

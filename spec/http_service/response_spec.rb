@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe Minfraud::HTTPService::Response do
+  subject {
+    Minfraud::HTTPService::Response.new({
+      body: {},
+      endpoint: :score,
+    })
+  }
+
   describe '#initialize' do
     it { is_expected.to be_an_instance_of described_class }
   end
