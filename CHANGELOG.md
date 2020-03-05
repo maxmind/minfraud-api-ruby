@@ -1,5 +1,6 @@
 # Minfraud Changelog
 
+* Requires Ruby >= 2.4.
 * Adds classes for the Score, Insights, and Factors responses. This allows
   us to provide API documentation for the various response attributes.
 * Removes `hashie` as a required dependency.
