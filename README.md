@@ -40,7 +40,7 @@ end
 
 ## Usage
 ```ruby
-# You can either provide a hash of params to initializer
+# You can either provide a hash of params to the initializer
 assessment = Minfraud::Assessments.new(
   device: {
     ip_address: '1.2.3.4.5'
@@ -66,11 +66,11 @@ assessment.factors
 result = assessment.score # => Minfraud::Response instance
 
 result.status  # => Response status code
-result.code    # => minFraud specific response code
+result.code    # => minFraud-specific response code
 result.body    # => Mashified body
 result.headers # => Response headers
 
-# You can also change data inbetween requests
+# You can also change data between requests
 first_request = assessment.insights
 assessment.device.ip_address = '22.22.22.33'
 second_request = assessment.insights
@@ -83,10 +83,10 @@ The Gem supplies several distinct exception-types:
 # Raised if unpermitted key is provided to Minfraud::Assessments initializer
 class RequestFormatError < BaseError; end
 
-# Raised if IP address is absent / it is reserved / JSON body can not be decoded
+# Raised if IP address is absent, reserved or JSON body can not be decoded
 class ClientError < BaseError; end
 
-# Raised if there are some problems with the account ID and / or license key
+# Raised if there are some problems with the account ID and/or license key
 class AuthorizationError < BaseError; end
 
 # Raised if minFraud returns an error, or if there is an HTTP error

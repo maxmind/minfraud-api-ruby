@@ -32,7 +32,7 @@ module Minfraud
         @headers = params[:headers]
       end
 
-      # Returns minFraud specific response code
+      # Returns minFraud-specific response code
       # @return [Symbol, nil] minFraud specific request code
       def code
         return nil if body.nil?
