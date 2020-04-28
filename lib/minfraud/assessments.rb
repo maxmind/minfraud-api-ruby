@@ -44,7 +44,7 @@ module Minfraud
     attr_accessor :shipping
 
     # @!attribute shopping_cart
-    # @return [Minfraud::Components::ShoppingCarat] ShoppingCart component
+    # @return [Minfraud::Components::ShoppingCart] ShoppingCart component
     attr_accessor :shopping_cart
 
     # @param  [Hash] params hash of parameters

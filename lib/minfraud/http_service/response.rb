@@ -5,6 +5,7 @@ require 'minfraud/model/score'
 
 module Minfraud
   module HTTPService
+    # Response class for HTTP requests
     class Response
       # @attribute status
       # @return [Integer] HTTP response status
