@@ -109,6 +109,7 @@ describe Minfraud::Model::Insights do
       expect(m.device.last_seen).to eq '2016-06-08T14:16:38Z'
       expect(m.device.local_time).to eq '2017-06-08T14:16:38Z'
 
+      expect(m.email.domain.first_seen).to eq '2016-01-03'
       expect(m.email.first_seen).to eq '2017-01-02'
       expect(m.email.is_disposable).to eq true
       expect(m.email.is_free).to eq true
@@ -177,6 +178,7 @@ describe Minfraud::Model::Insights do
       expect(m.device.confidence).to eq nil
       expect(m.device.id).to eq '7835b099-d385-4e5b-969e-7df26181d73b'
 
+      expect(m.email.domain.first_seen).to eq nil
       expect(m.email.first_seen).to eq nil
       expect(m.email.is_disposable).to eq true
 

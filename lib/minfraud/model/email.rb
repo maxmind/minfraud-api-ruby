@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
 require 'minfraud/model/abstract'
+require 'minfraud/model/email_domain'
 
 module Minfraud
   module Model
     # Model containing information about the email address.
     class Email < Abstract
+      # An object containing information about the email domain.
+      #
+      # @return [Minfraud::Model::EmailDomain]
+      attr_reader :domain
+
       # A date string (e.g. 2017-04-24) to identify the date an email address
       # was first seen by MaxMind. This is expressed using the ISO 8601 date
       # format.
@@ -37,6 +43,7 @@ module Minfraud
       def initialize(record)
         super(record)
 
+        @domain = Minfraud::Model::EmailDomain.new(get('domain'))
         @first_seen = get('first_seen')
         @is_disposable = get('is_disposable')
         @is_free = get('is_free')
