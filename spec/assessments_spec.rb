@@ -42,6 +42,8 @@ describe Minfraud::Assessments do
 
     it 'creates response subject from raw response' do
       expect(response).to receive(:new).with(
+        endpoint: :score,
+        locales: ['en'],
         status:  raw_response.status,
         body:    raw_response.body,
         headers: raw_response.headers
