@@ -74,7 +74,7 @@ module Minfraud
           headers:  raw.headers
         )
 
-        ::Minfraud::ErrorHandler.inspect(response)
+        ::Minfraud::ErrorHandler.examine(response)
       end
     end
 
