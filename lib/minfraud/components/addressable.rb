@@ -22,7 +22,7 @@ module Minfraud
       attr_accessor :address_2
 
       # @attribute city
-      # @return [String] The city of the user’s billing / shipping address
+      # @return [String] The city of the user's billing / shipping address
       attr_accessor :city
 
       # @attribute region
