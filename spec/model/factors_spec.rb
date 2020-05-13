@@ -3,7 +3,7 @@
 require 'json'
 require 'spec_helper'
 
-describe Minfraud::Model::Score do
+describe Minfraud::Model::Factors do
   describe '#initialize' do
     it 'creates a fully populated object' do
       buf = File.open('spec/fixtures/files/factors-response1.json').read
