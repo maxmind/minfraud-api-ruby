@@ -17,8 +17,16 @@ module Minfraud
       def initialize(record, locales)
         super(record, locales)
 
-        @location = Minfraud::Model::GeoIP2Location.new(record&.fetch('location', nil))
-        @risk = record&.fetch('risk', nil)
+        if record
+          @location = Minfraud::Model::GeoIP2Location.new(record.fetch('location', nil))
+        else
+          @location = Minfraud::Model::GeoIP2Location.new(nil)
+        end
+        if record
+          @risk = record.fetch('risk', nil)
+        else
+          @risk = nil
+        end
 
         # Decorate objects with deprecated attributes and names for backwards
         # compatibility. Do this here rather than with the overhead of
@@ -38,13 +46,25 @@ module Minfraud
         # Mashify turned each language code into an attribute, but
         # maxmind-geoip2 exposes the names as a hash.
         LANGUAGE_CODES.each do |c|
-          @city.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @continent.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @registered_country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @represented_country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
+          if @city.names
+            @city.names.define_singleton_method(c) { fetch(c.to_s, nil) }
+          end
+          if @continent.names
+            @continent.names.define_singleton_method(c) { fetch(c.to_s, nil) }
+          end
+          if @country.names
+            @country.names.define_singleton_method(c) { fetch(c.to_s, nil) }
+          end
+          if @registered_country.names
+            @registered_country.names.define_singleton_method(c) { fetch(c.to_s, nil) }
+          end
+          if @represented_country.names
+            @represented_country.names.define_singleton_method(c) { fetch(c.to_s, nil) }
+          end
           @subdivisions.each do |s|
-            s.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
+            if s.names
+              s.names.define_singleton_method(c) { fetch(c.to_s, nil) }
+            end
           end
         end
 
