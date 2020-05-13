@@ -29,7 +29,7 @@ describe Minfraud::Assessments do
 
     before(:each) do
       allow_any_instance_of(described_class).to receive(:request) { request }
-      allow(error_handler).to receive(:inspect)
+      allow(error_handler).to receive(:examine)
       allow(raw_response).to receive_messages(status: 200, body: {}, headers: {})
       allow(request).to receive(:perform) { raw_response }
     end
@@ -50,8 +50,8 @@ describe Minfraud::Assessments do
       )
     end
 
-    it 'calls error handler for response inspection' do
-      expect(error_handler).to receive(:inspect)
+    it 'calls error handler for response examination' do
+      expect(error_handler).to receive(:examine)
     end
   end
 end

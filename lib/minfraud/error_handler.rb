@@ -4,7 +4,7 @@ module Minfraud
       # Returns a response if status code is 200, rises an error otherwise
       # @param [Minfraud::HTTPService::Response] response
       # @return [Minfraud::HTTPService::Response] if status code is 200
-      def inspect(response)
+      def examine(response)
         return response if response.status == 200
 
         raise *STATUS_CODES.fetch(response.code, [ServerError, 'Server error'])
