@@ -76,7 +76,7 @@ module Minfraud
         @traits.define_singleton_method(:is_satellite_provider) { get('is_satellite_provider') }
       end
 
-      LANGUAGE_CODES = ['de', 'en', 'es', 'fr', 'ja', 'pt-BR', 'ru', 'zh-CN'].freeze
+      LANGUAGE_CODES = [:de, :en, :es, :fr, :ja, :'pt-BR', :ru, :'zh-CN'].freeze
     end
   end
 end
