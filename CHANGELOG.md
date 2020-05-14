@@ -1,5 +1,8 @@
 # Minfraud Changelog
 
+* Adds support for the new email domain output `/email/domain/first_seen`.
+  This may be accessed via `response.email.domain.first_seen` on the
+  minFraud Insights and Factors response objects.
 * Rename ErrorHandler#inspect to ErrorHandler#examine in order not to break LSP.
 * Adds classes for the Score, Insights, and Factors responses. This allows
   us to provide API documentation for the various response attributes.
