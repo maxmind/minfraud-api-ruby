@@ -99,6 +99,7 @@ describe Minfraud::Model::Insights do
 
       expect(m.credit_card.brand).to eq 'Visa'
       expect(m.credit_card.country).to eq 'US'
+      expect(m.credit_card.is_business).to eq true
       expect(m.credit_card.is_issued_in_billing_address_country).to eq true
       expect(m.credit_card.is_prepaid).to eq true
       expect(m.credit_card.is_virtual).to eq true
@@ -170,6 +171,7 @@ describe Minfraud::Model::Insights do
       expect(m.billing_address.is_in_ip_country).to eq false
 
       expect(m.credit_card.issuer.name).to eq 'Bank of No Hope'
+      expect(m.credit_card.is_business).to eq nil
       expect(m.credit_card.issuer.matches_provided_name).to eq nil
 
       expect(m.credit_card.brand).to eq nil

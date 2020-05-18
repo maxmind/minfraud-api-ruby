@@ -1,5 +1,9 @@
 # Minfraud Changelog
 
+* Adds support for the new credit card output `/credit_card/is_business`.
+  This indicates whether the card is a business card. It may be accessed
+  via `response.credit_credit.is_business` on the minFraud Insights and
+  Factors response objects.
 * Adds support for the new email domain output `/email/domain/first_seen`.
   This may be accessed via `response.email.domain.first_seen` on the
   minFraud Insights and Factors response objects.

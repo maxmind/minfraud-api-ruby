@@ -22,6 +22,11 @@ module Minfraud
       # @return [String, nil]
       attr_reader :country
 
+      # This property is true if the card is a business card.
+      #
+      # @return [Boolean, nil]
+      attr_reader :is_business
+
       # This property is true if the country of the billing address matches the
       # country of the majority of customers using this credit card. In cases
       # where the location of customers is highly mixed, the match is to the
@@ -56,6 +61,7 @@ module Minfraud
 
         @brand = get('brand')
         @country = get('country')
+        @is_business = get('is_business')
         @is_issued_in_billing_address_country = get(
           'is_issued_in_billing_address_country'
         )
