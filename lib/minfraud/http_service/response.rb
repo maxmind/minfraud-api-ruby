@@ -5,6 +5,7 @@ require 'minfraud/model/score'
 
 module Minfraud
   module HTTPService
+    # Response class for HTTP requests
     class Response
       # @attribute status
       # @return [Integer] HTTP response status
@@ -32,7 +33,7 @@ module Minfraud
         @headers = params[:headers]
       end
 
-      # Returns minFraud specific response code
+      # Returns minFraud-specific response code
       # @return [Symbol, nil] minFraud specific request code
       def code
         return nil if body.nil?
