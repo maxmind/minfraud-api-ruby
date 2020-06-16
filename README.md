@@ -1,15 +1,25 @@
-# Simple Ruby Wrapper to the MaxMind minFraud API
+# Ruby API for MaxMind minFraud Services
 
-[![Code Climate](https://codeclimate.com/github/kushniryb/minfraud-api-v2/badges/gpa.svg)](https://codeclimate.com/github/kushniryb/minfraud-api-v2)
-[![Coverage Status](https://coveralls.io/repos/github/kushniryb/minfraud-api-v2/badge.svg?branch=master)](https://coveralls.io/github/kushniryb/minfraud-api-v2?branch=master)
-[![Build Status](https://travis-ci.org/kushniryb/minfraud-api-v2.svg?branch=master)](https://travis-ci.org/kushniryb/minfraud-api-v2)
+[![Code
+Climate](https://codeclimate.com/github/maxmind/minfraud-api-ruby/badges/gpa.svg)](https://codeclimate.com/github/maxmind/minfraud-api-ruby)
+[![Coverage
+Status](https://coveralls.io/repos/github/maxmind/minfraud-api-ruby/badge.svg?branch=master)](https://coveralls.io/github/maxmind/minfraud-api-ruby?branch=master)
+[![Build
+Status](https://travis-ci.org/maxmind/minfraud-api-ruby.svg?branch=master)](https://travis-ci.org/maxmind/minfraud-api-ruby)
 
 ## Description
 
-This package provides an API for the [MaxMind minFraud Score, Insights, Factors
-and Report Transaction web services](https://dev.maxmind.com/minfraud/).
+This package provides an API for the [MaxMind minFraud web
+services](https://dev.maxmind.com/minfraud/). This includes minFraud Score,
+Insights, and Factors. It also includes our [minFraud Report Transaction
+API](https://dev.maxmind.com/minfraud/report-transaction/).
 
-Compatible with version minFraud API v2.0
+The legacy minFraud Standard and Premium services are not supported by this
+API.
+
+## Requirements
+
+This gem works with Ruby 1.9 and above.
 
 ## Installation
 
@@ -30,39 +40,44 @@ Or install it yourself as:
 $ gem install minfraud
 ```
 
-## Configuration
+## Usage
 
-Account ID and License Key are required to work with minFraud API
+### Configuration
+
+An account ID and license key are required to work with the web services.
 
 ```ruby
 Minfraud.configure do |c|
   c.license_key = 'your_license_key'
   c.user_id     = 'your_user_id'
 end
-```
+````
 
-## Usage
-
-### Score, Insights and Factors
+### Making a minFraud Score, Insights, or Factors Request
 
 ```ruby
-# You can either provide a hash of params to the initializer
+# You can either provide a hash of parameters to the initializer
 assessment = Minfraud::Assessments.new(
   device: {
     ip_address: '1.2.3.4.5'
   }
 )
-# or create a component and assign them to assessments object directly, e.g
+# or create a component and assign them to the assessments object directly
 device = Minfraud::Components::Device.new(ip_address: '1.2.3.4.5')
 assessment = Minfraud::Assessments.new(device: device)
 # or
 assessment = Minfraud::Assessments.new
 assessment.device = device
-# There are multiple components that reflect minFraud request top level keys
 
-# Some components will raise an error if provided with the wrong values for attributes, e.g
+# There are multiple components that reflect the minFraud request top level
+# keys.
+
+# Some components will raise an error if provided with the wrong values for
+# attributes, e.g
 event = Minfraud::Components::Event.new(type: 'foobar') # => Minfraud::NotEnumValueError
-# You can check the list of permitted values for the attribute by calling a class method
+
+# You can check the list of permitted values for the attribute by calling a
+# class method
 Minfraud::Components::Event.type_values # => ["account_creation", "account_login", ....]
 
 # You can now call 3 different minFraud endpoints: score, insights and factors
@@ -74,23 +89,28 @@ result = assessment.score # => Minfraud::Response instance
 
 result.status  # => Response status code
 result.code    # => minFraud-specific response code
-result.body    # => Mashified body
+result.body    # => Response body
 result.headers # => Response headers
 
-# You can also change data between requests
+# You can change data between requests
 first_request = assessment.insights
 assessment.device.ip_address = '22.22.22.33'
 second_request = assessment.insights
 ```
 
-### Report Transaction
+See the [API documentation](https://www.rubydoc.info/gems/minfraud) for
+more details.
 
-MaxMind encourages the use of this API, as data received through this channel
-is continually used to improve the accuracy of their fraud detection algorithms.
+### Reporting a Transaction to MaxMind
 
-To use the Report Transactions API, create a new ` Minfraud::Components::Report::Transaction`
-object. An IP address and a valid tag are required arguments for this API.
-Additional params may also be set, as documented below.
+MaxMind encourages the use of this API, as data received through this
+channel is continually used to improve the accuracy of their fraud
+detection algorithms.
+
+To use the Report Transactions API, create a new
+`Minfraud::Components::Report::Transaction` object. An IP address and a
+valid tag are required arguments for this API. Additional params may also
+be set, as documented below.
 
 If the report is successful, nothing is returned. If the report fails, an
 exception with be thrown.
@@ -111,33 +131,55 @@ reporter = Minfraud::Report.new(transaction: txn)
 reporter.report_transaction
 ```
 
-### Exception handling
+See the [API documentation](https://www.rubydoc.info/gems/minfraud) for
+more details.
 
-The Gem supplies several distinct exception-types:
+### Exceptions
 
-```ruby
-# Raised if unpermitted key is provided to Minfraud::Assessments initializer
-class RequestFormatError < BaseError; end
+The gem supplies several distinct exception-types:
 
-# Raised if IP address is absent, reserved or JSON body can not be decoded
-class ClientError < BaseError; end
+* `RequestFormatError` - Raised if unpermitted key is provided to the
+  `Minfraud::Assessments` initializer
+* `ClientError` - Raised if the IP address is absent, reserved or JSON body
+  can not be decoded
+* `AuthorizationError` - Raised if there are problems with the account ID
+  and/or license key
+* `ServerError` - Raised if minFraud returns an error, or if there is an
+  HTTP error
+* `NotEnumValueError` - Raised if an attribute value doesn't belong to the
+  predefined set of values
 
-# Raised if there are some problems with the account ID and/or license key
-class AuthorizationError < BaseError; end
+## Support
 
-# Raised if minFraud returns an error, or if there is an HTTP error
-class ServerError < BaseError; end
+Please report all issues with this code using the
+[GitHub issue tracker](https://github.com/maxmind/minfraud-api-ruby/issues).
 
-# Raised if an attribute value doesn't belong to the predefined set of values
-class NotEnumValueError < BaseError; end
-```
+If you are having an issue with the minFraud service that is not specific
+to the client API, please see
+[our support page](https://www.maxmind.com/en/support).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub [here](https://github.com/kushniryb/minfraud-api-v2). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub
+[here](https://github.com/maxmind/minfraud-api-ruby). This project is
+intended to be a safe, welcoming space for collaboration, and contributors
+are expected to adhere to the [Contributor
+Covenant](https://contributor-covenant.org) code of conduct.
 
+## Versioning
 
-## License
+This API uses [Semantic Versioning](https://semver.org/).
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+## Copyright and License
 
+Copyright (c) 2016-2020 kushnir.yb.
+
+Copyright (c) 2020 MaxMind, Inc.
+
+The gem is available as open source under the terms of the [MIT
+License](https://opensource.org/licenses/MIT).
+
+## Thank You
+
+This gem is the work of the creator and original maintainer kushnir.yb
+(@kushniryb).
