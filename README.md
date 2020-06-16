@@ -140,11 +140,11 @@ The gem supplies several distinct exception-types:
 
 * `RequestFormatError` - Raised if unpermitted key is provided to the
   `Minfraud::Assessments` initializer
-* `ClientError` - Raised if the IP address is absent, reserved or JSON body
-  can not be decoded
+* `ClientError` - Raised if the IP address is absent, reserved or the JSON
+  body cannot be decoded
 * `AuthorizationError` - Raised if there are problems with the account ID
   and/or license key
-* `ServerError` - Raised if minFraud returns an error, or if there is an
+* `ServerError` - Raised if minFraud returns an error or if there is an
   HTTP error
 * `NotEnumValueError` - Raised if an attribute value doesn't belong to the
   predefined set of values
