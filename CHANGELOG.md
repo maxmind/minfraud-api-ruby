@@ -1,5 +1,7 @@
 # Minfraud Changelog
 
+## v1.1.0
+
 * Adds support for the new credit card output `/credit_card/is_business`.
   This indicates whether the card is a business card. It may be accessed
   via `response.credit_credit.is_business` on the minFraud Insights and
@@ -20,15 +22,15 @@
   `:smartdebit`, `:synapsefi`
 * Adds `:payout_change` as a type to `Minfraud::Components::Event`
 
-## v1.0.4
+## v1.0.4 (2016-12-23)
 
 * Prevents boolean value conversion to string to avoid warnings
 * Adds `amount` attribute to the `Minfraud::Components::Order` instances
 
-## v1.0.3
+## v1.0.3 (2016-11-24)
 * Adds `token` attribute to the `Minfraud::Components::CreditCard` instances
 according to the MinFraud Release Notes introduced on November 17, 2016
 
-## v1.0.2
+## v1.0.2 (2016-10-11)
 
 * Adds support for Ruby >= 1.9
