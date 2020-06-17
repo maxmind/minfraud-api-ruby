@@ -1,12 +1,5 @@
 # Ruby API for MaxMind minFraud Services
 
-[![Code
-Climate](https://codeclimate.com/github/maxmind/minfraud-api-ruby/badges/gpa.svg)](https://codeclimate.com/github/maxmind/minfraud-api-ruby)
-[![Coverage
-Status](https://coveralls.io/repos/github/maxmind/minfraud-api-ruby/badge.svg?branch=master)](https://coveralls.io/github/maxmind/minfraud-api-ruby?branch=master)
-[![Build
-Status](https://travis-ci.org/maxmind/minfraud-api-ruby.svg?branch=master)](https://travis-ci.org/maxmind/minfraud-api-ruby)
-
 ## Description
 
 This package provides an API for the [MaxMind minFraud web
