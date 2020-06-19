@@ -1,6 +1,6 @@
 # Minfraud Changelog
 
-## v1.1.0
+## v1.1.0 (2020-06-19)
 
 * Adds support for the minFraud Report Transaction API. Reporting
   transactions to MaxMind helps us detect about 10-50% more fraud and
