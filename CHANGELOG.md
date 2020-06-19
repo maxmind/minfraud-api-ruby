@@ -24,7 +24,8 @@
   `:paylike`, `:payment_express`, `:paysafecard`, `:posconnect`,
   `:smartdebit`, `:synapsefi`, and others.
 * Adds support for passing custom inputs to minFraud. GitHub #6.
-* Adds `:payout_change` as a type to `Minfraud::Components::Event`
+* Adds `:email_change`, `:password_reset`, and `:payout_change` as types to
+  `Minfraud::Components::Event`
 
 ## v1.0.4 (2016-12-23)
 
