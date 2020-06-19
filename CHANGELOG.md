@@ -25,7 +25,8 @@
   `:smartdebit`, `:synapsefi`, and others.
 * Adds support for passing custom inputs to minFraud. GitHub #6.
 * Adds `:email_change`, `:password_reset`, and `:payout_change` as types to
-  `Minfraud::Components::Event`
+  `Minfraud::Components::Event`.
+* Adds support for the `session_id` and `session_age` inputs.
 
 ## v1.0.4 (2016-12-23)
 
