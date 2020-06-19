@@ -2,6 +2,9 @@
 
 ## v1.1.0
 
+* Adds support for the minFraud Report Transaction API. Reporting
+  transactions to MaxMind helps us detect about 10-50% more fraud and
+  reduce false positives for you.
 * Adds support for the new credit card output `/credit_card/is_business`.
   This indicates whether the card is a business card. It may be accessed
   via `response.credit_credit.is_business` on the minFraud Insights and
