@@ -17,7 +17,7 @@ module Minfraud
       # @param  [Symbol] v_sym an instance variable symbol
       # @return [Hash] a hash containing a JSON representation of instance variable name and it's value
       def populate!(hash, v_sym)
-        return hash unless value = instance_variable_get(v_sym)
+        return hash unless (value = instance_variable_get(v_sym))
 
         key = v_sym.to_s.gsub(/@/, '')
         hash.merge!(key => represent(key, value))

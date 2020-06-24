@@ -90,7 +90,7 @@ module Minfraud
     # @return [Hash] Request body
     def request_body
       MAPPING.keys.reduce({}) do |mem, e|
-        next mem unless value = send(e)
+        next mem unless (value = send(e))
 
         mem.merge!(e.to_s => value.to_json)
       end
