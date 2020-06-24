@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Minfraud::HTTPService::Response do
-  subject {
+  subject do
     Minfraud::HTTPService::Response.new({
-      body: {},
-      endpoint: :score,
-    })
-  }
+                                          body:     {},
+                                          endpoint: :score,
+                                        })
+  end
 
   RSpec.configure do |config|
     config.mock_with :rspec do |mocks|

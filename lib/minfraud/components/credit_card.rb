@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Components
     class CreditCard < Base
@@ -22,8 +24,8 @@ module Minfraud
       # @return [String] The phone number, without the country code, for the issuing bank as provided by the end user
       attr_accessor :bank_phone_number
 
-      #@attribute token
-      #@return [String] A token uniquely identifying the card. The token should consist of non-space printable ASCII characters.
+      # @attribute token
+      # @return [String] A token uniquely identifying the card. The token should consist of non-space printable ASCII characters.
       attr_accessor :token
 
       # @attribute avs_result

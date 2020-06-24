@@ -6,7 +6,7 @@ require 'spec_helper'
 describe Minfraud::Model::Insights do
   describe '#initialize' do
     it 'creates a fully populated object' do
-      buf = File.open('spec/fixtures/files/insights-response1.json').read
+      buf    = File.open('spec/fixtures/files/insights-response1.json').read
       record = JSON.parse(buf)
 
       m = Minfraud::Model::Insights.new(record, ['en'])
@@ -14,7 +14,7 @@ describe Minfraud::Model::Insights do
       expect(m.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
       expect(m.risk_score).to eq 0.01
       expect(m.funds_remaining).to eq 10.00
-      expect(m.queries_remaining).to eq 1000
+      expect(m.queries_remaining).to eq 1_000
 
       expect(m.disposition.action).to eq 'reject'
       expect(m.disposition.reason).to eq 'custom_rule'
@@ -42,7 +42,7 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.location.average_income).to eq 10_000
       expect(m.ip_address.location.latitude).to eq 51.5142
       expect(m.ip_address.location.local_time).to eq '2012-04-13T00:20:50+01:00'
-      expect(m.ip_address.location.longitude).to eq -0.0931
+      expect(m.ip_address.location.longitude).to eq(-0.0931)
       expect(m.ip_address.location.metro_code).to eq 12
       expect(m.ip_address.location.population_density).to eq 5
       expect(m.ip_address.location.time_zone).to eq 'Europe/London'
@@ -88,8 +88,8 @@ describe Minfraud::Model::Insights do
 
       expect(m.billing_address.is_postal_in_city).to eq false
       expect(m.billing_address.latitude).to eq 41.310571
-      expect(m.billing_address.longitude).to eq -72.922891
-      expect(m.billing_address.distance_to_ip_location).to eq 5465
+      expect(m.billing_address.longitude).to eq(-72.922891)
+      expect(m.billing_address.distance_to_ip_location).to eq 5_465
       expect(m.billing_address.is_in_ip_country).to eq false
 
       expect(m.credit_card.issuer.name).to eq 'Bank of No Hope'
@@ -116,13 +116,13 @@ describe Minfraud::Model::Insights do
       expect(m.email.is_free).to eq true
       expect(m.email.is_high_risk).to eq true
 
-      expect(m.shipping_address.distance_to_billing_address).to eq 2227
-      expect(m.shipping_address.distance_to_ip_location).to eq 7456
+      expect(m.shipping_address.distance_to_billing_address).to eq 2_227
+      expect(m.shipping_address.distance_to_ip_location).to eq 7_456
       expect(m.shipping_address.is_in_ip_country).to eq false
       expect(m.shipping_address.is_high_risk).to eq false
       expect(m.shipping_address.is_postal_in_city).to eq false
       expect(m.shipping_address.latitude).to eq 35.704729
-      expect(m.shipping_address.longitude).to eq -97.568619
+      expect(m.shipping_address.longitude).to eq(-97.568619)
 
       expect(m.warnings[0].code).to eq 'INPUT_INVALID'
       expect(m.warnings[0].warning).to eq 'Encountered value at /account/user_id that does meet the required constraints'
@@ -134,7 +134,7 @@ describe Minfraud::Model::Insights do
     end
 
     it 'creates a populated object missing some fields' do
-      buf = File.open('spec/fixtures/files/insights-response2.json').read
+      buf    = File.open('spec/fixtures/files/insights-response2.json').read
       record = JSON.parse(buf)
 
       m = Minfraud::Model::Insights.new(record, ['en'])
@@ -185,7 +185,7 @@ describe Minfraud::Model::Insights do
       expect(m.email.is_disposable).to eq true
 
       expect(m.shipping_address.distance_to_billing_address).to eq nil
-      expect(m.shipping_address.distance_to_ip_location).to eq 7456
+      expect(m.shipping_address.distance_to_ip_location).to eq 7_456
     end
   end
 end

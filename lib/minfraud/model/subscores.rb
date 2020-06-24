@@ -129,27 +129,27 @@ module Minfraud
       def initialize(record)
         super(record)
 
-        @avs_result = get('avs_result')
-        @billing_address = get('billing_address')
-        @billing_address_distance_to_ip_location = get(
+        @avs_result                               = get('avs_result')
+        @billing_address                          = get('billing_address')
+        @billing_address_distance_to_ip_location  = get(
           'billing_address_distance_to_ip_location'
         )
-        @browser = get('browser')
-        @chargeback = get('chargeback')
-        @country = get('country')
-        @country_mismatch = get('country_mismatch')
-        @cvv_result = get('cvv_result')
-        @email_address = get('email_address')
-        @email_domain = get('email_domain')
-        @email_tenure = get('email_tenure')
-        @ip_tenure = get('ip_tenure')
-        @issuer_id_number = get('issuer_id_number')
-        @order_amount = get('order_amount')
-        @phone_number = get('phone_number')
+        @browser                                  = get('browser')
+        @chargeback                               = get('chargeback')
+        @country                                  = get('country')
+        @country_mismatch                         = get('country_mismatch')
+        @cvv_result                               = get('cvv_result')
+        @email_address                            = get('email_address')
+        @email_domain                             = get('email_domain')
+        @email_tenure                             = get('email_tenure')
+        @ip_tenure                                = get('ip_tenure')
+        @issuer_id_number                         = get('issuer_id_number')
+        @order_amount                             = get('order_amount')
+        @phone_number                             = get('phone_number')
         @shipping_address_distance_to_ip_location = get(
           'shipping_address_distance_to_ip_location'
         )
-        @time_of_day = get('time_of_day')
+        @time_of_day                              = get('time_of_day')
       end
     end
   end

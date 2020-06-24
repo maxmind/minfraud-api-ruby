@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   # A list of Minfraud custom errors
   class BaseError          < StandardError; end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Components
     class Addressable < Base
@@ -14,11 +16,11 @@ module Minfraud
       attr_accessor :company
 
       # @attribute address
-      # @return [String] The first line of the user’s billing / shipping address
+      # @return [String] The first line of the user's billing / shipping address
       attr_accessor :address
 
       # @attribute address_2
-      # @return [String] The second line of the user’s billing / shipping address
+      # @return [String] The second line of the user's billing / shipping address
       attr_accessor :address_2
 
       # @attribute city
@@ -26,23 +28,23 @@ module Minfraud
       attr_accessor :city
 
       # @attribute region
-      # @return [String] The ISO 3166-2 subdivision code for the user’s billing / shipping address
+      # @return [String] The ISO 3166-2 subdivision code for the user's billing / shipping address
       attr_accessor :region
 
       # @attribute country
-      # @return [String] The two character ISO 3166-1 alpha-2 country code of the user’s billing / shipping address
+      # @return [String] The two character ISO 3166-1 alpha-2 country code of the user's billing / shipping address
       attr_accessor :country
 
       # @attribute postal
-      # @return [String] The postal code of the user’s billing / shipping address
+      # @return [String] The postal code of the user's billing / shipping address
       attr_accessor :postal
 
       # @attribute phone_number
-      # @return [String] The phone number without the country code for the user’s billing / shipping address
+      # @return [String] The phone number without the country code for the user's billing / shipping address
       attr_accessor :phone_number
 
       # @attribute phone_country_code
-      # @return [String] The country code for phone number associated with the user’s billing / shipping address
+      # @return [String] The country code for phone number associated with the user's billing / shipping address
       attr_accessor :phone_country_code
 
       # Creates Minfraud::Components::Addressable instance

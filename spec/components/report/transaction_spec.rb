@@ -12,7 +12,7 @@ describe Minfraud::Components::Report::Transaction do
       end
     end
     context 'with all valid tags' do
-      values = [ :chargeback, :not_fraud, :spam_or_abuse, :suspected_fraud ]
+      values = [:chargeback, :not_fraud, :spam_or_abuse, :suspected_fraud]
       values.each do |val|
         it "accepts #{val} as a valid tag" do
           result = described_class.new(tag: val)
@@ -23,13 +23,13 @@ describe Minfraud::Components::Report::Transaction do
     context 'with all possible params' do
       it 'does not raise an exception' do
         report = described_class.new(
-          ip_address: '1.2.3.4',
-          tag: :suspected_fraud,
+          ip_address:      '1.2.3.4',
+          tag:             :suspected_fraud,
           chargeback_code: 'foo',
-          maxmind_id: '12345678',
-          minfraud_id: '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
-          notes: 'notes go here',
-          transaction_id: '1FA254yZ'
+          maxmind_id:      '12345678',
+          minfraud_id:     '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
+          notes:           'notes go here',
+          transaction_id:  '1FA254yZ'
         )
 
         expect(report.ip_address).to eq '1.2.3.4'

@@ -42,14 +42,14 @@ end
 describe 'Minfraud::Components::Report::Transaction' do
   describe 'new' do
     it 'does not throw an exception when a transaction param is given' do
-      txn = Minfraud::Components::Report::Transaction.new(
-        ip_address: '1.2.3.4',
-        tag: :suspected_fraud,
+      txn    = Minfraud::Components::Report::Transaction.new(
+        ip_address:      '1.2.3.4',
+        tag:             :suspected_fraud,
         chargeback_code: 'some code',
-        maxmind_id: '12345678',
-        minfraud_id: '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
-        notes: 'notes go here',
-        transaction_id: '1FA254yZ'
+        maxmind_id:      '12345678',
+        minfraud_id:     '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
+        notes:           'notes go here',
+        transaction_id:  '1FA254yZ'
       )
       report = Minfraud::Report.new(transaction: txn)
       expect(report.transaction.to_json['ip_address']).to eq('1.2.3.4')

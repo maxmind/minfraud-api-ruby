@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Enum
     def self.included(base)
@@ -21,10 +23,11 @@ module Minfraud
           define_method("#{attribute}_values") { mapping[attribute] }
         end
 
-        self.class_eval do
-          define_method("#{attribute}") { instance_variable_get("@#{attribute}") }
+        class_eval do
+          define_method(attribute.to_s) { instance_variable_get("@#{attribute}") }
           define_method "#{attribute}=" do |value|
-            raise NotEnumValueError,  'Value is not permitted' if value && !self.class.mapping[attribute].include?(value.intern)
+            raise NotEnumValueError, 'Value is not permitted' if value && !self.class.mapping[attribute].include?(value.intern)
+
             instance_variable_set("@#{attribute}", value ? value.intern : nil)
           end
         end

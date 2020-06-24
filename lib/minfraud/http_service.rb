@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'faraday'
 require 'faraday_middleware'
 
@@ -14,10 +16,10 @@ module Minfraud
     end
 
     # Minfraud default middleware stack
-    DEFAULT_MIDDLEWARE = Proc.new do |builder|
+    DEFAULT_MIDDLEWARE = proc do |builder|
       builder.request    :json
 
-      builder.basic_auth *::Minfraud.configuration.values
+      builder.basic_auth(*::Minfraud.configuration.values)
 
       builder.response   :json, content_type: /\bjson$/
 
@@ -25,6 +27,6 @@ module Minfraud
     end
 
     # Minfraud default server
-    DEFAULT_SERVER = 'https://minfraud.maxmind.com/minfraud/v2.0'.freeze
+    DEFAULT_SERVER = 'https://minfraud.maxmind.com/minfraud/v2.0'
   end
 end

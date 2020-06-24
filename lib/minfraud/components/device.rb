@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Components
     class Device < Base
@@ -15,12 +17,12 @@ module Minfraud
       attr_accessor :accept_language
 
       # @attribute :session_age
-      # @return [Decimal] The number of seconds between the creation of the user’s session and the time of the transaction.
+      # @return [Decimal] The number of seconds between the creation of the user's session and the time of the transaction.
       # Note that session_age is not the duration of the current visit, but the time since the start of the first visit.
       attr_accessor :session_age
 
       # @attribute :session_id
-      # @return [String] An ID that uniquely identifies a visitor’s session on the site.
+      # @return [String] An ID that uniquely identifies a visitor's session on the site.
       attr_accessor :session_id
 
       # Creates Minfraud::Components::Device instance

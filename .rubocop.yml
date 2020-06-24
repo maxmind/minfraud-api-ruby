@@ -1,0 +1,127 @@
+Gemspec/RequiredRubyVersion:
+  Enabled: false # We support 1.9, but newer rubocops don't.
+
+# Metrics.
+
+Metrics/BlockLength:
+  Enabled: false # Default is true, but mostly hit in tests.
+
+Metrics/AbcSize:
+  Enabled: false # To allow for pre-existing code.
+
+Metrics/ClassLength:
+  Enabled: false # To allow for pre-existing code.
+
+Metrics/CyclomaticComplexity:
+  Enabled: false # To allow for pre-existing code.
+
+Metrics/MethodLength:
+  Enabled: false # To allow for pre-existing code.
+
+Metrics/PerceivedComplexity:
+  Enabled: false # To allow for pre-existing code.
+
+# Layout.
+
+Layout/LineLength:
+  Max: 150 # Default is 120.
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table # Default is key.
+  EnforcedColonStyle:      table # Default is key.
+
+Layout/ExtraSpacing:
+  ForceEqualSignAlignment: true # Default is false.
+
+Layout/IndentationStyle:
+  IndentationWidth: 2 # Default is <none>.
+
+# Style.
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys # Default is ruby19.
+
+Style/CollectionMethods:
+  Enabled: true # Default is false.
+
+Style/NumericLiterals:
+  MinDigits: 4 # Default is 5.
+
+Style/NegatedIf: # I disagree with this.
+  Enabled: false
+
+Style/IfUnlessModifier: # This doesn't always make sense.
+  Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets # Default is percent, but 1.9 doesn't support that.
+
+# Trailing commas are often good.
+Style/TrailingCommaInArguments:
+  Enabled: false
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/SafeNavigation:
+  Enabled: false # Default is true, but this 1.9 doesn't support it.
+
+# Default is both which is probably fine, but it changes code and I don't want
+# to investigate any possible behavior change right now.
+Style/EmptyElse:
+  EnforcedStyle: empty
+
+Style/ConditionalAssignment:
+  Enabled: false # This produces kind of strange results.
+
+Style/Dir:
+  Enabled: false # This is good, but not supported on 1.9.
+
+Style/ExpandPathArguments:
+  Enabled: false # This causes us to use __dir__ which 1.9 doesn't support.
+
+Style/GuardClause:
+  Enabled: false # Doesn't always make sense.
+
+Style/Documentation:
+  Enabled: false # We should enable this, but allow for pre-existing code.
+
+Style/FormatStringToken:
+  Enabled: false # Seems unnecessary.
+
+# Naming.
+
+Naming/VariableNumber:
+  Enabled: false # Doesn't always make sense.
+
+# These are new and rubocop warns if you don't configure them.
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+Style/ExponentialNotation:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Style/RedundantFetchBlock:
+  Enabled: true
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/RedundantRegexpEscape:
+  Enabled: true
+Style/SlicingWithRange:
+  Enabled: true

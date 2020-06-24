@@ -39,9 +39,9 @@ module Minfraud
       def initialize(record)
         super(record)
 
-        @name = get('name')
-        @phone_number = get('phone_number')
-        @matches_provided_name = get('matches_provided_name')
+        @name                          = get('name')
+        @phone_number                  = get('phone_number')
+        @matches_provided_name         = get('matches_provided_name')
         @matches_provided_phone_number = get('matches_provided_phone_number')
       end
     end

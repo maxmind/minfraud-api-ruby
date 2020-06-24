@@ -45,8 +45,8 @@ module Minfraud
         super(record)
 
         @confidence = get('confidence')
-        @id = get('id')
-        @last_seen = get('last_seen')
+        @id         = get('id')
+        @last_seen  = get('last_seen')
         @local_time = get('local_time')
       end
     end

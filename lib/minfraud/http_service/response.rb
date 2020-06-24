@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'minfraud/model/error'
 require 'minfraud/model/factors'
 require 'minfraud/model/insights'
@@ -55,9 +57,9 @@ module Minfraud
       end
 
       ENDPOINT_TO_CLASS = {
-        factors: Minfraud::Model::Factors,
+        factors:  Minfraud::Model::Factors,
         insights: Minfraud::Model::Insights,
-        score: Minfraud::Model::Score
+        score:    Minfraud::Model::Score
       }.freeze
     end
   end

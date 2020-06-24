@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Resolver
     class << self
@@ -17,17 +19,17 @@ module Minfraud
 
     # Mapping between components & minFraud request keys
     MAPPING = {
-      account:            ::Minfraud::Components::Account,
-      billing:            ::Minfraud::Components::Billing,
-      credit_card:        ::Minfraud::Components::CreditCard,
-      custom_inputs:      ::Minfraud::Components::CustomInputs,
-      device:             ::Minfraud::Components::Device,
-      email:              ::Minfraud::Components::Email,
-      event:              ::Minfraud::Components::Event,
-      order:              ::Minfraud::Components::Order,
-      payment:            ::Minfraud::Components::Payment,
-      shipping:           ::Minfraud::Components::Shipping,
-      shopping_cart:      ::Minfraud::Components::ShoppingCart,
-    }
+      account:       ::Minfraud::Components::Account,
+      billing:       ::Minfraud::Components::Billing,
+      credit_card:   ::Minfraud::Components::CreditCard,
+      custom_inputs: ::Minfraud::Components::CustomInputs,
+      device:        ::Minfraud::Components::Device,
+      email:         ::Minfraud::Components::Email,
+      event:         ::Minfraud::Components::Event,
+      order:         ::Minfraud::Components::Order,
+      payment:       ::Minfraud::Components::Payment,
+      shipping:      ::Minfraud::Components::Shipping,
+      shopping_cart: ::Minfraud::Components::ShoppingCart,
+    }.freeze
   end
 end

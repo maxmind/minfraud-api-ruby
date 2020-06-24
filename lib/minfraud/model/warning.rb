@@ -54,8 +54,8 @@ module Minfraud
       def initialize(record)
         super(record)
 
-        @code = get('code')
-        @warning = get('warning')
+        @code          = get('code')
+        @warning       = get('warning')
         @input_pointer = get('input_pointer')
       end
     end

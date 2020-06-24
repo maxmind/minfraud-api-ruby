@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'minfraud'
 require 'minfraud/enum'
 require 'minfraud/components/base'

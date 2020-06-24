@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Minfraud::Enum do
@@ -22,7 +24,7 @@ describe Minfraud::Enum do
     end
 
     it 'should define #[attribute_name]_values method' do
-      expect(klass).to respond_to (:test_values)
+      expect(klass).to respond_to :test_values
     end
 
     it 'should define attribute reader' do
@@ -48,4 +50,3 @@ describe Minfraud::Enum do
     end
   end
 end
-

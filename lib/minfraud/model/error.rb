@@ -20,7 +20,7 @@ module Minfraud
       def initialize(record)
         super(record)
 
-        @code = get('code')
+        @code  = get('code')
         @error = get('error')
       end
     end

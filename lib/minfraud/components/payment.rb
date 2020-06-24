@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Components
     class Payment < Base
@@ -132,11 +134,15 @@ module Minfraud
       ]
 
       # @attribute was_authorized
-      # @return [Boolean] The authorization outcome from the payment processor. If the transaction has not yet been approved or denied, do not include this field
+      # @return [Boolean] The authorization outcome from the payment processor.
+      #   If the transaction has not yet been approved or denied, do not include
+      #   this field
       attr_accessor :was_authorized
 
       # @attribute decline_code
-      # @return [String] The decline code as provided by your payment processor. If the transaction was not declined, do not include this field
+      # @return [String] The decline code as provided by your payment
+      #   processor. If the transaction was not declined, do not include this
+      #   field
       attr_accessor :decline_code
 
       # Creates Minfraud::Components::Payment instance

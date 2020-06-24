@@ -52,13 +52,13 @@ module Minfraud
       def initialize(record, locales)
         super(record, locales)
 
-        @billing_address = Minfraud::Model::BillingAddress.new(
+        @billing_address  = Minfraud::Model::BillingAddress.new(
           get('billing_address')
         )
-        @credit_card = Minfraud::Model::CreditCard.new(get('credit_card'))
-        @device = Minfraud::Model::Device.new(get('device'))
-        @email = Minfraud::Model::Email.new(get('email'))
-        @ip_address = Minfraud::Model::IPAddress.new(get('ip_address'), locales)
+        @credit_card      = Minfraud::Model::CreditCard.new(get('credit_card'))
+        @device           = Minfraud::Model::Device.new(get('device'))
+        @email            = Minfraud::Model::Email.new(get('email'))
+        @ip_address       = Minfraud::Model::IPAddress.new(get('ip_address'), locales)
         @shipping_address = Minfraud::Model::ShippingAddress.new(
           get('shipping_address')
         )

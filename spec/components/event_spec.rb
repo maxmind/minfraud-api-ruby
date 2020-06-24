@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Minfraud::Components::Event do
   describe '#initialize' do
     context 'with an invalid type' do
       it 'raises an exception' do
-        expect {
+        expect do
           described_class.new({ type: :nonsense })
-        }.to raise_exception(Minfraud::NotEnumValueError)
+        end.to raise_exception(Minfraud::NotEnumValueError)
       end
     end
   end

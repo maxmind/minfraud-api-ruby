@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Minfraud::Components::ShoppingCart do
@@ -43,9 +45,9 @@ describe Minfraud::Components::ShoppingCart do
 
       it 'returns an array of items converted to json' do
         instance = described_class.new([
-          { category: 'test@example.com' },
-          { category: 'superman@example.com' }
-        ])
+                                         { category: 'test@example.com' },
+                                         { category: 'superman@example.com' }
+                                       ])
 
         expect(instance.to_json).to eq(expected)
       end
