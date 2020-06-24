@@ -1,0 +1,58 @@
+require: rubocop-performance
+
+# Layout.
+
+Layout/LineLength:
+  Max: 150 # Default is 120.
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table # Default is key.
+  EnforcedColonStyle:      table # Default is key.
+
+Layout/ExtraSpacing:
+  ForceEqualSignAlignment: true # Default is false.
+
+Layout/IndentationStyle:
+  IndentationWidth: 2 # Default is <none>.
+
+# Style.
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys # Default is ruby19.
+
+Style/CollectionMethods:
+  Enabled: true # Default is false.
+
+Style/NumericLiterals:
+  MinDigits: 4 # Default is 5.
+
+# These are new and rubocop warns if you don't configure them.
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+Style/ExponentialNotation:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Style/RedundantFetchBlock:
+  Enabled: true
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/RedundantRegexpEscape:
+  Enabled: true
+Style/SlicingWithRange:
+  Enabled: true
