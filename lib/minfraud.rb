@@ -29,6 +29,10 @@ require 'minfraud/report'
 
 module Minfraud
   class << self
+    # @!attribute host
+    # @return [String, nil] The host to use when connecting to the web service.
+    attr_accessor :host
+
     # @!attribute user_id
     # @return [String] MaxMind account ID that is used for authorization
     attr_accessor :user_id
