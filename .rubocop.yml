@@ -1,5 +1,3 @@
-require: rubocop-performance
-
 Gemspec/RequiredRubyVersion:
   Enabled: false # We support 1.9, but newer rubocops don't.
 
