@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Components
     class Event < Base
@@ -18,17 +20,17 @@ module Minfraud
       # @attribute type
       # @return [String] The type of event being scored
       enum_accessor :type,
-        [
-          :account_creation,
-          :account_login,
-          :email_change,
-          :password_reset,
-          :payout_change,
-          :purchase,
-          :recurring_purchase,
-          :referral,
-          :survey,
-        ]
+                    [
+                      :account_creation,
+                      :account_login,
+                      :email_change,
+                      :password_reset,
+                      :payout_change,
+                      :purchase,
+                      :recurring_purchase,
+                      :referral,
+                      :survey,
+                    ]
 
       # Creates Minfraud::Components::Event instance
       # @param  [Hash] params hash of parameters

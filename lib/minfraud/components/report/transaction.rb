@@ -55,13 +55,13 @@ module Minfraud
         # @return [Minfraud::Components::Report::Transaction] a Report::Transaction
         #   instance
         def initialize(params = {})
-          @ip_address = params[:ip_address]
+          @ip_address      = params[:ip_address]
           @chargeback_code = params[:chargeback_code]
-          @maxmind_id = params[:maxmind_id]
-          @minfraud_id = params[:minfraud_id]
-          @notes = params[:notes]
-          @transaction_id = params[:transaction_id]
-          self.tag = params[:tag]
+          @maxmind_id      = params[:maxmind_id]
+          @minfraud_id     = params[:minfraud_id]
+          @notes           = params[:notes]
+          @transaction_id  = params[:transaction_id]
+          self.tag         = params[:tag]
         end
       end
     end

@@ -42,10 +42,10 @@ module Minfraud
         super(record)
 
         @distance_to_ip_location = get('distance_to_ip_location')
-        @is_in_ip_country = get('is_in_ip_country')
-        @is_postal_in_city = get('is_postal_in_city')
-        @latitude = get('latitude')
-        @longitude = get('longitude')
+        @is_in_ip_country        = get('is_in_ip_country')
+        @is_postal_in_city       = get('is_postal_in_city')
+        @latitude                = get('latitude')
+        @longitude               = get('longitude')
       end
     end
   end

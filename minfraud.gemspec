@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 lib = File.expand_path('lib', File.dirname(File.realpath(__FILE__)))
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
@@ -9,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['kushnir.yb']
   spec.email         = ['support@maxmind.com']
 
-  spec.summary       = %q(Ruby interface to the MaxMind minFraud v2.0 API services)
+  spec.summary       = 'Ruby interface to the MaxMind minFraud v2.0 API services'
   spec.homepage      = 'https://github.com/maxmind/minfraud-api-ruby'
   spec.license       = 'MIT'
 

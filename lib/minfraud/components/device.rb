@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Components
     class Device < Base

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Components
     class Order < Base
@@ -37,7 +39,7 @@ module Minfraud
       # Creates Minfraud::Components::Order instance
       # @param  [Hash] params hash of parameters
       # @return [Minfraud::Components::Order] an Order instance
-      def initialize (params = {})
+      def initialize(params = {})
         @amount           = params[:amount]
         @has_gift_message = params[:has_gift_message]
         @affiliate_id     = params[:affiliate_id]

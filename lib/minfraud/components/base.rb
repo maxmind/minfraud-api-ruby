@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module Minfraud
   module Components
     # @note This class is used as a parent class for all other components
     # @note It defines a method which is used for basic JSON representation of PORO objects
     class Base
       # @return [Hash] a JSON representation of component attributes
-      def to_json
-        instance_variables.inject({}) { |mem, e| populate!(mem, e) }
+      def to_json(*_args)
+        instance_variables.reduce({}) { |mem, e| populate!(mem, e) }
       end
 
       private
@@ -29,7 +31,7 @@ module Minfraud
       end
 
       # Keys that have to remain boolean
-      BOOLS = %w(was_authorized is_gift has_gift_message)
+      BOOLS = %w[was_authorized is_gift has_gift_message].freeze
     end
   end
 end

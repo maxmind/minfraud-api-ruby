@@ -59,16 +59,16 @@ module Minfraud
       def initialize(record)
         super(record)
 
-        @brand = get('brand')
-        @country = get('country')
-        @is_business = get('is_business')
+        @brand                                = get('brand')
+        @country                              = get('country')
+        @is_business                          = get('is_business')
         @is_issued_in_billing_address_country = get(
           'is_issued_in_billing_address_country'
         )
-        @is_prepaid = get('is_prepaid')
-        @is_virtual = get('is_virtual')
-        @issuer = Minfraud::Model::Issuer.new(get('issuer'))
-        @type = get('type')
+        @is_prepaid                           = get('is_prepaid')
+        @is_virtual                           = get('is_virtual')
+        @issuer                               = Minfraud::Model::Issuer.new(get('issuer'))
+        @type                                 = get('type')
       end
     end
   end

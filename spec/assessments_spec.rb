@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Minfraud::Assessments do
@@ -6,7 +8,7 @@ describe Minfraud::Assessments do
 
   before { allow(resolver).to receive(:assign) }
 
-  %w(account billing credit_card custom_inputs device email event order payment shipping shopping_cart).each do |attribute|
+  %w[account billing credit_card custom_inputs device email event order payment shipping shopping_cart].each do |attribute|
     it "responds_to #{attribute}" do
       expect(subject).to respond_to(attribute)
     end
@@ -20,10 +22,9 @@ describe Minfraud::Assessments do
     end
   end
 
-
   describe '#score, #insights, #factors' do
     let(:request)       { double(::Minfraud::HTTPService::Request) }
-    let(:raw_response)  { double() }
+    let(:raw_response)  { double }
     let(:error_handler) { ::Minfraud::ErrorHandler }
     let(:response)      { ::Minfraud::HTTPService::Response }
 
@@ -34,7 +35,7 @@ describe Minfraud::Assessments do
       allow(request).to receive(:perform) { raw_response }
     end
 
-    after(:each)  { subject.score }
+    after(:each) { subject.score }
 
     it 'calls request#perform method' do
       expect(request).to receive(:perform)
@@ -43,10 +44,10 @@ describe Minfraud::Assessments do
     it 'creates response subject from raw response' do
       expect(response).to receive(:new).with(
         endpoint: :score,
-        locales: ['en'],
-        status:  raw_response.status,
-        body:    raw_response.body,
-        headers: raw_response.headers
+        locales:  ['en'],
+        status:   raw_response.status,
+        body:     raw_response.body,
+        headers:  raw_response.headers
       )
     end
 

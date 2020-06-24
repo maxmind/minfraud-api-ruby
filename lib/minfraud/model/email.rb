@@ -43,11 +43,11 @@ module Minfraud
       def initialize(record)
         super(record)
 
-        @domain = Minfraud::Model::EmailDomain.new(get('domain'))
-        @first_seen = get('first_seen')
+        @domain        = Minfraud::Model::EmailDomain.new(get('domain'))
+        @first_seen    = get('first_seen')
         @is_disposable = get('is_disposable')
-        @is_free = get('is_free')
-        @is_high_risk = get('is_high_risk')
+        @is_free       = get('is_free')
+        @is_high_risk  = get('is_high_risk')
       end
     end
   end

@@ -58,13 +58,13 @@ module Minfraud
       def initialize(record, _locales)
         super(record)
 
-        @disposition = Minfraud::Model::Disposition.new(get('disposition'))
-        @funds_remaining = get('funds_remaining')
-        @id = get('id')
-        @ip_address = Minfraud::Model::ScoreIPAddress.new(get('ip_address'))
+        @disposition       = Minfraud::Model::Disposition.new(get('disposition'))
+        @funds_remaining   = get('funds_remaining')
+        @id                = get('id')
+        @ip_address        = Minfraud::Model::ScoreIPAddress.new(get('ip_address'))
         @queries_remaining = get('queries_remaining')
-        @risk_score = get('risk_score')
-        @warnings = []
+        @risk_score        = get('risk_score')
+        @warnings          = []
         if record && record.key?('warnings')
           record['warnings'].each do |w|
             @warnings << Minfraud::Model::Warning.new(w)

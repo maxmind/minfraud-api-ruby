@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Minfraud
   class Report
     include ::Minfraud::HTTPService
@@ -20,13 +22,13 @@ module Minfraud
       raw = request.perform(verb: :post, endpoint: 'transactions/report', body: @transaction.to_json)
 
       response = ::Minfraud::HTTPService::Response.new(
-        status: raw.status.to_i,
-        body: raw.body,
+        status:  raw.status.to_i,
+        body:    raw.body,
         headers: raw.headers
       )
       ::Minfraud::ErrorHandler.examine(response)
 
-      return nil
+      nil
     end
 
     # Creates memoized Minfraud::HTTPService::Request instance

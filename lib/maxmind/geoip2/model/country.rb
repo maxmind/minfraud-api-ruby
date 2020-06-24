@@ -69,16 +69,16 @@ module MaxMind
 
         # @!visibility private
         def initialize(record, locales)
-          @continent = MaxMind::GeoIP2::Record::Continent.new(
+          @continent           = MaxMind::GeoIP2::Record::Continent.new(
             record['continent'],
             locales,
           )
-          @country = MaxMind::GeoIP2::Record::Country.new(
+          @country             = MaxMind::GeoIP2::Record::Country.new(
             record['country'],
             locales,
           )
-          @maxmind = MaxMind::GeoIP2::Record::MaxMind.new(record['maxmind'])
-          @registered_country = MaxMind::GeoIP2::Record::Country.new(
+          @maxmind             = MaxMind::GeoIP2::Record::MaxMind.new(record['maxmind'])
+          @registered_country  = MaxMind::GeoIP2::Record::Country.new(
             record['registered_country'],
             locales,
           )
@@ -86,7 +86,7 @@ module MaxMind
             record['represented_country'],
             locales,
           )
-          @traits = MaxMind::GeoIP2::Record::Traits.new(record['traits'])
+          @traits              = MaxMind::GeoIP2::Record::Traits.new(record['traits'])
         end
       end
     end

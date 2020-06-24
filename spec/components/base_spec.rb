@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Minfraud::Components::Base do
@@ -21,7 +23,7 @@ describe Minfraud::Components::Base do
       end
 
       it 'returns json while ignoring nil values' do
-        subject.instance_variable_set(:@null,  nil)
+        subject.instance_variable_set(:@null, nil)
         expect(subject.to_json).to eq(expected)
       end
     end

@@ -6,7 +6,7 @@ require 'spec_helper'
 describe Minfraud::Model::Score do
   describe '#initialize' do
     it 'creates a fully populated object' do
-      buf = File.open('spec/fixtures/files/score-response1.json').read
+      buf    = File.open('spec/fixtures/files/score-response1.json').read
       record = JSON.parse(buf)
 
       score = Minfraud::Model::Score.new(record, ['en'])
@@ -16,7 +16,7 @@ describe Minfraud::Model::Score do
       expect(score.funds_remaining).to eq 10.00
       expect(score.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
       expect(score.ip_address.risk).to eq 99
-      expect(score.queries_remaining).to eq 1000
+      expect(score.queries_remaining).to eq 1_000
       expect(score.risk_score).to eq 0.01
 
       expect(score.warnings[0].code).to eq 'INPUT_INVALID'
@@ -29,7 +29,7 @@ describe Minfraud::Model::Score do
     end
 
     it 'creates a minimally populated object' do
-      buf = File.open('spec/fixtures/files/score-response2.json').read
+      buf    = File.open('spec/fixtures/files/score-response2.json').read
       record = JSON.parse(buf)
 
       score = Minfraud::Model::Score.new(record, ['en'])
@@ -39,7 +39,7 @@ describe Minfraud::Model::Score do
       expect(score.funds_remaining).to eq 10.00
       expect(score.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
       expect(score.ip_address.risk).to eq 99
-      expect(score.queries_remaining).to eq 1000
+      expect(score.queries_remaining).to eq 1_000
       expect(score.risk_score).to eq 0.01
       expect(score.warnings.length).to eq 0
     end

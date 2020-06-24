@@ -23,7 +23,7 @@ module Minfraud
         super(record)
 
         @distance_to_billing_address = get('distance_to_billing_address')
-        @is_high_risk = get('is_high_risk')
+        @is_high_risk                = get('is_high_risk')
       end
     end
   end
