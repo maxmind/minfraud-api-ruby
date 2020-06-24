@@ -8,9 +8,14 @@ module Minfraud
     class << self
       # @return [Hash] default HTTPService configuration
       def configuration
+        server = DEFAULT_SERVER
+        if !Minfraud.host.nil?
+          server = 'https://' + Minfraud.host + '/minfraud/v2.0'
+        end
+
         {
           middleware: DEFAULT_MIDDLEWARE,
-          server:     DEFAULT_SERVER
+          server:     server,
         }
       end
     end
