@@ -14,7 +14,18 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        version: ["2.4", "2.5", "2.6", "2.7", "head", "jruby", "jruby-head"]
+        version:
+          [
+            "2.2",
+            "2.3",
+            "2.4",
+            "2.5",
+            "2.6",
+            "2.7",
+            "head",
+            "jruby",
+            "jruby-head",
+          ]
         exclude:
           - os: windows-latest
             version: "jruby"
