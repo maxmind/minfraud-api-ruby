@@ -60,7 +60,7 @@ module Minfraud
       attr_reader :cvv_result
 
       # The risk associated with the device. If present, this is a value in the
-      # range of 0.01 to 99
+      # range of 0.01 to 99.
       # @return [Float, nil]
       attr_reader :device
 
