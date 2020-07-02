@@ -5,6 +5,8 @@
 * Adds new processor types to `Minfraud::Components::Payment`: `:cashfree`,
   `:first_atlantic_commerce`, `:komoju`, `:paytm`, `:razorpay`, and
   `:systempay`.
+* Adds support for the new Factors outputs `/subscores/device`,
+  `/subscores/email_local_part` and `/subscores/shipping_address`
 
 ## v1.1.0 (2020-06-19)
 
