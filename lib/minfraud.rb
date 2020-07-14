@@ -40,9 +40,8 @@ module Minfraud
     # @!attribute user_id
     # @return [String] The MaxMind account ID that is used for authorization.
     #
-    # Deprecated. This exists for backwards compatibility. Please use
-    # account_id instead. When we do a major version release, we should remove
-    # this attribute.
+    # Deprecated. Please use account_id instead. This will be removed in the
+    # next major version.
     attr_accessor :user_id
 
     # @!attribute license_key
@@ -56,8 +55,7 @@ module Minfraud
 
     # @return [Hash] current Minfraud configuration
     #
-    # This is not used. We should remove this when we do a major version
-    # release.
+    # Deprecated. This will be removed in the next major version.
     def configuration
       {
         user_id:     @user_id,
