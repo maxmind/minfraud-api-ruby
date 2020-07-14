@@ -55,6 +55,9 @@ module Minfraud
     end
 
     # @return [Hash] current Minfraud configuration
+    #
+    # This is not used. We should remove this when we do a major version
+    # release.
     def configuration
       {
         user_id:     @user_id,
