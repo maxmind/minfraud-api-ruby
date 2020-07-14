@@ -24,7 +24,10 @@ module Minfraud
     DEFAULT_MIDDLEWARE = proc do |builder|
       builder.request    :json
 
-      builder.basic_auth Minfraud.user_id, Minfraud.license_key
+      account_id = Minfraud.account_id
+      account_id = Minfraud.user_id if account_id.nil?
+
+      builder.basic_auth account_id, Minfraud.license_key
 
       builder.response   :json, content_type: /\bjson$/
 

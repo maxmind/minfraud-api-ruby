@@ -21,6 +21,16 @@ describe Minfraud do
       expect(Minfraud.user_id).to eq 'dummy'
       expect(Minfraud.license_key).to eq 'dummy'
     end
+
+    it 'sets account_id and license key' do
+      Minfraud.configure do |c|
+        c.account_id  = 123
+        c.license_key = 'dummy'
+      end
+
+      expect(Minfraud.account_id).to eq 123
+      expect(Minfraud.license_key).to eq 'dummy'
+    end
   end
 
   describe '.configuration' do

@@ -29,16 +29,24 @@ require 'minfraud/report'
 
 module Minfraud
   class << self
+    # @!attribute account_id
+    # @return [String] The MaxMind account ID that is used for authorization
+    attr_accessor :account_id
+
     # @!attribute host
     # @return [String, nil] The host to use when connecting to the web service.
     attr_accessor :host
 
     # @!attribute user_id
-    # @return [String] MaxMind account ID that is used for authorization
+    # @return [String] The MaxMind account ID that is used for authorization.
+    #
+    # Deprecated. This exists for backwards compatibility. Please use
+    # account_id instead. When we do a major version release, we should remove
+    # this attribute.
     attr_accessor :user_id
 
     # @!attribute license_key
-    # @return [String] MaxMind license key that is used for authorization
+    # @return [String] The MaxMind license key that is used for authorization
     attr_accessor :license_key
 
     # @yield [self] to accept configuration settings
