@@ -41,8 +41,8 @@ An account ID and license key are required to work with the web services.
 
 ```ruby
 Minfraud.configure do |c|
+  c.account_id  = 12345
   c.license_key = 'your_license_key'
-  c.user_id     = 'your_user_id'
 end
 ````
 

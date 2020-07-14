@@ -10,6 +10,9 @@
   associated with the part of the email address before the @ symbol) and
   `/subscores/shipping_address` (the risk associated with the shipping
   address).
+* Adds support for providing your MaxMind account ID using the `account_id`
+  attribute instead of the `user_id` attribute. In a future release,
+  support for the `user_id` attribute will be removed.
 
 ## v1.1.0 (2020-06-19)
 
