@@ -29,33 +29,41 @@ require 'minfraud/report'
 
 module Minfraud
   class << self
-    # @!attribute account_id
-    # @return [Integer, nil] The MaxMind account ID that is used for authorization
+    # The MaxMind account ID that is used for authorization.
+    #
+    # @return [Integer, nil]
     attr_accessor :account_id
 
-    # @!attribute host
-    # @return [String, nil] The host to use when connecting to the web service.
+    # The host to use when connecting to the web service.
+    #
+    # @return [String, nil]
     attr_accessor :host
 
-    # @!attribute user_id
-    # @return [Integer, nil] The MaxMind account ID that is used for authorization.
+    # The MaxMind account ID that is used for authorization.
     #
-    # Deprecated. Please use account_id instead. This will be removed in the
-    # next major version.
+    # @deprecated Use {::account_id} instead. This will be removed in the next
+    #   major version.
+    #
+    # @return [Integer, nil]
     attr_accessor :user_id
 
-    # @!attribute license_key
-    # @return [String, nil] The MaxMind license key that is used for authorization
+    # The MaxMind license key that is used for authorization.
+    #
+    # @return [String, nil]
     attr_accessor :license_key
 
-    # @yield [self] to accept configuration settings
+    # Yield self to accept configuration settings.
+    #
+    # @yield [self]
     def configure
       yield self
     end
 
-    # @return [Hash] current Minfraud configuration
+    # The current Minfraud configuration.
     #
-    # Deprecated. This will be removed in the next major version.
+    # @deprecated This will be removed in the next major version.
+    #
+    # @return [Hash]
     def configuration
       {
         user_id:     @user_id,
