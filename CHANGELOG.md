@@ -1,6 +1,6 @@
 # Minfraud Changelog
 
-## v1.2.0
+## v1.2.0 (2020-07-15)
 
 * Adds new processor types to `Minfraud::Components::Payment`: `:cashfree`,
   `:first_atlantic_commerce`, `:komoju`, `:paytm`, `:razorpay`, and
