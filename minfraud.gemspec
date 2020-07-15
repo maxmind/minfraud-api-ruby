@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['kushnir.yb']
   spec.email         = ['support@maxmind.com']
 
-  spec.summary       = 'Ruby interface to the MaxMind minFraud v2.0 API services'
+  spec.summary       = 'Ruby API for the minFraud Score, Insights, Factors, and Report Transactions services'
   spec.homepage      = 'https://github.com/maxmind/minfraud-api-ruby'
   spec.license       = 'MIT'
 
