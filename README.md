@@ -149,6 +149,16 @@ The gem supplies several distinct exception-types:
 * `NotEnumValueError` - Raised if an attribute value doesn't belong to the
   predefined set of values
 
+### Thread Safety
+
+This gem is safe for use from multiple threads.
+
+`Minfraud::Assessments` and `Minfraud::Report` objects must not be shared
+across threads.
+
+Please note that you must run `Minfraud.configure` before calling any
+functionality using multiple threads.
+
 ## Support
 
 Please report all issues with this code using the
