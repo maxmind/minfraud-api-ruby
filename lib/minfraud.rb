@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'faraday'
 require 'minfraud'
 require 'minfraud/enum'
 require 'minfraud/components/base'
@@ -52,11 +53,17 @@ module Minfraud
     # @return [String, nil]
     attr_accessor :license_key
 
+    # @!visibility private
+    attr_reader :connection
+
     # Yield self to accept configuration settings.
     #
     # @yield [self]
     def configure
       yield self
+
+      config      = Minfraud::HTTPService.configuration
+      @connection = Faraday.new(config[:server], {}, &config[:middleware])
     end
 
     # The current Minfraud configuration.

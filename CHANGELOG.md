@@ -1,5 +1,10 @@
 # Minfraud Changelog
 
+## v1.3.0
+
+* Adds support for persistent HTTP connections. Connections persist
+  automatically.
+
 ## v1.2.0 (2020-07-15)
 
 * Adds new processor types to `Minfraud::Components::Payment`: `:cashfree`,

@@ -25,15 +25,19 @@ module Minfraud
       # @param  [Hash] params hash of parameters.
       # @return [Farday::Response] Faraday::Response instance
       def perform(params)
-        adapter.send(*params.values_at(:verb, :endpoint, :body))
+        connection = Minfraud.connection
+        connection.send(*params.values_at(:verb, :endpoint, :body))
       end
 
       private
 
       # Creates memoized Faraday::Connection instance
+      #
+      # @deprecated This will be removed in the next major version.
+      #
       # @return [Faraday::Connection] Faraday::Connection instance
       def adapter
-        @adapter ||= Faraday.new(server, {}, &middleware)
+        Minfraud.connection
       end
     end
   end

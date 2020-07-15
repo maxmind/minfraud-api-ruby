@@ -127,6 +127,13 @@ reporter.report_transaction
 See the [API documentation](https://www.rubydoc.info/gems/minfraud) for
 more details.
 
+### Persistent HTTP Connections
+
+This gem supports persistent HTTP connections, allowing you to avoid the
+overhead of creating a new HTTP connection for each minFraud request if you
+plan to perform more than one. You do not need to do anything to enable
+this functionality.
+
 ### Exceptions
 
 The gem supplies several distinct exception-types:
