@@ -12,7 +12,7 @@ API.
 
 ## Requirements
 
-This gem works with Ruby 1.9 and above.
+This gem works with Ruby 2.0 and above.
 
 ## Installation
 
