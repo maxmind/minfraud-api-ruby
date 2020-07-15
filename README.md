@@ -52,11 +52,11 @@ end
 # You can either provide a hash of parameters to the initializer
 assessment = Minfraud::Assessments.new(
   device: {
-    ip_address: '1.2.3.4.5'
+    ip_address: '152.216.7.110'
   }
 )
 # or create a component and assign them to the assessments object directly
-device = Minfraud::Components::Device.new(ip_address: '1.2.3.4.5')
+device = Minfraud::Components::Device.new(ip_address: '152.216.7.110')
 assessment = Minfraud::Assessments.new(device: device)
 # or
 assessment = Minfraud::Assessments.new
@@ -113,7 +113,7 @@ See the API documentation for more details.
 ```ruby
 # The report_transaction method only makes use of a transaction component:
 txn = Minfraud::Components::Report::Transaction.new(
-  ip_address:     '1.2.3.4',
+  ip_address:     '152.216.7.110',
   tag:            :suspected_fraud,
   maxmind_id:     '12345678',
   minfraud_id:    '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
