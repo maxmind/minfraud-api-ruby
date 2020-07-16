@@ -1,5 +1,12 @@
 # Minfraud Changelog
 
+## v1.3.0
+
+* Adds support for persistent HTTP connections. Connections persist
+  automatically.
+* IMPORTANT: Ruby 1.9 is no longer supported. If you're using Ruby 1.9,
+  please use version 1.2.0 or older.
+
 ## v1.2.0 (2020-07-15)
 
 * Adds new processor types to `Minfraud::Components::Payment`: `:cashfree`,

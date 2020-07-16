@@ -12,7 +12,7 @@ API.
 
 ## Requirements
 
-This gem works with Ruby 1.9 and above.
+This gem works with Ruby 2.0 and above.
 
 ## Installation
 
@@ -52,11 +52,11 @@ end
 # You can either provide a hash of parameters to the initializer
 assessment = Minfraud::Assessments.new(
   device: {
-    ip_address: '1.2.3.4.5'
+    ip_address: '152.216.7.110'
   }
 )
 # or create a component and assign them to the assessments object directly
-device = Minfraud::Components::Device.new(ip_address: '1.2.3.4.5')
+device = Minfraud::Components::Device.new(ip_address: '152.216.7.110')
 assessment = Minfraud::Assessments.new(device: device)
 # or
 assessment = Minfraud::Assessments.new
@@ -113,7 +113,7 @@ See the API documentation for more details.
 ```ruby
 # The report_transaction method only makes use of a transaction component:
 txn = Minfraud::Components::Report::Transaction.new(
-  ip_address:     '1.2.3.4',
+  ip_address:     '152.216.7.110',
   tag:            :suspected_fraud,
   maxmind_id:     '12345678',
   minfraud_id:    '58fa38d8-4b87-458b-a22b-f00eda1aa20d',
@@ -126,6 +126,13 @@ reporter.report_transaction
 
 See the [API documentation](https://www.rubydoc.info/gems/minfraud) for
 more details.
+
+### Persistent HTTP Connections
+
+This gem supports persistent HTTP connections, allowing you to avoid the
+overhead of creating a new HTTP connection for each minFraud request if you
+plan to perform more than one. You do not need to do anything to enable
+this functionality.
 
 ### Exceptions
 
@@ -141,6 +148,16 @@ The gem supplies several distinct exception-types:
   HTTP error
 * `NotEnumValueError` - Raised if an attribute value doesn't belong to the
   predefined set of values
+
+### Thread Safety
+
+This gem is safe for use from multiple threads.
+
+`Minfraud::Assessments` and `Minfraud::Report` objects must not be shared
+across threads.
+
+Please note that you must run `Minfraud.configure` before calling any
+functionality using multiple threads.
 
 ## Support
 

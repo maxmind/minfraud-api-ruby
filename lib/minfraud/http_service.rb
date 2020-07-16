@@ -31,7 +31,9 @@ module Minfraud
 
       builder.response   :json, content_type: /\bjson$/
 
-      builder.adapter    Faraday.default_adapter
+      builder.adapter :net_http_persistent, pool_size: 5 do |http|
+        http.idle_timeout = 30
+      end
     end
 
     # Minfraud default server
