@@ -28,17 +28,6 @@ module Minfraud
         connection = Minfraud.connection
         connection.send(*params.values_at(:verb, :endpoint, :body))
       end
-
-      private
-
-      # Creates memoized Faraday::Connection instance
-      #
-      # @deprecated This will be removed in the next major version.
-      #
-      # @return [Faraday::Connection] Faraday::Connection instance
-      def adapter
-        Minfraud.connection
-      end
     end
   end
 end
