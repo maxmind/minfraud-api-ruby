@@ -3,42 +3,48 @@
 module Minfraud
   module Components
     class Order < Base
-      # @attribute amount
-      # @return [Decimal] The total order amount for the transaction
+      # The total order amount for the transaction.
+      #
+      # @return [Float, nil]
       attr_accessor :amount
 
-      # @attribute currency
-      # @return [String] The ISO 4217 currency code for the currency used in the transaction
+      # The ISO 4217 currency code for the currency used in the transaction.
+      #
+      # @return [String, nil]
       attr_accessor :currency
 
-      # @attribute discount_code
-      # @return [String] The discount code applied to the transaction. If multiple discount codes are used,
-      # please separate them with a comma.
+      # The discount code applied to the transaction. If multiple discount
+      # codes are used, please separate them with a comma.
+      #
+      # @return [String, nil]
       attr_accessor :discount_code
 
-      # @attribute affiliate_id
-      # @return [String] The ID of the affiliate where the order is coming from
+      # The ID of the affiliate where the order is coming from.
+      #
+      # @return [String, nil]
       attr_accessor :affiliate_id
 
-      # @attribute subaffiliate_id
-      # @return [String] The ID of the sub-affiliate where the order is coming from
+      # The ID of the sub-affiliate where the order is coming from.
+      #
+      # @return [String, nil]
       attr_accessor :subaffiliate_id
 
-      # @attribute :referrer_uri
-      # @return [String] The URI of the referring site for this order
+      # The URI of the referring site for this order.
+      #
+      # @return [String, nil]
       attr_accessor :referrer_uri
 
-      # @attribute :is_gift
-      # @return [Boolean] Whether order was marked as a gift by the purchaser
+      # Whether order was marked as a gift by the purchaser.
+      #
+      # @return [Boolean, nil]
       attr_accessor :is_gift
 
-      # @attribute :has_gift_message
-      # @return [Boolean] Whether the purchaser included a gift message
+      # Whether the purchaser included a gift message.
+      #
+      # @return [Boolean, nil]
       attr_accessor :has_gift_message
 
-      # Creates Minfraud::Components::Order instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::Order] an Order instance
+      # @param params [Hash] Hash of parameters.
       def initialize(params = {})
         @amount           = params[:amount]
         @has_gift_message = params[:has_gift_message]

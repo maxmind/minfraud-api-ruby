@@ -3,16 +3,28 @@
 module Minfraud
   module ErrorHandler
     class << self
-      # Returns a response if status code is 2xx, raises an error otherwise
-      # @param [Minfraud::HTTPService::Response] response
-      # @return [Minfraud::HTTPService::Response] if status code is 200
+      # Return the response if the HTTP status code is 2xx. Otherwise raise
+      # an error.
+      #
+      # @param response [Minfraud::HTTPService::Response]
+      #
+      # @return [Minfraud::HTTPService::Response]
+      #
+      # @raise [Minfraud::AuthorizationError] If there was an authentication
+      #   problem.
+      #
+      # @raise [Minfraud::ClientError] If there was a critical problem with one
+      #   of your inputs.
+      #
+      # @raise [Minfraud::ServerError] If the server reported an error of some
+      #   kind.
       def examine(response)
         return response if response.status > 199 && response.status < 300
 
         raise(*STATUS_CODES.fetch(response.code, [ServerError, 'Server error']))
       end
 
-      # A hash that maps status codes returned by minFraud with errors & messages
+      # @!visibility private
       STATUS_CODES = {
         IP_ADDRESS_INVALID:    [
           ClientError, 'You have not supplied a valid IPv4 or IPv6 address'

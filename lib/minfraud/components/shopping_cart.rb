@@ -3,28 +3,25 @@
 module Minfraud
   module Components
     class ShoppingCart < Base
-      # @attribute items
-      # @return [Array] An array of Minfraud::Components::ShoppingCartItem instances
-
+      # An array of Minfraud::Components::ShoppingCartItem instances.
+      #
+      # @return [Array<Minfraud::Components::ShoppingCartItem>]
       attr_accessor :items
 
-      # Creates Minfraud::Components::ShoppingCart instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::ShoppingCart] ShoppingCart instance
+      # @param params [Hash] Hash of parameters.
       def initialize(params = {})
         @items = params.map(&method(:resolve))
       end
 
-      # @return [Array] a JSON representation of Minfraud::Components::ShoppingCart items
+      # A JSON representation of Minfraud::Components::ShoppingCart items.
+      #
+      # @return [Array]
       def to_json(*_args)
         @items.map(&:to_json)
       end
 
       private
 
-      # @param  [Hash] params hash of parameters for Minfraud::Components::ShoppingCartItem
-      # or Minfraud::Components::ShoppingCartItem instance
-      # @return [Minfraud::Components::ShoppingCart] ShoppingCart instance
       def resolve(params)
         params.is_a?(ShoppingCartItem) ? params : ShoppingCartItem.new(params)
       end

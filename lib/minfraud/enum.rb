@@ -7,15 +7,21 @@ module Minfraud
     end
 
     module ClassMethods
-      # Returns a hash with in the following format: attribute_name => permitted_values
-      # @return [Hash] mapping
+      # Returns a hash in the following format: attribute_name =>
+      # permitted_values
+      #
+      # @return [Hash]
       def mapping
         @mapping ||= {}
       end
 
-      # Creates a set of methods for enum-like behaviour of the attribute
-      # @param [Symbol] attribute attribute name
-      # @param [Array] assignable_values a set of values which are permitted
+      # Creates a set of methods for enum-like behavior of the attribute.
+      #
+      # @param attribute [Symbol] The attribute name.
+      #
+      # @param assignable_values [Array] The set of permitted values.
+      #
+      # @return [nil]
       def enum_accessor(attribute, assignable_values)
         mapping[attribute] = assignable_values.map(&:intern)
 
@@ -31,6 +37,8 @@ module Minfraud
             instance_variable_set("@#{attribute}", value ? value.intern : nil)
           end
         end
+
+        nil
       end
     end
   end

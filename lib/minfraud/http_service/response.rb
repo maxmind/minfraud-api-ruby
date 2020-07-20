@@ -7,24 +7,25 @@ require 'minfraud/model/score'
 
 module Minfraud
   module HTTPService
-    # Response class for HTTP requests
+    # Response class for HTTP requests.
     class Response
-      # @attribute status
-      # @return [Integer] HTTP response status
+      # HTTP response status.
+      #
+      # @return [Integer, nil]
       attr_reader :status
 
-      # @attribute body
+      # HTTP response.
+      #
       # @return [Minfraud::Model::Score, Minfraud::Model::Insights,
-      #   Minfraud::Model::Factors] HTTP response body
+      #   Minfraud::Model::Factors, nil]
       attr_reader :body
 
-      # @attribute headers
-      # @return [Hash] HTTP response headers
+      # HTTP response headers.
+      #
+      # @return [Hash, nil]
       attr_reader :headers
 
-      # Creates Minfraud::HTTPService::Response instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::HTTPService::Response] Response instance
+      # @param hash [Hash] Hash of parameters.
       def initialize(params = {})
         @status  = params[:status]
         @body    = make_body(
@@ -35,8 +36,9 @@ module Minfraud
         @headers = params[:headers]
       end
 
-      # Returns minFraud-specific response code
-      # @return [Symbol, nil] minFraud specific request code
+      # Return the minFraud-specific response code.
+      #
+      # @return [Symbol, nil]
       def code
         return nil if body.nil?
 

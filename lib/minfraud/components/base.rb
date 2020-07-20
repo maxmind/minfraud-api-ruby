@@ -2,20 +2,26 @@
 
 module Minfraud
   module Components
-    # @note This class is used as a parent class for all other components
-    # @note It defines a method which is used for basic JSON representation of PORO objects
+    # This class is used as a parent class for all other components. It defines
+    # a method which is used for basic JSON representation of PORO objects.
     class Base
-      # @return [Hash] a JSON representation of component attributes
+      # A JSON representation of component attributes.
+      #
+      # @return [Hash]
       def to_json(*_args)
         instance_variables.reduce({}) { |mem, e| populate!(mem, e) }
       end
 
       private
 
-      # @note   This method may modify passed hash. Non-existing instance variables are ignored
-      # @param  [Hash] hash an accumulator
-      # @param  [Symbol] v_sym an instance variable symbol
-      # @return [Hash] a hash containing a JSON representation of instance variable name and it's value
+      # Create a hash containing a JSON representation of instance variable
+      # name and its value.
+      #
+      # @param hash [Hash] An accumulator.
+      #
+      # @param v_sym [Symbol] An instance variable symbol.
+      #
+      # @return [Hash]
       def populate!(hash, v_sym)
         return hash unless (value = instance_variable_get(v_sym))
 
@@ -23,9 +29,13 @@ module Minfraud
         hash.merge!(key => represent(key, value))
       end
 
-      # param [Symbol] key instance variable symbol
-      # param [Object] value instance variable value
-      # @return [Object] value representation according to the request format
+      # Return the value according to the request format.
+      #
+      # @param key [Symbol] An instance variable symbol.
+      #
+      # @param value [Object] An instance variable value.
+      #
+      # @return [Object]
       def represent(key, value)
         BOOLS.include?(key) ? value : value.to_s
       end
