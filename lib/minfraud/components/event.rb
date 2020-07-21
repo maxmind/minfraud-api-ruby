@@ -5,13 +5,17 @@ module Minfraud
     class Event < Base
       include ::Minfraud::Enum
 
-      # Internal ID for the transaction. Used to locate a specific transaction
-      # in minFraud logs.
+      # Your internal ID for the transaction. MaxMind can use this to locate a
+      # specific transaction in logs, and it will also show up in email alerts
+      # and notifications from MaxMind to you. No specific format is required.
       #
       # @return [String, nil]
       attr_accessor :transaction_id
 
-      # Internal ID for the shop, affiliate, or merchant this order is coming from.
+      # Your internal ID for the shop, affiliate, or merchant this order is
+      # coming from. Required for minFraud users who are resellers, payment
+      # providers, gateways and affiliate networks. No specific format is
+      # required.
       #
       # @return [String, nil]
       attr_accessor :shop_id
