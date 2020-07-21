@@ -4,8 +4,12 @@ module Minfraud
   module Components
     class Payment < Base
       include ::Minfraud::Enum
-      # @attribute processor
-      # @return [String] The payment processor used for the transaction
+
+      # The payment processor used for the transaction.
+      #
+      # @!attribute processor
+      #
+      # @return [Symbol, nil]
       enum_accessor :processor, [
         :adyen,
         :affirm,
@@ -139,21 +143,20 @@ module Minfraud
         :worldpay
       ]
 
-      # @attribute was_authorized
-      # @return [Boolean] The authorization outcome from the payment processor.
-      #   If the transaction has not yet been approved or denied, do not include
-      #   this field
+      # The authorization outcome from the payment processor. If the
+      # transaction has not yet been approved or denied, do not include this
+      # field.
+      #
+      # @return [Boolean, nil]
       attr_accessor :was_authorized
 
-      # @attribute decline_code
-      # @return [String] The decline code as provided by your payment
-      #   processor. If the transaction was not declined, do not include this
-      #   field
+      # The decline code as provided by your payment processor. If the
+      # transaction was not declined, do not include this field.
+      #
+      # @return [String, nil]
       attr_accessor :decline_code
 
-      # Creates Minfraud::Components::Payment instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::Payment] Payment instance
+      # @param params [Hash] Hash of parameters.
       def initialize(params = {})
         @was_authorized = params[:was_authorized]
         @decline_code   = params[:decline_code]

@@ -6,7 +6,9 @@ require 'faraday_middleware'
 module Minfraud
   module HTTPService
     class << self
-      # @return [Hash] default HTTPService configuration
+      # The default HTTPService configuration.
+      #
+      # @return [Hash]
       def configuration
         server = DEFAULT_SERVER
         if !Minfraud.host.nil?
@@ -20,7 +22,7 @@ module Minfraud
       end
     end
 
-    # Minfraud default middleware stack
+    # @!visibility private
     DEFAULT_MIDDLEWARE = proc do |builder|
       builder.request    :json
 
@@ -36,7 +38,7 @@ module Minfraud
       end
     end
 
-    # Minfraud default server
+    # Default base URL for minFraud.
     DEFAULT_SERVER = 'https://minfraud.maxmind.com/minfraud/v2.0'
   end
 end

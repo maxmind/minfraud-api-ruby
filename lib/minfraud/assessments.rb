@@ -5,54 +5,65 @@ module Minfraud
     include ::Minfraud::HTTPService
     include ::Minfraud::Resolver
 
-    # @attribute account
-    # @return [Minfraud::Components::Account] Account component
+    # The Account component.
+    #
+    # @return [Minfraud::Components::Account, nil]
     attr_accessor :account
 
-    # @attribute billing
-    # @return [Minfraud::Components::Billing] Billing component
+    # The Billing component.
+    #
+    # @return [Minfraud::Components::Billing, nil]
     attr_accessor :billing
 
-    # @attribute credit_card
-    # @return [Minfraud::Components::CreditCard] CreditCard component
+    # The CreditCard component.
+    #
+    # @return [Minfraud::Components::CreditCard, nil]
     attr_accessor :credit_card
 
-    # @attribute custom_inputs
-    # @return [Minfraud::Components::CustomInputs] CustomInputs component
+    # The CustomInputs component.
+    #
+    # @return [Minfraud::Components::CustomInputs, nil]
     attr_accessor :custom_inputs
 
-    # @attribute device
-    # @return [Minfraud::Components::Device] Device component
+    # The Device component.
+    #
+    # @return [Minfraud::Components::Device, nil]
     attr_accessor :device
 
-    # @attribute email
-    # @return [Minfraud::Components::Email] Email component
+    # The Email component.
+    #
+    # @return [Minfraud::Components::Email, nil]
     attr_accessor :email
 
-    # @attribute event
-    # @return [Minfraud::Components::Event] Event component
+    # The Event component.
+    #
+    # @return [Minfraud::Components::Event, nil]
     attr_accessor :event
 
-    # @attribute order
-    # @return [Minfraud::Components::Order] Order component
+    # The Order component.
+    #
+    # @return [Minfraud::Components::Order, nil]
     attr_accessor :order
 
-    # @attribute payment
-    # @return [Minfraud::Components::Payment] Payment component
+    # The Payment component.
+    #
+    # @return [Minfraud::Components::Payment, nil]
     attr_accessor :payment
 
-    # @!attribute shipping
-    # @return [Minfraud::Components::Shipping] Shipping component
+    # The Shipping component.
+    #
+    # @return [Minfraud::Components::Shipping, nil]
     attr_accessor :shipping
 
-    # @!attribute shopping_cart
-    # @return [Minfraud::Components::ShoppingCart] ShoppingCart component
+    # The ShoppingCart component.
+    #
+    # @return [Minfraud::Components::ShoppingCart, nil]
     attr_accessor :shopping_cart
 
-    # @param  [Hash] params hash of parameters
-    # @param  [Minfraud::Resolver] resolver resolver that maps params to components
-    # @note In case when params is a Hash of components it just assigns them to the corresponding instance variables
-    # @return [Minfraud::Assessments] Assessments instance
+    # @param params [Hash] Hash of parameters.
+    #
+    # @param resolver [Minfraud::Resolver] Resolver that maps parameters to
+    #   components.
     def initialize(params = {}, resolver = ::Minfraud::Resolver)
       @locales = params.delete('locales')
       @locales = ['en'] if @locales.nil?
@@ -60,34 +71,74 @@ module Minfraud
       resolver.assign(self, params)
     end
 
-    # @!macro [attach] define
-    #   @method $1
-    #   Makes a request to minFraud $1 endpoint.
-    #   Raises an error in case of invalid response
-    #   @return [Minfraud::HTTPService::Response] Wrapped minFraud response
-    def self.define(endpoint)
-      define_method(endpoint) do
-        raw       = request.perform(verb: :post, endpoint: endpoint.to_s, body: request_body)
-        response  = ::Minfraud::HTTPService::Response.new(
-          endpoint: endpoint,
-          locales:  @locales,
-          status:   raw.status.to_i,
-          body:     raw.body,
-          headers:  raw.headers
-        )
-
-        ::Minfraud::ErrorHandler.examine(response)
-      end
+    # Perform a minFraud Factors request.
+    #
+    # @return [Minfraud::HTTPService::Response]
+    #
+    # @raise [Minfraud::AuthorizationError] If there was an authentication
+    #   problem.
+    #
+    # @raise [Minfraud::ClientError] If there was a critical problem with one
+    #   of your inputs.
+    #
+    # @raise [Minfraud::ServerError] If the server reported an error of some
+    #   kind.
+    def factors
+      perform_request(:factors)
     end
 
-    define :score
-    define :insights
-    define :factors
+    # Perform a minFraud Insights request.
+    #
+    # @return [Minfraud::HTTPService::Response]
+    #
+    # @raise [Minfraud::AuthorizationError] If there was an authentication
+    #   problem.
+    #
+    # @raise [Minfraud::ClientError] If there was a critical problem with one
+    #   of your inputs.
+    #
+    # @raise [Minfraud::ServerError] If the server reported an error of some
+    #   kind.
+    def insights
+      perform_request(:insights)
+    end
+
+    # Perform a minFraud Score request.
+    #
+    # @return [Minfraud::HTTPService::Response]
+    #
+    # @raise [Minfraud::AuthorizationError] If there was an authentication
+    #   problem.
+    #
+    # @raise [Minfraud::ClientError] If there was a critical problem with one
+    #   of your inputs.
+    #
+    # @raise [Minfraud::ServerError] If the server reported an error of some
+    #   kind.
+    def score
+      perform_request(:score)
+    end
 
     private
 
-    # Creates a unified request body from components converted to JSON
-    # @return [Hash] Request body
+    def perform_request(endpoint)
+      raw = request.perform(
+        verb:     :post,
+        endpoint: endpoint.to_s,
+        body:     request_body,
+      )
+
+      response = ::Minfraud::HTTPService::Response.new(
+        endpoint: endpoint,
+        locales:  @locales,
+        status:   raw.status.to_i,
+        body:     raw.body,
+        headers:  raw.headers
+      )
+
+      ::Minfraud::ErrorHandler.examine(response)
+    end
+
     def request_body
       MAPPING.keys.reduce({}) do |mem, e|
         next mem unless (value = send(e))
@@ -96,8 +147,6 @@ module Minfraud
       end
     end
 
-    # Creates memoized Minfraud::HTTPService::Request instance
-    # @return [Minfraud::HTTPService::Request] Request instance based on configuration params
     def request
       @request ||= Request.new(::Minfraud::HTTPService.configuration)
     end

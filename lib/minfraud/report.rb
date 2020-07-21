@@ -4,35 +4,48 @@ module Minfraud
   class Report
     include ::Minfraud::HTTPService
 
-    # @!attribute transaction
-    # @return [Minfraud::Components::Report::Transaction] Report::Transaction component
+    # The Report::Transaction component.
+    #
+    # @return [Minfraud::Components::Report::Transaction, nil]
     attr_accessor :transaction
 
-    # @param  [Hash] params hash of parameters
-    # @return [Minfraud::ReportTransaction] ReportTransaction instance
+    # @param params [Hash] Hash of parameters.
     def initialize(params = {})
       @transaction = params[:transaction]
     end
 
-    # @method report_transaction
-    # Makes a request to the minFraud report transactions API.
-    # Raises an error in case of invalid response.
+    # Perform a request to the minFraud Report Transactions API.
+    #
     # @return [nil]
+    #
+    # @raise [Minfraud::AuthorizationError] If there was an authentication
+    #   problem.
+    #
+    # @raise [Minfraud::ClientError] If there was a critical problem with one
+    #   of your inputs.
+    #
+    # @raise [Minfraud::ServerError] If the server reported an error of some
+    #   kind.
     def report_transaction
-      raw = request.perform(verb: :post, endpoint: 'transactions/report', body: @transaction.to_json)
+      raw = request.perform(
+        verb:     :post,
+        endpoint: 'transactions/report',
+        body:     @transaction.to_json,
+      )
 
       response = ::Minfraud::HTTPService::Response.new(
         status:  raw.status.to_i,
         body:    raw.body,
         headers: raw.headers
       )
+
       ::Minfraud::ErrorHandler.examine(response)
 
       nil
     end
 
-    # Creates memoized Minfraud::HTTPService::Request instance
-    # @return [Minfraud::HTTPService::Request] Request instance based on configuration params
+    private
+
     def request
       @request ||= Request.new(::Minfraud::HTTPService.configuration)
     end

@@ -61,6 +61,7 @@ module Minfraud
 
       # The risk associated with the device. If present, this is a value in the
       # range of 0.01 to 99.
+      #
       # @return [Float, nil]
       attr_reader :device
 
@@ -79,6 +80,7 @@ module Minfraud
       # The risk associated with the email address local part (the part of
       # the email address before the @ symbol). If present, this is a value
       # in the range 0.01 to 99.
+      #
       # @return [Float, nil]
       attr_reader :email_local_part
 
@@ -124,6 +126,7 @@ module Minfraud
 
       # The risk associated with the shipping address. If present, this is a
       # value in the range 0.01 to 99.
+      #
       # @return [Float, nil]
       attr_reader :shipping_address
 

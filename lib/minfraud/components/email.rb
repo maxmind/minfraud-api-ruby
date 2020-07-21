@@ -3,17 +3,18 @@
 module Minfraud
   module Components
     class Email < Base
-      # @attribute address
-      # @return [String] This field must be either a valid email address or an MD5 of the email used in the transaction
+      # This field must be either a valid email address or an MD5 of the email
+      # used in the transaction.
+      #
+      # @return [String, nil]
       attr_accessor :address
 
-      # @attribute domain
-      # @return [String] The domain of the email address used in the transaction
+      # The domain of the email address used in the transaction.
+      #
+      # @return [String, nil]
       attr_accessor :domain
 
-      # Creates Minfraud::Components::Email instance
-      # @param  [Hash] params hash of parameters
-      # @return [Minfraud::Components::Email] an Email instance
+      # @param params [Hash] Hash of parameters.
       def initialize(params = {})
         @address = params[:address]
         @domain  = params[:domain]
