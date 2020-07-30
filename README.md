@@ -10,10 +10,6 @@ API](https://dev.maxmind.com/minfraud/report-transaction/).
 The legacy minFraud Standard and Premium services are not supported by this
 API.
 
-## Requirements
-
-This gem works with Ruby 2.0 and above.
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -167,6 +163,10 @@ Please report all issues with this code using the
 If you are having an issue with the minFraud service that is not specific
 to the client API, please see
 [our support page](https://www.maxmind.com/en/support).
+
+## Requirements
+
+This gem works with Ruby 2.0 and above.
 
 ## Contributing
 
