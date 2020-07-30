@@ -104,8 +104,8 @@ detection algorithms.
 
 To use the Report Transactions API, create a new
 `Minfraud::Components::Report::Transaction` object. An IP address and a
-valid tag are required arguments for this API. Additional params may also
-be set, as documented below.
+valid tag are required arguments for this API. Additional parameters may be
+set, as documented below.
 
 If the report is successful, nothing is returned. If the report fails, an
 exception with be thrown.
@@ -140,9 +140,9 @@ this functionality.
 
 The gem supplies several distinct exception-types:
 
-* `RequestFormatError` - Raised if unpermitted key is provided to the
-  `Minfraud::Assessments` initializer
-* `ClientError` - Raised if the IP address is absent, reserved or the JSON
+* `RequestFormatError` - Raised if an unknown key is provided to the
+  `Minfraud::Assessments` constructor
+* `ClientError` - Raised if the IP address is absent, reserved, or the JSON
   body cannot be decoded
 * `AuthorizationError` - Raised if there are problems with the account ID
   and/or license key
