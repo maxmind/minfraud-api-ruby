@@ -25,7 +25,7 @@ module Minfraud
       # @return [Hash, nil]
       attr_reader :headers
 
-      # @param hash [Hash] Hash of parameters.
+      # @param params [Hash] Hash of parameters.
       def initialize(params = {})
         @status  = params[:status]
         @body    = make_body(
