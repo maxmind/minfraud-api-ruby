@@ -8,8 +8,11 @@ module Minfraud
       # @return [Array<Minfraud::Components::ShoppingCartItem>]
       attr_accessor :items
 
-      # @param params [Hash] Hash of parameters.
-      def initialize(params = {})
+      # @param params [Array] Array of shopping cart items. You may provide
+      #   each item as either as Hash where each key is a symbol corresponding
+      #   to an item's field, or as a Minfraud:::Components::ShoppingCartItem
+      #   object.
+      def initialize(params = [])
         @items = params.map(&method(:resolve))
       end
 
