@@ -192,18 +192,16 @@ more details.
 ### Reporting a Transaction to MaxMind
 
 MaxMind encourages the use of this API, as data received through this
-channel is continually used to improve the accuracy of their fraud
-detection algorithms.
+channel is used to improve the accuracy of their fraud detection
+algorithms.
 
-To use the Report Transactions API, create a new
+To use the Report Transactions API, create a
 `Minfraud::Components::Report::Transaction` object. An IP address and a
 valid tag are required arguments for this API. Additional parameters may be
-set, as documented below.
+set, as shown below.
 
 If the report is successful, nothing is returned. If the report fails, an
-exception with be thrown.
-
-See the API documentation for more details.
+exception will be thrown.
 
 ```ruby
 # The report_transaction method only makes use of a transaction component:
