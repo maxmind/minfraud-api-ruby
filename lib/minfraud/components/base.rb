@@ -2,9 +2,8 @@
 
 module Minfraud
   module Components
-    # This class is used as a parent class for all components. It defines a
-    # method which is used for basic JSON representation of the component
-    # objects.
+    # This is a parent class for all components. It defines a method which is
+    # used for basic JSON representation of the component objects.
     class Base
       # A JSON representation of component attributes.
       #

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module Minfraud
+  # Assessments is used to perform minFraud Score, Insights, and Factors
+  # requests.
+  #
+  # @see https://dev.maxmind.com/minfraud/
   class Assessments
     include ::Minfraud::HTTPService
     include ::Minfraud::Resolver
@@ -60,7 +64,10 @@ module Minfraud
     # @return [Minfraud::Components::ShoppingCart, nil]
     attr_accessor :shopping_cart
 
-    # @param params [Hash] Hash of parameters.
+    # @param params [Hash] Hash of parameters. Each key is a symbol
+    #   corresponding to one of the available component attributes. Values may
+    #   be component objects or hashes that will be provided to the component
+    #   constructors.
     #
     # @param resolver [Minfraud::Resolver] Resolver that maps parameters to
     #   components.

@@ -2,13 +2,19 @@
 
 module Minfraud
   module Components
+    # Order corresponds to the order object of a minFraud request.
+    #
+    # @see https://dev.maxmind.com/minfraud/#Order_(/order)
     class Order < Base
-      # The total order amount for the transaction.
+      # The total order amount for the transaction before taxes and discounts.
+      # The value must be at least 0 and at most 1e14 - 1.
       #
       # @return [Float, nil]
       attr_accessor :amount
 
       # The ISO 4217 currency code for the currency used in the transaction.
+      #
+      # @see https://en.wikipedia.org/wiki/ISO_4217
       #
       # @return [String, nil]
       attr_accessor :currency
@@ -19,17 +25,20 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :discount_code
 
-      # The ID of the affiliate where the order is coming from.
+      # The ID of the affiliate where the order is coming from. No specific
+      # format is required.
       #
       # @return [String, nil]
       attr_accessor :affiliate_id
 
-      # The ID of the sub-affiliate where the order is coming from.
+      # The ID of the sub-affiliate where the order is coming from. No specific
+      # format is required.
       #
       # @return [String, nil]
       attr_accessor :subaffiliate_id
 
-      # The URI of the referring site for this order.
+      # The URI of the referring site for this order. Needs to be absolute and
+      # have a URI scheme such as +https://+.
       #
       # @return [String, nil]
       attr_accessor :referrer_uri
@@ -44,7 +53,8 @@ module Minfraud
       # @return [Boolean, nil]
       attr_accessor :has_gift_message
 
-      # @param params [Hash] Hash of parameters.
+      # @param params [Hash] Hash of parameters. Each key/value should
+      #   correspond to one of the available attributes.
       def initialize(params = {})
         @amount           = params[:amount]
         @has_gift_message = params[:has_gift_message]

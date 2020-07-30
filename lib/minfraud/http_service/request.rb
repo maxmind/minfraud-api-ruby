@@ -4,6 +4,7 @@ require 'faraday'
 
 module Minfraud
   module HTTPService
+    # Request performs HTTP requests.
     class Request
       # A proc containing Faraday configuration.
       #
@@ -15,7 +16,8 @@ module Minfraud
       # @return [String, nil]
       attr_reader :server
 
-      # @param params [Hash] Hash of parameters.
+      # @param params [Hash] Hash of parameters. Each key/value should
+      #   correspond to one of the available attributes.
       def initialize(params = {})
         @middleware = params[:middleware]
         @server     = params[:server]
@@ -23,7 +25,8 @@ module Minfraud
 
       # Perform an HTTP request to the specified endpoint with given body.
       #
-      # @param params [Hash] Hash of parameters.
+      # @param params [Hash] Hash of parameters, including +:verb+,
+      #   +:endpoint+, and +:body+.
       #
       # @return [Farday::Response]
       def perform(params)

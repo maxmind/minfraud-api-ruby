@@ -14,7 +14,7 @@ module Minfraud
       # @return [Integer, nil]
       attr_reader :status
 
-      # HTTP response.
+      # HTTP response model.
       #
       # @return [Minfraud::Model::Score, Minfraud::Model::Insights,
       #   Minfraud::Model::Factors, nil]
@@ -25,7 +25,8 @@ module Minfraud
       # @return [Hash, nil]
       attr_reader :headers
 
-      # @param params [Hash] Hash of parameters.
+      # @param params [Hash] Hash of parameters. +:status+, +:endpoint+,
+      #   +:body+, +:locales+, and +:headers+ are used.
       def initialize(params = {})
         @status  = params[:status]
         @body    = make_body(

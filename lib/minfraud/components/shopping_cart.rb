@@ -2,6 +2,10 @@
 
 module Minfraud
   module Components
+    # ShoppingCart corresponds to the shopping_cart object of a minFraud
+    # request.
+    #
+    # @see https://dev.maxmind.com/minfraud/#Shopping_Cart_(/shoppingcart)
     class ShoppingCart < Base
       # An array of Minfraud::Components::ShoppingCartItem instances.
       #

@@ -195,7 +195,7 @@ MaxMind encourages the use of this API, as data received through this
 channel is used to improve the accuracy of their fraud detection
 algorithms.
 
-To use the Report Transactions API, create a
+To use the Report Transaction API, create a
 `Minfraud::Components::Report::Transaction` object. An IP address and a
 valid tag are required arguments for this API. Additional parameters may be
 set, as shown below.

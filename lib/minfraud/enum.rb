@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 module Minfraud
+  # Enum provides helpers for working with attributes with enumerated types.
   module Enum
     def self.included(base)
       base.extend(ClassMethods)
     end
 
+    # ClassMethods provides helpers for working with attributes with enumerated
+    # types.
     module ClassMethods
       # Returns a hash in the following format: attribute_name =>
       # permitted_values
@@ -15,7 +18,7 @@ module Minfraud
         @mapping ||= {}
       end
 
-      # Creates a set of methods for enum-like behavior of the attribute.
+      # Create a set of methods for enum-like behavior of the attribute.
       #
       # @param attribute [Symbol] The attribute name.
       #

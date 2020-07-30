@@ -28,6 +28,8 @@ require 'minfraud/error_handler'
 require 'minfraud/assessments'
 require 'minfraud/report'
 
+# This class holds global configuration parameters and provides a namespace
+# for the gem's classes.
 module Minfraud
   class << self
     # The MaxMind account ID that is used for authorization.

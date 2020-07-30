@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Minfraud
+  # Resolver provides functionality for setting component attributes.
   module Resolver
     class << self
       # Set keys on the context based on the provided parameters.

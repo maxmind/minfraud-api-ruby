@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Minfraud
+  # ErrorHandler provides a method to raise exceptions on errors.
   module ErrorHandler
     class << self
       # Return the response if the HTTP status code is 2xx. Otherwise raise
