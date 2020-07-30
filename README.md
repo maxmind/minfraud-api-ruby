@@ -29,6 +29,11 @@ Or install it yourself as:
 $ gem install minfraud
 ```
 
+## API Documentation
+
+More detailed API documentation is available
+[here](https://www.rubydoc.info/gems/minfraud).
+
 ## Usage
 
 ### Configuration
