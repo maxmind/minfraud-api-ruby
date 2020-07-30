@@ -20,11 +20,12 @@ gem 'minfraud'
 
 And then execute:
 
-```ruby
+```
 $ bundle
 ```
 
 Or install it yourself as:
+
 ```
 $ gem install minfraud
 ```
