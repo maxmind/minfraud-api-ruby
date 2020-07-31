@@ -4,6 +4,7 @@ require 'faraday'
 require 'faraday_middleware'
 
 module Minfraud
+  # HTTPService holds the HTTP client configuration.
   module HTTPService
     class << self
       # The default HTTPService configuration.

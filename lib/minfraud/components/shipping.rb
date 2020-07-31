@@ -2,6 +2,9 @@
 
 module Minfraud
   module Components
+    # Shipping corresponds to the shipping object of a minFraud request.
+    #
+    # @see https://dev.maxmind.com/minfraud/#Shipping_(/shipping)
     class Shipping < Addressable
       include ::Minfraud::Enum
 
@@ -13,7 +16,8 @@ module Minfraud
       # @return [Symbol, nil]
       enum_accessor :delivery_speed, [:same_day, :overnight, :expedited, :standard]
 
-      # @param params [Hash] Hash of parameters.
+      # @param params [Hash] Hash of parameters. Each key/value should
+      #   correspond to one of the available attributes.
       def initialize(params = {})
         self.delivery_speed = params[:delivery_speed]
         super

@@ -2,10 +2,14 @@
 
 module Minfraud
   module Components
+    # Payment corresponds to the payment object of a minFraud request.
+    #
+    # @see https://dev.maxmind.com/minfraud/#Payment_(/payment)
     class Payment < Base
       include ::Minfraud::Enum
 
-      # The payment processor used for the transaction.
+      # The payment processor used for the transaction. The value is one
+      # listed as a valid value, as a symbol.
       #
       # @!attribute processor
       #
@@ -156,7 +160,8 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :decline_code
 
-      # @param params [Hash] Hash of parameters.
+      # @param params [Hash] Hash of parameters. Each key/value should
+      #   correspond to one of the available attributes.
       def initialize(params = {})
         @was_authorized = params[:was_authorized]
         @decline_code   = params[:decline_code]

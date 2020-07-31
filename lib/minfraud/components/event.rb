@@ -2,6 +2,9 @@
 
 module Minfraud
   module Components
+    # Event corresponds to the event object of a minFraud request.
+    #
+    # @see https://dev.maxmind.com/minfraud/#Event_(/event)
     class Event < Base
       include ::Minfraud::Enum
 
@@ -21,8 +24,11 @@ module Minfraud
       attr_accessor :shop_id
 
       # The date and time the event occurred. The string must be in the RFC
-      # 3339 date-time format. If this field is not in the request, the current
-      # time will be used.
+      # 3339 date-time format, e.g., "2012-04-12T23:20:50.52Z". The time must
+      # be within the past 10 years. If this field is not in the request, the
+      # current time will be used.
+      #
+      # @see https://tools.ietf.org/html/rfc3339
       #
       # @return [String, nil]
       attr_accessor :time
@@ -48,7 +54,8 @@ module Minfraud
                       :survey,
                     ]
 
-      # @param params [Hash] Hash of parameters.
+      # @param params [Hash] Hash of parameters. Each key/value should
+      #   correspond to one of the available attributes.
       def initialize(params = {})
         @transaction_id = params[:transaction_id]
         @shop_id        = params[:shop_id]

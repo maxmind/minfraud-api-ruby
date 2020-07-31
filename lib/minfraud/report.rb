@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module Minfraud
+  # Report is used to perform minFraud Report Transaction API requests.
+  #
+  # @see https://dev.maxmind.com/minfraud/report-transaction/
   class Report
     include ::Minfraud::HTTPService
 
@@ -9,12 +12,14 @@ module Minfraud
     # @return [Minfraud::Components::Report::Transaction, nil]
     attr_accessor :transaction
 
-    # @param params [Hash] Hash of parameters.
+    # @param params [Hash] Hash of parameters. The only supported key is
+    #   +:transaction+, which should have a
+    #   +Minfraud::Components::Report::Transaction+ as its value.
     def initialize(params = {})
       @transaction = params[:transaction]
     end
 
-    # Perform a request to the minFraud Report Transactions API.
+    # Perform a request to the minFraud Report Transaction API.
     #
     # @return [nil]
     #

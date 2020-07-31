@@ -3,8 +3,9 @@
 module Minfraud
   module Components
     module Report
-      # Contains all of the fields which are used in the report transactions
-      # API.
+      # Contains the fields used in the Report Transaction API.
+      #
+      # @see https://dev.maxmind.com/minfraud/report-transaction/
       class Transaction < Base
         include ::Minfraud::Enum
 
@@ -62,7 +63,8 @@ module Minfraud
         # @return [String, nil]
         attr_accessor :transaction_id
 
-        # @param params [Hash] Hash of parameters.
+        # @param params [Hash] Hash of parameters. Each key/value should
+        #   correspond to one of the available attributes.
         def initialize(params = {})
           @ip_address      = params[:ip_address]
           @chargeback_code = params[:chargeback_code]
