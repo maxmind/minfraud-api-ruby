@@ -32,8 +32,8 @@ $ gem install minfraud
 
 ## API Documentation
 
-More detailed API documentation is available
-[here](https://www.rubydoc.info/gems/minfraud).
+See the [API documentation](https://www.rubydoc.info/gems/minfraud) for
+more details.
 
 ## Usage
 
