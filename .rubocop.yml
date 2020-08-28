@@ -94,6 +94,11 @@ Style/FormatStringToken:
 Style/NumericPredicate:
   Enabled: false
 
+# Seems unnecessary. Asks us to call super in a bunch of places when there's no
+# need.
+Lint/MissingSuper:
+  Enabled: false
+
 # Naming.
 
 Naming/VariableNumber:
@@ -146,4 +151,30 @@ Style/HashLikeCase:
 Style/RedundantAssignment:
   Enabled: true
 Style/RedundantFileExtensionInRequire:
+  Enabled: true
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: true
+Lint/DuplicateRescueException:
+  Enabled: true
+Lint/EmptyConditionalBody:
+  Enabled: true
+Lint/FloatComparison:
+  Enabled: true
+Lint/OutOfRangeRegexpRef:
+  Enabled: true
+Lint/SelfAssignment:
+  Enabled: true
+Lint/TopLevelReturnWithArgument:
+  Enabled: true
+Lint/UnreachableLoop:
+  Enabled: true
+Style/ExplicitBlockArgument:
+  Enabled: true
+Style/GlobalStdStream:
+  Enabled: true
+Style/OptionalBooleanParameter:
+  Enabled: true
+Style/SingleArgumentDig:
+  Enabled: true
+Style/StringConcatenation:
   Enabled: true

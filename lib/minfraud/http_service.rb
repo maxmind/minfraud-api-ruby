@@ -13,7 +13,7 @@ module Minfraud
       def configuration
         server = DEFAULT_SERVER
         if !Minfraud.host.nil?
-          server = 'https://' + Minfraud.host + '/minfraud/v2.0'
+          server = "https://#{Minfraud.host}/minfraud/v2.0"
         end
 
         {
