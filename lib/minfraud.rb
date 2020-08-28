@@ -3,6 +3,7 @@
 require 'faraday'
 require 'minfraud'
 require 'minfraud/enum'
+require 'minfraud/validates'
 require 'minfraud/components/base'
 require 'minfraud/components/account'
 require 'minfraud/components/addressable'
@@ -36,6 +37,11 @@ module Minfraud
     #
     # @return [Integer, nil]
     attr_accessor :account_id
+
+    # Enable client side validation. This is disabled by default.
+    #
+    # @return [Boolean, nil]
+    attr_accessor :enable_validation
 
     # The host to use when connecting to the web service.
     #

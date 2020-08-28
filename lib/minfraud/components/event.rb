@@ -7,6 +7,7 @@ module Minfraud
     # @see https://dev.maxmind.com/minfraud/#Event_(/event)
     class Event < Base
       include ::Minfraud::Enum
+      include Minfraud::Validates
 
       # Your internal ID for the transaction. MaxMind can use this to locate a
       # specific transaction in logs, and it will also show up in email alerts
@@ -61,6 +62,18 @@ module Minfraud
         @shop_id        = params[:shop_id]
         @time           = params[:time]
         self.type       = params[:type]
+
+        validate
+      end
+
+      private
+
+      def validate
+        return if !Minfraud.enable_validation
+
+        validate_string('transaction_id', 255, @transaction_id)
+        validate_string('shop_id', 255, @shop_id)
+        validate_rfc3339('time', @time)
       end
     end
   end

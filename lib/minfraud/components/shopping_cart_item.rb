@@ -7,6 +7,8 @@ module Minfraud
     #
     # @see https://dev.maxmind.com/minfraud/#Shopping_Cart_Item
     class ShoppingCartItem < Base
+      include Minfraud::Validates
+
       # The category of the item. This can also be a hashed value; see link.
       #
       # @see https://dev.maxmind.com/minfraud/#cart-hashing
@@ -41,6 +43,19 @@ module Minfraud
         @item_id  = params[:item_id]
         @quantity = params[:quantity]
         @price    = params[:price]
+
+        validate
+      end
+
+      private
+
+      def validate
+        return if !Minfraud.enable_validation
+
+        validate_string('category', 255, @category)
+        validate_string('item_id', 255, @item_id)
+        validate_integer('quantity', @quantity)
+        validate_zero_or_positive_number('price', @price)
       end
     end
   end

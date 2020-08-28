@@ -6,6 +6,8 @@ module Minfraud
     #
     # @see https://dev.maxmind.com/minfraud/#Email_(/email)
     class Email < Base
+      include Minfraud::Validates
+
       # This field must be either be a valid email address or an MD5 of the
       # lowercased email used in the transaction. Important: if using the MD5
       # hash, please be sure to convert the email address to lowercase before
@@ -24,6 +26,17 @@ module Minfraud
       def initialize(params = {})
         @address = params[:address]
         @domain  = params[:domain]
+
+        validate
+      end
+
+      private
+
+      def validate
+        return if !Minfraud.enable_validation
+
+        validate_email('email', @address)
+        validate_string('domain', 255, @domain)
       end
     end
   end

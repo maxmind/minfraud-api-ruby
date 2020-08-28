@@ -46,6 +46,7 @@ Configure these before making a request:
 Minfraud.configure do |c|
   c.account_id  = 12345
   c.license_key = 'your_license_key'
+  c.enable_validation = true
 end
 ````
 
