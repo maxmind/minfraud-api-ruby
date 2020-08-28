@@ -63,7 +63,7 @@ module Minfraud
         @affiliate_id     = params[:affiliate_id]
         @subaffiliate_id  = params[:subaffiliate_id]
         @currency         = params[:currency]
-        @discount_code    = params[:discount_cide]
+        @discount_code    = params[:discount_code]
         @referrer_uri     = params[:referrer_uri]
         @is_gift          = params[:is_gift]
 
