@@ -119,7 +119,7 @@ module Minfraud
       end
     end
 
-    def validate_integer(field, value)
+    def validate_nonnegative_integer(field, value)
       return if !value
 
       if !value.is_a? Integer
