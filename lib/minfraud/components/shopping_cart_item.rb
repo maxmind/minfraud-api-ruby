@@ -55,7 +55,7 @@ module Minfraud
         validate_string('category', 255, @category)
         validate_string('item_id', 255, @item_id)
         validate_nonnegative_integer('quantity', @quantity)
-        validate_zero_or_positive_number('price', @price)
+        validate_nonnegative_number('price', @price)
       end
     end
   end

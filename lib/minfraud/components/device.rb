@@ -60,7 +60,7 @@ module Minfraud
         validate_ip('ip_address', @ip_address)
         validate_string('user_agent', 512, @user_agent)
         validate_string('accept_language', 255, @accept_language)
-        validate_zero_or_positive_number('session_age', @session_age)
+        validate_nonnegative_number('session_age', @session_age)
         validate_string('session_id', 255, @session_id)
       end
     end

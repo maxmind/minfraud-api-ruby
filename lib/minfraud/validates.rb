@@ -107,7 +107,7 @@ module Minfraud
       nil
     end
 
-    def validate_zero_or_positive_number(field, value)
+    def validate_nonnegative_number(field, value)
       return if !value
 
       if !value.is_a? Numeric

@@ -75,7 +75,7 @@ module Minfraud
       def validate
         return if !Minfraud.enable_validation
 
-        validate_zero_or_positive_number('amount', @amount)
+        validate_nonnegative_number('amount', @amount)
         validate_boolean('has_gift_message', @has_gift_message)
         validate_string('affiliate_id', 255, @affiliate_id)
         validate_string('subaffiliate_id', 255, @subaffiliate_id)
