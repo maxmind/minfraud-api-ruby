@@ -4,6 +4,8 @@ module Minfraud
   module Components
     # This is a parent class for the Billing and Shipping components.
     class Addressable < Base
+      include Minfraud::Validates
+
       # The first name of the end user as provided in their billing / shipping
       # information.
       #
@@ -86,6 +88,26 @@ module Minfraud
         @postal             = params[:postal]
         @phone_number       = params[:phone_number]
         @phone_country_code = params[:phone_country_code]
+
+        validate
+      end
+
+      private
+
+      def validate
+        return if !Minfraud.enable_validation
+
+        validate_string('first_name', 255, @first_name)
+        validate_string('last_name', 255, @last_name)
+        validate_string('company', 255, @company)
+        validate_string('address', 255, @address)
+        validate_string('address_2', 255, @address_2)
+        validate_string('city', 255, @city)
+        validate_subdivision_code('region', @region)
+        validate_country_code('country', @country)
+        validate_string('postal', 255, @postal)
+        validate_string('phone_number', 255, @phone_number)
+        validate_telephone_country_code('phone_country_code', @phone_country_code)
       end
     end
   end

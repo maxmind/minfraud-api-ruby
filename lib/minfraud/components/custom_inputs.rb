@@ -7,11 +7,17 @@ module Minfraud
     #
     # @see https://dev.maxmind.com/minfraud/#Custom_Inputs_(/custominputs)
     class CustomInputs < Base
+      include Minfraud::Validates
+
       # @param params [Hash] Each key/value should correspond to your defined
       #   custom inputs.
       def initialize(params = {})
         params.each do |name, value|
           instance_variable_set("@#{name}", value)
+
+          if Minfraud.enable_validation
+            validate_custom_input_value(name, value)
+          end
         end
       end
     end

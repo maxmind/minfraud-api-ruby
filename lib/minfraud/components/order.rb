@@ -6,6 +6,8 @@ module Minfraud
     #
     # @see https://dev.maxmind.com/minfraud/#Order_(/order)
     class Order < Base
+      include Minfraud::Validates
+
       # The total order amount for the transaction before taxes and discounts.
       # The value must be at least 0 and at most 1e14 - 1.
       #
@@ -61,9 +63,26 @@ module Minfraud
         @affiliate_id     = params[:affiliate_id]
         @subaffiliate_id  = params[:subaffiliate_id]
         @currency         = params[:currency]
-        @discount_code    = params[:discount_cide]
+        @discount_code    = params[:discount_code]
         @referrer_uri     = params[:referrer_uri]
         @is_gift          = params[:is_gift]
+
+        validate
+      end
+
+      private
+
+      def validate
+        return if !Minfraud.enable_validation
+
+        validate_nonnegative_number('amount', @amount)
+        validate_boolean('has_gift_message', @has_gift_message)
+        validate_string('affiliate_id', 255, @affiliate_id)
+        validate_string('subaffiliate_id', 255, @subaffiliate_id)
+        validate_regex('currency', /\A[A-Z]{3}\z/, @currency)
+        validate_string('discount_code', 255, @discount_code)
+        validate_uri('referrer_uri', @referrer_uri)
+        validate_boolean('is_gift', @is_gift)
       end
     end
   end

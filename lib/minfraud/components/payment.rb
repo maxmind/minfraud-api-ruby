@@ -7,6 +7,7 @@ module Minfraud
     # @see https://dev.maxmind.com/minfraud/#Payment_(/payment)
     class Payment < Base
       include ::Minfraud::Enum
+      include Minfraud::Validates
 
       # The payment processor used for the transaction. The value is one
       # listed as a valid value, as a symbol.
@@ -166,6 +167,17 @@ module Minfraud
         @was_authorized = params[:was_authorized]
         @decline_code   = params[:decline_code]
         self.processor  = params[:processor]
+
+        validate
+      end
+
+      private
+
+      def validate
+        return if !Minfraud.enable_validation
+
+        validate_boolean('was_authorized', @was_authorized)
+        validate_string('decline_code', 255, @decline_code)
       end
     end
   end

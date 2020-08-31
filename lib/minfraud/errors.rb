@@ -2,7 +2,10 @@
 
 module Minfraud
   # The base error class for Minfraud exceptions.
-  class BaseError          < StandardError; end
+  class BaseError < StandardError; end
+
+  # An error indicating the input value is not valid.
+  class InvalidInputError < BaseError; end
 
   # An error indicating the value is not valid for the enumerated type.
   class NotEnumValueError  < BaseError; end

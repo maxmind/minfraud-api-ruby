@@ -6,6 +6,8 @@ module Minfraud
     #
     # @see https://dev.maxmind.com/minfraud/#Credit_Card_(/creditcard)
     class CreditCard < Base
+      include Minfraud::Validates
+
       # The issuer ID number for the credit card. This is the first 6 digits of
       # the credit card number. It identifies the issuing bank.
       #
@@ -71,6 +73,23 @@ module Minfraud
         @avs_result              = params[:avs_result]
         @cvv_result              = params[:cvv_result]
         @token                   = params[:token]
+
+        validate
+      end
+
+      private
+
+      def validate
+        return if !Minfraud.enable_validation
+
+        validate_telephone_country_code('bank_phone_country_code', @bank_phone_country_code)
+        validate_regex('issuer_id_number', /\A[0-9]{6}\z/, @issuer_id_number)
+        validate_regex('last_4_digits', /\A[0-9]{4}\z/, @last_4_digits)
+        validate_string('bank_name', 255, @bank_name)
+        validate_string('bank_phone_number', 255, @bank_phone_number)
+        validate_string('avs_result', 1, @avs_result)
+        validate_string('cvv_result', 1, @cvv_result)
+        validate_credit_card_token('token', @token)
       end
     end
   end

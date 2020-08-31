@@ -6,6 +6,8 @@ module Minfraud
     #
     # @see https://dev.maxmind.com/minfraud/#Device_(/device)
     class Device < Base
+      include Minfraud::Validates
+
       # The IP address associated with the device used by the customer in the
       # transaction. The IP address must be in IPv4 or IPv6 presentation
       # format, i.e., dotted-quad notation or the IPv6 hexadecimal-colon
@@ -46,6 +48,20 @@ module Minfraud
         @accept_language = params[:accept_language]
         @session_age     = params[:session_age]
         @session_id      = params[:session_id]
+
+        validate
+      end
+
+      private
+
+      def validate
+        return if !Minfraud.enable_validation
+
+        validate_ip('ip_address', @ip_address)
+        validate_string('user_agent', 512, @user_agent)
+        validate_string('accept_language', 255, @accept_language)
+        validate_nonnegative_number('session_age', @session_age)
+        validate_string('session_id', 255, @session_id)
       end
     end
   end

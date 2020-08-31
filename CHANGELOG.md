@@ -6,6 +6,10 @@
   automatically.
 * IMPORTANT: Ruby 1.9 is no longer supported. If you're using Ruby 1.9,
   please use version 1.2.0 or older.
+* Adds support for client side validation of inputs. An `InvalidInputError`
+  exception will be raised if an input is invalid. This can be enabled by
+  setting `enable_validation` to `true` when configuring `Minfraud`. It is
+  disabled by default.
 
 ## v1.2.0 (2020-07-15)
 

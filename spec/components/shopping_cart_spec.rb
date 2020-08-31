@@ -53,4 +53,35 @@ describe Minfraud::Components::ShoppingCart do
       end
     end
   end
+
+  describe 'validation' do
+    before do
+      Minfraud.configure { |c| c.enable_validation = 1 }
+    end
+
+    it 'raises an exception for an invalid quantity' do
+      expect do
+        Minfraud::Components::ShoppingCart.new(
+          [
+            {
+              quantity: -1,
+            },
+          ],
+        )
+      end.to raise_exception(Minfraud::InvalidInputError)
+    end
+
+    it 'does not raise an exception for valid values' do
+      Minfraud::Components::ShoppingCart.new(
+        [
+          {
+            category: 'foo',
+            item_id:  'bar',
+            quantity: 10,
+            price:    2.50,
+          },
+        ],
+      )
+    end
+  end
 end
