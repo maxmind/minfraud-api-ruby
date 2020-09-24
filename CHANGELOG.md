@@ -10,6 +10,8 @@
   exception will be raised if an input is invalid. This can be enabled by
   setting `enable_validation` to `true` when configuring `Minfraud`. It is
   disabled by default.
+* Adds the `residential_proxy?` method to `MaxMind::GeoIP2::Record::Traits`
+  for use with minFraud Insights and Factors.
 
 ## v1.2.0 (2020-07-15)
 
