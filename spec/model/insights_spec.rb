@@ -78,6 +78,7 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.traits.is_anonymous_vpn).to eq true
       expect(m.ip_address.traits.is_hosting_provider).to eq true
       expect(m.ip_address.traits.is_public_proxy).to eq true
+      expect(m.ip_address.traits.residential_proxy?).to eq true
       expect(m.ip_address.traits.is_satellite_provider).to eq true
       expect(m.ip_address.traits.is_tor_exit_node).to eq true
       expect(m.ip_address.traits.isp).to eq 'Andrews & Arnold Ltd'
@@ -163,6 +164,7 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.traits.autonomous_system_organization).to eq 'Foo Inc'
       expect(m.ip_address.traits.is_anonymous).to eq false
       expect(m.ip_address.traits.anonymous?).to eq false
+      expect(m.ip_address.traits.residential_proxy?).to eq false
       expect(m.ip_address.traits.is_satellite_provider).to eq false
       expect(m.ip_address.traits.is_tor_exit_node).to eq false
 
