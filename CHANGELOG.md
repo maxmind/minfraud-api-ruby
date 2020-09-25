@@ -1,6 +1,6 @@
 # Minfraud Changelog
 
-## v1.3.0
+## v1.3.0 (2020-09-25)
 
 * Adds support for persistent HTTP connections. Connections persist
   automatically.
