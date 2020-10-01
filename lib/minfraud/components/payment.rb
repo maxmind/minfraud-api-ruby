@@ -136,6 +136,7 @@ module Minfraud
         :telerecargas,
         :towah,
         :transact_pro,
+        :tsys,
         :usa_epay,
         :vantiv,
         :verepay,
