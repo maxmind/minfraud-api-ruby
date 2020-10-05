@@ -1,8 +1,7 @@
-name: ruby-versions
+name: Run tests
 on: [push, pull_request]
 jobs:
   run:
-    name: ruby
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
