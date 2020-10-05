@@ -22,15 +22,11 @@ jobs:
             "2.5",
             "2.6",
             "2.7",
-            "head",
             "jruby",
-            "jruby-head",
           ]
         exclude:
           - os: windows-latest
             version: "jruby"
-          - os: windows-latest
-            version: "jruby-head"
     steps:
       - name: checkout
         uses: actions/checkout@v2
