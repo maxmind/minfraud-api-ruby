@@ -1,14 +1,7 @@
-name: ruby-versions
-on:
-  push:
-    paths-ignore:
-      - "**.md"
-  pull_request:
-    paths-ignore:
-      - "**.md"
+name: Run tests
+on: [push, pull_request]
 jobs:
-  run:
-    name: ruby
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -16,31 +9,24 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         version:
           [
-            "2.2",
-            "2.3",
-            "2.4",
-            "2.5",
-            "2.6",
-            "2.7",
-            "head",
-            "jruby",
-            "jruby-head",
+            2.1,
+            2.2,
+            2.3,
+            2.4,
+            2.5,
+            2.6,
+            2.7,
+            jruby,
           ]
         exclude:
           - os: windows-latest
-            version: "jruby"
-          - os: windows-latest
-            version: "jruby-head"
+            version: jruby
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.version }}
-      - name: ruby version
-        run: ruby -v
-      - run: bundler install
-        name: install
-      - run: bundler exec rake -t
-        name: test
+      - run: bundle install
+      - run: bundle exec rake -t spec

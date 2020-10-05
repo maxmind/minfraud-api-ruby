@@ -1,5 +1,5 @@
 Gemspec/RequiredRubyVersion:
-  Enabled: false # We support 1.9, but newer rubocops don't.
+  Enabled: false # We support 2.1+, but rubocop supports 2.4+.
 
 # Metrics.
 
