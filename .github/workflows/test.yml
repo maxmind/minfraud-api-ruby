@@ -1,11 +1,5 @@
 name: ruby-versions
-on:
-  push:
-    paths-ignore:
-      - "**.md"
-  pull_request:
-    paths-ignore:
-      - "**.md"
+on: [push, pull_request]
 jobs:
   run:
     name: ruby
@@ -30,7 +24,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.version }}
