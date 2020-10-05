@@ -23,10 +23,10 @@ jobs:
             version: jruby
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.version }}
-      - name: ruby version
-        run: ruby -v
       - run: bundle install
-      - run: bundle exec rake -t
+      - run: bundle exec rake -t spec
