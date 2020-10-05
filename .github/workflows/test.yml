@@ -1,7 +1,7 @@
 name: Run tests
 on: [push, pull_request]
 jobs:
-  run:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
