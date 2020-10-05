@@ -19,14 +19,11 @@ jobs:
             jruby,
           ]
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.version }}
       - name: ruby version
         run: ruby -v
       - run: bundler install
-        name: install
       - run: bundler exec rake -t
-        name: test
