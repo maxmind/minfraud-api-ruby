@@ -25,5 +25,5 @@ jobs:
           ruby-version: ${{ matrix.version }}
       - name: ruby version
         run: ruby -v
-      - run: bundler install
-      - run: bundler exec rake -t
+      - run: bundle install
+      - run: bundle exec rake -t
