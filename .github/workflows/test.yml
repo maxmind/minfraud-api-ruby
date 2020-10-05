@@ -18,6 +18,9 @@ jobs:
             2.7,
             jruby,
           ]
+        exclude:
+          - os: windows-latest
+            version: jruby
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
