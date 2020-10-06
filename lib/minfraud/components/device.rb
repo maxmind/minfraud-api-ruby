@@ -11,7 +11,7 @@ module Minfraud
       # The IP address associated with the device used by the customer in the
       # transaction. The IP address must be in IPv4 or IPv6 presentation
       # format, i.e., dotted-quad notation or the IPv6 hexadecimal-colon
-      # notation. (Required)
+      # notation.
       #
       # @return [String, nil]
       attr_accessor :ip_address

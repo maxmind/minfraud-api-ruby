@@ -37,18 +37,15 @@ describe Minfraud::Assessments do
     expect(score_model.risk_score).to eq 42.1
   end
 
-  it 'makes an HTTP request resulting in an HTTP 400' do
+  it 'makes an HTTP request resulting in an HTTP 401' do
     stub_request(:post, /score/).with(
-      body:    '{"device":{"ip_address":"1.2.3"}}',
-      headers: {
-        'Authorization' => 'Basic MTE6bXlfbGljZW5zZV9rZXk=',
-      },
+      body:    '{"device":{"ip_address":"1.2.3.4"}}',
     ).to_return(
-      body:    '{"code":"IP_ADDRESS_INVALID","error":"The value \'1.2.3\' is not a valid IP address."}',
+      body:    '{"code":"ACCOUNT_ID_REQUIRED","error":"You have not supplied a MaxMind account ID in the Authorization header."}',
       headers: {
         'Content-Type' => 'application/vnd.maxmind.com-error+json; charset=UTF-8; version=2.0',
       },
-      status:  400,
+      status:  401,
     )
 
     Minfraud.configure do |c|
@@ -59,10 +56,10 @@ describe Minfraud::Assessments do
 
     assessment = Minfraud::Assessments.new(
       device: {
-        ip_address: '1.2.3',
+        ip_address: '1.2.3.4',
       },
     )
 
-    expect { assessment.score }.to raise_error(Minfraud::ClientError)
+    expect { assessment.score }.to raise_error(Minfraud::AuthorizationError)
   end
 end

@@ -53,5 +53,11 @@ describe Minfraud::Components::Device do
         session_age: 100,
       )
     end
+
+    it 'does not raise an exception if no IP is provided' do
+      Minfraud::Components::Device.new(
+        session_age: 100,
+      )
+    end
   end
 end
