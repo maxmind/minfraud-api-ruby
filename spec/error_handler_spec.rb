@@ -13,7 +13,7 @@ describe Minfraud::ErrorHandler do
 
     it 'raises an error if status is not 200 and code is matched' do
       allow(response).to receive(:status) { 400 }
-      allow(response).to receive(:code) { :IP_ADDRESS_INVALID }
+      allow(response).to receive(:code) { :JSON_INVALID }
 
       expect { described_class.examine(response) }.to raise_error(Minfraud::ClientError)
     end

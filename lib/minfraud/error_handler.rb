@@ -27,15 +27,6 @@ module Minfraud
 
       # @!visibility private
       STATUS_CODES = {
-        IP_ADDRESS_INVALID:    [
-          ClientError, 'You have not supplied a valid IPv4 or IPv6 address'
-        ],
-        IP_ADDRESS_REQUIRED:   [
-          ClientError, 'You have not supplied an IP address which is a required field'
-        ],
-        IP_ADDRESS_RESERVED:   [
-          ClientError, 'You have supplied an IP address which is reserved'
-        ],
         JSON_INVALID:          [
           ClientError, 'JSON body cannot be decoded'
         ],
