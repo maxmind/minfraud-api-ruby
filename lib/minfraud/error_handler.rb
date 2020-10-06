@@ -39,6 +39,9 @@ module Minfraud
         PARAMETER_UNKNOWN:     [
           ClientError, 'You have supplied an unknown parameter'
         ],
+        REQUEST_INVALID:       [
+          ClientError, 'The request did not contain any valid input values.'
+        ],
         TAG_REQUIRED:          [
           ClientError, 'You have not supplied a tag, which is a required field'
         ],
