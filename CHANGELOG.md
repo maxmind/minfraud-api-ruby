@@ -2,6 +2,10 @@
 
 ## v1.4.0
 
+* IMPORTANT: Ruby 2.0 is no longer supported. If you're using Ruby 2.0,
+  please use version 1.3.0.
+* Add handling for the `REQUEST_INVALID` error code.
+* The IP address is no longer a required input.
 * Adds new payment processor `:tsys` to `Minfraud::Components::Payment`.
 
 ## v1.3.0 (2020-09-25)
