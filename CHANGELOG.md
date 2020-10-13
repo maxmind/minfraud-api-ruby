@@ -1,6 +1,6 @@
 # Minfraud Changelog
 
-## v1.4.0
+## v1.4.0 (2020-10-13)
 
 * IMPORTANT: Ruby 2.0 is no longer supported. If you're using Ruby 2.0,
   please use version 1.3.0.
