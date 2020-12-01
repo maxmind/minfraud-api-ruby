@@ -1,5 +1,11 @@
 # Minfraud Changelog
 
+## v1.4.1
+
+* Do not throw an exception if the response does not include IP address
+  information. Previously we would incorrectly try to retrieve fields from
+  `nil`, leading to a `NoMethodError`.
+
 ## v1.4.0 (2020-10-13)
 
 * IMPORTANT: Ruby 2.0 is no longer supported. If you're using Ruby 2.0,
