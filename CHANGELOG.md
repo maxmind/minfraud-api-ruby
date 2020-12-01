@@ -1,6 +1,6 @@
 # Minfraud Changelog
 
-## v1.4.1
+## v1.4.1 (2020-12-01)
 
 * Do not throw an exception if the response does not include IP address
   information. Previously we would incorrectly try to retrieve fields from
