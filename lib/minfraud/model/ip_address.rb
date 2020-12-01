@@ -15,7 +15,11 @@ module Minfraud
 
       # @!visibility private
       def initialize(record, locales)
-        super(record, locales)
+        if record
+          super(record, locales)
+        else
+          super({}, locales)
+        end
 
         if record
           @location = Minfraud::Model::GeoIP2Location.new(record.fetch('location', nil))

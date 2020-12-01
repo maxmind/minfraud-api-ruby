@@ -189,5 +189,17 @@ describe Minfraud::Model::Insights do
       expect(m.shipping_address.distance_to_billing_address).to eq nil
       expect(m.shipping_address.distance_to_ip_location).to eq 7_456
     end
+
+    it 'creates an object when the response lacks many fields' do
+      buf    = File.open('spec/fixtures/files/insights-response3.json').read
+      record = JSON.parse(buf)
+
+      m = Minfraud::Model::Insights.new(record, ['en'])
+
+      expect(m.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
+      expect(m.risk_score).to eq 0.01
+      expect(m.funds_remaining).to eq 10.00
+      expect(m.queries_remaining).to eq 1_000
+    end
   end
 end
