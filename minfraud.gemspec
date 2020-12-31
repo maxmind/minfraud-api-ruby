@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'faraday', '>= 0.9.1', '< 2.0'
   spec.add_runtime_dependency 'faraday_middleware', '>= 0.9.1', '< 2.0'
   spec.add_runtime_dependency 'net-http-persistent', '>= 2.0.0', '< 5.0'
+  spec.add_runtime_dependency 'simpleidn', '>= 0.1.1'
 
   spec.add_development_dependency 'bundler', '>= 1.16'
   spec.add_development_dependency 'rake'

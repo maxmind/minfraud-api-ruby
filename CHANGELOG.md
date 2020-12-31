@@ -1,5 +1,14 @@
 # Minfraud Changelog
 
+## v1.5.0
+
+* Add the `hash_address` attribute to `Minfraud::Components::Email`. If
+  this is `true`, the MD5 hash of the `address` will be sent instead of the
+  plain text `address`. Use this if you prefer to send the hash of the
+  `address` rather than the plain text. Note that this normalizes the
+  `address`, so we recommend using it as opposed to hashing the `address`
+  manually.
+
 ## v1.4.1 (2020-12-01)
 
 * Do not throw an exception if the response does not include IP address
