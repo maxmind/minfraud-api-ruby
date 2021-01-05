@@ -10,6 +10,8 @@
   manually.
 * The email `domain` input is now automatically set if the email `address`
   input is set but the `domain` is not.
+* Adds new payment processors `:apple_pay` and `:aps_payments` to
+  `Minfraud::Components::Payment`.
 
 ## v1.4.1 (2020-12-01)
 
