@@ -8,6 +8,8 @@
   `address` rather than the plain text. Note that this normalizes the
   `address`, so we recommend using it as opposed to hashing the `address`
   manually.
+* The email `domain` input is now automatically set if the email `address`
+  input is set but the `domain` is not.
 
 ## v1.4.1 (2020-12-01)
 

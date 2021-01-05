@@ -66,6 +66,7 @@ describe Minfraud::Assessments do
           output: {
             'email' => {
               'address' => 'test@maxmind.com',
+              'domain'  => 'maxmind.com',
             },
           },
         },
@@ -77,6 +78,7 @@ describe Minfraud::Assessments do
           output: {
             'email' => {
               'address' => '977577b140bfb7c516e4746204fbdb01',
+              'domain'  => 'maxmind.com',
             },
           },
         },
@@ -88,6 +90,7 @@ describe Minfraud::Assessments do
           output: {
             'email' => {
               'address' => '977577b140bfb7c516e4746204fbdb01',
+              'domain'  => 'maxmind.com',
             },
           },
         },

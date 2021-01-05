@@ -47,6 +47,14 @@ module Minfraud
       def to_json(*_args)
         json = super
 
+        if json['address'] && !json['domain']
+          _, domain = address.split('@', 2)
+          if domain
+            domain         = clean_domain(domain)
+            json['domain'] = domain if domain
+          end
+        end
+
         if json.delete('hash_address') && json['address']
           hash = hash_email_address(json['address'])
 
