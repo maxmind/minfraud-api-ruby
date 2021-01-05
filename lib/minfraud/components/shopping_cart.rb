@@ -13,7 +13,7 @@ module Minfraud
       attr_accessor :items
 
       # @param params [Array] Array of shopping cart items. You may provide
-      #   each item as either as Hash where each key is a symbol corresponding
+      #   each item as either a Hash where each key is a symbol corresponding
       #   to an item's field, or as a Minfraud:::Components::ShoppingCartItem
       #   object.
       def initialize(params = [])

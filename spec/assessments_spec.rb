@@ -55,4 +55,54 @@ describe Minfraud::Assessments do
       expect(error_handler).to receive(:examine)
     end
   end
+
+  describe 'request body' do
+    it 'passes email address correctly' do
+      tests = [
+        {
+          email:  {
+            address: 'test@maxmind.com',
+          },
+          output: {
+            'email' => {
+              'address' => 'test@maxmind.com',
+              'domain'  => 'maxmind.com',
+            },
+          },
+        },
+        {
+          email:  {
+            address:      'test@maxmind.com',
+            hash_address: true,
+          },
+          output: {
+            'email' => {
+              'address' => '977577b140bfb7c516e4746204fbdb01',
+              'domain'  => 'maxmind.com',
+            },
+          },
+        },
+        {
+          email:  {
+            address:      ' Test+foo@maxmind.com ',
+            hash_address: true,
+          },
+          output: {
+            'email' => {
+              'address' => '977577b140bfb7c516e4746204fbdb01',
+              'domain'  => 'maxmind.com',
+            },
+          },
+        },
+      ]
+
+      tests.each do |i|
+        assessment = Minfraud::Assessments.new(
+          email: i[:email],
+        )
+        body       = assessment.send :request_body
+        expect(body).to eq i[:output]
+      end
+    end
+  end
 end
