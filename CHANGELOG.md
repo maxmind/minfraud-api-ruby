@@ -12,6 +12,9 @@
   input is set but the `domain` is not.
 * Adds new payment processors `:apple_pay` and `:aps_payments` to
   `Minfraud::Components::Payment`.
+* Added support for the IP address risk reasons in the minFraud Insights
+  and Factors responses. This is available at `.ip_address.risk_reasons`.
+  It is an array of `IPRiskReason` objects.
 
 ## v1.4.1 (2020-12-01)
 
