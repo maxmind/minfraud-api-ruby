@@ -20,6 +20,10 @@ describe Minfraud::Model::Insights do
       expect(m.disposition.reason).to eq 'custom_rule'
 
       expect(m.ip_address.risk).to eq 0.01
+      expect(m.ip_address.risk_reasons[0].code).to eq 'ANONYMOUS_IP'
+      expect(m.ip_address.risk_reasons[0].reason).to eq 'The IP address belongs to an anonymous network. See /ip_address/traits for more details.'
+      expect(m.ip_address.risk_reasons[1].code).to eq 'MINFRAUD_NETWORK_ACTIVITY'
+      expect(m.ip_address.risk_reasons[1].reason).to eq 'Suspicious activity has been seen on this IP address across minFraud customers.'
 
       expect(m.ip_address.city.confidence).to eq 42
       expect(m.ip_address.city.geoname_id).to eq 2_643_743
@@ -146,6 +150,7 @@ describe Minfraud::Model::Insights do
       expect(m.disposition.reason).to eq nil
 
       expect(m.ip_address.risk).to eq 0.01
+      expect(m.ip_address.risk_reasons.length).to eq 0
 
       expect(m.ip_address.city.confidence).to eq nil
       expect(m.ip_address.city.geoname_id).to eq nil
