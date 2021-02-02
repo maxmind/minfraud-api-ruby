@@ -1,6 +1,6 @@
 # Minfraud Changelog
 
-## v1.5.0
+## v1.5.0 (2021-02-02)
 
 * Add the `hash_address` attribute to `Minfraud::Components::Email`. If
   this is `true`, the MD5 hash of the `address` will be sent instead of the
