@@ -1,5 +1,10 @@
 # Minfraud Changelog
 
+## v1.6.0
+
+* Adds new processor to `Minfraud::Components::Payment`: `:cardknox`,
+  `:creditguard`, `:credorax`, `:dlocal`, `:onpay`, and `:safecharge`.
+
 ## v1.5.0 (2021-02-02)
 
 * Add the `hash_address` attribute to `Minfraud::Components::Email`. If
