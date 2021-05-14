@@ -264,7 +264,7 @@ to the client API, please see
 
 ## Requirements
 
-This gem works with Ruby 2.1 and above.
+This gem works with Ruby 2.5 and above.
 
 ## Contributing
 
