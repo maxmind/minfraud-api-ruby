@@ -264,7 +264,7 @@ to the client API, please see
 
 ## Requirements
 
-This gem works with Ruby 2.1 and above.
+This gem works with Ruby 2.5 and above.
 
 ## Contributing
 
@@ -282,7 +282,7 @@ This API uses [Semantic Versioning](https://semver.org/).
 
 Copyright (c) 2016-2020 kushnir.yb.
 
-Copyright (c) 2020 MaxMind, Inc.
+Copyright (c) 2020-2021 MaxMind, Inc.
 
 The gem is available as open source under the terms of the [MIT
 License](https://opensource.org/licenses/MIT).

@@ -1,5 +1,6 @@
-Gemspec/RequiredRubyVersion:
-  Enabled: false # We support 2.1+, but rubocop supports 2.4+.
+AllCops:
+    TargetRubyVersion: 2.5
+    NewCops: enable
 
 # Metrics.
 
@@ -103,6 +104,3 @@ Lint/MissingSuper:
 
 Naming/VariableNumber:
   Enabled: false # Doesn't always make sense.
-
-AllCops:
-  NewCops: enable
