@@ -53,6 +53,7 @@ module Minfraud
         :cybersource,
         :dalenys,
         :dalpay,
+        :datacap,
         :datacash,
         :dibs,
         :digital_river,

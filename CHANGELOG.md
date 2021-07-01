@@ -3,7 +3,8 @@
 ## v1.6.0
 
 * Adds new processor to `Minfraud::Components::Payment`: `:cardknox`,
-  `:creditguard`, `:credorax`, `:dlocal`, `:onpay`, and `:safecharge`.
+  `:creditguard`, `:credorax`, `:datacap`, `:dlocal`, `:onpay`, and
+  `:safecharge`.
 * Ruby 2.5+ is now required. If you're using Ruby 2.1, 2.2, 2.3, or 2.4,
   please use version 1.5.0 of this gem.
 
