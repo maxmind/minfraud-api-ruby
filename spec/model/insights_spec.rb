@@ -18,6 +18,7 @@ describe Minfraud::Model::Insights do
 
       expect(m.disposition.action).to eq 'reject'
       expect(m.disposition.reason).to eq 'custom_rule'
+      expect(m.disposition.rule_label).to eq 'custom rule label'
 
       expect(m.ip_address.risk).to eq 0.01
       expect(m.ip_address.risk_reasons[0].code).to eq 'ANONYMOUS_IP'
@@ -148,6 +149,7 @@ describe Minfraud::Model::Insights do
 
       expect(m.disposition.action).to eq nil
       expect(m.disposition.reason).to eq nil
+      expect(m.disposition.rule_label).to eq nil
 
       expect(m.ip_address.risk).to eq 0.01
       expect(m.ip_address.risk_reasons.length).to eq 0
