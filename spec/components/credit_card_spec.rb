@@ -42,17 +42,19 @@ describe Minfraud::Components::CreditCard do
 
     it 'does not raise an exception for valid values' do
       Minfraud::Components::CreditCard.new(
-        issuer_id_number: '123456',
-        last_4_digits:    '1234',
-        token:            'abcd',
+        issuer_id_number:         '123456',
+        last_4_digits:            '1234',
+        token:                    'abcd',
+        was_3d_secure_successful: true,
       )
     end
 
     it 'does not raise an exception for valid values (token is all digits)' do
       Minfraud::Components::CreditCard.new(
-        issuer_id_number: '123456',
-        last_4_digits:    '1234',
-        token:            '1' * 20,
+        issuer_id_number:         '123456',
+        last_4_digits:            '1234',
+        token:                    '1' * 20,
+        was_3d_secure_successful: true,
       )
     end
   end
