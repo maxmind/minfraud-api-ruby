@@ -62,17 +62,28 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :cvv_result
 
+      # Whether the outcome of 3-D Secure verification (e.g. Safekey,
+      # SecureCode, Verified by Visa) was successful. +true+ if customer
+      # verification was successful, or +false+ if the customer failed
+      # verification. If 3-D Secure verification was not used, was unavailable,
+      # or resulted in an outcome other than success or failure, do not
+      # include this field.
+      #
+      # @return [Boolean, nil]
+      attr_accessor :was_3d_secure_successful
+
       # @param params [Hash] Hash of parameters. Each key/value should
       #   correspond to one of the available attributes.
       def initialize(params = {})
-        @bank_phone_country_code = params[:bank_phone_country_code]
-        @issuer_id_number        = params[:issuer_id_number]
-        @last_4_digits           = params[:last_4_digits]
-        @bank_name               = params[:bank_name]
-        @bank_phone_number       = params[:bank_phone_number]
-        @avs_result              = params[:avs_result]
-        @cvv_result              = params[:cvv_result]
-        @token                   = params[:token]
+        @bank_phone_country_code  = params[:bank_phone_country_code]
+        @issuer_id_number         = params[:issuer_id_number]
+        @last_4_digits            = params[:last_4_digits]
+        @bank_name                = params[:bank_name]
+        @bank_phone_number        = params[:bank_phone_number]
+        @avs_result               = params[:avs_result]
+        @cvv_result               = params[:cvv_result]
+        @token                    = params[:token]
+        @was_3d_secure_successful = params[:was_3d_secure_successful]
 
         validate
       end
@@ -90,6 +101,7 @@ module Minfraud
         validate_string('avs_result', 1, @avs_result)
         validate_string('cvv_result', 1, @cvv_result)
         validate_credit_card_token('token', @token)
+        validate_boolean('was_3d_secure_successful', @was_3d_secure_successful)
       end
     end
   end

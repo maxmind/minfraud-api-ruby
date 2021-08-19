@@ -5,6 +5,10 @@
 * Adds new processor to `Minfraud::Components::Payment`: `:cardknox`,
   `:creditguard`, `:credorax`, `:datacap`, `:dlocal`, `:onpay`, and
   `:safecharge`.
+* Adds `rule_label` to minFraud output `/disposition`.
+* Adds support for the `/credit_card/was_3d_secure_successful` input. This is
+  available by setting the `was_3d_secure_successful` attribute on
+  `Minfraud::Components::CreditCard`.
 * Ruby 2.5+ is now required. If you're using Ruby 2.1, 2.2, 2.3, or 2.4,
   please use version 1.5.0 of this gem.
 

@@ -13,6 +13,7 @@ describe Minfraud::Model::Score do
 
       expect(score.disposition.action).to eq 'reject'
       expect(score.disposition.reason).to eq 'custom_rule'
+      expect(score.disposition.rule_label).to eq 'custom rule label'
       expect(score.funds_remaining).to eq 10.00
       expect(score.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
       expect(score.ip_address.risk).to eq 99
@@ -36,6 +37,7 @@ describe Minfraud::Model::Score do
 
       expect(score.disposition.action).to eq nil
       expect(score.disposition.reason).to eq nil
+      expect(score.disposition.rule_label).to eq nil
       expect(score.funds_remaining).to eq 10.00
       expect(score.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
       expect(score.ip_address.risk).to eq 99

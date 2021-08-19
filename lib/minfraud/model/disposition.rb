@@ -10,8 +10,8 @@ module Minfraud
     # rules.
     class Disposition < Abstract
       # The action to take on the transaction as defined by your custom rules.
-      # The current set of values are "accept", "manual_review", and "reject".
-      # If you do not have custom rules set up, this will be nil.
+      # The current set of values are "accept", "manual_review", "reject", and
+      # "test".  If you do not have custom rules set up, this will be nil.
       #
       # @return [String, nil]
       attr_reader :action
@@ -23,12 +23,19 @@ module Minfraud
       # @return [String, nil]
       attr_reader :reason
 
+      # The label of the custom rule that was triggered. If you do not have
+      # custom rules set up, the triggered custom rule does not have a label,
+      # or no custom rule was triggered, this will be nil.
+      # @return [String, nil]
+      attr_reader :rule_label
+
       # @!visibility private
       def initialize(record)
         super(record)
 
-        @action = get('action')
-        @reason = get('reason')
+        @action     = get('action')
+        @reason     = get('reason')
+        @rule_label = get('rule_label')
       end
     end
   end
