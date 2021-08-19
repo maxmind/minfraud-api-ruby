@@ -63,10 +63,10 @@ module Minfraud
       attr_accessor :cvv_result
 
       # Whether the outcome of 3-D Secure verification (e.g. Safekey,
-      # SecureCode, Verified by Visa) was successful. `true` if customer
-      # verification was successful, or `false` if the customer failed
+      # SecureCode, Verified by Visa) was successful. +true+ if customer
+      # verification was successful, or +false+ if the customer failed
       # verification. If 3-D Secure verification was not used, was unavailable,
-      # or resulted in another outcome other than success or failure, do not
+      # or resulted in an outcome other than success or failure, do not
       # include this field.
       #
       # @return [Boolean, nil]
