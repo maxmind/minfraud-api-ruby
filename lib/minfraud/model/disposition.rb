@@ -23,11 +23,9 @@ module Minfraud
       # @return [String, nil]
       attr_reader :reason
       #
-      #
-      # The label of the custom rule.  If you do not have custom rules set up
-      # or the custom rule that was triggered does not have a label, this will
-      # be nil.
-      #
+      # The label of the custom rule that was triggered. If you do not have
+      # custom rules set up, the triggered custom rule does not have a label,
+      # or no custom rule was triggered, this will be nil.
       # @return [String, nil]
       attr_reader :rule_label
 
