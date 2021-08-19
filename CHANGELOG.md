@@ -1,6 +1,6 @@
 # Minfraud Changelog
 
-## v1.6.0
+## v1.6.0 (2021-08-19)
 
 * Adds new processor to `Minfraud::Components::Payment`: `:cardknox`,
   `:creditguard`, `:credorax`, `:datacap`, `:dlocal`, `:onpay`, and
