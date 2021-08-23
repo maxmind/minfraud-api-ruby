@@ -8,7 +8,7 @@ require 'minfraud/version'
 Gem::Specification.new do |spec|
   spec.name          = 'minfraud'
   spec.version       = Minfraud::VERSION
-  spec.authors       = ['kushnir.yb']
+  spec.authors       = ['kushnir.yb', 'William Storey']
   spec.email         = ['support@maxmind.com']
 
   spec.summary       = 'Ruby API for the minFraud Score, Insights, Factors, and Report Transactions services'
