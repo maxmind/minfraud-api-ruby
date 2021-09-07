@@ -8,7 +8,7 @@ module Minfraud
     #
     # In order to receive device output from minFraud Insights or minFraud
     # Factors, you must be using the Device Tracking Add-on
-    # (https://dev.maxmind.com/minfraud/device/).
+    # (https://dev.maxmind.com/minfraud/track-devices?lang=en).
     class Device < Abstract
       # This number represents our confidence that the device_id refers to a
       # unique device as opposed to a cluster of similar devices. A confidence

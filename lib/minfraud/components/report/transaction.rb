@@ -5,7 +5,7 @@ module Minfraud
     module Report
       # Contains the fields used in the Report Transaction API.
       #
-      # @see https://dev.maxmind.com/minfraud/report-transaction/
+      # @see https://dev.maxmind.com/minfraud/report-a-transaction?lang=en
       class Transaction < Base
         include ::Minfraud::Enum
 

@@ -4,7 +4,7 @@ module Minfraud
   # Assessments is used to perform minFraud Score, Insights, and Factors
   # requests.
   #
-  # @see https://dev.maxmind.com/minfraud/
+  # @see https://dev.maxmind.com/minfraud?lang=en
   class Assessments
     include ::Minfraud::HTTPService
     include ::Minfraud::Resolver

@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # Order corresponds to the order object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Order_(/order)
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--order
     class Order < Base
       include Minfraud::Validates
 

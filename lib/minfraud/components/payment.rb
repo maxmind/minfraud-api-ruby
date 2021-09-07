@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # Payment corresponds to the payment object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Payment_(/payment)
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--payment
     class Payment < Base
       include ::Minfraud::Enum
       include Minfraud::Validates

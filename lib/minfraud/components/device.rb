@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # Device corresponds to the device object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Device_(/device)
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--device
     class Device < Base
       include Minfraud::Validates
 

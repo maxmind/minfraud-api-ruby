@@ -3,9 +3,9 @@
 ## Description
 
 This package provides an API for the [MaxMind minFraud web
-services](https://dev.maxmind.com/minfraud/). This includes minFraud Score,
+services](https://dev.maxmind.com/minfraud?lang=en). This includes minFraud Score,
 Insights, and Factors. It also includes our [minFraud Report Transaction
-API](https://dev.maxmind.com/minfraud/report-transaction/).
+API](https://dev.maxmind.com/minfraud/report-a-transaction?lang=en).
 
 The legacy minFraud Standard and Premium services are not supported by this
 API.
