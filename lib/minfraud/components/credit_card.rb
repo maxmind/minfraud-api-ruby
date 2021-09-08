@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # CreditCard corresponds to the credit_card object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Credit_Card_(/creditcard)
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--credit-card
     class CreditCard < Base
       include Minfraud::Validates
 

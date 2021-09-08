@@ -5,20 +5,20 @@ module Minfraud
     # ShoppingCartItem corresponds to objects in the shopping_cart object
     # of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Shopping_Cart_Item
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--shopping-cart--item
     class ShoppingCartItem < Base
       include Minfraud::Validates
 
       # The category of the item. This can also be a hashed value; see link.
       #
-      # @see https://dev.maxmind.com/minfraud/#cart-hashing
+      # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--shopping-cart--item__category
       #
       # @return [String, nil]
       attr_accessor :category
 
       # The internal ID of the item. This can also be a hashed value; see link.
       #
-      # @see https://dev.maxmind.com/minfraud/#cart-hashing
+      # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--shopping-cart--item__item_id
       #
       # @return [String, nil]
       attr_accessor :item_id

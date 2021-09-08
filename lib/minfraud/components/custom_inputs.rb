@@ -5,7 +5,7 @@ module Minfraud
     # CustomInputs corresponds to the custom_inputs object of a minFraud
     # request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Custom_Inputs_(/custominputs)
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--custom-inputs
     class CustomInputs < Base
       include Minfraud::Validates
 

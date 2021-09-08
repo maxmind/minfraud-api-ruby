@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # Event corresponds to the event object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Event_(/event)
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--event
     class Event < Base
       include ::Minfraud::Enum
       include Minfraud::Validates

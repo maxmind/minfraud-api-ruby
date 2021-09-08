@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # Account corresponds to the account object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Account_(/account)
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--account
     class Account < Base
       include Minfraud::Validates
 

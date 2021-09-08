@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # Shipping corresponds to the shipping object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/#Shipping_(/shipping)
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--shipping
     class Shipping < Addressable
       include ::Minfraud::Enum
 
