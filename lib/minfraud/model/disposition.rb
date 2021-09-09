@@ -11,14 +11,14 @@ module Minfraud
     class Disposition < Abstract
       # The action to take on the transaction as defined by your custom rules.
       # The current set of values are "accept", "manual_review", "reject", and
-      # "test".  If you do not have custom rules set up, this will be nil.
+      # "test". If you do not have custom rules set up, this will be nil.
       #
       # @return [String, nil]
       attr_reader :action
 
       # The reason for the action. The current possible values are
-      # "custom_rule", "block_list", and "default". If you do not have custom
-      # rules set up, this will be nil.
+      # "custom_rule" and "default". If you do not have custom rules set up,
+      # this will be nil.
       #
       # @return [String, nil]
       attr_reader :reason
