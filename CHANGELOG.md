@@ -1,5 +1,19 @@
 # Minfraud Changelog
 
+## v1.7.0
+
+* Adds the following new processors to `Minfraud::Components::Payment`:
+  * `:boacompra`
+  * `:boku`
+  * `:coregateway`
+  * `:fiserv`
+  * `:neopay`
+  * `:neosurf`
+  * `:openbucks`
+  * `:paysera`
+  * `:payvision`
+  * `:trustly`
+
 ## v1.6.0 (2021-08-19)
 
 * Adds new processor to `Minfraud::Components::Payment`: `:cardknox`,
