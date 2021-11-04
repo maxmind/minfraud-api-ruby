@@ -21,14 +21,12 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :last_digits
 
-      # The last digits of the credit card number. This is the last 4
-      # digits if the issuer ID number is 6 digits, or the last 2 digits
-      # if the issuer ID number is 8 digits.
+      # The last four digits of the credit card number.
       #
       # @deprecated Use {::last_digits} instead.
       #
       # @return [String, nil]
-      alias last_4_digits last_digits
+      attr_accessor :last_4_digits
 
       # The name of the issuing bank as provided by the end user.
       #
@@ -89,6 +87,7 @@ module Minfraud
         @bank_phone_country_code  = params[:bank_phone_country_code]
         @issuer_id_number         = params[:issuer_id_number]
         @last_digits              = params[:last_digits] || params[:last_4_digits]
+        @last_4_digits            = @last_digits
         @bank_name                = params[:bank_name]
         @bank_phone_number        = params[:bank_phone_number]
         @avs_result               = params[:avs_result]
@@ -107,6 +106,7 @@ module Minfraud
         validate_telephone_country_code('bank_phone_country_code', @bank_phone_country_code)
         validate_regex('issuer_id_number', /\A(?:[0-9]{6}|[0-9]{8})\z/, @issuer_id_number)
         validate_regex('last_digits', /\A(?:[0-9]{2}|[0-9]{4})\z/, @last_digits)
+        validate_regex('last_4_digits', /\A(?:[0-9]{2}|[0-9]{4})\z/, @last_4_digits)
         validate_string('bank_name', 255, @bank_name)
         validate_string('bank_phone_number', 255, @bank_phone_number)
         validate_string('avs_result', 1, @avs_result)
