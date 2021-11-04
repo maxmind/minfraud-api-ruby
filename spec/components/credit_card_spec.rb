@@ -27,7 +27,7 @@ describe Minfraud::Components::CreditCard do
     it 'raises an exception for an invalid last_4_digits' do
       expect do
         Minfraud::Components::CreditCard.new(
-          last_digits: '6',
+          last_4_digits: '6',
         )
       end.to raise_exception(Minfraud::InvalidInputError)
     end
