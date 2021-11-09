@@ -74,13 +74,22 @@ module Minfraud
       # @return [Boolean, nil]
       attr_accessor :was_3d_secure_successful
 
-      # The last digits of the credit card number.
+      # Get the last digits of the credit card number.
       #
       # @deprecated Use {::last_digits} instead.
       #
       # @return [String, nil]
       def last_4_digits
         @last_digits
+      end
+
+      # Set the last digits of the credit card number.
+      #
+      # @deprecated Use {::last_digits} instead.
+      #
+      # @return [String, nil]
+      def last_4_digits=(last4)
+        @last_digits = last4
       end
 
       # @param params [Hash] Hash of parameters. Each key/value should
