@@ -106,7 +106,6 @@ module Minfraud
         validate_telephone_country_code('bank_phone_country_code', @bank_phone_country_code)
         validate_regex('issuer_id_number', /\A(?:[0-9]{6}|[0-9]{8})\z/, @issuer_id_number)
         validate_last_digits('last_digits', @last_digits, @issuer_id_number)
-        validate_last_digits('last_4_digits', @last_digits, @issuer_id_number)
         validate_string('bank_name', 255, @bank_name)
         validate_string('bank_phone_number', 255, @bank_phone_number)
         validate_string('avs_result', 1, @avs_result)
