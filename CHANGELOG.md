@@ -2,6 +2,11 @@
 
 ## v1.7.0
 
+* Adds mobile country code (MCC) and mobile network code (MNC) to minFraud
+  Insights and Factors responses. These are available at
+  `response.ip_address.traits.mobile_country_code` and
+  `response.ip_address.traits.mobile_network_code`. We expect this data to
+  be available by late January, 2022.
 * Adds the following new processors to `Minfraud::Components::Payment`:
   * `:boacompra`
   * `:boku`
