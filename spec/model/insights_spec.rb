@@ -87,6 +87,8 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.traits.is_satellite_provider).to eq true
       expect(m.ip_address.traits.is_tor_exit_node).to eq true
       expect(m.ip_address.traits.isp).to eq 'Andrews & Arnold Ltd'
+      expect(m.ip_address.traits.mobile_country_code).to eq '310'
+      expect(m.ip_address.traits.mobile_network_code).to eq '004'
       expect(m.ip_address.traits.organization).to eq 'STONEHOUSE office network'
       expect(m.ip_address.traits.static_ip_score).to eq 13.5
       expect(m.ip_address.traits.user_count).to eq 5
