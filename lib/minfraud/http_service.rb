@@ -30,9 +30,13 @@ module Minfraud
       account_id = Minfraud.account_id
       account_id = Minfraud.user_id if account_id.nil?
 
-      builder.basic_auth account_id, Minfraud.license_key
+      if Faraday::VERSION.to_i.zero?
+        builder.basic_auth account_id, Minfraud.license_key
+      else
+        builder.request :basic_auth, account_id, Minfraud.license_key
+      end
 
-      builder.response   :json, content_type: /\bjson$/
+      builder.response :json, content_type: /\bjson$/
 
       builder.adapter :net_http_persistent, pool_size: 5 do |http|
         http.idle_timeout = 30
