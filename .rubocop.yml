@@ -76,10 +76,6 @@ Style/GuardClause:
 Style/FormatStringToken:
   Enabled: false # Seems unnecessary.
 
-# Asks to use x.negative? instead of x < 0. But this isn't available until 2.3.
-Style/NumericPredicate:
-  Enabled: false
-
 # Seems unnecessary. Asks us to call super in a bunch of places when there's no
 # need.
 Lint/MissingSuper:

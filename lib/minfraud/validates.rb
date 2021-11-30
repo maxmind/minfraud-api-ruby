@@ -114,7 +114,7 @@ module Minfraud
         raise InvalidInputError, "The #{field} value is not valid. It must be numeric."
       end
 
-      if value < 0 || value > 1e13 - 1
+      if value.negative? || value > 1e13 - 1
         raise InvalidInputError, "The #{field} value is not valid. It must be at least 0 and at most 1e13 - 1."
       end
     end
@@ -126,7 +126,7 @@ module Minfraud
         raise InvalidInputError, "The #{field} is not valid. It must be an integer."
       end
 
-      if value < 0 || value > 1e13 - 1
+      if value.negative? || value > 1e13 - 1
         raise InvalidInputError, "The #{field} is not valid. It must be at least 0 and at most 1e13 - 1."
       end
     end
