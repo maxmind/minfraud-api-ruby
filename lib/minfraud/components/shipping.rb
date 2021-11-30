@@ -14,7 +14,7 @@ module Minfraud
       # @!attribute delivery_speed
       #
       # @return [Symbol, nil]
-      enum_accessor :delivery_speed, [:same_day, :overnight, :expedited, :standard]
+      enum_accessor :delivery_speed, %i[same_day overnight expedited standard]
 
       # @param params [Hash] Hash of parameters. Each key/value should
       #   correspond to one of the available attributes.

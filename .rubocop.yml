@@ -40,7 +40,7 @@ Layout/IndentationStyle:
 # Style.
 
 Style/HashSyntax:
-  EnforcedStyle: ruby19_no_mixed_keys # Default is ruby19.
+  EnforcedStyle: ruby19_no_mixed_keys # Default is ruby19. This one is better.
 
 Style/CollectionMethods:
   Enabled: true # Default is false.
@@ -53,9 +53,6 @@ Style/NegatedIf: # I disagree with this.
 
 Style/IfUnlessModifier: # This doesn't always make sense.
   Enabled: false
-
-Style/SymbolArray:
-  EnforcedStyle: brackets # Default is percent, but 1.9 doesn't support that.
 
 # Trailing commas are often good.
 Style/TrailingCommaInArguments:

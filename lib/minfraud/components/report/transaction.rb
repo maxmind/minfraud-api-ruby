@@ -24,7 +24,7 @@ module Minfraud
         # @!attribute tag
         #
         # @return [Symbol, nil]
-        enum_accessor :tag, [:chargeback, :not_fraud, :spam_or_abuse, :suspected_fraud]
+        enum_accessor :tag, %i[chargeback not_fraud spam_or_abuse suspected_fraud]
 
         # A string which is provided by your payment processor indicating the
         # reason for the chargeback.
