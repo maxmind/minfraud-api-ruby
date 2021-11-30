@@ -41,7 +41,7 @@ module Minfraud
         end
 
         @risk_reasons = []
-        if record && record.key?('risk_reasons')
+        if record&.key?('risk_reasons')
           record['risk_reasons'].each do |r|
             @risk_reasons << Minfraud::Model::IPRiskReason.new(r)
           end
@@ -65,25 +65,13 @@ module Minfraud
         # Mashify turned each language code into an attribute, but
         # maxmind-geoip2 exposes the names as a hash.
         LANGUAGE_CODES.each do |c|
-          if @city.names
-            @city.names.define_singleton_method(c) { fetch(c.to_s, nil) }
-          end
-          if @continent.names
-            @continent.names.define_singleton_method(c) { fetch(c.to_s, nil) }
-          end
-          if @country.names
-            @country.names.define_singleton_method(c) { fetch(c.to_s, nil) }
-          end
-          if @registered_country.names
-            @registered_country.names.define_singleton_method(c) { fetch(c.to_s, nil) }
-          end
-          if @represented_country.names
-            @represented_country.names.define_singleton_method(c) { fetch(c.to_s, nil) }
-          end
+          @city.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
+          @continent.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
+          @country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
+          @registered_country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
+          @represented_country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
           @subdivisions.each do |s|
-            if s.names
-              s.names.define_singleton_method(c) { fetch(c.to_s, nil) }
-            end
+            s.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
           end
         end
 

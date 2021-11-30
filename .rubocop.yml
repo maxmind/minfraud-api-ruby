@@ -62,9 +62,6 @@ Style/TrailingCommaInArrayLiteral:
 Style/TrailingCommaInHashLiteral:
   Enabled: false
 
-Style/SafeNavigation:
-  Enabled: false # Default is true, but this 1.9 doesn't support it.
-
 # Default is both which is probably fine, but it changes code and I don't want
 # to investigate any possible behavior change right now.
 Style/EmptyElse:

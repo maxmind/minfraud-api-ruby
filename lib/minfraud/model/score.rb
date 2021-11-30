@@ -65,7 +65,7 @@ module Minfraud
         @queries_remaining = get('queries_remaining')
         @risk_score        = get('risk_score')
         @warnings          = []
-        if record && record.key?('warnings')
+        if record&.key?('warnings')
           record['warnings'].each do |w|
             @warnings << Minfraud::Model::Warning.new(w)
           end
