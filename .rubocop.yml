@@ -73,9 +73,6 @@ Style/ConditionalAssignment:
 Style/GuardClause:
   Enabled: false # Doesn't always make sense.
 
-Style/Documentation:
-  Enabled: false # We should enable this, but allow for pre-existing code.
-
 Style/FormatStringToken:
   Enabled: false # Seems unnecessary.
 
