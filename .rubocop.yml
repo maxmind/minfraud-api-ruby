@@ -40,7 +40,7 @@ Layout/IndentationStyle:
 # Style.
 
 Style/HashSyntax:
-  EnforcedStyle: ruby19_no_mixed_keys # Default is ruby19.
+  EnforcedStyle: ruby19_no_mixed_keys # Default is ruby19. This one is better.
 
 Style/CollectionMethods:
   Enabled: true # Default is false.
@@ -54,9 +54,6 @@ Style/NegatedIf: # I disagree with this.
 Style/IfUnlessModifier: # This doesn't always make sense.
   Enabled: false
 
-Style/SymbolArray:
-  EnforcedStyle: brackets # Default is percent, but 1.9 doesn't support that.
-
 # Trailing commas are often good.
 Style/TrailingCommaInArguments:
   Enabled: false
@@ -64,9 +61,6 @@ Style/TrailingCommaInArrayLiteral:
   Enabled: false
 Style/TrailingCommaInHashLiteral:
   Enabled: false
-
-Style/SafeNavigation:
-  Enabled: false # Default is true, but this 1.9 doesn't support it.
 
 # Default is both which is probably fine, but it changes code and I don't want
 # to investigate any possible behavior change right now.
@@ -76,24 +70,11 @@ Style/EmptyElse:
 Style/ConditionalAssignment:
   Enabled: false # This produces kind of strange results.
 
-Style/Dir:
-  Enabled: false # This is good, but not supported on 1.9.
-
-Style/ExpandPathArguments:
-  Enabled: false # This causes us to use __dir__ which 1.9 doesn't support.
-
 Style/GuardClause:
   Enabled: false # Doesn't always make sense.
 
-Style/Documentation:
-  Enabled: false # We should enable this, but allow for pre-existing code.
-
 Style/FormatStringToken:
   Enabled: false # Seems unnecessary.
-
-# Asks to use x.negative? instead of x < 0. But this isn't available until 2.3.
-Style/NumericPredicate:
-  Enabled: false
 
 # Seems unnecessary. Asks us to call super in a bunch of places when there's no
 # need.
