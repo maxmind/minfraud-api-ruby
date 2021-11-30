@@ -70,12 +70,6 @@ Style/EmptyElse:
 Style/ConditionalAssignment:
   Enabled: false # This produces kind of strange results.
 
-Style/Dir:
-  Enabled: false # This is good, but not supported on 1.9.
-
-Style/ExpandPathArguments:
-  Enabled: false # This causes us to use __dir__ which 1.9 doesn't support.
-
 Style/GuardClause:
   Enabled: false # Doesn't always make sense.
 
