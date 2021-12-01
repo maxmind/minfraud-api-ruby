@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'json'
 require 'minfraud/model/error'
 require 'minfraud/model/factors'
 require 'minfraud/model/insights'
@@ -9,32 +10,35 @@ module Minfraud
   module HTTPService
     # Response class for HTTP requests.
     class Response
-      # HTTP response status.
+      # Response HTTP status code.
       #
-      # @return [Integer, nil]
+      # @return [Fixnum, nil]
       attr_reader :status
 
-      # HTTP response model.
+      # Response model.
       #
       # @return [Minfraud::Model::Score, Minfraud::Model::Insights,
       #   Minfraud::Model::Factors, nil]
       attr_reader :body
 
-      # HTTP response headers.
+      # @param endpoint [Symbol, nil] endpoint name, like :score.
       #
-      # @return [Hash, nil]
-      attr_reader :headers
+      # @param locales [Array<String>, nil] locales, like ["en"].
+      #
+      # @param response [HTTP::Response] the response object.
+      #
+      # @param body [String] the response body.
+      #
+      # @raise [JSON::ParserError] if there was invalid JSON in the response.
+      def initialize(endpoint, locales, response, body)
+        @status = response.code
 
-      # @param params [Hash] Hash of parameters. +:status+, +:endpoint+,
-      #   +:body+, +:locales+, and +:headers+ are used.
-      def initialize(params = {})
-        @status  = params[:status]
-        @body    = make_body(
-          params[:endpoint],
-          params[:body],
-          params[:locales]
+        @body = make_body(
+          endpoint,
+          locales,
+          response,
+          body,
         )
-        @headers = params[:headers]
       end
 
       # Return the minFraud-specific response code.
@@ -48,15 +52,18 @@ module Minfraud
 
       private
 
-      def make_body(endpoint, body, locales)
-        if @status != 200
-          # Won't be a Hash when the body is not JSON.
-          return nil unless body.is_a?(Hash)
-
-          return Minfraud::Model::Error.new(body)
+      def make_body(endpoint, locales, response, body)
+        if !response.mime_type || !response.mime_type.match(/json/i)
+          return nil
         end
 
-        ENDPOINT_TO_CLASS[endpoint].new(body, locales)
+        h = JSON.parse(body)
+
+        if @status != 200
+          return Minfraud::Model::Error.new(h)
+        end
+
+        ENDPOINT_TO_CLASS[endpoint].new(h, locales)
       end
 
       ENDPOINT_TO_CLASS = {

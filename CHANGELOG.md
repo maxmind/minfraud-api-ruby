@@ -1,7 +1,12 @@
 # Minfraud Changelog
 
-## v1.7.0
+## v2.0.0
 
+* Breaking change from 1.x: Switches HTTP client from faraday to http.rb.
+  There should be no behavior change for most users, but this is
+  technically a breaking change from the perspective of semver. Most users
+  should not be affected as the changes are limited to attributes and
+  classes that would not normally be accessed outside the gem.
 * Adds mobile country code (MCC) and mobile network code (MNC) to minFraud
   Insights and Factors responses. These are available at
   `response.ip_address.traits.mobile_country_code` and
