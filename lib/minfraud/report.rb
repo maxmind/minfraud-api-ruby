@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
+require 'json'
+
 module Minfraud
   # Report is used to perform minFraud Report Transaction API requests.
   #
   # @see https://dev.maxmind.com/minfraud/report-a-transaction?lang=en
   class Report
-    include ::Minfraud::HTTPService
-
     # The Report::Transaction component.
     #
     # @return [Minfraud::Components::Report::Transaction, nil]
@@ -23,6 +23,8 @@ module Minfraud
     #
     # @return [nil]
     #
+    # @raise [JSON::ParserError] if there was invalid JSON in the response.
+    #
     # @raise [Minfraud::AuthorizationError] If there was an authentication
     #   problem.
     #
@@ -32,16 +34,24 @@ module Minfraud
     # @raise [Minfraud::ServerError] If the server reported an error of some
     #   kind.
     def report_transaction
-      raw = request.perform(
-        verb:     :post,
-        endpoint: 'transactions/report',
-        body:     @transaction.to_json,
-      )
+      response = nil
+      body     = nil
+      Minfraud.connection_pool.with do |client|
+        response = client.post(
+          '/minfraud/v2.0/transactions/report',
+          body: JSON.generate(@transaction.to_json),
+        )
 
+        body = response.to_s
+      end
+
+      endpoint = nil
+      locales  = nil
       response = ::Minfraud::HTTPService::Response.new(
-        status:  raw.status.to_i,
-        body:    raw.body,
-        headers: raw.headers
+        endpoint,
+        locales,
+        response,
+        body,
       )
 
       ::Minfraud::ErrorHandler.examine(response)

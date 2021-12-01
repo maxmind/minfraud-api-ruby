@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
+require 'json'
+
 module Minfraud
   # Assessments is used to perform minFraud Score, Insights, and Factors
   # requests.
   #
   # @see https://dev.maxmind.com/minfraud?lang=en
   class Assessments
-    include ::Minfraud::HTTPService
     include ::Minfraud::Resolver
 
     # The Account component.
@@ -82,6 +83,8 @@ module Minfraud
     #
     # @return [Minfraud::HTTPService::Response]
     #
+    # @raise [JSON::ParserError] if there was invalid JSON in the response.
+    #
     # @raise [Minfraud::AuthorizationError] If there was an authentication
     #   problem.
     #
@@ -97,6 +100,8 @@ module Minfraud
     # Perform a minFraud Insights request.
     #
     # @return [Minfraud::HTTPService::Response]
+    #
+    # @raise [JSON::ParserError] if there was invalid JSON in the response.
     #
     # @raise [Minfraud::AuthorizationError] If there was an authentication
     #   problem.
@@ -114,6 +119,8 @@ module Minfraud
     #
     # @return [Minfraud::HTTPService::Response]
     #
+    # @raise [JSON::ParserError] if there was invalid JSON in the response.
+    #
     # @raise [Minfraud::AuthorizationError] If there was an authentication
     #   problem.
     #
@@ -129,18 +136,22 @@ module Minfraud
     private
 
     def perform_request(endpoint)
-      raw = request.perform(
-        verb:     :post,
-        endpoint: endpoint.to_s,
-        body:     request_body,
-      )
+      response = nil
+      body     = nil
+      Minfraud.connection_pool.with do |client|
+        response = client.post(
+          "/minfraud/v2.0/#{endpoint}",
+          body: JSON.generate(request_body),
+        )
+
+        body = response.to_s
+      end
 
       response = ::Minfraud::HTTPService::Response.new(
-        endpoint: endpoint,
-        locales:  @locales,
-        status:   raw.status.to_i,
-        body:     raw.body,
-        headers:  raw.headers
+        endpoint,
+        @locales,
+        response,
+        body,
       )
 
       ::Minfraud::ErrorHandler.examine(response)
@@ -152,10 +163,6 @@ module Minfraud
 
         mem.merge!(e.to_s => value.to_json)
       end
-    end
-
-    def request
-      @request ||= Request.new(::Minfraud::HTTPService.configuration)
     end
   end
 end

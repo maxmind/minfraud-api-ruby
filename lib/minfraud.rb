@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require 'faraday'
+require 'connection_pool'
+require 'http'
 require 'minfraud'
 require 'minfraud/enum'
 require 'minfraud/validates'
@@ -22,8 +23,6 @@ require 'minfraud/components/shopping_cart_item'
 require 'minfraud/resolver'
 require 'minfraud/version'
 require 'minfraud/errors'
-require 'minfraud/http_service'
-require 'minfraud/http_service/request'
 require 'minfraud/http_service/response'
 require 'minfraud/error_handler'
 require 'minfraud/assessments'
@@ -62,7 +61,7 @@ module Minfraud
     attr_accessor :license_key
 
     # @!visibility private
-    attr_reader :connection
+    attr_reader :connection_pool
 
     # Yield self to accept configuration settings.
     #
@@ -70,8 +69,11 @@ module Minfraud
     def configure
       yield self
 
-      config      = Minfraud::HTTPService.configuration
-      @connection = Faraday.new(config[:server], {}, &config[:middleware])
+      pool_size        = 5
+      host             = @host.nil? ? 'minfraud.maxmind.com' : @host
+      @connection_pool = ConnectionPool.new(size: pool_size) do
+        make_http_client.persistent("https://#{host}")
+      end
     end
 
     # The current Minfraud configuration.
@@ -84,6 +86,18 @@ module Minfraud
         user_id:     @user_id,
         license_key: @license_key
       }
+    end
+
+    private
+
+    def make_http_client
+      HTTP.basic_auth(
+        user: @account_id.nil? ? @user_id : @account_id,
+        pass: @license_key,
+      ).headers(
+        accept:     'application/json',
+        user_agent: "minfraud-api-ruby/#{Minfraud::VERSION}",
+      )
     end
   end
 end
