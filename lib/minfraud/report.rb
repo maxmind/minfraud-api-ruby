@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
-
 module Minfraud
   # Report is used to perform minFraud Report Transaction API requests.
   #
@@ -39,7 +37,7 @@ module Minfraud
       Minfraud.connection_pool.with do |client|
         response = client.post(
           '/minfraud/v2.0/transactions/report',
-          body: JSON.generate(@transaction.to_json),
+          json: @transaction.to_json,
         )
 
         body = response.to_s

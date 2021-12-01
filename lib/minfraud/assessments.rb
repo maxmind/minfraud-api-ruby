@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
-
 module Minfraud
   # Assessments is used to perform minFraud Score, Insights, and Factors
   # requests.
@@ -141,7 +139,7 @@ module Minfraud
       Minfraud.connection_pool.with do |client|
         response = client.post(
           "/minfraud/v2.0/#{endpoint}",
-          body: JSON.generate(request_body),
+          json: request_body,
         )
 
         body = response.to_s
