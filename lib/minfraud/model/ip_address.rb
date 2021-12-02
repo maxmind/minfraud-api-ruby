@@ -60,9 +60,6 @@ module Minfraud
           end
         end
 
-        # This attribute is deprecated.
-        @country.define_singleton_method(:is_high_risk) { get('is_high_risk') }
-
         # These attributes are deprecated and aren't in maxmind-geoip2.
         @traits.define_singleton_method(:is_anonymous_proxy) { get('is_anonymous_proxy') }
         @traits.define_singleton_method(:is_satellite_provider) { get('is_satellite_provider') }

@@ -12,6 +12,8 @@
   subscores: `email_tenure` and `ip_tenure`. For `email_tenure`, please use
   the `email_address` subscore instead. For `ip_tenure`, please use
   `risk_score` instead.
+* Breaking change from 1.x: Removed deprecated method for deprecated
+  attribute `ip_address.country.is_high_risk`.
 * Breaking change from 1.x: Switches HTTP client from faraday to http.rb.
   There should be no behavior change for most users, but this is
   technically a breaking change from the perspective of semver. Most users
