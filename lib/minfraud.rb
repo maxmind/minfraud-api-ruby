@@ -47,14 +47,6 @@ module Minfraud
     # @return [String, nil]
     attr_accessor :host
 
-    # The MaxMind account ID that is used for authorization.
-    #
-    # @deprecated Use {::account_id} instead. This will be removed in the next
-    #   major version.
-    #
-    # @return [Integer, nil]
-    attr_accessor :user_id
-
     # The MaxMind license key that is used for authorization.
     #
     # @return [String, nil]
@@ -76,23 +68,11 @@ module Minfraud
       end
     end
 
-    # The current Minfraud configuration.
-    #
-    # @deprecated This will be removed in the next major version.
-    #
-    # @return [Hash]
-    def configuration
-      {
-        user_id:     @user_id,
-        license_key: @license_key
-      }
-    end
-
     private
 
     def make_http_client
       HTTP.basic_auth(
-        user: @account_id.nil? ? @user_id : @account_id,
+        user: @account_id,
         pass: @license_key,
       ).headers(
         accept:     'application/json',

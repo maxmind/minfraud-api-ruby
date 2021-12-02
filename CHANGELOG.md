@@ -19,6 +19,9 @@
   technically a breaking change from the perspective of semver. Most users
   should not be affected as the changes are limited to attributes and
   classes that would not normally be accessed outside the gem.
+* Breaking change from 1.x: `user_id` is no longer supported as a way to
+  configure your MaxMind account ID. Use `account_id` instead.
+* Breaking change from 1.x: Removed the `Minfraud.configuration` method.
 * Adds mobile country code (MCC) and mobile network code (MNC) to minFraud
   Insights and Factors responses. These are available at
   `response.ip_address.traits.mobile_country_code` and
