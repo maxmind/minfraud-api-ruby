@@ -23,6 +23,9 @@
   * `:paysera`
   * `:payvision`
   * `:trustly`
+* Depend on the `maxmind-geoip2` gem. This allows us to delete classes from
+  that gem that we previously had included in this gem. There is no
+  functional difference.
 
 ## v1.6.0 (2021-08-19)
 
