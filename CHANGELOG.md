@@ -22,6 +22,10 @@
 * Breaking change from 1.x: `user_id` is no longer supported as a way to
   configure your MaxMind account ID. Use `account_id` instead.
 * Breaking change from 1.x: Removed the `Minfraud.configuration` method.
+* Breaking change from 1.x: Localized names are no longer exposed via
+  methods on `names` objects, only as hash keys. For example, use
+  `response.ip_address.country.names['en']` instead of
+  `response.ip_address.country.names.en`. The latter was deprecated.
 * Adds mobile country code (MCC) and mobile network code (MNC) to minFraud
   Insights and Factors responses. These are available at
   `response.ip_address.traits.mobile_country_code` and

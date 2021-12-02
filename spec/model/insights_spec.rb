@@ -29,19 +29,16 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.city.confidence).to eq 42
       expect(m.ip_address.city.geoname_id).to eq 2_643_743
       expect(m.ip_address.city.names['en']).to eq 'London'
-      expect(m.ip_address.city.names.en).to eq 'London'
 
       expect(m.ip_address.continent.code).to eq 'EU'
       expect(m.ip_address.continent.geoname_id).to eq 6_255_148
       expect(m.ip_address.continent.names['en']).to eq 'Europe'
-      expect(m.ip_address.continent.names.en).to eq 'Europe'
 
       expect(m.ip_address.country.confidence).to eq 99
       expect(m.ip_address.country.geoname_id).to eq 2_635_167
       expect(m.ip_address.country.in_european_union?).to eq true
       expect(m.ip_address.country.iso_code).to eq 'GB'
       expect(m.ip_address.country.names['en']).to eq 'United Kingdom'
-      expect(m.ip_address.country.names.en).to eq 'United Kingdom'
 
       expect(m.ip_address.location.accuracy_radius).to eq 96
       expect(m.ip_address.location.average_income).to eq 10_000
@@ -59,20 +56,17 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.registered_country.in_european_union?).to eq false
       expect(m.ip_address.registered_country.iso_code).to eq 'US'
       expect(m.ip_address.registered_country.names['en']).to eq 'United States'
-      expect(m.ip_address.registered_country.names.en).to eq 'United States'
 
       expect(m.ip_address.represented_country.geoname_id).to eq 6_252_002
       expect(m.ip_address.represented_country.in_european_union?).to eq false
       expect(m.ip_address.represented_country.iso_code).to eq 'US'
       expect(m.ip_address.represented_country.names['en']).to eq 'United States'
-      expect(m.ip_address.represented_country.names.en).to eq 'United States'
       expect(m.ip_address.represented_country.type).to eq 'military'
 
       expect(m.ip_address.subdivisions[0].confidence).to eq 42
       expect(m.ip_address.subdivisions[0].geoname_id).to eq 6_269_131
       expect(m.ip_address.subdivisions[0].iso_code).to eq 'ENG'
       expect(m.ip_address.subdivisions[0].names['en']).to eq 'England'
-      expect(m.ip_address.subdivisions[0].names.en).to eq 'England'
 
       expect(m.ip_address.traits.autonomous_system_number).to eq 123
       expect(m.ip_address.traits.autonomous_system_organization).to eq 'Foo Inc'

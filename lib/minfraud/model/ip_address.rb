@@ -47,25 +47,10 @@ module Minfraud
           end
         end
 
-        # Mashify turned each language code into an attribute, but
-        # maxmind-geoip2 exposes the names as a hash.
-        LANGUAGE_CODES.each do |c|
-          @city.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @continent.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @registered_country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @represented_country.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          @subdivisions.each do |s|
-            s.names&.define_singleton_method(c) { fetch(c.to_s, nil) }
-          end
-        end
-
         # These attributes are deprecated and aren't in maxmind-geoip2.
         @traits.define_singleton_method(:is_anonymous_proxy) { get('is_anonymous_proxy') }
         @traits.define_singleton_method(:is_satellite_provider) { get('is_satellite_provider') }
       end
-
-      LANGUAGE_CODES = %i[de en es fr ja pt-BR ru zh-CN].freeze
     end
   end
 end
