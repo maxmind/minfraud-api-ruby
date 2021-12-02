@@ -2,6 +2,12 @@
 
 ## v2.0.0
 
+* Breaking change from 1.x: Removed deprecated methods
+  `is_in_european_union`, `is_anonymous`, `is_anonymous_vpn`,
+  `is_hosting_provider`, `is_public_proxy`, and `is_tor_exit_node`. The
+  non-deprecated equivalents are `in_european_union?`, `anonymous?`,
+  `anonymous_vpn?`, `hosting_provider?`, `public_proxy?`, and
+  `tor_exit_node?`.
 * Breaking change from 1.x: Switches HTTP client from faraday to http.rb.
   There should be no behavior change for most users, but this is
   technically a breaking change from the perspective of semver. Most users

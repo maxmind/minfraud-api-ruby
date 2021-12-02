@@ -38,7 +38,7 @@ describe Minfraud::Model::Insights do
 
       expect(m.ip_address.country.confidence).to eq 99
       expect(m.ip_address.country.geoname_id).to eq 2_635_167
-      expect(m.ip_address.country.is_in_european_union).to eq true
+      expect(m.ip_address.country.in_european_union?).to eq true
       expect(m.ip_address.country.iso_code).to eq 'GB'
       expect(m.ip_address.country.names['en']).to eq 'United Kingdom'
       expect(m.ip_address.country.names.en).to eq 'United Kingdom'
@@ -56,13 +56,13 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.postal.confidence).to eq 99
 
       expect(m.ip_address.registered_country.geoname_id).to eq 6_252_001
-      expect(m.ip_address.registered_country.is_in_european_union).to eq false
+      expect(m.ip_address.registered_country.in_european_union?).to eq false
       expect(m.ip_address.registered_country.iso_code).to eq 'US'
       expect(m.ip_address.registered_country.names['en']).to eq 'United States'
       expect(m.ip_address.registered_country.names.en).to eq 'United States'
 
       expect(m.ip_address.represented_country.geoname_id).to eq 6_252_002
-      expect(m.ip_address.represented_country.is_in_european_union).to eq false
+      expect(m.ip_address.represented_country.in_european_union?).to eq false
       expect(m.ip_address.represented_country.iso_code).to eq 'US'
       expect(m.ip_address.represented_country.names['en']).to eq 'United States'
       expect(m.ip_address.represented_country.names.en).to eq 'United States'
@@ -78,14 +78,13 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.traits.autonomous_system_organization).to eq 'Foo Inc'
       expect(m.ip_address.traits.domain).to eq 'in-addr.arpa'
       expect(m.ip_address.traits.ip_address).to eq '152.216.7.110'
-      expect(m.ip_address.traits.is_anonymous).to eq true
       expect(m.ip_address.traits.anonymous?).to eq true
-      expect(m.ip_address.traits.is_anonymous_vpn).to eq true
-      expect(m.ip_address.traits.is_hosting_provider).to eq true
-      expect(m.ip_address.traits.is_public_proxy).to eq true
+      expect(m.ip_address.traits.anonymous_vpn?).to eq true
+      expect(m.ip_address.traits.hosting_provider?).to eq true
+      expect(m.ip_address.traits.public_proxy?).to eq true
       expect(m.ip_address.traits.residential_proxy?).to eq true
       expect(m.ip_address.traits.is_satellite_provider).to eq true
-      expect(m.ip_address.traits.is_tor_exit_node).to eq true
+      expect(m.ip_address.traits.tor_exit_node?).to eq true
       expect(m.ip_address.traits.isp).to eq 'Andrews & Arnold Ltd'
       expect(m.ip_address.traits.mobile_country_code).to eq '310'
       expect(m.ip_address.traits.mobile_network_code).to eq '004'
@@ -171,11 +170,10 @@ describe Minfraud::Model::Insights do
 
       expect(m.ip_address.traits.autonomous_system_number).to eq nil
       expect(m.ip_address.traits.autonomous_system_organization).to eq 'Foo Inc'
-      expect(m.ip_address.traits.is_anonymous).to eq false
       expect(m.ip_address.traits.anonymous?).to eq false
       expect(m.ip_address.traits.residential_proxy?).to eq false
       expect(m.ip_address.traits.is_satellite_provider).to eq false
-      expect(m.ip_address.traits.is_tor_exit_node).to eq false
+      expect(m.ip_address.traits.tor_exit_node?).to eq false
 
       expect(m.billing_address.is_postal_in_city).to eq nil
       expect(m.billing_address.distance_to_ip_location).to eq nil
