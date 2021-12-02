@@ -127,6 +127,7 @@
 * Adds `amount` attribute to the `Minfraud::Components::Order` instances
 
 ## v1.0.3 (2016-11-24)
+
 * Adds `token` attribute to the `Minfraud::Components::CreditCard` instances
 according to the MinFraud Release Notes introduced on November 17, 2016
 
