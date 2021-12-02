@@ -8,6 +8,10 @@
   non-deprecated equivalents are `in_european_union?`, `anonymous?`,
   `anonymous_vpn?`, `hosting_provider?`, `public_proxy?`, and
   `tor_exit_node?`.
+* Breaking change from 1.x: Removed deprecated methods for deprecated
+  subscores: `email_tenure` and `ip_tenure`. For `email_tenure`, please use
+  the `email_address` subscore instead. For `ip_tenure`, please use
+  `risk_score` instead.
 * Breaking change from 1.x: Switches HTTP client from faraday to http.rb.
   There should be no behavior change for most users, but this is
   technically a breaking change from the perspective of semver. Most users

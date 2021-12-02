@@ -84,26 +84,6 @@ module Minfraud
       # @return [Float, nil]
       attr_reader :email_local_part
 
-      # The risk associated with the issuer ID number on the email domain. If
-      # present, this is a value in the range 0.01 to 99.
-      #
-      # Deprecated effective August 29, 2019. This subscore will default to 1
-      # and will be removed in a future release. The user tenure on email is
-      # reflected in the /subscores/email_address output.
-      #
-      # @return [Float, nil]
-      attr_reader :email_tenure
-
-      # The risk associated with the issuer ID number on the IP address. If
-      # present, this is a value in the range 0.01 to 99.
-      #
-      # Deprecated effective August 29, 2019. This subscore will default to 1
-      # and will be removed in a future release. The IP tenure is reflected in
-      # the overall risk score.
-      #
-      # @return [Float, nil]
-      attr_reader :ip_tenure
-
       # The risk associated with the particular issuer ID number (IIN) given
       # the billing location and the history of usage of the IIN on your
       # account and shop ID. If present, this is a value in the range 0.01 to
@@ -162,8 +142,6 @@ module Minfraud
         @email_address                            = get('email_address')
         @email_domain                             = get('email_domain')
         @email_local_part                         = get('email_local_part')
-        @email_tenure                             = get('email_tenure')
-        @ip_tenure                                = get('ip_tenure')
         @issuer_id_number                         = get('issuer_id_number')
         @order_amount                             = get('order_amount')
         @phone_number                             = get('phone_number')
