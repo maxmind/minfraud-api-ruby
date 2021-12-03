@@ -47,7 +47,9 @@ module Minfraud
           end
         end
 
-        # These attributes are deprecated and aren't in maxmind-geoip2.
+        # These attributes are deprecated and aren't in maxmind-geoip2. The
+        # webservice still sends them as of writing, so we'd like to keep them
+        # for now as they could still be providing value.
         @traits.define_singleton_method(:is_anonymous_proxy) { get('is_anonymous_proxy') }
         @traits.define_singleton_method(:is_satellite_provider) { get('is_satellite_provider') }
       end
