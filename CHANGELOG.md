@@ -2,11 +2,30 @@
 
 ## v2.0.0
 
+* Breaking change from 1.x: Removed deprecated methods
+  `is_in_european_union`, `is_anonymous`, `is_anonymous_vpn`,
+  `is_hosting_provider`, `is_public_proxy`, and `is_tor_exit_node`. The
+  non-deprecated equivalents are `in_european_union?`, `anonymous?`,
+  `anonymous_vpn?`, `hosting_provider?`, `public_proxy?`, and
+  `tor_exit_node?`.
+* Breaking change from 1.x: Removed deprecated methods for deprecated
+  subscores: `email_tenure` and `ip_tenure`. For `email_tenure`, please use
+  the `email_address` subscore instead. For `ip_tenure`, please use
+  `risk_score` instead.
+* Breaking change from 1.x: Removed deprecated method for deprecated
+  attribute `ip_address.country.is_high_risk`.
 * Breaking change from 1.x: Switches HTTP client from faraday to http.rb.
   There should be no behavior change for most users, but this is
   technically a breaking change from the perspective of semver. Most users
   should not be affected as the changes are limited to attributes and
   classes that would not normally be accessed outside the gem.
+* Breaking change from 1.x: `user_id` is no longer supported as a way to
+  configure your MaxMind account ID. Use `account_id` instead.
+* Breaking change from 1.x: Removed the `Minfraud.configuration` method.
+* Breaking change from 1.x: Localized names are no longer exposed via
+  methods on `names` objects, only as hash keys. For example, use
+  `response.ip_address.country.names['en']` instead of
+  `response.ip_address.country.names.en`. The latter was deprecated.
 * Adds mobile country code (MCC) and mobile network code (MNC) to minFraud
   Insights and Factors responses. These are available at
   `response.ip_address.traits.mobile_country_code` and

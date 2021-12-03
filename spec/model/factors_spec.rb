@@ -25,8 +25,6 @@ describe Minfraud::Model::Factors do
       expect(m.subscores.email_address).to eq 0.09
       expect(m.subscores.email_domain).to eq 0.10
       expect(m.subscores.email_local_part).to eq 0.19
-      expect(m.subscores.email_tenure).to eq 0.11
-      expect(m.subscores.ip_tenure).to eq 0.12
       expect(m.subscores.issuer_id_number).to eq 0.13
       expect(m.subscores.order_amount).to eq 0.14
       expect(m.subscores.phone_number).to eq 0.15
