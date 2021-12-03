@@ -1,4 +1,4 @@
-# Minfraud Changelog
+# Changelog
 
 ## v2.0.0
 
@@ -23,6 +23,9 @@
   * `:paysera`
   * `:payvision`
   * `:trustly`
+* Depend on the `maxmind-geoip2` gem. This allows us to delete classes from
+  that gem that we previously had included in this gem. There is no
+  functional difference.
 
 ## v1.6.0 (2021-08-19)
 
@@ -127,6 +130,7 @@
 * Adds `amount` attribute to the `Minfraud::Components::Order` instances
 
 ## v1.0.3 (2016-11-24)
+
 * Adds `token` attribute to the `Minfraud::Components::CreditCard` instances
 according to the MinFraud Release Notes introduced on November 17, 2016
 

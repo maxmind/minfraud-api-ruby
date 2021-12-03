@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'connection_pool', '~> 2.2'
   spec.add_runtime_dependency 'http', '>= 4.3', '< 6.0'
+  spec.add_runtime_dependency 'maxmind-geoip2', '~> 1.1'
   spec.add_runtime_dependency 'simpleidn', '>= 0.1.1'
 
   spec.add_development_dependency 'bundler', '>= 1.16'
