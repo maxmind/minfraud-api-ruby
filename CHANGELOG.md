@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.0.0
+## v2.0.0 (2021-12-06)
 
 * Breaking change from 1.x: Removed deprecated methods
   `is_in_european_union`, `is_anonymous`, `is_anonymous_vpn`,
