@@ -6,7 +6,7 @@ require 'spec_helper'
 describe Minfraud::Model::Factors do
   describe '#initialize' do
     it 'creates a fully populated object' do
-      buf    = File.open('spec/fixtures/files/factors-response1.json').read
+      buf    = File.read('spec/fixtures/files/factors-response1.json')
       record = JSON.parse(buf)
 
       m = Minfraud::Model::Factors.new(record, ['en'])
