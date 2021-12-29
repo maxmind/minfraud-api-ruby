@@ -6,7 +6,7 @@ require 'spec_helper'
 describe Minfraud::Model::Score do
   describe '#initialize' do
     it 'creates a fully populated object' do
-      buf    = File.open('spec/fixtures/files/score-response1.json').read
+      buf    = File.read('spec/fixtures/files/score-response1.json')
       record = JSON.parse(buf)
 
       score = Minfraud::Model::Score.new(record, ['en'])
@@ -30,7 +30,7 @@ describe Minfraud::Model::Score do
     end
 
     it 'creates a minimally populated object' do
-      buf    = File.open('spec/fixtures/files/score-response2.json').read
+      buf    = File.read('spec/fixtures/files/score-response2.json')
       record = JSON.parse(buf)
 
       score = Minfraud::Model::Score.new(record, ['en'])

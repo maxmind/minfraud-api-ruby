@@ -6,7 +6,7 @@ require 'spec_helper'
 describe Minfraud::Model::Insights do
   describe '#initialize' do
     it 'creates a fully populated object' do
-      buf    = File.open('spec/fixtures/files/insights-response1.json').read
+      buf    = File.read('spec/fixtures/files/insights-response1.json')
       record = JSON.parse(buf)
 
       m = Minfraud::Model::Insights.new(record, ['en'])
@@ -135,7 +135,7 @@ describe Minfraud::Model::Insights do
     end
 
     it 'creates a populated object missing some fields' do
-      buf    = File.open('spec/fixtures/files/insights-response2.json').read
+      buf    = File.read('spec/fixtures/files/insights-response2.json')
       record = JSON.parse(buf)
 
       m = Minfraud::Model::Insights.new(record, ['en'])
@@ -192,7 +192,7 @@ describe Minfraud::Model::Insights do
     end
 
     it 'creates an object when the response lacks many fields' do
-      buf    = File.open('spec/fixtures/files/insights-response3.json').read
+      buf    = File.read('spec/fixtures/files/insights-response3.json')
       record = JSON.parse(buf)
 
       m = Minfraud::Model::Insights.new(record, ['en'])
