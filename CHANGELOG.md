@@ -65,7 +65,7 @@
 
 ## v1.5.0 (2021-02-02)
 
-* Add the `hash_address` attribute to `Minfraud::Components::Email`. If
+* Adds the `hash_address` attribute to `Minfraud::Components::Email`. If
   this is `true`, the MD5 hash of the `address` will be sent instead of the
   plain text `address`. Use this if you prefer to send the hash of the
   `address` rather than the plain text. Note that this normalizes the
@@ -75,7 +75,7 @@
   input is set but the `domain` is not.
 * Adds new payment processors `:apple_pay` and `:aps_payments` to
   `Minfraud::Components::Payment`.
-* Added support for the IP address risk reasons in the minFraud Insights
+* Adds support for the IP address risk reasons in the minFraud Insights
   and Factors responses. This is available at `.ip_address.risk_reasons`.
   It is an array of `IPRiskReason` objects.
 
@@ -89,7 +89,7 @@
 
 * IMPORTANT: Ruby 2.0 is no longer supported. If you're using Ruby 2.0,
   please use version 1.3.0.
-* Add handling for the `REQUEST_INVALID` error code.
+* Adds handling for the `REQUEST_INVALID` error code.
 * The IP address is no longer a required input.
 * Adds new payment processor `:tsys` to `Minfraud::Components::Payment`.
 
