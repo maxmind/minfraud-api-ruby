@@ -164,6 +164,7 @@ module Minfraud
         virtual_card_services
         vme
         vpos
+        windcave
         wirecard
         worldpay
       ]
