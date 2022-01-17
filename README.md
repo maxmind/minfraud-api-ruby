@@ -283,7 +283,7 @@ This API uses [Semantic Versioning](https://semver.org/).
 
 Copyright (c) 2016-2020 kushnir.yb.
 
-Copyright (c) 2020-2021 MaxMind, Inc.
+Copyright (c) 2020-2022 MaxMind, Inc.
 
 The gem is available as open source under the terms of the [MIT
 License](https://opensource.org/licenses/MIT).
