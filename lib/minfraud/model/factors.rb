@@ -7,7 +7,7 @@ module Minfraud
   module Model
     # Model representing the Factors response.
     class Factors < Insights
-      # An object containing subscores for many of the individual components
+      # An object containing scores for many of the individual risk factors
       # that are used to calculate the overall risk score.
       #
       # @return [Minfraud::Model::Subscores]
