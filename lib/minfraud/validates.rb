@@ -70,18 +70,6 @@ module Minfraud
       end
     end
 
-    def validate_last_digits(field, value, iin)
-      return if !value
-
-      if !value.to_s.match(/\A(?:[0-9]{2}|[0-9]{4})\z/)
-        raise InvalidInputError, "The #{field} value is not valid. It must be two or four digits."
-      end
-
-      if iin.length == 8 && value.length != 2
-        raise InvalidInputError, "The #{field} value is not valid. It must be two digits when using an eight digit issuer_id_number."
-      end
-    end
-
     def validate_custom_input_value(field, value)
       return if !value
 

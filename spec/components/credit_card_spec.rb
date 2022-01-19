@@ -48,17 +48,6 @@ describe Minfraud::Components::CreditCard do
       end.to raise_exception(Minfraud::InvalidInputError)
     end
 
-    it 'raises an exception for invalid values (eight digit issuer_id_number + 4 digit last_digits)' do
-      expect do
-        Minfraud::Components::CreditCard.new(
-          issuer_id_number:         '12345678',
-          last_digits:              '1234',
-          token:                    'abcd',
-          was_3d_secure_successful: true,
-        )
-      end.to raise_exception(Minfraud::InvalidInputError)
-    end
-
     it 'does not raise an exception for valid values (deprecated last_4_digits)' do
       @cc = Minfraud::Components::CreditCard.new(
         issuer_id_number:         '123456',
@@ -68,6 +57,15 @@ describe Minfraud::Components::CreditCard do
       )
       expect(@cc.last_digits).to be(@cc.last_4_digits)
       expect(@cc.last_digits).to be('1234')
+    end
+
+    it 'does not raise an exception for valid values (eight digit issuer_id_number)' do
+      Minfraud::Components::CreditCard.new(
+        issuer_id_number:         '12345678',
+        last_4_digits:            '1234',
+        token:                    'abcd',
+        was_3d_secure_successful: true,
+      )
     end
 
     it 'does not raise an exception for valid values (two digit last_digits)' do
