@@ -8,12 +8,17 @@
   deprecated in favor of `last_digits` and will be removed in a future
   release. `last_digits`/`last_4_digits` also now supports two digit values
   in addition to the previous four digit values.
-* Eight digit `issuer_id_numbers` inputs are now supported by
+* Eight digit `issuer_id_number` inputs are now supported by
   `Minfraud::Components::CreditCard` in addition to the previously accepted
-  six digit `issuer_id_number`s. If you send six digits for the
-  `issuer_id_number`, you should send the last four digits for `last_digits`.
-  If you send eight digits for `issuer_id_number`, you should send the last
-  two digits for `last_digits`.
+  six digit `issuer_id_number`. In most cases, you should send the last four
+  digits for `last_digits`. If you send an `issuer_id_number` that contains
+  an eight digit IIN, and if the credit card brand is not one of the
+  following, you should send the last two digits for `last_digits`:
+  * `Discover`
+  * `JCB`
+  * `Mastercard`
+  * `UnionPay`
+  * `Visa`
 
 ## v2.0.0 (2021-12-06)
 
