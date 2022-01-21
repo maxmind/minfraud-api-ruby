@@ -4,6 +4,21 @@
 
 * Adds the following new processor to `Minfraud::Components::Payment`:
   * `:windcave`
+* The `last_4_digits` input to `Minfraud::Components::CreditCard` has been
+  deprecated in favor of `last_digits` and will be removed in a future
+  release. `last_digits`/`last_4_digits` also now supports two digit values
+  in addition to the previous four digit values.
+* Eight digit `issuer_id_number` inputs are now supported by
+  `Minfraud::Components::CreditCard` in addition to the previously accepted
+  six digit `issuer_id_number`. In most cases, you should send the last four
+  digits for `last_digits`. If you send an `issuer_id_number` that contains
+  an eight digit IIN, and if the credit card brand is not one of the
+  following, you should send the last two digits for `last_digits`:
+  * `Discover`
+  * `JCB`
+  * `Mastercard`
+  * `UnionPay`
+  * `Visa`
 
 ## v2.0.0 (2021-12-06)
 

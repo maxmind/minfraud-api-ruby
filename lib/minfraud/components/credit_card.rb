@@ -8,16 +8,18 @@ module Minfraud
     class CreditCard < Base
       include Minfraud::Validates
 
-      # The issuer ID number for the credit card. This is the first 6 digits of
-      # the credit card number. It identifies the issuing bank.
+      # The issuer ID number for the credit card. This is the first 6 or 8
+      # digits of the credit card number. It identifies the issuing bank.
       #
       # @return [String, nil]
       attr_accessor :issuer_id_number
 
-      # The last four digits of the credit card number.
+      # The last two or four digits of the credit card number.
+      #
+      # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--credit-card__last_digits
       #
       # @return [String, nil]
-      attr_accessor :last_4_digits
+      attr_accessor :last_digits
 
       # The name of the issuing bank as provided by the end user.
       #
@@ -72,12 +74,30 @@ module Minfraud
       # @return [Boolean, nil]
       attr_accessor :was_3d_secure_successful
 
+      # Get the last digits of the credit card number.
+      #
+      # @deprecated Use {::last_digits} instead.
+      #
+      # @return [String, nil]
+      def last_4_digits
+        @last_digits
+      end
+
+      # Set the last digits of the credit card number.
+      #
+      # @deprecated Use {::last_digits} instead.
+      #
+      # @return [String, nil]
+      def last_4_digits=(last4)
+        @last_digits = last4
+      end
+
       # @param params [Hash] Hash of parameters. Each key/value should
       #   correspond to one of the available attributes.
       def initialize(params = {})
         @bank_phone_country_code  = params[:bank_phone_country_code]
         @issuer_id_number         = params[:issuer_id_number]
-        @last_4_digits            = params[:last_4_digits]
+        @last_digits              = params[:last_digits] || params[:last_4_digits]
         @bank_name                = params[:bank_name]
         @bank_phone_number        = params[:bank_phone_number]
         @avs_result               = params[:avs_result]
@@ -94,8 +114,8 @@ module Minfraud
         return if !Minfraud.enable_validation
 
         validate_telephone_country_code('bank_phone_country_code', @bank_phone_country_code)
-        validate_regex('issuer_id_number', /\A[0-9]{6}\z/, @issuer_id_number)
-        validate_regex('last_4_digits', /\A[0-9]{4}\z/, @last_4_digits)
+        validate_regex('issuer_id_number', /\A(?:[0-9]{6}|[0-9]{8})\z/, @issuer_id_number)
+        validate_regex('last_digits', /\A(?:[0-9]{2}|[0-9]{4})\z/, @last_digits)
         validate_string('bank_name', 255, @bank_name)
         validate_string('bank_phone_number', 255, @bank_phone_number)
         validate_string('avs_result', 1, @avs_result)

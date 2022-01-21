@@ -123,7 +123,7 @@ assessment = Minfraud::Assessments.new(
   },
   credit_card: {
     issuer_id_number:         '411111',
-    last_4_digits:            '7643',
+    last_digits:              '7643',
     bank_name:                'Bank of No Hope',
     bank_phone_country_code:  '1',
     bank_phone_number:        '123-456-1234',
