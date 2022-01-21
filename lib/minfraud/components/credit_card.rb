@@ -14,9 +14,9 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :issuer_id_number
 
-      # The last digits of the credit card number. This is the last 4
-      # digits if the issuer ID number is 6 digits, or the last 2 digits
-      # if the issuer ID number is 8 digits.
+      # The last two or four digits of the credit card number.
+      #
+      # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--credit-card__last_digits
       #
       # @return [String, nil]
       attr_accessor :last_digits
