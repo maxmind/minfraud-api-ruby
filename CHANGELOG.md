@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.1.0
+## v2.1.0 (2022-01-25)
 
 * Adds the following new processor to `Minfraud::Components::Payment`:
   * `:windcave`
