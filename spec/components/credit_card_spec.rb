@@ -87,5 +87,11 @@ describe Minfraud::Components::CreditCard do
         was_3d_secure_successful: true,
       )
     end
+
+    it 'accepts country code' do
+      Minfraud::Components::CreditCard.new(
+        country: 'CA',
+      )
+    end
   end
 end

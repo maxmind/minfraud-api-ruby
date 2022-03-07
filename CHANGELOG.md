@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.2.0
+
+* Added the input `/credit_card/country`. This is the country where the
+  issuer of the card is located. This may be passed instead of the
+  `/credit_card/issuer_id_number` if you do not wish to pass partial
+  account numbers or if your payment processor does not provide them. You
+  may provide this using the `country` attribute on
+  `Minfraud::Components::CreditCard`.
+
 ## v2.1.0 (2022-01-25)
 
 * Adds the following new processor to `Minfraud::Components::Payment`:
