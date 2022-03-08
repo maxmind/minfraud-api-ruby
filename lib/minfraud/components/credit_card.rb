@@ -41,6 +41,16 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :bank_phone_number
 
+      # The two character ISO 3166-1 alpha-2 country code where the issuer of
+      # the card is located. This may be passed instead of {::issuer_id_number}
+      # if you do not wish to pass partial account numbers, or if your payment
+      # processor does not provide them.
+      #
+      # @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+      #
+      # @return [String, nil]
+      attr_accessor :country
+
       # A token uniquely identifying the card. The token should consist of
       # non-space printable ASCII characters. If the token is all digits, it
       # must be more than 19 characters long. The token must not be a primary
@@ -96,6 +106,7 @@ module Minfraud
       #   correspond to one of the available attributes.
       def initialize(params = {})
         @bank_phone_country_code  = params[:bank_phone_country_code]
+        @country                  = params[:country]
         @issuer_id_number         = params[:issuer_id_number]
         @last_digits              = params[:last_digits] || params[:last_4_digits]
         @bank_name                = params[:bank_name]
@@ -114,6 +125,7 @@ module Minfraud
         return if !Minfraud.enable_validation
 
         validate_telephone_country_code('bank_phone_country_code', @bank_phone_country_code)
+        validate_country_code('country', @country)
         validate_regex('issuer_id_number', /\A(?:[0-9]{6}|[0-9]{8})\z/, @issuer_id_number)
         validate_regex('last_digits', /\A(?:[0-9]{2}|[0-9]{4})\z/, @last_digits)
         validate_string('bank_name', 255, @bank_name)

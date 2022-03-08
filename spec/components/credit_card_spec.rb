@@ -87,5 +87,11 @@ describe Minfraud::Components::CreditCard do
         was_3d_secure_successful: true,
       )
     end
+
+    it 'does not raise an exception when country is given and issuer_id_number is not provided' do
+      Minfraud::Components::CreditCard.new(
+        country: 'CA',
+      )
+    end
   end
 end
