@@ -88,7 +88,7 @@ describe Minfraud::Components::CreditCard do
       )
     end
 
-    it 'accepts country code' do
+    it 'does not raise an exception when country is given and issuer_id_number is not provided' do
       Minfraud::Components::CreditCard.new(
         country: 'CA',
       )
