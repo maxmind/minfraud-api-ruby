@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.2.0
+## v2.2.0 (2022-03-28)
 
 * Added the input `/credit_card/country`. This is the country where the
   issuer of the card is located. This may be passed instead of the
