@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.3.0
+
+* Added the processor `:shopify_payments` to `Minfraud::Components::Payment`.
+
 ## v2.2.0 (2022-03-28)
 
 * Added the input `/credit_card/country`. This is the country where the

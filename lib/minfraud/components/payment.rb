@@ -142,6 +142,7 @@ module Minfraud
         safecharge
         sagepay
         securetrading
+        shopify_payments
         simplify_commerce
         skrill
         smartcoin
