@@ -3,6 +3,7 @@
 ## v2.3.0
 
 * Added the processor `:shopify_payments` to `Minfraud::Components::Payment`.
+* Added the processor `:google_pay` to `Minfraud::Components::Payment`.
 
 ## v2.2.0 (2022-03-28)
 
