@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Minfraud::Assessments do
-  let(:resolver)      { double(::Minfraud::Resolver) }
+  let(:resolver)      { double(Minfraud::Resolver) }
   subject             { described_class.new({}, resolver) }
 
   before { allow(resolver).to receive(:assign) }

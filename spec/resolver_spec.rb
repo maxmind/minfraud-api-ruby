@@ -20,13 +20,13 @@ describe Minfraud::Resolver do
     end
 
     it 'maps hash keys to corresponding components' do
-      allow(context).to receive(:account) { ::Minfraud::Components::Account.new }
+      allow(context).to receive(:account) { Minfraud::Components::Account.new }
       allow(context).to receive(:account=)
 
       described_class.assign(context, { account: {} })
 
       expect(context).to respond_to(:account)
-      expect(context.account).to be_an_instance_of ::Minfraud::Components::Account
+      expect(context.account).to be_an_instance_of Minfraud::Components::Account
     end
   end
 end
