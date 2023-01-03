@@ -130,6 +130,7 @@ module Minfraud
         payway
         payza
         pinpayments
+        placetopay
         posconnect
         princeton_payment_solutions
         psigate
