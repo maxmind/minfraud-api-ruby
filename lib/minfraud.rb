@@ -70,13 +70,14 @@ module Minfraud
 
     private
 
+
     def make_http_client
       HTTP.basic_auth(
         user: @account_id,
         pass: @license_key,
       ).headers(
         accept:     'application/json',
-        user_agent: "minfraud-api-ruby/#{Minfraud::VERSION}",
+        user_agent: "minfraud-api-ruby/#{Minfraud::VERSION} ruby/#{RUBY_VERSION} http/#{HTTP::VERSION}",
       )
     end
   end
