@@ -5,6 +5,8 @@
 * Added the processor `:shopify_payments` to `Minfraud::Components::Payment`.
 * Added the processor `:google_pay` to `Minfraud::Components::Payment`.
 * Added the processor `:placetopay` to `Minfraud::Components::Payment`.
+* In addition to the minfraud gem version, the User-Agent now includes the
+  version of Ruby and the version of the HTTP client in all HTTP requests.
 
 ## v2.2.0 (2022-03-28)
 
