@@ -70,7 +70,6 @@ module Minfraud
 
     private
 
-
     def make_http_client
       HTTP.basic_auth(
         user: @account_id,
