@@ -85,3 +85,6 @@ Lint/MissingSuper:
 
 Naming/VariableNumber:
   Enabled: false # Doesn't always make sense.
+
+Gemspec/DevelopmentDependencies:
+  Enabled: false
