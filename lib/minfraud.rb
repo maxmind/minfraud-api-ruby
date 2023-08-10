@@ -43,6 +43,11 @@ module Minfraud
     attr_accessor :enable_validation
 
     # The host to use when connecting to the web service.
+    # By default, the client connects to the production host. However,
+    # during testing and development, you can set this option to
+    # 'sandbox.maxmind.com' to use the Sandbox environment's host. The
+    # sandbox allows you to experiment with the API without affecting your
+    # production data.
     #
     # @return [String, nil]
     attr_accessor :host
