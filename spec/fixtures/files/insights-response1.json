@@ -74,8 +74,8 @@
       "time_zone": "Europe/London"
     },
     "postal": {
-        "code": "H0H",
-        "confidence": 99
+      "code": "H0H",
+      "confidence": 99
     },
     "registered_country": {
       "geoname_id": 6252001,
@@ -124,6 +124,7 @@
     "traits": {
       "autonomous_system_number": 123,
       "autonomous_system_organization": "Foo Inc",
+      "connection_type": "Cable/DSL",
       "domain": "in-addr.arpa",
       "ip_address": "152.216.7.110",
       "is_anonymous": true,
@@ -134,8 +135,8 @@
       "is_satellite_provider": true,
       "is_tor_exit_node": true,
       "isp": "Andrews & Arnold Ltd",
-      "mobile_country_code" : "310",
-      "mobile_network_code" : "004",
+      "mobile_country_code": "310",
+      "mobile_network_code": "004",
       "organization": "STONEHOUSE office network",
       "static_ip_score": 13.5,
       "user_count": 5,
@@ -172,7 +173,7 @@
   },
   "email": {
     "domain": {
-        "first_seen": "2016-01-03"
+      "first_seen": "2016-01-03"
     },
     "first_seen": "2017-01-02",
     "is_disposable": true,
