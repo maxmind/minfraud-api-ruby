@@ -70,6 +70,7 @@ describe Minfraud::Model::Insights do
 
       expect(m.ip_address.traits.autonomous_system_number).to eq 123
       expect(m.ip_address.traits.autonomous_system_organization).to eq 'Foo Inc'
+      expect(m.ip_address.traits.connection_type).to eq 'Cable/DSL'
       expect(m.ip_address.traits.domain).to eq 'in-addr.arpa'
       expect(m.ip_address.traits.ip_address).to eq '152.216.7.110'
       expect(m.ip_address.traits.anonymous?).to eq true
@@ -165,6 +166,7 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.traits.autonomous_system_number).to eq nil
       expect(m.ip_address.traits.autonomous_system_organization).to eq 'Foo Inc'
       expect(m.ip_address.traits.anonymous?).to eq false
+      expect(m.ip_address.traits.connection_type).to eq 'Corporate'
       expect(m.ip_address.traits.residential_proxy?).to eq false
       expect(m.ip_address.traits.is_satellite_provider).to eq false
       expect(m.ip_address.traits.tor_exit_node?).to eq false

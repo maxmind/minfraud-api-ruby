@@ -36,8 +36,8 @@
       }
     },
     "postal": {
-        "code": "H0H",
-        "confidence": 99
+      "code": "H0H",
+      "confidence": 99
     },
     "registered_country": {
       "geoname_id": 6252001,
@@ -85,6 +85,7 @@
     ],
     "traits": {
       "autonomous_system_organization": "Foo Inc",
+      "connection_type": "Corporate",
       "domain": "in-addr.arpa",
       "ip_address": "152.216.7.110",
       "is_anonymous_vpn": true,
