@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.3.0
+## v2.3.0 (2023-12-04)
 
 * Added the processor `:shopify_payments` to `Minfraud::Components::Payment`.
 * Added the processor `:google_pay` to `Minfraud::Components::Payment`.
