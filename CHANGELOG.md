@@ -1,12 +1,17 @@
 # Changelog
 
-## v2.3.0
+## v2.3.0 (2023-12-04)
 
 * Added the processor `:shopify_payments` to `Minfraud::Components::Payment`.
 * Added the processor `:google_pay` to `Minfraud::Components::Payment`.
 * Added the processor `:placetopay` to `Minfraud::Components::Payment`.
 * In addition to the minfraud gem version, the User-Agent now includes the
   version of Ruby and the version of the HTTP client in all HTTP requests.
+* Updated `maxmind-geoip2` to version that includes the `anycast?` method
+  on `MaxMind::GeoIP2::Record::Traits`. This returns `true` if the IP
+  address belongs to an [anycast
+  network](https://en.wikipedia.org/wiki/Anycast). This is available in
+  minFraud Insights and Factors.
 
 ## v2.2.0 (2022-03-28)
 
