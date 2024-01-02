@@ -4,6 +4,8 @@
 
 * Ruby 2.7+ is now required. If you're using Ruby 2.5 or 2.6, please use
   version 2.3.0 of this gem.
+* Added the processors `:pxp_financial` and `:trustpay` to
+  `Minfraud::Components::Payment`.
 
 ## v2.3.0 (2023-12-04)
 

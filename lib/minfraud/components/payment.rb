@@ -134,6 +134,7 @@ module Minfraud
         posconnect
         princeton_payment_solutions
         psigate
+        pxp_financial
         qiwi
         quickpay
         raberil
@@ -158,6 +159,7 @@ module Minfraud
         towah
         transact_pro
         trustly
+        trustpay
         tsys
         usa_epay
         vantiv
