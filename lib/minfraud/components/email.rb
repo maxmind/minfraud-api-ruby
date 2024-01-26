@@ -96,6 +96,10 @@ module Minfraud
           local_part.sub!(/\A([^+]+)\+.*\z/, '\1')
         end
 
+        if domain == 'gmail.com'
+          local_part.gsub!('.', '')
+        end
+
         "#{local_part}@#{domain}"
       end
 

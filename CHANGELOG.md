@@ -4,6 +4,9 @@
 
 * Equivalent domain names are now normalized when `hash_address` is used.
   For example, `googlemail.com` will become `gmail.com`.
+* Periods are now removed from `gmail.com` email address local parts when
+  `hash_address` is used. For example, `f.o.o@gmail.com` will become
+  `foo@gmail.com`.
 
 ## v2.4.0 (2024-01-12)
 
