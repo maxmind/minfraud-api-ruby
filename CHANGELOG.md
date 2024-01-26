@@ -25,6 +25,8 @@
 * Additional `gmail.com` domain names with leading digits are now
   normalized when `hash_address` is used. For example, `100gmail.com` will
   become `gmail.com`.
+* Additional `gmail.com` typos are now normalized when `hash_address` is
+  used. For example, `gmali.com` will become `gmail.com`.
 
 ## v2.4.0 (2024-01-12)
 
