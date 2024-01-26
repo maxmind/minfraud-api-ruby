@@ -328,6 +328,7 @@ module Minfraud
 
         domain.sub!(/(?:\.com){2,}$/, '.com')
         domain.sub!(/\.com[^.]+$/, '.com')
+        domain.sub!(/(?:\.(?:com|c[a-z]{1,2}m|co[ln]|[dsvx]o[mn]|))$/, '.com')
 
         if TYPO_DOMAINS.key?(domain)
           domain = TYPO_DOMAINS[domain]

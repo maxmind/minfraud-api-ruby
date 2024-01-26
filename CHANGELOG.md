@@ -20,6 +20,8 @@
 * Extraneous characters after `.com` are now removed from email domain
   names when `hash_address` is used. For example, `example.comfoo` will
   become `example.com`.
+* Certain `.com` typos are now normalized to `.com` when `hash_address` is
+  used. For example, `example.cam` will become `example.com`.
 
 ## v2.4.0 (2024-01-12)
 
