@@ -326,6 +326,8 @@ module Minfraud
 
         domain = SimpleIDN.to_ascii(domain)
 
+        domain.sub!(/(?:\.com){2,}$/, '.com')
+
         if TYPO_DOMAINS.key?(domain)
           domain = TYPO_DOMAINS[domain]
         end
