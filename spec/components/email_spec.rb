@@ -71,6 +71,7 @@ describe Minfraud::Components::Email do
         { input: 'Test-foo@gmail.com', output: 'test-foo@gmail.com' },
         { input: 'gamil.com@gamil.com', output: 'gamil.com@gmail.com' },
         { input: 'Test+alias@bücher.com', output: 'test@xn--bcher-kva.com' },
+        { input: 'foo@googlemail.com', output: 'foo@gmail.com' },
       ]
 
       tests.each do |i|

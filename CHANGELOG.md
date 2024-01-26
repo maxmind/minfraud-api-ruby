@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.5.0
+
+* Equivalent domain names are now normalized when `hash_address` is used.
+  For example, `googlemail.com` will become `gmail.com`.
+
 ## v2.4.0 (2024-01-12)
 
 * Ruby 2.7+ is now required. If you're using Ruby 2.5 or 2.6, please use

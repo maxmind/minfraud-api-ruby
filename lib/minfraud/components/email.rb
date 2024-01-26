@@ -113,6 +113,18 @@ module Minfraud
       }.freeze
       private_constant :TYPO_DOMAINS
 
+      EQUIVALENT_DOMAINS = {
+        'googlemail.com' => 'gmail.com',
+        'pm.me'          => 'protonmail.com',
+        'proton.me'      => 'protonmail.com',
+        'yandex.by'      => 'yandex.ru',
+        'yandex.com'     => 'yandex.ru',
+        'yandex.kz'      => 'yandex.ru',
+        'yandex.ua'      => 'yandex.ru',
+        'ya.ru'          => 'yandex.ru',
+      }.freeze
+      private_constant :EQUIVALENT_DOMAINS
+
       def clean_domain(domain)
         domain = domain.strip
 
@@ -123,6 +135,10 @@ module Minfraud
 
         if TYPO_DOMAINS.key?(domain)
           domain = TYPO_DOMAINS[domain]
+        end
+
+        if EQUIVALENT_DOMAINS.key?(domain)
+          domain = EQUIVALENT_DOMAINS[domain]
         end
 
         domain
