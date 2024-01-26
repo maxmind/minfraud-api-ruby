@@ -63,7 +63,7 @@ describe Minfraud::Components::Email do
         { input: '  Test@maxmind.com', output: 'test@maxmind.com' },
         {
           input:  'Test@maxmind.com|abc124472372',
-          output: 'test@maxmind.com|abc124472372',
+          output: 'test@maxmind.com',
         },
         { input: 'Test+foo@yahoo.com', output: 'test+foo@yahoo.com' },
         { input: 'Test-foo@yahoo.com', output: 'test@yahoo.com' },
@@ -76,6 +76,7 @@ describe Minfraud::Components::Email do
         { input: 'alias@user.fastmail.com', output: 'user@fastmail.com' },
         { input: 'foo-bar@ymail.com', output: 'foo@ymail.com' },
         { input: 'foo@example.com.com', output: 'foo@example.com' },
+        { input: 'foo@example.comfoo', output: 'foo@example.com' },
       ]
 
       tests.each do |i|
