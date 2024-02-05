@@ -63,14 +63,22 @@ describe Minfraud::Components::Email do
         { input: '  Test@maxmind.com', output: 'test@maxmind.com' },
         {
           input:  'Test@maxmind.com|abc124472372',
-          output: 'test@maxmind.com|abc124472372',
+          output: 'test@maxmind.com',
         },
         { input: 'Test+foo@yahoo.com', output: 'test+foo@yahoo.com' },
         { input: 'Test-foo@yahoo.com', output: 'test@yahoo.com' },
         { input: 'Test-foo-foo2@yahoo.com', output: 'test@yahoo.com' },
         { input: 'Test-foo@gmail.com', output: 'test-foo@gmail.com' },
-        { input: 'gamil.com@gamil.com', output: 'gamil.com@gmail.com' },
+        { input: 'gamil.com@gamil.com', output: 'gamilcom@gmail.com' },
         { input: 'Test+alias@bücher.com', output: 'test@xn--bcher-kva.com' },
+        { input: 'foo@googlemail.com', output: 'foo@gmail.com' },
+        { input: 'foo.bar@gmail.com', output: 'foobar@gmail.com' },
+        { input: 'alias@user.fastmail.com', output: 'user@fastmail.com' },
+        { input: 'foo-bar@ymail.com', output: 'foo@ymail.com' },
+        { input: 'foo@example.com.com', output: 'foo@example.com' },
+        { input: 'foo@example.comfoo', output: 'foo@example.com' },
+        { input: 'foo@example.cam', output: 'foo@example.com' },
+        { input: 'foo@10000gmail.com', output: 'foo@gmail.com' },
       ]
 
       tests.each do |i|
