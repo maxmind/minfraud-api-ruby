@@ -131,6 +131,55 @@ module Minfraud
       }.freeze
       private_constant :TYPO_DOMAINS
 
+      TYPO_TLDS = {
+        'comm'   => 'com',
+        'commm'  => 'com',
+        'commmm' => 'com',
+        'comn'   => 'com',
+
+        'cbm'    => 'com',
+        'ccm'    => 'com',
+        'cdm'    => 'com',
+        'cem'    => 'com',
+        'cfm'    => 'com',
+        'cgm'    => 'com',
+        'chm'    => 'com',
+        'cim'    => 'com',
+        'cjm'    => 'com',
+        'ckm'    => 'com',
+        'clm'    => 'com',
+        'cmm'    => 'com',
+        'cnm'    => 'com',
+        'cpm'    => 'com',
+        'cqm'    => 'com',
+        'crm'    => 'com',
+        'csm'    => 'com',
+        'ctm'    => 'com',
+        'cum'    => 'com',
+        'cvm'    => 'com',
+        'cwm'    => 'com',
+        'cxm'    => 'com',
+        'cym'    => 'com',
+        'czm'    => 'com',
+
+        'col'    => 'com',
+        'con'    => 'com',
+
+        'dom'    => 'com',
+        'don'    => 'com',
+        'som'    => 'com',
+        'son'    => 'com',
+        'vom'    => 'com',
+        'von'    => 'com',
+        'xom'    => 'com',
+        'xon'    => 'com',
+
+        'clam'   => 'com',
+        'colm'   => 'com',
+        'comcom' => 'com',
+      }.freeze
+      private_constant :TYPO_TLDS
+
       EQUIVALENT_DOMAINS = {
         'googlemail.com' => 'gmail.com',
         'pm.me'          => 'protonmail.com',
@@ -330,9 +379,15 @@ module Minfraud
         domain = SimpleIDN.to_ascii(domain)
 
         domain.sub!(/(?:\.com){2,}$/, '.com')
-        domain.sub!(/\.com[^.]+$/, '.com')
-        domain.sub!(/(?:\.(?:com|c[a-z]{1,2}m|co[ln]|[dsvx]o[mn]|))$/, '.com')
         domain.sub!(/^\d+(?:gmail?\.com)$/, 'gmail.com')
+
+        idx = domain.rindex('.')
+        if !idx.nil?
+          tld = domain[idx + 1..]
+          if TYPO_TLDS.key?(tld)
+            domain = "#{domain[0, idx]}.#{TYPO_TLDS[tld]}"
+          end
+        end
 
         if TYPO_DOMAINS.key?(domain)
           domain = TYPO_DOMAINS[domain]
