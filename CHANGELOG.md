@@ -24,6 +24,8 @@
   become `gmail.com`.
 * Additional `gmail.com` typos are now normalized when `hash_address` is
   used. For example, `gmali.com` will become `gmail.com`.
+* When `hash_address` is used, all trailing periods are now removed from an
+  email address domain. Previously only a single period was removed.
 
 ## v2.4.0 (2024-01-12)
 

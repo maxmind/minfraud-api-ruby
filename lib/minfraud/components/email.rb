@@ -373,8 +373,7 @@ module Minfraud
       def clean_domain(domain)
         domain = domain.strip
 
-        # We could use delete_suffix!, but that is in Ruby 2.5+ only.
-        domain.sub!(/\.\z/, '')
+        domain.sub!(/\.+\z/, '')
 
         domain = SimpleIDN.to_ascii(domain)
 
