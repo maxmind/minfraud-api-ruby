@@ -82,6 +82,8 @@ describe Minfraud::Components::Email do
         { input: 'foo@example.comcom', output: 'foo@example.com' },
         { input: 'foo@example.com.', output: 'foo@example.com' },
         { input: 'foo@example.com...', output: 'foo@example.com' },
+        { input: "example@bu\u0308cher.com", output: 'example@xn--bcher-kva.com' },
+        { input: "example@b\u00FCcher.com", output: 'example@xn--bcher-kva.com' },
       ]
 
       tests.each do |i|
