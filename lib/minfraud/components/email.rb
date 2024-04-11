@@ -88,6 +88,8 @@ module Minfraud
         local_part, domain = address.split('@', 2)
         return nil if !local_part || !domain
 
+        local_part = local_part.unicode_normalize(:nfc)
+
         domain = clean_domain(domain)
 
         if YAHOO_DOMAINS.key?(domain)
