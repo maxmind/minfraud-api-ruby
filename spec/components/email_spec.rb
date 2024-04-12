@@ -82,6 +82,8 @@ describe Minfraud::Components::Email do
         { input: 'foo@example.comcom', output: 'foo@example.com' },
         { input: 'foo@example.com.', output: 'foo@example.com' },
         { input: 'foo@example.com...', output: 'foo@example.com' },
+        { input: "example@bu\u0308cher.com", output: 'example@xn--bcher-kva.com' },
+        { input: "example@b\u00FCcher.com", output: 'example@xn--bcher-kva.com' },
       ]
 
       tests.each do |i|
@@ -104,6 +106,14 @@ describe Minfraud::Components::Email do
         {
           input:  'Test+alias@maxmind.com',
           output: '977577b140bfb7c516e4746204fbdb01',
+        },
+        {
+          input:  "bu\u0308cher@example.com",
+          output: '53550c712b146287a2d0dd30e5ed6f4b',
+        },
+        {
+          input:  "b\u00FCcher@example.com",
+          output: '53550c712b146287a2d0dd30e5ed6f4b',
         },
       ]
 
