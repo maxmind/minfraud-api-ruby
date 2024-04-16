@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.5.0
+## v2.5.0 (2024-04-16)
 
 * Equivalent domain names are now normalized when `hash_address` is used.
   For example, `googlemail.com` will become `gmail.com`.
