@@ -208,9 +208,9 @@ channel is used to improve the accuracy of their fraud detection
 algorithms.
 
 To use the Report Transaction API, create a
-`Minfraud::Components::Report::Transaction` object. An IP address and a
-valid tag are required arguments for this API. Additional parameters may be
-set, as shown below.
+`Minfraud::Components::Report::Transaction` object. A valid tag and at least
+one of the following are required parameters: ip_address, maxmind_id,
+minfraud_id, transaction_id. Additional parameters may be set, as shown below.
 
 If the report is successful, nothing is returned. If the report fails, an
 exception will be thrown.
