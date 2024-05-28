@@ -39,7 +39,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @confidence = get('confidence')
         @id         = get('id')

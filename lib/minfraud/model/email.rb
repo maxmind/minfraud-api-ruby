@@ -41,7 +41,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @domain        = Minfraud::Model::EmailDomain.new(get('domain'))
         @first_seen    = get('first_seen')

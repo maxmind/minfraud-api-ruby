@@ -18,7 +18,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @code  = get('code')
         @error = get('error')

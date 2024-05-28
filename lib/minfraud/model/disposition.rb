@@ -31,7 +31,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @action     = get('action')
         @reason     = get('reason')

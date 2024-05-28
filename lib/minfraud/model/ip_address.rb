@@ -24,7 +24,7 @@ module Minfraud
       # @!visibility private
       def initialize(record, locales)
         if record
-          super(record, locales)
+          super
         else
           super({}, locales)
         end

@@ -50,7 +50,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record, locales)
-        super(record, locales)
+        super
 
         @billing_address  = Minfraud::Model::BillingAddress.new(
           get('billing_address')
