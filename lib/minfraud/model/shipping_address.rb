@@ -20,7 +20,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @distance_to_billing_address = get('distance_to_billing_address')
         @is_high_risk                = get('is_high_risk')

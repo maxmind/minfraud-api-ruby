@@ -15,7 +15,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record, locales)
-        super(record, locales)
+        super
 
         @subscores = Minfraud::Model::Subscores.new(get('subscores'))
       end

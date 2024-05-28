@@ -37,7 +37,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @name                          = get('name')
         @phone_number                  = get('phone_number')

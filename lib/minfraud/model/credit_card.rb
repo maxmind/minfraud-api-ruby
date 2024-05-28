@@ -57,7 +57,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @brand                                = get('brand')
         @country                              = get('country')

@@ -126,7 +126,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @avs_result                               = get('avs_result')
         @billing_address                          = get('billing_address')

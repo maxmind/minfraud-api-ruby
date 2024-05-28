@@ -16,7 +16,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @local_time = get('local_time')
       end

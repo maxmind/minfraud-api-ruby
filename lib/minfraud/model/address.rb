@@ -39,7 +39,7 @@ module Minfraud
 
       # @!visibility private
       def initialize(record)
-        super(record)
+        super
 
         @distance_to_ip_location = get('distance_to_ip_location')
         @is_in_ip_country        = get('is_in_ip_country')
