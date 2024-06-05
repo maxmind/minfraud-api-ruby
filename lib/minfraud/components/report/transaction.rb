@@ -8,6 +8,7 @@ module Minfraud
       # @see https://dev.maxmind.com/minfraud/report-a-transaction?lang=en
       class Transaction < Base
         include ::Minfraud::Enum
+        include ::Minfraud::Validates
 
         # The IP address of the customer placing the order. This should be
         # passed as a string like "152.216.7.110". This field is not required
@@ -88,6 +89,10 @@ module Minfraud
 
         def validate
           return if !Minfraud.enable_validation
+
+          validate_ip('ip_address', @ip_address)
+          validate_string('maxmind_id', 8, @maxmind_id)
+          validate_uuid('minfraud_id', @minfraud_id)
 
           if ip_address.nil? &&
              minfraud_id.nil? &&
