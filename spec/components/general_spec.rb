@@ -14,6 +14,9 @@ Minfraud::Components.constants.each do |klass|
 end
 
 describe Minfraud::Components::Report::Transaction do
+  before do
+    Minfraud.configure { |c| c.enable_validation = false }
+  end
   describe '#initialize' do
     it { is_expected.to be_an_instance_of described_class }
     it { is_expected.to respond_to :to_json }

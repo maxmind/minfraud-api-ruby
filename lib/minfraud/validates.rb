@@ -24,6 +24,19 @@ module Minfraud
       end
     end
 
+    def validate_uuid(field, value)
+      return if !value
+
+      stripped_value = value.to_s.gsub('-', '')
+
+      # Define a regex pattern for a valid UUID without dashes
+      uuid_regex = /\A[0-9a-f]{32}\z/i
+
+      unless uuid_regex.match(stripped_value)
+        raise InvalidInputError, "The #{field} value is not valid. It must be a UUID string."
+      end
+    end
+
     def validate_subdivision_code(field, value)
       return if !value
 

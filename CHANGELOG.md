@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.6.0
+
+* Updated the validation for the Report Transactions API to make the
+  `ip_address` parameter optional. Now the `tag` and at least one of the
+  following parameters must be supplied: `ip_address`, `maxmind_id`,
+  `minfraud_id`, `transaction_id`.
+* Updated the validation for the Report Transactions API to check that
+  `ip_address`, `maxmind_id`, and `minfraud_id` contain valid values.
+
 ## v2.5.0 (2024-04-16)
 
 * Equivalent domain names are now normalized when `hash_address` is used.
