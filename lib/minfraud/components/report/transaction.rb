@@ -40,7 +40,7 @@ module Minfraud
         # Premium request. These IDs are returned in the maxmindID field of a
         # response for a successful minFraud request. This field is not required
         # if you provide at least one of the transaction's ip_address,
-        # maxmind_id, or transaction_id. You are encouraged to provide it, if
+        # minfraud_id, or transaction_id. You are encouraged to provide it, if
         # possible.
         #
         # @return [String, nil]
