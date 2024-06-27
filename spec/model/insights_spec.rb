@@ -94,6 +94,11 @@ describe Minfraud::Model::Insights do
       expect(m.billing_address.distance_to_ip_location).to eq 5_465
       expect(m.billing_address.is_in_ip_country).to eq false
 
+      expect(m.billing_phone.country).to eq 'US'
+      expect(m.billing_phone.is_voip).to eq false
+      expect(m.billing_phone.network_operator).to eq 'Verizon/1'
+      expect(m.billing_phone.number_type).to eq 'fixed'
+
       expect(m.credit_card.issuer.name).to eq 'Bank of No Hope'
       expect(m.credit_card.issuer.matches_provided_name).to eq true
       expect(m.credit_card.issuer.phone_number).to eq '8003421232'
@@ -125,6 +130,11 @@ describe Minfraud::Model::Insights do
       expect(m.shipping_address.is_postal_in_city).to eq false
       expect(m.shipping_address.latitude).to eq 35.704729
       expect(m.shipping_address.longitude).to eq(-97.568619)
+
+      expect(m.shipping_phone.country).to eq 'CA'
+      expect(m.shipping_phone.is_voip).to eq true
+      expect(m.shipping_phone.network_operator).to eq 'Telus Mobility-SVR/2'
+      expect(m.shipping_phone.number_type).to eq 'mobile'
 
       expect(m.warnings[0].code).to eq 'INPUT_INVALID'
       expect(m.warnings[0].warning).to eq 'Encountered value at /account/user_id that does meet the required constraints'
