@@ -5,6 +5,7 @@ require 'minfraud/model/credit_card'
 require 'minfraud/model/device'
 require 'minfraud/model/email'
 require 'minfraud/model/ip_address'
+require 'minfraud/model/phone'
 require 'minfraud/model/score'
 require 'minfraud/model/shipping_address'
 
@@ -17,6 +18,12 @@ module Minfraud
       #
       # @return [Minfraud::Model::BillingAddress]
       attr_reader :billing_address
+
+      # An object containing minFraud data related to the billing phone
+      # number used in the transaction.
+      #
+      # @return [Minfraud::Model::Phone]
+      attr_reader :billing_phone
 
       # An object containing minFraud data about the credit card used in the
       # transaction.
@@ -48,6 +55,12 @@ module Minfraud
       # @return [Minfraud::Model::ShippingAddress]
       attr_reader :shipping_address
 
+      # An object containing minFraud data related to the shipping phone
+      # number used in the transaction.
+      #
+      # @return [Minfraud::Model::Phone]
+      attr_reader :shipping_phone
+
       # @!visibility private
       def initialize(record, locales)
         super
@@ -55,6 +68,7 @@ module Minfraud
         @billing_address  = Minfraud::Model::BillingAddress.new(
           get('billing_address')
         )
+        @billing_phone    = Minfraud::Model::Phone.new(get('billing_phone'))
         @credit_card      = Minfraud::Model::CreditCard.new(get('credit_card'))
         @device           = Minfraud::Model::Device.new(get('device'))
         @email            = Minfraud::Model::Email.new(get('email'))
@@ -62,6 +76,7 @@ module Minfraud
         @shipping_address = Minfraud::Model::ShippingAddress.new(
           get('shipping_address')
         )
+        @shipping_phone   = Minfraud::Model::Phone.new(get('shipping_phone'))
       end
     end
   end

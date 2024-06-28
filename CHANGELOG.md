@@ -8,6 +8,11 @@
   `minfraud_id`, `transaction_id`.
 * Updated the validation for the Report Transactions API to check that
   `ip_address`, `maxmind_id`, and `minfraud_id` contain valid values.
+* Added `billing_phone` and `shipping_phone` attributes to the minFraud
+  Insights and Factors response models. These contain objects with
+  information about the respective phone numbers. Please see [our developer
+  site](https://dev.maxmind.com/minfraud/api-documentation/responses/) for
+  more information.
 
 ## v2.5.0 (2024-04-16)
 
