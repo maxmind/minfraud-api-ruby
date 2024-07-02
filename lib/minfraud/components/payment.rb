@@ -108,6 +108,7 @@ module Minfraud
         orangepay
         other
         pacnet_services
+        payconex
         payeezy
         payfast
         paygate

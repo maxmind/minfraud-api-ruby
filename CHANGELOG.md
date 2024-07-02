@@ -13,6 +13,7 @@
   information about the respective phone numbers. Please see [our developer
   site](https://dev.maxmind.com/minfraud/api-documentation/responses/) for
   more information.
+* Added the processor `:payconex` to `Minfraud::Components::Payment`.
 
 ## v2.5.0 (2024-04-16)
 
