@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.6.0
+## v2.6.0 (2024-07-08)
 
 * Updated the validation for the Report Transactions API to make the
   `ip_address` parameter optional. Now the `tag` and at least one of the
