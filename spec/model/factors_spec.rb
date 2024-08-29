@@ -31,6 +31,22 @@ describe Minfraud::Model::Factors do
       expect(m.subscores.shipping_address).to eq 0.2
       expect(m.subscores.shipping_address_distance_to_ip_location).to eq 0.16
       expect(m.subscores.time_of_day).to eq 0.17
+
+      expect(m.risk_score_reasons.length).to eq 4
+      expect(m.risk_score_reasons[0].multiplier).to eq 45.0
+      expect(m.risk_score_reasons[0].reasons.length).to eq 1
+      expect(m.risk_score_reasons[0].reasons[0].code).to eq 'ANONYMOUS_IP'
+      expect(m.risk_score_reasons[0].reasons[0].reason).to eq 'Risk due to IP being an Anonymous IP'
+    end
+
+    it 'checks absence of risk score reasons' do
+      buf    = File.read('spec/fixtures/files/factors-response1.json')
+      record = JSON.parse(buf)
+      record.delete('risk_score_reasons')
+
+      m = Minfraud::Model::Factors.new(record, ['en'])
+
+      expect(m.risk_score_reasons).to eq []
     end
   end
 end
