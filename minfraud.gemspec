@@ -22,10 +22,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'connection_pool', '~> 2.2'
-  spec.add_runtime_dependency 'http', '>= 4.3', '< 6.0'
-  spec.add_runtime_dependency 'maxmind-geoip2', '~> 1.2'
-  spec.add_runtime_dependency 'simpleidn', '~> 0.1', '>= 0.1.1'
+  spec.add_dependency 'connection_pool', '~> 2.2'
+  spec.add_dependency 'http', '>= 4.3', '< 6.0'
+  spec.add_dependency 'maxmind-geoip2', '~> 1.2'
+  spec.add_dependency 'simpleidn', '~> 0.1', '>= 0.1.1'
 
   spec.add_development_dependency 'bundler', '~> 2.2'
   spec.add_development_dependency 'rake', '~> 13.0'
