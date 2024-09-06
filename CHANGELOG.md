@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.7.0-beta.1
+## v2.7.0.beta1 (2024-09-06)
 
 * Added support for the new risk reasons outputs in minFraud Factors. The risk
   reasons output codes and reasons are currently in beta and are subject to
