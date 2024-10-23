@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.7.0
+
+* The minFraud Factors subscores have been deprecated. They will be removed
+  in March 2025. Please see [our release notes](https://dev.maxmind.com/minfraud/release-notes/2024/#deprecation-of-risk-factor-scoressubscores)
+  for more information.
+
 ## v2.7.0.beta1 (2024-09-06)
 
 * Added support for the new risk reasons outputs in minFraud Factors. The risk
