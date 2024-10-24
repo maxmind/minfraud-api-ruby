@@ -21,6 +21,7 @@ module Minfraud
       # that are used to calculate the overall risk score.
       #
       # @return [Minfraud::Model::Subscores]
+      # @deprecated Use {::risk_score_reasons} instead.
       attr_reader :subscores
 
       # @!visibility private

@@ -5,6 +5,8 @@ require 'minfraud/model/abstract'
 module Minfraud
   module Model
     # Score for risk factors that are used in calculating the riskScore.
+    #
+    # @deprecated Use {RiskScoreReason} instead.
     class Subscores < Abstract
       # The risk associated with the AVS result. If present, this is a value in
       # the range 0.01 to 99.
