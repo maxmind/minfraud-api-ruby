@@ -5,6 +5,8 @@
 * The minFraud Factors subscores have been deprecated. They will be removed
   in March 2025. Please see [our release notes](https://dev.maxmind.com/minfraud/release-notes/2024/#deprecation-of-risk-factor-scoressubscores)
   for more information.
+* Ruby 3.0+ is now required. If you're using Ruby 2.7, please use version
+  2.7.0.beta1 or 2.6.0 of this gem.
 
 ## v2.7.0.beta1 (2024-09-06)
 
@@ -12,8 +14,6 @@
   reasons output codes and reasons are currently in beta and are subject to
   change. We recommend that you use these beta outputs with caution and avoid
   relying on them for critical applications.
-* Ruby 3.0+ is now required. If you're using Ruby 2.7, please use version
-  2.6.0 of this gem.
 
 ## v2.6.0 (2024-07-08)
 
