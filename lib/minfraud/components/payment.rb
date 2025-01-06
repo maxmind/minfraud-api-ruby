@@ -68,6 +68,7 @@ module Minfraud
         elavon
         emerchantpay
         epay
+        epayco
         eprocessing_network
         epx
         eway

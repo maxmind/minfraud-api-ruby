@@ -7,6 +7,7 @@
   for more information.
 * Ruby 3.0+ is now required. If you're using Ruby 2.7, please use version
   2.7.0.beta1 or 2.6.0 of this gem.
+* Added the processor `:epayco` to `Minfraud::Components::Payment`.
 
 ## v2.7.0.beta1 (2024-09-06)
 
