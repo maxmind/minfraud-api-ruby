@@ -2,5 +2,5 @@
 
 module Minfraud
   # The Gem version.
-  VERSION = '2.7.0.beta1'
+  VERSION = '2.7.0'
 end
