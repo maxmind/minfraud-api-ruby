@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.7.1 (2025-02-10)
+
+* Re-release due to bug in release workflow.
+
 ## v2.7.0 (2025-02-10)
 
 * The minFraud Factors subscores have been deprecated. They will be removed
