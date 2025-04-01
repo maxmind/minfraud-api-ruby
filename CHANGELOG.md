@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.8.0
+
+* Added the processor `:cryptomus` to `Minfraud::Components::Payment`.
+
 ## v2.7.1 (2025-02-10)
 
 * Re-release due to bug in release workflow.
