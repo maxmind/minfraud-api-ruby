@@ -50,6 +50,7 @@ module Minfraud
         coregateway
         creditguard
         credorax
+        cryptomus
         ct_payments
         cuentadigital
         curopayments
