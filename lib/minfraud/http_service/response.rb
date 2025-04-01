@@ -71,6 +71,8 @@ module Minfraud
         insights: Minfraud::Model::Insights,
         score:    Minfraud::Model::Score
       }.freeze
+
+      private_constant :ENDPOINT_TO_CLASS
     end
   end
 end

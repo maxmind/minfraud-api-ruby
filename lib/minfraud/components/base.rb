@@ -42,6 +42,8 @@ module Minfraud
 
       # Keys that have to remain boolean
       BOOLS = %w[was_authorized is_gift has_gift_message].freeze
+
+      private_constant :BOOLS
     end
   end
 end
