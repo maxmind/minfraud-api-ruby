@@ -96,6 +96,7 @@ describe Minfraud::Model::Insights do
 
       expect(m.billing_phone.country).to eq 'US'
       expect(m.billing_phone.is_voip).to eq false
+      expect(m.billing_phone.matches_postal).to eq true
       expect(m.billing_phone.network_operator).to eq 'Verizon/1'
       expect(m.billing_phone.number_type).to eq 'fixed'
 
@@ -133,6 +134,7 @@ describe Minfraud::Model::Insights do
 
       expect(m.shipping_phone.country).to eq 'CA'
       expect(m.shipping_phone.is_voip).to eq true
+      expect(m.shipping_phone.matches_postal).to eq true
       expect(m.shipping_phone.network_operator).to eq 'Telus Mobility-SVR/2'
       expect(m.shipping_phone.number_type).to eq 'mobile'
 

@@ -21,6 +21,15 @@ module Minfraud
       # @return [Boolean, nil]
       attr_reader :is_voip
 
+      # This property is true if the phone number's prefix is commonly
+      # associated with the postal code. It is false if the prefix is not
+      # associated with the postal code. It is non-nil only when the phone
+      # number is in the US, the number prefix is in our database, and the
+      # postal code and country are provided in the request.
+      #
+      # @return [Boolean, nil]
+      attr_reader :matches_postal
+
       # The name of the original network operator associated with the phone
       # number. This attribute does not reflect phone numbers that have been
       # ported from the original operator to another, nor does it identify
@@ -41,6 +50,7 @@ module Minfraud
 
         @country          = get('country')
         @is_voip          = get('is_voip')
+        @matches_postal   = get('matches_postal')
         @network_operator = get('network_operator')
         @number_type      = get('number_type')
       end
