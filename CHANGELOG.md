@@ -2,6 +2,9 @@
 
 ## v2.8.0
 
+* Added support for the `/billing_phone/matches_postal` and
+  `/shipping_phone/matches_postal` outputs. These are available as the
+  `matches_postal` attribute on `Minfraud::Model::Phone`.
 * Added the processor `:cryptomus` to `Minfraud::Components::Payment`.
 
 ## v2.7.1 (2025-02-10)
