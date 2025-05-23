@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.8.0
+## v2.8.0 (2025-05-23)
 
 * Added support for the `/billing_phone/matches_postal` and
   `/shipping_phone/matches_postal` outputs. These are available as the
