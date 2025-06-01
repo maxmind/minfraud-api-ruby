@@ -14,9 +14,9 @@ module Minfraud
       # @return [Float]
       attr_reader :multiplier
 
-      # This field contains Risk objects that describe one of the reasons for the multiplier.
+      # Reasons for the multiplier.
       #
-      # @return [Array<Minfraud::Model::Risk>]
+      # @return [Array<Minfraud::Model::Reason>]
       attr_reader :reasons
 
       # @!visibility private
