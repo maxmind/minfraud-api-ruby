@@ -95,14 +95,14 @@ module Minfraud
           validate_uuid('minfraud_id', @minfraud_id)
 
           if ip_address.nil? &&
-             (minfraud_id.nil? || empty_uuid(minfraud_id)) &&
+             (minfraud_id.nil? || empty_uuid?(minfraud_id)) &&
              (maxmind_id.nil? || maxmind_id.empty?) &&
              (transaction_id.nil? || transaction_id.empty?)
             raise ArgumentError, 'At least one of the following is required: ip_address, minfraud_id, maxmind_id, transaction_id.'
           end
         end
 
-        def empty_uuid(value)
+        def empty_uuid?(value)
           stripped_value = value.to_s.gsub('-', '')
           stripped_value == '0' * 32
         end
