@@ -384,7 +384,7 @@ module Minfraud
 
         idx = domain.rindex('.')
         if !idx.nil?
-          tld = domain[idx + 1..]
+          tld = domain[(idx + 1)..]
           if TYPO_TLDS.key?(tld)
             domain = "#{domain[0, idx]}.#{TYPO_TLDS[tld]}"
           end
