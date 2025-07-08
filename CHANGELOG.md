@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.9.0
+
+* Added the processor `:securepay` to `Minfraud::Components::Payment`.
+
 ## v2.8.0 (2025-05-23)
 
 * Added support for the `/billing_phone/matches_postal` and
