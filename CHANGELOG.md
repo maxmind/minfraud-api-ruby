@@ -3,6 +3,8 @@
 ## v2.9.0
 
 * Added the processor `:securepay` to `Minfraud::Components::Payment`.
+* Ruby 3.2+ is now required. If you're using Ruby 3.0 or 3.1, please use
+  version 2.8.0 of this gem.
 
 ## v2.8.0 (2025-05-23)
 

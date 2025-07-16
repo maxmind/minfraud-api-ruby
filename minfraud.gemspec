@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/maxmind/minfraud-api-ruby'
   spec.license       = 'MIT'
 
-  spec.required_ruby_version = '>= 3.0'
+  spec.required_ruby_version = '>= 3.2'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^.gitignore$|^(?:\.github|dev-bin|spec)/}) }
   spec.bindir        = 'exe'
