@@ -6,6 +6,7 @@ describe Minfraud::Enum do
   let(:klass) do
     Class.new do
       include Minfraud::Enum
+
       enum_accessor :test, %i[foo bar]
     end
   end
