@@ -103,7 +103,7 @@ module Minfraud
         end
 
         def empty_uuid?(value)
-          stripped_value = value.to_s.gsub('-', '')
+          stripped_value = value.to_s.delete('-')
           stripped_value == '0' * 32
         end
       end

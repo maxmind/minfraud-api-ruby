@@ -9,7 +9,7 @@ describe Minfraud::Model::Factors do
       buf    = File.read('spec/fixtures/files/factors-response1.json')
       record = JSON.parse(buf)
 
-      m = Minfraud::Model::Factors.new(record, ['en'])
+      m = described_class.new(record, ['en'])
 
       expect(m.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
 
@@ -44,7 +44,7 @@ describe Minfraud::Model::Factors do
       record = JSON.parse(buf)
       record.delete('risk_score_reasons')
 
-      m = Minfraud::Model::Factors.new(record, ['en'])
+      m = described_class.new(record, ['en'])
 
       expect(m.risk_score_reasons).to eq []
     end

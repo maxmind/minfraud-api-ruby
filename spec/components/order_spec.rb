@@ -10,7 +10,7 @@ describe Minfraud::Components::Order do
 
     it 'raises an exception for an invalid has_gift_message' do
       expect do
-        Minfraud::Components::Order.new(
+        described_class.new(
           has_gift_message: 1,
         )
       end.to raise_exception(Minfraud::InvalidInputError)
@@ -18,14 +18,14 @@ describe Minfraud::Components::Order do
 
     it 'raises an exception for an invalid uri' do
       expect do
-        Minfraud::Components::Order.new(
+        described_class.new(
           referrer_uri: 'foo',
         )
       end.to raise_exception(Minfraud::InvalidInputError)
     end
 
     it 'does not raise an exception for valid values' do
-      Minfraud::Components::Order.new(
+      described_class.new(
         has_gift_message: true,
         referrer_uri:     'https://www.maxmind.com',
       )

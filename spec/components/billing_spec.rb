@@ -10,7 +10,7 @@ describe Minfraud::Components::Billing do
 
     it 'raises an exception for an invalid region' do
       expect do
-        Minfraud::Components::Billing.new(
+        described_class.new(
           region: 'HIHIHI',
         )
       end.to raise_exception(Minfraud::InvalidInputError)
@@ -18,7 +18,7 @@ describe Minfraud::Components::Billing do
 
     it 'raises an exception for an invalid country' do
       expect do
-        Minfraud::Components::Billing.new(
+        described_class.new(
           country: 'HIHIHI',
         )
       end.to raise_exception(Minfraud::InvalidInputError)
@@ -26,14 +26,14 @@ describe Minfraud::Components::Billing do
 
     it 'raises an exception for an invalid phone_country_code' do
       expect do
-        Minfraud::Components::Billing.new(
+        described_class.new(
           phone_country_code: 'HIHIHI',
         )
       end.to raise_exception(Minfraud::InvalidInputError)
     end
 
     it 'does not raise an exception for valid values' do
-      Minfraud::Components::Billing.new(
+      described_class.new(
         region:             'BC',
         country:            'CA',
         phone_country_code: '1',

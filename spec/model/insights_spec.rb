@@ -9,7 +9,7 @@ describe Minfraud::Model::Insights do
       buf    = File.read('spec/fixtures/files/insights-response1.json')
       record = JSON.parse(buf)
 
-      m = Minfraud::Model::Insights.new(record, ['en'])
+      m = described_class.new(record, ['en'])
 
       expect(m.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
       expect(m.risk_score).to eq 0.01
@@ -36,7 +36,7 @@ describe Minfraud::Model::Insights do
 
       expect(m.ip_address.country.confidence).to eq 99
       expect(m.ip_address.country.geoname_id).to eq 2_635_167
-      expect(m.ip_address.country.in_european_union?).to eq true
+      expect(m.ip_address.country.in_european_union?).to be true
       expect(m.ip_address.country.iso_code).to eq 'GB'
       expect(m.ip_address.country.names['en']).to eq 'United Kingdom'
 
@@ -53,12 +53,12 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.postal.confidence).to eq 99
 
       expect(m.ip_address.registered_country.geoname_id).to eq 6_252_001
-      expect(m.ip_address.registered_country.in_european_union?).to eq false
+      expect(m.ip_address.registered_country.in_european_union?).to be false
       expect(m.ip_address.registered_country.iso_code).to eq 'US'
       expect(m.ip_address.registered_country.names['en']).to eq 'United States'
 
       expect(m.ip_address.represented_country.geoname_id).to eq 6_252_002
-      expect(m.ip_address.represented_country.in_european_union?).to eq false
+      expect(m.ip_address.represented_country.in_european_union?).to be false
       expect(m.ip_address.represented_country.iso_code).to eq 'US'
       expect(m.ip_address.represented_country.names['en']).to eq 'United States'
       expect(m.ip_address.represented_country.type).to eq 'military'
@@ -73,13 +73,13 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.traits.connection_type).to eq 'Cable/DSL'
       expect(m.ip_address.traits.domain).to eq 'in-addr.arpa'
       expect(m.ip_address.traits.ip_address).to eq '152.216.7.110'
-      expect(m.ip_address.traits.anonymous?).to eq true
-      expect(m.ip_address.traits.anonymous_vpn?).to eq true
-      expect(m.ip_address.traits.hosting_provider?).to eq true
-      expect(m.ip_address.traits.public_proxy?).to eq true
-      expect(m.ip_address.traits.residential_proxy?).to eq true
-      expect(m.ip_address.traits.is_satellite_provider).to eq true
-      expect(m.ip_address.traits.tor_exit_node?).to eq true
+      expect(m.ip_address.traits.anonymous?).to be true
+      expect(m.ip_address.traits.anonymous_vpn?).to be true
+      expect(m.ip_address.traits.hosting_provider?).to be true
+      expect(m.ip_address.traits.public_proxy?).to be true
+      expect(m.ip_address.traits.residential_proxy?).to be true
+      expect(m.ip_address.traits.is_satellite_provider).to be true
+      expect(m.ip_address.traits.tor_exit_node?).to be true
       expect(m.ip_address.traits.isp).to eq 'Andrews & Arnold Ltd'
       expect(m.ip_address.traits.mobile_country_code).to eq '310'
       expect(m.ip_address.traits.mobile_network_code).to eq '004'
@@ -88,29 +88,29 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.traits.user_count).to eq 5
       expect(m.ip_address.traits.user_type).to eq 'government'
 
-      expect(m.billing_address.is_postal_in_city).to eq false
+      expect(m.billing_address.is_postal_in_city).to be false
       expect(m.billing_address.latitude).to eq 41.310571
       expect(m.billing_address.longitude).to eq(-72.922891)
       expect(m.billing_address.distance_to_ip_location).to eq 5_465
-      expect(m.billing_address.is_in_ip_country).to eq false
+      expect(m.billing_address.is_in_ip_country).to be false
 
       expect(m.billing_phone.country).to eq 'US'
-      expect(m.billing_phone.is_voip).to eq false
-      expect(m.billing_phone.matches_postal).to eq true
+      expect(m.billing_phone.is_voip).to be false
+      expect(m.billing_phone.matches_postal).to be true
       expect(m.billing_phone.network_operator).to eq 'Verizon/1'
       expect(m.billing_phone.number_type).to eq 'fixed'
 
       expect(m.credit_card.issuer.name).to eq 'Bank of No Hope'
-      expect(m.credit_card.issuer.matches_provided_name).to eq true
+      expect(m.credit_card.issuer.matches_provided_name).to be true
       expect(m.credit_card.issuer.phone_number).to eq '8003421232'
-      expect(m.credit_card.issuer.matches_provided_phone_number).to eq true
+      expect(m.credit_card.issuer.matches_provided_phone_number).to be true
 
       expect(m.credit_card.brand).to eq 'Visa'
       expect(m.credit_card.country).to eq 'US'
-      expect(m.credit_card.is_business).to eq true
-      expect(m.credit_card.is_issued_in_billing_address_country).to eq true
-      expect(m.credit_card.is_prepaid).to eq true
-      expect(m.credit_card.is_virtual).to eq true
+      expect(m.credit_card.is_business).to be true
+      expect(m.credit_card.is_issued_in_billing_address_country).to be true
+      expect(m.credit_card.is_prepaid).to be true
+      expect(m.credit_card.is_virtual).to be true
       expect(m.credit_card.type).to eq 'credit'
 
       expect(m.device.confidence).to eq 99
@@ -120,21 +120,21 @@ describe Minfraud::Model::Insights do
 
       expect(m.email.domain.first_seen).to eq '2016-01-03'
       expect(m.email.first_seen).to eq '2017-01-02'
-      expect(m.email.is_disposable).to eq true
-      expect(m.email.is_free).to eq true
-      expect(m.email.is_high_risk).to eq true
+      expect(m.email.is_disposable).to be true
+      expect(m.email.is_free).to be true
+      expect(m.email.is_high_risk).to be true
 
       expect(m.shipping_address.distance_to_billing_address).to eq 2_227
       expect(m.shipping_address.distance_to_ip_location).to eq 7_456
-      expect(m.shipping_address.is_in_ip_country).to eq false
-      expect(m.shipping_address.is_high_risk).to eq false
-      expect(m.shipping_address.is_postal_in_city).to eq false
+      expect(m.shipping_address.is_in_ip_country).to be false
+      expect(m.shipping_address.is_high_risk).to be false
+      expect(m.shipping_address.is_postal_in_city).to be false
       expect(m.shipping_address.latitude).to eq 35.704729
       expect(m.shipping_address.longitude).to eq(-97.568619)
 
       expect(m.shipping_phone.country).to eq 'CA'
-      expect(m.shipping_phone.is_voip).to eq true
-      expect(m.shipping_phone.matches_postal).to eq true
+      expect(m.shipping_phone.is_voip).to be true
+      expect(m.shipping_phone.matches_postal).to be true
       expect(m.shipping_phone.network_operator).to eq 'Telus Mobility-SVR/2'
       expect(m.shipping_phone.number_type).to eq 'mobile'
 
@@ -151,57 +151,57 @@ describe Minfraud::Model::Insights do
       buf    = File.read('spec/fixtures/files/insights-response2.json')
       record = JSON.parse(buf)
 
-      m = Minfraud::Model::Insights.new(record, ['en'])
+      m = described_class.new(record, ['en'])
 
       expect(m.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
 
-      expect(m.disposition.action).to eq nil
-      expect(m.disposition.reason).to eq nil
-      expect(m.disposition.rule_label).to eq nil
+      expect(m.disposition.action).to be_nil
+      expect(m.disposition.reason).to be_nil
+      expect(m.disposition.rule_label).to be_nil
 
       expect(m.ip_address.risk).to eq 0.01
       expect(m.ip_address.risk_reasons.length).to eq 0
 
-      expect(m.ip_address.city.confidence).to eq nil
-      expect(m.ip_address.city.geoname_id).to eq nil
-      expect(m.ip_address.city.names).to eq nil
+      expect(m.ip_address.city.confidence).to be_nil
+      expect(m.ip_address.city.geoname_id).to be_nil
+      expect(m.ip_address.city.names).to be_nil
 
-      expect(m.ip_address.location.accuracy_radius).to eq nil
-      expect(m.ip_address.location.average_income).to eq nil
-      expect(m.ip_address.location.latitude).to eq nil
-      expect(m.ip_address.location.local_time).to eq nil
-      expect(m.ip_address.location.longitude).to eq nil
-      expect(m.ip_address.location.metro_code).to eq nil
-      expect(m.ip_address.location.population_density).to eq nil
-      expect(m.ip_address.location.time_zone).to eq nil
+      expect(m.ip_address.location.accuracy_radius).to be_nil
+      expect(m.ip_address.location.average_income).to be_nil
+      expect(m.ip_address.location.latitude).to be_nil
+      expect(m.ip_address.location.local_time).to be_nil
+      expect(m.ip_address.location.longitude).to be_nil
+      expect(m.ip_address.location.metro_code).to be_nil
+      expect(m.ip_address.location.population_density).to be_nil
+      expect(m.ip_address.location.time_zone).to be_nil
 
-      expect(m.ip_address.traits.autonomous_system_number).to eq nil
+      expect(m.ip_address.traits.autonomous_system_number).to be_nil
       expect(m.ip_address.traits.autonomous_system_organization).to eq 'Foo Inc'
-      expect(m.ip_address.traits.anonymous?).to eq false
+      expect(m.ip_address.traits.anonymous?).to be false
       expect(m.ip_address.traits.connection_type).to eq 'Corporate'
-      expect(m.ip_address.traits.residential_proxy?).to eq false
-      expect(m.ip_address.traits.is_satellite_provider).to eq false
-      expect(m.ip_address.traits.tor_exit_node?).to eq false
+      expect(m.ip_address.traits.residential_proxy?).to be false
+      expect(m.ip_address.traits.is_satellite_provider).to be false
+      expect(m.ip_address.traits.tor_exit_node?).to be false
 
-      expect(m.billing_address.is_postal_in_city).to eq nil
-      expect(m.billing_address.distance_to_ip_location).to eq nil
-      expect(m.billing_address.is_in_ip_country).to eq false
+      expect(m.billing_address.is_postal_in_city).to be_nil
+      expect(m.billing_address.distance_to_ip_location).to be_nil
+      expect(m.billing_address.is_in_ip_country).to be false
 
       expect(m.credit_card.issuer.name).to eq 'Bank of No Hope'
-      expect(m.credit_card.is_business).to eq nil
-      expect(m.credit_card.issuer.matches_provided_name).to eq nil
+      expect(m.credit_card.is_business).to be_nil
+      expect(m.credit_card.issuer.matches_provided_name).to be_nil
 
-      expect(m.credit_card.brand).to eq nil
+      expect(m.credit_card.brand).to be_nil
       expect(m.credit_card.country).to eq 'US'
 
-      expect(m.device.confidence).to eq nil
+      expect(m.device.confidence).to be_nil
       expect(m.device.id).to eq '7835b099-d385-4e5b-969e-7df26181d73b'
 
-      expect(m.email.domain.first_seen).to eq nil
-      expect(m.email.first_seen).to eq nil
-      expect(m.email.is_disposable).to eq true
+      expect(m.email.domain.first_seen).to be_nil
+      expect(m.email.first_seen).to be_nil
+      expect(m.email.is_disposable).to be true
 
-      expect(m.shipping_address.distance_to_billing_address).to eq nil
+      expect(m.shipping_address.distance_to_billing_address).to be_nil
       expect(m.shipping_address.distance_to_ip_location).to eq 7_456
     end
 
@@ -209,7 +209,7 @@ describe Minfraud::Model::Insights do
       buf    = File.read('spec/fixtures/files/insights-response3.json')
       record = JSON.parse(buf)
 
-      m = Minfraud::Model::Insights.new(record, ['en'])
+      m = described_class.new(record, ['en'])
 
       expect(m.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
       expect(m.risk_score).to eq 0.01

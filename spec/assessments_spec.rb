@@ -3,14 +3,15 @@
 require 'spec_helper'
 
 describe Minfraud::Assessments do
-  let(:resolver)      { double(Minfraud::Resolver) }
-  subject             { described_class.new({}, resolver) }
+  subject(:assessment) { described_class.new({}, resolver) }
+
+  let(:resolver)       { class_double(Minfraud::Resolver) }
 
   before { allow(resolver).to receive(:assign) }
 
   %w[account billing credit_card custom_inputs device email event order payment shipping shopping_cart].each do |attribute|
     it "responds_to #{attribute}" do
-      expect(subject).to respond_to(attribute)
+      expect(assessment).to respond_to(attribute)
     end
   end
 
@@ -18,7 +19,7 @@ describe Minfraud::Assessments do
     it { is_expected.to be_an_instance_of described_class }
 
     it 'calls resolver for components assignment' do
-      expect(resolver).to have_received(:assign).with(subject, {})
+      expect(resolver).to have_received(:assign).with(assessment, {})
     end
   end
 
@@ -63,7 +64,7 @@ describe Minfraud::Assessments do
       ]
 
       tests.each do |i|
-        assessment = Minfraud::Assessments.new(
+        assessment = described_class.new(
           email: i[:email],
         )
         body       = assessment.send :request_body
