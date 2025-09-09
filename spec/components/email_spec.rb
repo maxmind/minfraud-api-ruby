@@ -10,20 +10,20 @@ describe Minfraud::Components::Email do
 
     it 'raises an exception for an invalid email address' do
       expect do
-        Minfraud::Components::Email.new(
+        described_class.new(
           address: 'foo',
         )
       end.to raise_exception(Minfraud::InvalidInputError)
     end
 
     it 'does not raise an exception for valid values' do
-      Minfraud::Components::Email.new(
+      described_class.new(
         address: 'wstorey@maxmind.com',
       )
     end
 
     it 'does not raise an exception for valid values (address is md5)' do
-      Minfraud::Components::Email.new(
+      described_class.new(
         address: 'd3b07384d113edec49eaa6238ad5ff00',
       )
     end
@@ -42,7 +42,7 @@ describe Minfraud::Components::Email do
       ]
 
       tests.each do |i|
-        email  = Minfraud::Components::Email.new
+        email  = described_class.new
         output = email.send :clean_domain, i[:input]
         expect(output).to eq i[:output]
       end
@@ -87,7 +87,7 @@ describe Minfraud::Components::Email do
       ]
 
       tests.each do |i|
-        email  = Minfraud::Components::Email.new
+        email  = described_class.new
         output = email.send :clean_email_address, i[:input]
         expect(output).to eq i[:output]
       end
@@ -118,7 +118,7 @@ describe Minfraud::Components::Email do
       ]
 
       tests.each do |i|
-        email  = Minfraud::Components::Email.new
+        email  = described_class.new
         output = email.send :hash_email_address, i[:input]
         expect(output).to eq i[:output]
       end

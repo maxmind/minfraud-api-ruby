@@ -9,7 +9,7 @@ describe Minfraud::Model::Score do
       buf    = File.read('spec/fixtures/files/score-response1.json')
       record = JSON.parse(buf)
 
-      score = Minfraud::Model::Score.new(record, ['en'])
+      score = described_class.new(record, ['en'])
 
       expect(score.disposition.action).to eq 'reject'
       expect(score.disposition.reason).to eq 'custom_rule'
@@ -33,11 +33,11 @@ describe Minfraud::Model::Score do
       buf    = File.read('spec/fixtures/files/score-response2.json')
       record = JSON.parse(buf)
 
-      score = Minfraud::Model::Score.new(record, ['en'])
+      score = described_class.new(record, ['en'])
 
-      expect(score.disposition.action).to eq nil
-      expect(score.disposition.reason).to eq nil
-      expect(score.disposition.rule_label).to eq nil
+      expect(score.disposition.action).to be_nil
+      expect(score.disposition.reason).to be_nil
+      expect(score.disposition.rule_label).to be_nil
       expect(score.funds_remaining).to eq 10.00
       expect(score.id).to eq '27d26476-e2bc-11e4-92b8-962e705b4af5'
       expect(score.ip_address.risk).to eq 99

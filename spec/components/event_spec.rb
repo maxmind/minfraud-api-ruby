@@ -20,14 +20,14 @@ describe Minfraud::Components::Event do
 
     it 'raises an exception for an invalid time' do
       expect do
-        Minfraud::Components::Event.new(
+        described_class.new(
           time: 'August 28, 2020',
         )
       end.to raise_exception(Minfraud::InvalidInputError)
     end
 
     it 'does not raise an exception for valid values' do
-      Minfraud::Components::Event.new(
+      described_class.new(
         time: '2020-08-28T14:00:00Z',
       )
     end

@@ -1,6 +1,7 @@
 plugins:
     - rubocop-performance
     - rubocop-rake
+    - rubocop-rspec
 
 AllCops:
     TargetRubyVersion: '3.2'
@@ -91,4 +92,21 @@ Naming/VariableNumber:
   Enabled: false # Doesn't always make sense.
 
 Gemspec/DevelopmentDependencies:
+  Enabled: false
+
+# This might make sense, but I don't think it's worth moving things around for.
+RSpec/SpecFilePathFormat:
+  Enabled: false
+# Sometimes it makes sense to have lots of assertions.
+RSpec/MultipleExpectations:
+  Enabled: false
+# Sometimes it makes sense to have long tests.
+RSpec/ExampleLength:
+  Enabled: false
+# This seems okay.
+RSpec/MultipleDescribes:
+  Enabled: false
+# This seems to give a bunch of false positives. Specifically it's flagging
+# things where we are creating an object and checking no exception happens.
+RSpec/NoExpectationExample:
   Enabled: false

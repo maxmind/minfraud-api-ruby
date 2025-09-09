@@ -7,6 +7,7 @@ describe Minfraud::Components::Report::Transaction do
     before do
       Minfraud.configure { |c| c.enable_validation = false }
     end
+
     context 'with an invalid type' do
       it 'raises an exception' do
         expect do
@@ -14,6 +15,7 @@ describe Minfraud::Components::Report::Transaction do
         end.to raise_exception(Minfraud::NotEnumValueError)
       end
     end
+
     context 'with all valid tags' do
       values = %i[chargeback not_fraud spam_or_abuse suspected_fraud]
       values.each do |val|
@@ -23,6 +25,7 @@ describe Minfraud::Components::Report::Transaction do
         end
       end
     end
+
     context 'with all possible params' do
       it 'does not raise an exception' do
         report = described_class.new(
@@ -50,13 +53,15 @@ describe Minfraud::Components::Report::Transaction do
     before do
       Minfraud.configure { |c| c.enable_validation = true }
     end
-    context 'missing required identifier field' do
+
+    context 'when missing required identifier field' do
       it 'raises an exception' do
         expect do
           described_class.new(tag: :suspected_fraud)
         end.to raise_exception(ArgumentError)
       end
     end
+
     context 'with tag + ip_address' do
       it 'does not raise an exception' do
         report = described_class.new(
@@ -68,6 +73,7 @@ describe Minfraud::Components::Report::Transaction do
         expect(report.tag).to eq :suspected_fraud
       end
     end
+
     context 'with tag + maxmind_id' do
       it 'does not raise an exception' do
         report = described_class.new(
@@ -79,6 +85,7 @@ describe Minfraud::Components::Report::Transaction do
         expect(report.maxmind_id).to eq '12345678'
       end
     end
+
     context 'with tag + minfraud_id' do
       it 'does not raise an exception' do
         report = described_class.new(
@@ -90,6 +97,7 @@ describe Minfraud::Components::Report::Transaction do
         expect(report.minfraud_id).to eq '58fa38d8-4b87-458b-a22b-f00eda1aa20d'
       end
     end
+
     context 'with tag + transaction_id' do
       it 'does not raise an exception' do
         report = described_class.new(

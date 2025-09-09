@@ -26,7 +26,7 @@ describe Minfraud::Assessments do
       c.enable_validation = true
     end
 
-    assessment = Minfraud::Assessments.new(
+    assessment = described_class.new(
       device: {
         ip_address: '1.2.3.4',
       },
@@ -54,7 +54,7 @@ describe Minfraud::Assessments do
       c.enable_validation = false
     end
 
-    assessment = Minfraud::Assessments.new(
+    assessment = described_class.new(
       device: {
         ip_address: '1.2.3.4',
       },
@@ -84,9 +84,9 @@ describe Minfraud::Report do
     txn      = Minfraud::Components::Report::Transaction.new(
       ip_address: '1.2.3.4',
     )
-    reporter = Minfraud::Report.new(transaction: txn)
+    reporter = described_class.new(transaction: txn)
 
-    expect(reporter.report_transaction).to eq nil
+    expect(reporter.report_transaction).to be_nil
   end
 
   it 'makes an HTTP request resulting in an HTTP 401' do
@@ -109,7 +109,7 @@ describe Minfraud::Report do
     txn      = Minfraud::Components::Report::Transaction.new(
       ip_address: '1.2.3.4',
     )
-    reporter = Minfraud::Report.new(transaction: txn)
+    reporter = described_class.new(transaction: txn)
 
     expect { reporter.report_transaction }.to raise_error(Minfraud::AuthorizationError)
   end

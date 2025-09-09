@@ -3,12 +3,13 @@
 require 'spec_helper'
 
 describe Minfraud::Components::CustomInputs do
+  subject(:custom_inputs) { described_class.new(params) }
+
   let(:params) { { some_key: 'some value' } }
-  subject { described_class.new(params) }
 
   describe '#initialize' do
     it 'sets the params as instance variables' do
-      expect(subject.instance_variable_get(:@some_key)).to eql(params[:some_key])
+      expect(custom_inputs.instance_variable_get(:@some_key)).to eql(params[:some_key])
     end
   end
 
@@ -19,7 +20,7 @@ describe Minfraud::Components::CustomInputs do
 
     it 'raises an exception for an invalid number' do
       expect do
-        Minfraud::Components::CustomInputs.new(
+        described_class.new(
           number: 1e13,
         )
       end.to raise_exception(Minfraud::InvalidInputError)
@@ -27,7 +28,7 @@ describe Minfraud::Components::CustomInputs do
 
     it 'raises an exception for an invalid number (negative)' do
       expect do
-        Minfraud::Components::CustomInputs.new(
+        described_class.new(
           number: -1e13,
         )
       end.to raise_exception(Minfraud::InvalidInputError)
@@ -35,14 +36,14 @@ describe Minfraud::Components::CustomInputs do
 
     it 'raises an exception for an invalid string' do
       expect do
-        Minfraud::Components::CustomInputs.new(
+        described_class.new(
           string: 'f' * 257,
         )
       end.to raise_exception(Minfraud::InvalidInputError)
     end
 
     it 'does not raise an exception for valid values' do
-      Minfraud::Components::CustomInputs.new(
+      described_class.new(
         number: 10,
         string: 'foo',
       )

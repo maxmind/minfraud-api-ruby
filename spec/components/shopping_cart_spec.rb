@@ -5,33 +5,36 @@ require 'spec_helper'
 describe Minfraud::Components::ShoppingCart do
   describe '#initialize' do
     context 'with no provided params' do
+      subject(:empty_cart) { described_class.new }
+
       it 'assigns a default value to the items variable' do
-        expect(subject.items).to be_an_instance_of Array
-        expect(subject.items).to be_empty
+        expect(empty_cart.items).to be_an_instance_of Array
+        expect(empty_cart.items).to be_empty
       end
     end
 
     context 'with provided params' do
-      let(:instance) { described_class.new([{}]) }
+      let(:instance_with_hash) { described_class.new([{}]) }
+      let(:instance_with_item) { described_class.new([item]) }
+      let(:item)               { Minfraud::Components::ShoppingCartItem.new }
 
       it 'works with array of hashes' do
-        expect(instance.items).to all(be_a Minfraud::Components::ShoppingCartItem)
+        expect(instance_with_hash.items).to all(be_a Minfraud::Components::ShoppingCartItem)
       end
 
-      let(:item)     { Minfraud::Components::ShoppingCartItem.new }
-      let(:instance) { described_class.new([item]) }
-
       it 'works with array of Minfraud::Components::ShoppingCartItem instances' do
-        expect(instance.items).to all(be_a Minfraud::Components::ShoppingCartItem)
-        expect(instance.items).to eq [item]
+        expect(instance_with_item.items).to all(be_a Minfraud::Components::ShoppingCartItem)
+        expect(instance_with_item.items).to eq [item]
       end
     end
   end
 
   describe '#to_json' do
     context 'with no provided params' do
+      subject(:empty_cart) { described_class.new }
+
       it 'has to be an empty' do
-        expect(subject.to_json).to be_empty
+        expect(empty_cart.to_json).to be_empty
       end
     end
 
@@ -61,7 +64,7 @@ describe Minfraud::Components::ShoppingCart do
 
     it 'raises an exception for an invalid quantity' do
       expect do
-        Minfraud::Components::ShoppingCart.new(
+        described_class.new(
           [
             {
               quantity: -1,
@@ -72,7 +75,7 @@ describe Minfraud::Components::ShoppingCart do
     end
 
     it 'does not raise an exception for valid values' do
-      Minfraud::Components::ShoppingCart.new(
+      described_class.new(
         [
           {
             category: 'foo',
