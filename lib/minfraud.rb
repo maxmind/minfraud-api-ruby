@@ -32,6 +32,9 @@ require 'minfraud/report'
 # for the gem's classes.
 module Minfraud
   class << self
+    # rubocop:disable ThreadSafety/ClassAndModuleAttributes
+    # This is a false positive - these configuration attributes are set during initialization
+
     # The MaxMind account ID that is used for authorization.
     #
     # @return [Integer, nil]
@@ -57,6 +60,8 @@ module Minfraud
     # @return [String, nil]
     attr_accessor :license_key
 
+    # rubocop:enable ThreadSafety/ClassAndModuleAttributes
+
     # @!visibility private
     attr_reader :connection_pool
 
@@ -67,8 +72,11 @@ module Minfraud
       yield self
 
       pool_size        = 5
+      # rubocop:disable ThreadSafety/ClassInstanceVariable
+      # This is a false positive - this configuration is set during initialization
       host             = @host.nil? ? 'minfraud.maxmind.com' : @host
       @connection_pool = ConnectionPool.new(size: pool_size) do
+        # rubocop:enable ThreadSafety/ClassInstanceVariable
         make_http_client.persistent("https://#{host}")
       end
     end
@@ -76,10 +84,13 @@ module Minfraud
     private
 
     def make_http_client
+      # rubocop:disable ThreadSafety/ClassInstanceVariable
+      # This is a false positive - this configuration is set during initialization
       HTTP.basic_auth(
         user: @account_id,
         pass: @license_key,
       ).headers(
+        # rubocop:enable ThreadSafety/ClassInstanceVariable
         accept:     'application/json',
         user_agent: "minfraud-api-ruby/#{Minfraud::VERSION} ruby/#{RUBY_VERSION} http/#{HTTP::VERSION}",
       )

@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-performance'
   spec.add_development_dependency 'rubocop-rake'
   spec.add_development_dependency 'rubocop-rspec'
+  spec.add_development_dependency 'rubocop-thread_safety'
   spec.add_development_dependency 'webmock', '~> 3.14'
   spec.metadata = {
     'rubygems_mfa_required' => 'true'

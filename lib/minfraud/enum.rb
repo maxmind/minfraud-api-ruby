@@ -15,7 +15,10 @@ module Minfraud
       #
       # @return [Hash]
       def mapping
+        # rubocop:disable ThreadSafety/ClassInstanceVariable
+        # This is a false positive - this is set during class definition and then only read
         @mapping ||= {}
+        # rubocop:enable ThreadSafety/ClassInstanceVariable
       end
 
       # Create a set of methods for enum-like behavior of the attribute.
