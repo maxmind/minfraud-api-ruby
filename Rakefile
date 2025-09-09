@@ -8,5 +8,5 @@ RSpec::Core::RakeTask.new(:spec)
 
 RuboCop::RakeTask.new
 
-task default: :spec
-task default: :rubocop
+desc 'Run tests and RuboCop'
+task default: %i[spec rubocop]
