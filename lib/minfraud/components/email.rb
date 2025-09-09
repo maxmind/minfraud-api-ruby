@@ -99,7 +99,7 @@ module Minfraud
         end
 
         if domain == 'gmail.com'
-          local_part.gsub!('.', '')
+          local_part.delete!('.')
         end
 
         domain_parts = domain.split('.')

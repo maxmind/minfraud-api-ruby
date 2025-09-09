@@ -17,7 +17,7 @@ module Minfraud
       #   to an item's field, or as a Minfraud:::Components::ShoppingCartItem
       #   object.
       def initialize(params = [])
-        @items = params.map(&method(:resolve))
+        @items = params.map { |param| resolve(param) }
       end
 
       # A JSON representation of Minfraud::Components::ShoppingCart items.

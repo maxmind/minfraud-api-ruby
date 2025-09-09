@@ -27,7 +27,7 @@ module Minfraud
     def validate_uuid(field, value)
       return if !value
 
-      stripped_value = value.to_s.gsub('-', '')
+      stripped_value = value.to_s.delete('-')
 
       # Define a regex pattern for a valid UUID without dashes
       uuid_regex = /\A[0-9a-f]{32}\z/i
@@ -78,7 +78,7 @@ module Minfraud
         raise InvalidInputError, "The #{field} value is not valid. It must contain only non-space printable ASCII characters."
       end
 
-      if /\A[0-9]{1,19}\z/.match(s)
+      if /\A[0-9]{1,19}\z/.match?(s)
         raise InvalidInputError, "The #{field} value is not valid. If it is all digits, it must be longer than 19 characters."
       end
     end
@@ -147,7 +147,7 @@ module Minfraud
     def validate_email(field, value)
       return if !value
 
-      if /.@./.match(value)
+      if /.@./.match?(value)
         validate_string(field, 255, value)
         return
       end
