@@ -86,6 +86,7 @@ assessment = Minfraud::Assessments.new(
     user_agent:      'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36',
   },
   event: {
+    party:          :customer,
     transaction_id: 'txn3134133',
     shop_id:        's2123',
     time:           '2012-04-12T23:20:50+00:00',
@@ -127,6 +128,7 @@ assessment = Minfraud::Assessments.new(
     delivery_speed:     :same_day,
   },
   payment: {
+    method:         :card,
     processor:      :stripe,
     was_authorized: false,
     decline_code:   'invalid number',

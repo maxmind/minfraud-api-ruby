@@ -5,6 +5,14 @@
 * Added the processor `:securepay` to `Minfraud::Components::Payment`.
 * Ruby 3.2+ is now required. If you're using Ruby 3.0 or 3.1, please use
   version 2.8.0 of this gem.
+* Added `/event/type` values `:credit_application` and `:fund_transfer` to
+  `Minfraud::Components::Event`.
+* Added the input `/event/party`. This is the party submitting the
+  transaction. You may provide this using the `party` attribute on
+  `Minfraud::Components::Event`.
+* Added the input `/payment/method`. This is the payment method associated
+  with the transaction. You may provide this using the `method` attribute
+  on `Minfraud::Components::Payment`.
 
 ## v2.8.0 (2025-05-23)
 
