@@ -31,5 +31,17 @@ describe Minfraud::Components::Event do
         time: '2020-08-28T14:00:00Z',
       )
     end
+
+    it 'accepts credit_application as a valid type' do
+      described_class.new(
+        type: :credit_application,
+      )
+    end
+
+    it 'accepts fund_transfer as a valid type' do
+      described_class.new(
+        type: :fund_transfer,
+      )
+    end
   end
 end

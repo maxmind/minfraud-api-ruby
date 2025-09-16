@@ -35,9 +35,10 @@ module Minfraud
       attr_accessor :time
 
       # The type of event being scored. This must be one of
-      # +:account_creation+, +:account_login+, +:email_change+,
-      # +:password_reset+, +:payout_change+, +:purchase+,
-      # +:recurring_purchase+, +:referral+, or +:survey+.
+      # +:account_creation+, +:account_login+, +:credit_application+,
+      # +:email_change+, +:fund_transfer+, +:password_reset+,
+      # +:payout_change+, +:purchase+, +:recurring_purchase+, +:referral+,
+      # or +:survey+.
       #
       # @!attribute type
       #
@@ -46,7 +47,9 @@ module Minfraud
                     %i[
                       account_creation
                       account_login
+                      credit_application
                       email_change
+                      fund_transfer
                       password_reset
                       payout_change
                       purchase
