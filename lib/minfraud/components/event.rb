@@ -9,6 +9,18 @@ module Minfraud
       include ::Minfraud::Enum
       include Minfraud::Validates
 
+      # The party submitting the transaction. This must be one of +:agent+ or
+      # +:customer+.
+      #
+      # @!attribute party
+      #
+      # @return [Symbol, nil]
+      enum_accessor :party,
+                    %i[
+                      agent
+                      customer
+                    ]
+
       # Your internal ID for the transaction. MaxMind can use this to locate a
       # specific transaction in logs, and it will also show up in email alerts
       # and notifications from MaxMind to you. No specific format is required.
@@ -61,6 +73,7 @@ module Minfraud
       # @param params [Hash] Hash of parameters. Each key/value should
       #   correspond to one of the available attributes.
       def initialize(params = {})
+        self.party      = params[:party]
         @transaction_id = params[:transaction_id]
         @shop_id        = params[:shop_id]
         @time           = params[:time]

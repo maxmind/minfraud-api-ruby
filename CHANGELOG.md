@@ -7,6 +7,9 @@
   version 2.8.0 of this gem.
 * Added `/event/type` values `:credit_application` and `:fund_transfer` to
   `Minfraud::Components::Event`.
+* Added the input `/event/party`. This is the party submitting the
+  transaction. You may provide this using the `party` attribute on
+  `Minfraud::Components::Event`.
 
 ## v2.8.0 (2025-05-23)
 

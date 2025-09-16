@@ -11,6 +11,14 @@ describe Minfraud::Components::Event do
         end.to raise_exception(Minfraud::NotEnumValueError)
       end
     end
+
+    context 'with an invalid party' do
+      it 'raises an exception' do
+        expect do
+          described_class.new({ party: :invalid })
+        end.to raise_exception(Minfraud::NotEnumValueError)
+      end
+    end
   end
 
   describe 'validation' do
@@ -41,6 +49,18 @@ describe Minfraud::Components::Event do
     it 'accepts fund_transfer as a valid type' do
       described_class.new(
         type: :fund_transfer,
+      )
+    end
+
+    it 'accepts agent as a valid party' do
+      described_class.new(
+        party: :agent,
+      )
+    end
+
+    it 'accepts customer as a valid party' do
+      described_class.new(
+        party: :customer,
       )
     end
   end
