@@ -9,6 +9,28 @@ module Minfraud
       include ::Minfraud::Enum
       include Minfraud::Validates
 
+      # The payment method associated with the transaction. This must be one of
+      # +:bank_debit+, +:bank_redirect+, +:bank_transfer+, +:buy_now_pay_later+,
+      # +:card+, +:crypto+, +:digital_wallet+, +:gift_card+,
+      # +:real_time_payment+, or +:rewards+.
+      #
+      # @!attribute method
+      #
+      # @return [Symbol, nil]
+      enum_accessor :method,
+                    %i[
+                      bank_debit
+                      bank_redirect
+                      bank_transfer
+                      buy_now_pay_later
+                      card
+                      crypto
+                      digital_wallet
+                      gift_card
+                      real_time_payment
+                      rewards
+                    ]
+
       # The payment processor used for the transaction. The value is one
       # listed as a valid value, as a symbol.
       #
@@ -196,6 +218,7 @@ module Minfraud
       def initialize(params = {})
         @was_authorized = params[:was_authorized]
         @decline_code   = params[:decline_code]
+        self.method     = params[:method]
         self.processor  = params[:processor]
 
         validate

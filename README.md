@@ -128,6 +128,7 @@ assessment = Minfraud::Assessments.new(
     delivery_speed:     :same_day,
   },
   payment: {
+    method:         :card,
     processor:      :stripe,
     was_authorized: false,
     decline_code:   'invalid number',
