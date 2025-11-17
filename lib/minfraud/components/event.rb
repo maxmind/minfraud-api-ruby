@@ -50,7 +50,7 @@ module Minfraud
       # +:account_creation+, +:account_login+, +:credit_application+,
       # +:email_change+, +:fund_transfer+, +:password_reset+,
       # +:payout_change+, +:purchase+, +:recurring_purchase+, +:referral+,
-      # or +:survey+.
+      # +:sim_swap+, or +:survey+.
       #
       # @!attribute type
       #
@@ -67,6 +67,7 @@ module Minfraud
                       purchase
                       recurring_purchase
                       referral
+                      sim_swap
                       survey
                     ]
 

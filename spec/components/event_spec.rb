@@ -52,6 +52,12 @@ describe Minfraud::Components::Event do
       )
     end
 
+    it 'accepts sim_swap as a valid type' do
+      described_class.new(
+        type: :sim_swap,
+      )
+    end
+
     it 'accepts agent as a valid party' do
       described_class.new(
         party: :agent,
