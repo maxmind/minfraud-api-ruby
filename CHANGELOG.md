@@ -15,6 +15,25 @@
 * Added the input `/payment/method`. This is the payment method associated
   with the transaction. You may provide this using the `method` attribute
   on `Minfraud::Components::Payment`.
+* Added support for new email domain outputs on `Minfraud::Model::EmailDomain`:
+  * `/email/domain/classification` - The domain type (e.g., business,
+    education, government, isp_email). Available as the `classification`
+    attribute.
+  * `/email/domain/risk` - A risk score from 0.01 to 99 for the domain.
+    Available as the `risk` attribute.
+  * `/email/domain/volume` - Activity across the minFraud network expressed
+    as sightings per million. Available as the `volume` attribute.
+  * `/email/domain/visit` - Information from an automated visit to the
+    domain. Available as the `visit` attribute, which returns a
+    `Minfraud::Model::EmailDomainVisit` object.
+* Added support for email domain visit outputs on
+  `Minfraud::Model::EmailDomainVisit`:
+  * `/email/domain/visit/has_redirect` - Whether the domain redirects to
+    another URL. Available as the `has_redirect` attribute.
+  * `/email/domain/visit/last_visited_on` - The date the automated visit
+    was completed. Available as the `last_visited_on` attribute.
+  * `/email/domain/visit/status` - The status of the domain (e.g., live,
+    dns_error, parked). Available as the `status` attribute.
 
 ## v2.8.0 (2025-05-23)
 

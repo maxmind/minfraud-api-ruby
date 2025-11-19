@@ -159,6 +159,17 @@
     "local_time": "2017-06-08T14:16:38Z"
   },
   "email": {
+    "domain": {
+      "classification": "education",
+      "first_seen": "2019-05-20",
+      "risk": 2.5,
+      "visit": {
+        "has_redirect": false,
+        "last_visited_on": "2025-11-10",
+        "status": "parked"
+      },
+      "volume": 150.75
+    },
     "first_seen": "2017-01-02",
     "is_disposable": true,
     "is_free": true,

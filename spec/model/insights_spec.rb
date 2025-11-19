@@ -118,7 +118,13 @@ describe Minfraud::Model::Insights do
       expect(m.device.last_seen).to eq '2016-06-08T14:16:38Z'
       expect(m.device.local_time).to eq '2017-06-08T14:16:38Z'
 
+      expect(m.email.domain.classification).to eq 'business'
       expect(m.email.domain.first_seen).to eq '2016-01-03'
+      expect(m.email.domain.risk).to eq 1.23
+      expect(m.email.domain.visit.has_redirect).to be true
+      expect(m.email.domain.visit.last_visited_on).to eq '2025-11-15'
+      expect(m.email.domain.visit.status).to eq 'live'
+      expect(m.email.domain.volume).to eq 6.5
       expect(m.email.first_seen).to eq '2017-01-02'
       expect(m.email.is_disposable).to be true
       expect(m.email.is_free).to be true
@@ -197,7 +203,13 @@ describe Minfraud::Model::Insights do
       expect(m.device.confidence).to be_nil
       expect(m.device.id).to eq '7835b099-d385-4e5b-969e-7df26181d73b'
 
+      expect(m.email.domain.classification).to be_nil
       expect(m.email.domain.first_seen).to be_nil
+      expect(m.email.domain.risk).to be_nil
+      expect(m.email.domain.visit.has_redirect).to be_nil
+      expect(m.email.domain.visit.last_visited_on).to be_nil
+      expect(m.email.domain.visit.status).to be_nil
+      expect(m.email.domain.volume).to be_nil
       expect(m.email.first_seen).to be_nil
       expect(m.email.is_disposable).to be true
 
