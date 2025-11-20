@@ -34,6 +34,8 @@
     was completed. Available as the `last_visited_on` attribute.
   * `/email/domain/visit/status` - The status of the domain (e.g., live,
     dns_error, parked). Available as the `status` attribute.
+* Updated `maxmind-geoip2` to 1.4, which includes new anonymizer and IP
+  risk outputs.
 
 ## v2.8.0 (2025-05-23)
 
