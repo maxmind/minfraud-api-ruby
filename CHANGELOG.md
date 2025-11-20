@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.9.0
+## v2.9.0 (2025-11-20)
 
 * Added the processor `:securepay` to `Minfraud::Components::Payment`.
 * Ruby 3.2+ is now required. If you're using Ruby 3.0 or 3.1, please use
