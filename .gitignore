@@ -1,7 +1,6 @@
 /coverage
 pkg
 .project
-Gemfile.lock
 .rvmrc
 *.rbc
 .yardoc
