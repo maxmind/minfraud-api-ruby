@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.10.0
+
+* Unnecessary files were removed from the published .gem.
+
 ## v2.9.0 (2025-11-20)
 
 * Added the processor `:securepay` to `Minfraud::Components::Payment`.
