@@ -11,16 +11,21 @@ Gem::Specification.new do |spec|
   spec.authors       = ['kushnir.yb', 'William Storey']
   spec.email         = ['support@maxmind.com']
 
-  spec.summary       = 'Ruby API for the minFraud Score, Insights, Factors, and Report Transactions services'
-  spec.homepage      = 'https://github.com/maxmind/minfraud-api-ruby'
-  spec.license       = 'MIT'
-
+  spec.summary               = 'Ruby API for the minFraud Score, Insights, Factors, and Report Transactions services'
+  spec.homepage              = 'https://github.com/maxmind/minfraud-api-ruby'
+  spec.license               = 'MIT'
+  spec.metadata              = {
+    'bug_tracker_uri'       => 'https://github.com/maxmind/minfraud-api-ruby/issues',
+    'changelog_uri'         => 'https://github.com/maxmind/minfraud-api-ruby/blob/main/CHANGELOG.md',
+    'documentation_uri'     => 'https://www.rubydoc.info/gems/minfraud',
+    'homepage_uri'          => 'https://github.com/maxmind/minfraud-api-ruby',
+    'rubygems_mfa_required' => 'true',
+    'source_code_uri'       => 'https://github.com/maxmind/minfraud-api-ruby',
+  }
   spec.required_ruby_version = '>= 3.2'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^.gitignore$|^Gemfile|^(?:\.github|dev-bin|spec)/}) }
-  spec.bindir        = 'exe'
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ['lib']
+  spec.files = Dir['**/*'].difference(Dir['CLAUDE.md', 'CODE_OF_CONDUCT.md', 'dev-bin/**/*', 'Gemfile*', 'Rakefile', 'README.dev.md',
+                                          'spec/**/*', '*.gemspec'])
 
   spec.add_dependency 'connection_pool', '~> 2.2'
   spec.add_dependency 'http', '>= 4.3', '< 6.0'
@@ -36,7 +41,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'rubocop-thread_safety'
   spec.add_development_dependency 'webmock', '~> 3.14'
-  spec.metadata = {
-    'rubygems_mfa_required' => 'true'
-  }
 end
