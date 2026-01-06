@@ -2,6 +2,8 @@
 
 ## v2.10.0
 
+* Added the processors `:banquest`, `:summit_payments`, and `:yaadpay` to
+  `Minfraud::Components::Payment`.
 * Unnecessary files were removed from the published .gem.
 
 ## v2.9.0 (2025-11-20)
