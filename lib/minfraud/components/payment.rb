@@ -48,6 +48,7 @@ module Minfraud
         aps_payments
         authorizenet
         balanced
+        banquest
         beanstream
         bluepay
         bluesnap
@@ -179,6 +180,7 @@ module Minfraud
         solidtrust_pay
         sps_decidir
         stripe
+        summit_payments
         synapsefi
         systempay
         telerecargas
@@ -198,6 +200,7 @@ module Minfraud
         windcave
         wirecard
         worldpay
+        yaadpay
       ]
 
       # The authorization outcome from the payment processor. If the
