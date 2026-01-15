@@ -14,7 +14,8 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :issuer_id_number
 
-      # The last two or four digits of the credit card number.
+      # The last two or four digits of the credit card number. In most cases,
+      # you should send the last four digits for +last_digits+.
       #
       # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--credit-card__last_digits
       #
@@ -42,7 +43,7 @@ module Minfraud
       attr_accessor :bank_phone_number
 
       # The two character ISO 3166-1 alpha-2 country code where the issuer of
-      # the card is located. This may be passed instead of {::issuer_id_number}
+      # the card is located. This may be passed instead of {#issuer_id_number}
       # if you do not wish to pass partial account numbers, or if your payment
       # processor does not provide them.
       #
@@ -74,7 +75,7 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :cvv_result
 
-      # Whether the outcome of 3-D Secure verification (e.g. Safekey,
+      # Whether the outcome of 3-D Secure verification (e.g. SafeKey,
       # SecureCode, Verified by Visa) was successful. +true+ if customer
       # verification was successful, or +false+ if the customer failed
       # verification. If 3-D Secure verification was not used, was unavailable,
@@ -86,7 +87,7 @@ module Minfraud
 
       # Get the last digits of the credit card number.
       #
-      # @deprecated Use {::last_digits} instead.
+      # @deprecated Use {#last_digits} instead.
       #
       # @return [String, nil]
       def last_4_digits
@@ -95,7 +96,7 @@ module Minfraud
 
       # Set the last digits of the credit card number.
       #
-      # @deprecated Use {::last_digits} instead.
+      # @deprecated Use {#last_digits} instead.
       #
       # @return [String, nil]
       def last_4_digits=(last4)
