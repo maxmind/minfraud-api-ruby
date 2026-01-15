@@ -38,7 +38,7 @@ module Minfraud
 
       # The date and time the event occurred. The string must be in the RFC
       # 3339 date-time format, e.g., "2012-04-12T23:20:50.52Z". The time must
-      # be within the past 10 years. If this field is not in the request, the
+      # be within the past year. If this field is not in the request, the
       # current time will be used.
       #
       # @see https://tools.ietf.org/html/rfc3339

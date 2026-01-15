@@ -7,7 +7,9 @@ module Minfraud
     # Model containing information about an automated visit to the email
     # domain.
     class EmailDomainVisit < Abstract
-      # Whether the domain redirects to another URL.
+      # This is true if the domain in the request has redirects (configured
+      # to automatically send visitors to another URL). Otherwise, this will
+      # be nil.
       #
       # @return [Boolean, nil]
       attr_reader :has_redirect
@@ -19,12 +21,13 @@ module Minfraud
       attr_reader :last_visited_on
 
       # The status of the domain. Possible values are:
-      # * live - The domain is operational and serving content.
-      # * dns_error - The domain has missing, expired, or misconfigured DNS.
-      # * network_error - The domain is offline or unreachable.
-      # * http_error - The domain is reachable, but has an application error.
-      # * parked - The domain is reachable and in a parked state.
-      # * pre_development - The domain is reachable and in a pre-development
+      # * live - The domain is reachable and serving content normally.
+      # * dns_error - The domain is missing, expired, or DNS is misconfigured.
+      # * network_error - The domain is offline, blocked, or unreachable.
+      # * http_error - The domain is reachable but the web application had a
+      #   problem or denied the request.
+      # * parked - The domain is live and is in a parked state.
+      # * pre_development - The domain is live and is in a pre-development
       #   state.
       #
       # @return [String, nil]

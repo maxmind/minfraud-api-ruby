@@ -6,7 +6,7 @@ module Minfraud
   module Model
     # Model containing information about the shipping address.
     class ShippingAddress < Address
-      # The distance in kilometers from the shipping address to billing
+      # The distance in kilometers from the shipping address to the billing
       # address.
       #
       # @return [Integer, nil]
@@ -16,6 +16,8 @@ module Minfraud
       # with fraudulent transactions. The field is false when the address is
       # not associated with increased risk. The key will only be present when a
       # shipping address is provided.
+      #
+      # @return [Boolean, nil]
       attr_reader :is_high_risk
 
       # @!visibility private

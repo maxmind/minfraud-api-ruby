@@ -48,7 +48,7 @@ Minfraud.configure do |c|
   c.license_key = 'your_license_key'
   c.enable_validation = true
 end
-````
+```
 
 To use the Sandbox web service instead of the production web service, you can provide the host:
 
@@ -69,8 +69,8 @@ creating the object.
 
 After populating the object, call the method for the minFraud endpoint you
 want to use: `#score`, `#insights`, or `#factors`. The returned value is a
-`MinFraud::Response` object. You can access the response model through its
-`#body` attribute.
+`Minfraud::HTTPService::Response` object. You can access the response model
+through its `#body` attribute.
 
 An exception will be thrown for critical errors. You should check for
 `warnings` related to your inputs after a request.
@@ -245,6 +245,8 @@ this functionality.
 
 The gem supplies several distinct exception-types:
 
+* `InvalidInputError` - Raised if an input value is invalid when client-side
+  validation is enabled
 * `RequestFormatError` - Raised if an unknown key is provided to the
   `Minfraud::Assessments` constructor
 * `ClientError` - Raised if the IP address is absent, reserved, or the JSON
@@ -295,7 +297,7 @@ This API uses [Semantic Versioning](https://semver.org/).
 
 Copyright (c) 2016-2020 kushnir.yb.
 
-Copyright (c) 2020-2025 MaxMind, Inc.
+Copyright (c) 2020-2026 MaxMind, Inc.
 
 The gem is available as open source under the terms of the [MIT
 License](https://opensource.org/licenses/MIT).

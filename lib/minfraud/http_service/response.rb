@@ -12,13 +12,13 @@ module Minfraud
     class Response
       # Response HTTP status code.
       #
-      # @return [Fixnum, nil]
+      # @return [Integer, nil]
       attr_reader :status
 
       # Response model.
       #
       # @return [Minfraud::Model::Score, Minfraud::Model::Insights,
-      #   Minfraud::Model::Factors, nil]
+      #   Minfraud::Model::Factors, Minfraud::Model::Error, nil]
       attr_reader :body
 
       # @param endpoint [Symbol, nil] endpoint name, like :score.
