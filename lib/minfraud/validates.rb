@@ -4,12 +4,13 @@ require 'date'
 require 'ipaddr'
 require 'uri'
 
-# rubocop:disable Metrics/ModuleLength
 module Minfraud
   # @!visibility private
   # Validates provides validation helper methods for component input values.
   # These methods are used internally when validation is enabled via
   # Minfraud.enable_validation.
+  #
+  # rubocop:disable Metrics/ModuleLength
   module Validates
     # Validates that a string value does not exceed a maximum length.
     #
@@ -331,6 +332,6 @@ module Minfraud
       end
       # rubocop:enable Style/RescueStandardError
     end
+    # rubocop:enable Metrics/ModuleLength
   end
 end
-# rubocop:enable Metrics/ModuleLength
