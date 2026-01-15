@@ -14,7 +14,8 @@ module Minfraud
 
       # A date string (e.g. 2017-04-24) to identify the date an email address
       # was first seen by MaxMind. This is expressed using the ISO 8601 date
-      # format.
+      # format YYYY-MM-DD. The earliest date that may be returned is January
+      # 1, 2008.
       #
       # @return [String, nil]
       attr_reader :first_seen
