@@ -4,10 +4,23 @@ require 'date'
 require 'ipaddr'
 require 'uri'
 
-# rubocop:disable Metrics/ModuleLength
 module Minfraud
   # @!visibility private
+  # Validates provides validation helper methods for component input values.
+  # These methods are used internally when validation is enabled via
+  # Minfraud.enable_validation.
+  #
+  # rubocop:disable Metrics/ModuleLength
   module Validates
+    # Validates that a string value does not exceed a maximum length.
+    #
+    # @param field [String] The field name for error messages.
+    # @param length [Integer] The maximum allowed length.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value exceeds the maximum length.
+    #
+    # @return [nil]
     def validate_string(field, length, value)
       return if !value
 
@@ -16,6 +29,14 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a valid MD5 hash string.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid MD5 hash.
+    #
+    # @return [nil]
     def validate_md5(field, value)
       return if !value
 
@@ -24,6 +45,14 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a valid UUID string.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid UUID.
+    #
+    # @return [nil]
     def validate_uuid(field, value)
       return if !value
 
@@ -37,6 +66,14 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a valid ISO 3166-2 subdivision code.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid subdivision code.
+    #
+    # @return [nil]
     def validate_subdivision_code(field, value)
       return if !value
 
@@ -45,6 +82,14 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a valid ISO 3166-1 alpha-2 country code.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid country code.
+    #
+    # @return [nil]
     def validate_country_code(field, value)
       return if !value
 
@@ -53,6 +98,15 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a valid telephone country code (1-4 digits).
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid telephone country
+    #   code.
+    #
+    # @return [nil]
     def validate_telephone_country_code(field, value)
       return if !value
 
@@ -61,6 +115,15 @@ module Minfraud
       end
     end
 
+    # Validates that a value matches a regular expression pattern.
+    #
+    # @param field [String] The field name for error messages.
+    # @param regex [Regexp] The regular expression pattern to match.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value does not match the pattern.
+    #
+    # @return [nil]
     def validate_regex(field, regex, value)
       return if !value
 
@@ -69,6 +132,14 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a valid credit card token.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid credit card token.
+    #
+    # @return [nil]
     def validate_credit_card_token(field, value)
       return if !value
 
@@ -83,6 +154,14 @@ module Minfraud
       end
     end
 
+    # Validates a custom input value (boolean, numeric, or string).
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [Boolean, Numeric, String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not valid.
+    #
+    # @return [nil]
     def validate_custom_input_value(field, value)
       return if !value
 
@@ -101,6 +180,14 @@ module Minfraud
       validate_string(field, 255, value)
     end
 
+    # Validates that a value is a valid IPv4 or IPv6 address.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid IP address.
+    #
+    # @return [nil]
     def validate_ip(field, value)
       return if !value
 
@@ -120,6 +207,15 @@ module Minfraud
       nil
     end
 
+    # Validates that a value is a non-negative number within range.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [Numeric, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid non-negative
+    #   number.
+    #
+    # @return [nil]
     def validate_nonnegative_number(field, value)
       return if !value
 
@@ -132,6 +228,15 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a non-negative integer within range.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [Integer, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid non-negative
+    #   integer.
+    #
+    # @return [nil]
     def validate_nonnegative_integer(field, value)
       return if !value
 
@@ -144,6 +249,14 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a valid email address or MD5 hash of one.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid email or MD5 hash.
+    #
+    # @return [nil]
     def validate_email(field, value)
       return if !value
 
@@ -155,6 +268,14 @@ module Minfraud
       validate_md5(field, value)
     end
 
+    # Validates that a value is in RFC 3339 date-time format.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not in RFC 3339 format.
+    #
+    # @return [nil]
     def validate_rfc3339(field, value)
       return if !value
 
@@ -169,6 +290,14 @@ module Minfraud
       nil
     end
 
+    # Validates that a value is a boolean.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [Boolean, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a boolean.
+    #
+    # @return [nil]
     def validate_boolean(field, value)
       return if !value
 
@@ -177,6 +306,14 @@ module Minfraud
       end
     end
 
+    # Validates that a value is a valid absolute URI.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [String, nil] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is not a valid absolute URI.
+    #
+    # @return [nil]
     def validate_uri(field, value)
       return if !value
 
@@ -195,6 +332,6 @@ module Minfraud
       end
       # rubocop:enable Style/RescueStandardError
     end
+    # rubocop:enable Metrics/ModuleLength
   end
 end
-# rubocop:enable Metrics/ModuleLength

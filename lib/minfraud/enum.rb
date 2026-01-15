@@ -3,6 +3,12 @@
 module Minfraud
   # Enum provides helpers for working with attributes with enumerated types.
   module Enum
+    # Hook method called when the module is included into a class.
+    # Extends the class with ClassMethods.
+    #
+    # @param base [Class] The class including this module.
+    #
+    # @return [Class] The base class.
     def self.included(base)
       base.extend(ClassMethods)
     end

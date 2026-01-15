@@ -7,6 +7,8 @@ require 'minfraud/model/insights'
 require 'minfraud/model/score'
 
 module Minfraud
+  # HTTPService contains classes for handling HTTP communication with the
+  # minFraud web services.
   module HTTPService
     # Response class for HTTP requests.
     class Response
