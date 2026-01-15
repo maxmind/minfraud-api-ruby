@@ -9,7 +9,7 @@ module Minfraud
       include Minfraud::Validates
 
       # The total order amount for the transaction before taxes and discounts.
-      # The value must be at least 0 and at most 1e14 - 1.
+      # The value must be at least 0 and at most 1e13 - 1.
       #
       # @return [Float, nil]
       attr_accessor :amount
