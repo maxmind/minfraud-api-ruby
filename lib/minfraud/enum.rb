@@ -8,7 +8,7 @@ module Minfraud
     #
     # @param base [Class] The class including this module.
     #
-    # @return [nil]
+    # @return [Class] The base class.
     def self.included(base)
       base.extend(ClassMethods)
     end
