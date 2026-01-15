@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module Minfraud
+  # Components are used to build the request to the minFraud services.
+  # Each component represents a part of the transaction being analyzed,
+  # such as the device, account, email, or billing address.
   module Components
     # This is a parent class for all components. It defines a method which is
     # used for basic JSON representation of the component objects.

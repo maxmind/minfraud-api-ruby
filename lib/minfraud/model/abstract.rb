@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module Minfraud
+  # Model contains classes for the minFraud response data. These classes
+  # represent the data returned by the Score, Insights, and Factors
+  # endpoints.
   module Model
     # @!visibility private
     class Abstract

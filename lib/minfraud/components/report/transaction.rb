@@ -2,6 +2,7 @@
 
 module Minfraud
   module Components
+    # Components for the Report Transaction API.
     module Report
       # Contains the fields used in the Report Transaction API.
       #
