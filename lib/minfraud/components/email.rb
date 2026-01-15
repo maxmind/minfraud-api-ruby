@@ -7,7 +7,7 @@ module Minfraud
   module Components
     # Email corresponds to the email object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--email
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests/?lang=en#email
     class Email < Base
       include Minfraud::Validates
 
