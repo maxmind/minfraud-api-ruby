@@ -17,18 +17,29 @@ module Minfraud
     #   our database.
     # * BILLING_POSTAL_NOT_FOUND - the billing postal could not be found in our
     #   database.
+    # * BILLING_REGION_NOT_FOUND - the billing region could not be found in our
+    #   database.
+    # * EMAIL_ADDRESS_UNUSABLE - the email address entered is likely incorrect
+    #   due to an integration issue. To avoid false positives, it has not been
+    #   used in scoring.
     # * INPUT_INVALID - the value associated with the key does not meet the
     #   required constraints, e.g., "United States" in a field that requires a
     #   two-letter country code.
     # * INPUT_UNKNOWN - an unknown key was encountered in the request body.
+    # * IP_ADDRESS_INVALID - the IP address supplied is not a valid IPv4 or
+    #   IPv6 address.
     # * IP_ADDRESS_NOT_FOUND - the IP address could not be geolocated.
-    # * SHIPPING_COUNTRY_MISSING - shipping address information was provided
-    #   without providing a shipping country.
+    # * IP_ADDRESS_RESERVED - the IP address supplied is in a reserved
+    #   network.
     # * SHIPPING_CITY_NOT_FOUND - the shipping city could not be found in our
     #   database.
+    # * SHIPPING_COUNTRY_MISSING - shipping address information was provided
+    #   without providing a shipping country.
     # * SHIPPING_COUNTRY_NOT_FOUND - the shipping country could not be found in
     #   our database.
     # * SHIPPING_POSTAL_NOT_FOUND - the shipping postal could not be found in
+    #   our database.
+    # * SHIPPING_REGION_NOT_FOUND - the shipping region could not be found in
     #   our database.
     class Warning < Abstract
       # This value is a machine-readable code identifying the warning.
