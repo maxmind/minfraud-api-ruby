@@ -88,6 +88,18 @@ describe Minfraud::Model::Insights do
       expect(m.ip_address.traits.user_count).to eq 5
       expect(m.ip_address.traits.user_type).to eq 'government'
 
+      expect(m.ip_address.anonymizer).to have_attributes(
+        confidence:         99,
+        anonymous?:         true,
+        anonymous_vpn?:     true,
+        hosting_provider?:  true,
+        public_proxy?:      true,
+        residential_proxy?: true,
+        tor_exit_node?:     true,
+        network_last_seen:  Date.new(2_025, 1, 15),
+        provider_name:      'TestVPN'
+      )
+
       expect(m.billing_address.is_postal_in_city).to be false
       expect(m.billing_address.latitude).to eq 41.310571
       expect(m.billing_address.longitude).to eq(-72.922891)
