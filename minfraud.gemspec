@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir['**/*'].difference(Dir['CLAUDE.md', 'CODE_OF_CONDUCT.md', 'dev-bin/**/*', 'Gemfile*', 'Rakefile', 'README.dev.md',
                                           'spec/**/*', '*.gemspec'])
 
-  spec.add_dependency 'connection_pool', '~> 2.2'
+  spec.add_dependency 'connection_pool', '>= 2.2', '< 4.0'
   spec.add_dependency 'http', '>= 4.3', '< 6.0'
   spec.add_dependency 'maxmind-geoip2', '~> 1.4'
   spec.add_dependency 'simpleidn', '~> 0.1', '>= 0.1.1'
