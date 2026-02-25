@@ -59,5 +59,11 @@ describe Minfraud::Components::Device do
         session_age: 100,
       )
     end
+
+    it 'does not raise an exception for a valid tracking_token' do
+      described_class.new(
+        tracking_token: 'abc123',
+      )
+    end
   end
 end
