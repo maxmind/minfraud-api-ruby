@@ -23,13 +23,13 @@ module Minfraud
         # A symbol indicating the likelihood that a transaction may be
         # fraudulent.
         #
-        # This may be one of +:chargeback+, +:not_fraud+, +:spam_or_abuse+, or
-        # +:suspected_fraud+.
+        # This may be one of +:chargeback+, +:clear+ (to retract a previous
+        # report), +:not_fraud+, +:spam_or_abuse+, or +:suspected_fraud+.
         #
         # @!attribute tag
         #
         # @return [Symbol, nil]
-        enum_accessor :tag, %i[chargeback not_fraud spam_or_abuse suspected_fraud]
+        enum_accessor :tag, %i[chargeback clear not_fraud spam_or_abuse suspected_fraud]
 
         # A string which is provided by your payment processor indicating the
         # reason for the chargeback.
