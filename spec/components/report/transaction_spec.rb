@@ -17,7 +17,7 @@ describe Minfraud::Components::Report::Transaction do
     end
 
     context 'with all valid tags' do
-      values = %i[chargeback not_fraud spam_or_abuse suspected_fraud]
+      values = %i[chargeback clear not_fraud spam_or_abuse suspected_fraud]
       values.each do |val|
         it "accepts #{val} as a valid tag" do
           result = described_class.new(tag: val)

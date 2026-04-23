@@ -8,6 +8,8 @@
   for explicit device linking.
 * Added the processors `:banquest`, `:fat_zebra`, `:summit_payments`, and
   `:yaadpay` to `Minfraud::Components::Payment`.
+* Added `:clear` to the valid values for the `tag` attribute on
+  `Minfraud::Components::Report::Transaction`.
 * Unnecessary files were removed from the published .gem.
 
 ## v2.9.0 (2025-11-20)
