@@ -43,7 +43,7 @@ module Minfraud
       # @return [Minfraud::Model::Email]
       attr_reader :email
 
-      # An object containing GeoIP2 and minFraud Insights information about the
+      # An object containing GeoIP and minFraud Insights information about the
       # geolocated IP address.
       #
       # @return [Minfraud::Model::IPAddress]
