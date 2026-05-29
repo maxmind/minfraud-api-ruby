@@ -4,7 +4,7 @@ require 'maxmind/geoip2/record/location'
 
 module Minfraud
   module Model
-    # Model of the GeoIP2 location information, including the local time.
+    # Model of the GeoIP location information, including the local time.
     class GeoIP2Location < MaxMind::GeoIP2::Record::Location
       # The date and time of the transaction in the time zone associated with
       # the IP address. The value is formatted according to RFC 3339. For

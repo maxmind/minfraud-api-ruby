@@ -6,7 +6,7 @@ require 'minfraud/model/ip_risk_reason'
 
 module Minfraud
   module Model
-    # Model containing GeoIP2 data and the risk for the IP address.
+    # Model containing GeoIP data and the risk for the IP address.
     class IPAddress < MaxMind::GeoIP2::Model::Insights
       # This field contains the risk associated with the IP address. The value
       # ranges from 0.01 to 99. A higher score indicates a higher risk.
