@@ -3,9 +3,9 @@
 ## Description
 
 This package provides an API for the [MaxMind minFraud web
-services](https://dev.maxmind.com/minfraud?lang=en). This includes minFraud Score,
+services](https://dev.maxmind.com/minfraud/?lang=en). This includes minFraud Score,
 Insights, and Factors. It also includes our [minFraud Report Transaction
-API](https://dev.maxmind.com/minfraud/report-a-transaction?lang=en).
+API](https://dev.maxmind.com/minfraud/report-a-transaction/?lang=en).
 
 The legacy minFraud Standard and Premium services are not supported by this
 API.
@@ -276,7 +276,7 @@ Please report all issues with this code using the
 
 If you are having an issue with the minFraud service that is not specific
 to the client API, please see
-[our support page](https://www.maxmind.com/en/support).
+[our support page](https://support.maxmind.com/knowledge-base).
 
 ## Requirements
 
@@ -288,7 +288,7 @@ Bug reports and pull requests are welcome on
 [GitHub](https://github.com/maxmind/minfraud-api-ruby). This project is
 intended to be a safe, welcoming space for collaboration, and contributors
 are expected to adhere to the [Contributor
-Covenant](https://contributor-covenant.org) code of conduct.
+Covenant](https://www.contributor-covenant.org/) code of conduct.
 
 ## Versioning
 
@@ -301,7 +301,7 @@ Copyright (c) 2016-2020 kushnir.yb.
 Copyright (c) 2020-2026 MaxMind, Inc.
 
 The gem is available as open source under the terms of the [MIT
-License](https://opensource.org/licenses/MIT).
+License](https://opensource.org/license/MIT).
 
 ## Thank You
 
