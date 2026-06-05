@@ -8,7 +8,7 @@ module Minfraud
     #
     # This class provides both a machine-readable code and a human-readable
     # explanation of the reason for the risk score, see
-    # https://dev.maxmind.com/minfraud/api-documentation/responses/schema--response--risk-score-reason--multiplier-reason.
+    # https://dev.maxmind.com/minfraud/api-documentation/responses/#schema--response--risk-score-reason--multiplier-reason.
     # Although more codes may be added in the future, the current codes are:
     #
     # * BROWSER_LANGUAGE - Riskiness of the browser user-agent and

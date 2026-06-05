@@ -438,6 +438,6 @@ Report Transaction API:
 ## Additional Resources
 
 - [API Documentation](https://www.rubydoc.info/gems/minfraud)
-- [minFraud Web Services Docs](https://dev.maxmind.com/minfraud)
-- [Report Transaction API Docs](https://dev.maxmind.com/minfraud/report-a-transaction)
+- [minFraud Web Services Docs](https://dev.maxmind.com/minfraud/)
+- [Report Transaction API Docs](https://dev.maxmind.com/minfraud/report-a-transaction/)
 - GitHub Issues: https://github.com/maxmind/minfraud-api-ruby/issues

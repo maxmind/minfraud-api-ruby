@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # CreditCard corresponds to the credit_card object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--credit-card
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests/?lang=en#schema--request--credit-card
     class CreditCard < Base
       include Minfraud::Validates
 
@@ -17,7 +17,7 @@ module Minfraud
       # The last two or four digits of the credit card number. In most cases,
       # you should send the last four digits for +last_digits+.
       #
-      # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--credit-card__last_digits
+      # @see https://dev.maxmind.com/minfraud/api-documentation/requests/?lang=en#schema--request--credit-card__last_digits
       #
       # @return [String, nil]
       attr_accessor :last_digits

@@ -3,7 +3,7 @@
 module Minfraud
   # Report is used to perform minFraud Report Transaction API requests.
   #
-  # @see https://dev.maxmind.com/minfraud/report-a-transaction?lang=en
+  # @see https://dev.maxmind.com/minfraud/report-a-transaction/?lang=en
   class Report
     # The Report::Transaction component.
     #

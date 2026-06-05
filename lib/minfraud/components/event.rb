@@ -4,7 +4,7 @@ module Minfraud
   module Components
     # Event corresponds to the event object of a minFraud request.
     #
-    # @see https://dev.maxmind.com/minfraud/api-documentation/requests?lang=en#schema--request--event
+    # @see https://dev.maxmind.com/minfraud/api-documentation/requests/?lang=en#schema--request--event
     class Event < Base
       include ::Minfraud::Enum
       include Minfraud::Validates
@@ -41,7 +41,7 @@ module Minfraud
       # be within the past year. If this field is not in the request, the
       # current time will be used.
       #
-      # @see https://tools.ietf.org/html/rfc3339
+      # @see https://datatracker.ietf.org/doc/html/rfc3339
       #
       # @return [String, nil]
       attr_accessor :time
