@@ -24,8 +24,8 @@ Gem::Specification.new do |spec|
   }
   spec.required_ruby_version = '>= 3.2'
 
-  spec.files = Dir['**/*'].difference(Dir['CLAUDE.md', 'CODE_OF_CONDUCT.md', 'dev-bin/**/*', 'Gemfile*', 'Rakefile', 'README.dev.md',
-                                          'spec/**/*', '*.gemspec'])
+  spec.files = Dir['**/*'].difference(Dir['.gitignore', 'lychee.toml', 'mise.lock', 'mise.toml', 'CLAUDE.md', 'CODE_OF_CONDUCT.md',
+                                          'dev-bin/**/*', 'Gemfile*', 'Rakefile', 'README.dev.md', 'spec/**/*', '*.gemspec'])
 
   spec.add_dependency 'connection_pool', '>= 2.2', '< 4.0'
   spec.add_dependency 'http', '>= 4.3', '< 6.0'
