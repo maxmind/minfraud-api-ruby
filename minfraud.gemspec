@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'connection_pool', '>= 2.2', '< 4.0'
   spec.add_dependency 'http', '>= 4.3', '< 6.0'
-  spec.add_dependency 'maxmind-geoip2', '~> 1.4'
+  spec.add_dependency 'maxmind-geoip2', '~> 1.6'
   spec.add_dependency 'simpleidn', '~> 0.1', '>= 0.1.1'
 
   spec.add_development_dependency 'bundler', '~> 2.2'
