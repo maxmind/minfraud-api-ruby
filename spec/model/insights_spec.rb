@@ -100,6 +100,12 @@ describe Minfraud::Model::Insights do
         provider_name:      'TestVPN'
       )
 
+      expect(m.ip_address.anonymizer.residential).to have_attributes(
+        confidence:        82,
+        network_last_seen: Date.new(2_026, 5, 11),
+        provider_name:     'quickshift'
+      )
+
       expect(m.billing_address.is_postal_in_city).to be false
       expect(m.billing_address.latitude).to eq 41.310571
       expect(m.billing_address.longitude).to eq(-72.922891)
