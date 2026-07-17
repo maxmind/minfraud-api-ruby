@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL, &:read).split("\x0").difference(excluded)
 
   spec.add_dependency 'connection_pool', '>= 2.2', '< 4.0'
-  spec.add_dependency 'http', '>= 4.3', '< 6.0'
+  spec.add_dependency 'http', '>= 4.3', '< 7.0'
   spec.add_dependency 'maxmind-geoip2', '~> 1.6'
   spec.add_dependency 'simpleidn', '~> 0.1', '>= 0.1.1'
 
