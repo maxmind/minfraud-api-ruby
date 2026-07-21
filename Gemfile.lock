@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    minfraud (2.9.0)
+    minfraud (2.10.0)
       connection_pool (>= 2.2, < 4.0)
       http (>= 4.3, < 7.0)
       maxmind-geoip2 (~> 1.6)

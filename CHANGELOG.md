@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.10.0
+## v2.10.0 (2026-07-21)
 
 * Added the `residential` attribute to the `anonymizer` object on
   `Minfraud::Model::IPAddress`. This object contains residential proxy
