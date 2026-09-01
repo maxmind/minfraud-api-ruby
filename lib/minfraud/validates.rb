@@ -196,13 +196,12 @@ module Minfraud
         raise InvalidInputError, "The #{field} value is not valid. It must be an individual IP address."
       end
 
-      # rubocop:disable Style/RescueStandardError
+      # rubocop:disable-next Style/RescueStandardError
       begin
         IPAddr.new(s)
       rescue
         raise InvalidInputError, "The #{field} value is not valid. It must be an IPv4 or IPv6 address."
       end
-      # rubocop:enable Style/RescueStandardError
 
       nil
     end
@@ -279,13 +278,12 @@ module Minfraud
     def validate_rfc3339(field, value)
       return if !value
 
-      # rubocop:disable Style/RescueStandardError
+      # rubocop:disable-next Style/RescueStandardError
       begin
         DateTime.rfc3339(value)
       rescue
         raise InvalidInputError, "The #{field} value is not valid. It must be in the RFC 3339 date-time format."
       end
-      # rubocop:enable Style/RescueStandardError
 
       nil
     end
@@ -321,7 +319,7 @@ module Minfraud
         raise InvalidInputError, "The #{field} value is not valid. It must not exceed 1024 characters."
       end
 
-      # rubocop:disable Style/RescueStandardError
+      # rubocop:disable-next Style/RescueStandardError
       begin
         u = URI(value)
         if !u.scheme
@@ -330,7 +328,6 @@ module Minfraud
       rescue
         raise InvalidInputError, "The #{field} value is not valid. It must be an absolute URI."
       end
-      # rubocop:enable Style/RescueStandardError
     end
     # rubocop:enable Metrics/ModuleLength
   end
