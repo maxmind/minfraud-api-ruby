@@ -39,7 +39,7 @@ describe Minfraud::Assessments do
 
   it 'makes an HTTP request resulting in an HTTP 401' do
     stub_request(:post, /score/).with(
-      body:    '{"device":{"ip_address":"1.2.3.4"}}',
+      body: '{"device":{"ip_address":"1.2.3.4"}}',
     ).to_return(
       body:    '{"code":"ACCOUNT_ID_REQUIRED","error":"You have not supplied a MaxMind account ID in the Authorization header."}',
       headers: {
@@ -91,7 +91,7 @@ describe Minfraud::Report do
 
   it 'makes an HTTP request resulting in an HTTP 401' do
     stub_request(:post, /report/).with(
-      body:    '{"ip_address":"1.2.3.4"}',
+      body: '{"ip_address":"1.2.3.4"}',
     ).to_return(
       body:    '{"code":"ACCOUNT_ID_REQUIRED","error":"You have not supplied a MaxMind account ID in the Authorization header."}',
       headers: {
