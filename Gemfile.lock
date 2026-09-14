@@ -102,7 +102,7 @@ GEM
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-ast (>= 1.44.0, < 2.0)
     ruby-progressbar (1.13.0)
-    simpleidn (0.2.3)
+    simpleidn (0.3.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
