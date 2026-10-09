@@ -26,27 +26,22 @@ module Minfraud
       #
       # @return [Hash]
       def populate!(hash, v_sym)
-        return hash unless (value = instance_variable_get(v_sym))
+        value = instance_variable_get(v_sym)
+        return hash if value.nil?
 
         key = v_sym.to_s.gsub(/@/, '')
-        hash.merge!(key => represent(key, value))
+        hash.merge!(key => represent(value))
       end
 
-      # Return the value according to the request format.
-      #
-      # @param key [Symbol] An instance variable symbol.
+      # Return the value according to the request format. Booleans stay
+      # booleans. Other values become strings.
       #
       # @param value [Object] An instance variable value.
       #
       # @return [Object]
-      def represent(key, value)
-        BOOLS.include?(key) ? value : value.to_s
+      def represent(value)
+        [true, false].include?(value) ? value : value.to_s
       end
-
-      # Keys that have to remain boolean
-      BOOLS = %w[was_authorized is_gift has_gift_message].freeze
-
-      private_constant :BOOLS
     end
   end
 end

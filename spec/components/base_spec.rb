@@ -29,6 +29,28 @@ describe Minfraud::Components::Base do
         base_component.instance_variable_set(:@null, nil)
         expect(base_component.to_json).to eq(expected)
       end
+
+      it 'returns json with boolean values kept as booleans' do
+        base_component.instance_variable_set(:@yes, true)
+        base_component.instance_variable_set(:@no, false)
+        expect(base_component.to_json).to eq(
+          expected.merge('yes' => true, 'no' => false),
+        )
+      end
+    end
+  end
+
+  describe 'boolean inputs' do
+    [
+      [Minfraud::Components::CreditCard, :was_3d_secure_successful],
+      [Minfraud::Components::Order, :has_gift_message],
+      [Minfraud::Components::Order, :is_gift],
+      [Minfraud::Components::Payment, :was_authorized],
+      [Minfraud::Components::CustomInputs, :boolean_input],
+    ].product([true, false]).each do |(component, field), value|
+      it "sends #{component}##{field} #{value} as a JSON boolean" do
+        expect(component.new(field => value).to_json).to eq(field.to_s => value)
+      end
     end
   end
 end
