@@ -98,8 +98,10 @@ assessment = Minfraud::Assessments.new(
     username_md5: '4f9726678c438914fa04bdb8c1a24088',
   },
   email: {
-    address: 'test@maxmind.com',
-    domain:  'maxmind.com',
+    address:                     'test@maxmind.com',
+    domain:                      'maxmind.com',
+    verification_time:           '2026-10-01T14:30:00Z',
+    was_verification_successful: true,
   },
   billing: {
     first_name:                        'First',
