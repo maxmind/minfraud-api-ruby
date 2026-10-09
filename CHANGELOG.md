@@ -1,5 +1,24 @@
 # Changelog
 
+## v2.11.0
+
+* Boolean inputs are now always sent as JSON booleans, and `false` is no
+  longer dropped. Previously, every input set to `false` was omitted.
+  Now only `nil` inputs are omitted. In particular:
+  * `true` for `/credit_card/was_3d_secure_successful` was sent as the
+    string `"true"`, which the web service rejected and dropped. It is
+    now sent as a JSON boolean, so it reaches the web service.
+  * Custom input values of `true` and `false` are now sent as JSON
+    booleans, and `false` is no longer dropped.
+  * **Warning:** If a custom input is a string type on your account, a
+    Ruby `true` or `false` for it is now sent as a JSON boolean. The web
+    service rejects a boolean for a string custom input with an
+    `INPUT_INVALID` warning. Pass a string, such as `'true'`, instead.
+  * With validation on, `true` or `false` for a non-boolean input now
+    raises `InvalidInputError`.
+  * `/order/has_gift_message`, `/order/is_gift`, and
+    `/payment/was_authorized` already sent `true` as a JSON boolean.
+
 ## v2.10.0 (2026-07-21)
 
 * Added the `residential` attribute to the `anonymizer` object on
