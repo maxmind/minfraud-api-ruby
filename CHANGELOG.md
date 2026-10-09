@@ -6,6 +6,9 @@
   `phone_was_verification_successful`, and `phone_verification_time`
   attributes to `Minfraud::Components::Billing`. They describe the most
   recent verification of the billing phone number.
+* Added the `was_verification_successful` and `verification_time`
+  attributes to `Minfraud::Components::Email`. They describe the most
+  recent verification of the email address.
 * Boolean inputs are now always sent as JSON booleans, and `false` values
   are no longer dropped from the request. Previously, `false` was omitted
   for every boolean input. `true` was sent as the string `"true"` for

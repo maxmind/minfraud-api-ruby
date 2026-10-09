@@ -31,12 +31,29 @@ module Minfraud
       # @return [Boolean, nil]
       attr_accessor :hash_address
 
+      # Whether the most recent verification of the email address succeeded.
+      # Do not include this field if no verification was attempted.
+      #
+      # @return [Boolean, nil]
+      attr_accessor :was_verification_successful
+
+      # The date and time of the most recent verification of the email
+      # address. The string must be in the RFC 3339 date-time format, e.g.,
+      # "2012-04-12T23:20:50.52Z".
+      #
+      # @see https://datatracker.ietf.org/doc/html/rfc3339
+      #
+      # @return [String, nil]
+      attr_accessor :verification_time
+
       # @param params [Hash] Hash of parameters. Each key/value should
       #   correspond to one of the available attributes.
       def initialize(params = {})
-        @address      = params[:address]
-        @domain       = params[:domain]
-        @hash_address = params[:hash_address]
+        @address                     = params[:address]
+        @domain                      = params[:domain]
+        @hash_address                = params[:hash_address]
+        @was_verification_successful = params[:was_verification_successful]
+        @verification_time           = params[:verification_time]
 
         validate
       end
@@ -72,6 +89,8 @@ module Minfraud
 
         validate_email('email', @address)
         validate_string('domain', 255, @domain)
+        validate_boolean('was_verification_successful', @was_verification_successful)
+        validate_rfc3339('verification_time', @verification_time)
       end
 
       def hash_email_address(address)
