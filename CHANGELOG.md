@@ -7,6 +7,9 @@
   attributes to `Minfraud::Components::Billing` and
   `Minfraud::Components::Shipping`. They describe the most recent
   verification of the billing or shipping phone number.
+* Added the `verification_time` and `was_verification_successful`
+  attributes to `Minfraud::Components::Email`. They describe the most
+  recent verification of the email address.
 * Boolean inputs are now always sent as JSON booleans, and `false` is no
   longer dropped. Previously, every input set to `false` was omitted.
   Now only `nil` inputs are omitted. In particular:

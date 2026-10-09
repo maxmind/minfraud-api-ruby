@@ -3,9 +3,45 @@
 require 'spec_helper'
 
 describe Minfraud::Components::Email do
+  describe '#to_json' do
+    [true, false].each do |successful|
+      it "sends was_verification_successful #{successful} as a JSON boolean" do
+        email = described_class.new(
+          verification_time:           '2026-10-01T14:30:00Z',
+          was_verification_successful: successful,
+        )
+        expect(email.to_json).to eq(
+          'verification_time'           => '2026-10-01T14:30:00Z',
+          'was_verification_successful' => successful,
+        )
+      end
+    end
+
+    it 'sends the verification inputs with a hashed address' do
+      email = described_class.new(
+        address:                     'test@maxmind.com',
+        domain:                      'maxmind.com',
+        hash_address:                true,
+        verification_time:           '2026-10-01T14:30:00Z',
+        was_verification_successful: true,
+      )
+      expect(email.to_json).to eq(
+        'address'                     => '977577b140bfb7c516e4746204fbdb01',
+        'domain'                      => 'maxmind.com',
+        'verification_time'           => '2026-10-01T14:30:00Z',
+        'was_verification_successful' => true,
+      )
+    end
+  end
+
   describe 'validation' do
-    before do
+    around do |example|
+      previous = Minfraud.enable_validation
+
       Minfraud.configure { |c| c.enable_validation = 1 }
+      example.run
+    ensure
+      Minfraud.configure { |c| c.enable_validation = previous }
     end
 
     it 'raises an exception for an invalid email address' do
@@ -16,9 +52,43 @@ describe Minfraud::Components::Email do
       end.to raise_exception(Minfraud::InvalidInputError)
     end
 
+    it 'raises an exception for an invalid verification_time' do
+      expect do
+        described_class.new(
+          verification_time: '2026-10-01 14:30:00',
+        )
+      end.to raise_exception(Minfraud::InvalidInputError)
+    end
+
+    it 'raises an exception for a non-string verification_time' do
+      expect do
+        described_class.new(
+          verification_time: true,
+        )
+      end.to raise_exception(Minfraud::InvalidInputError)
+    end
+
+    it 'raises an exception for an invalid was_verification_successful' do
+      expect do
+        described_class.new(
+          was_verification_successful: 'true',
+        )
+      end.to raise_exception(Minfraud::InvalidInputError)
+    end
+
+    it 'raises an exception for a non-boolean was_verification_successful' do
+      expect do
+        described_class.new(
+          was_verification_successful: 1,
+        )
+      end.to raise_exception(Minfraud::InvalidInputError)
+    end
+
     it 'does not raise an exception for valid values' do
       described_class.new(
-        address: 'wstorey@maxmind.com',
+        address:                     'wstorey@maxmind.com',
+        verification_time:           '2026-10-01T14:30:00Z',
+        was_verification_successful: false,
       )
     end
 
