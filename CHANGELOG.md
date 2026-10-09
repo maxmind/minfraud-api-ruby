@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.11.0
+
+* Boolean inputs are now always sent as JSON booleans, and `false` values
+  are no longer dropped from the request. Previously, `false` was omitted
+  for every boolean input. `true` was sent as the string `"true"` for
+  `/credit_card/was_3d_secure_successful` and for boolean custom inputs.
+  The `/order/has_gift_message`, `/order/is_gift`, and
+  `/payment/was_authorized` inputs already sent `true` as a JSON boolean.
+
 ## v2.10.0 (2026-07-21)
 
 * Added the `residential` attribute to the `anonymizer` object on
