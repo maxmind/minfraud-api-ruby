@@ -2,6 +2,10 @@
 
 ## v2.11.0
 
+* Added the `phone_verification_method`,
+  `phone_was_verification_successful`, and `phone_verification_time`
+  attributes to `Minfraud::Components::Billing`. They describe the most
+  recent verification of the billing phone number.
 * Boolean inputs are now always sent as JSON booleans, and `false` values
   are no longer dropped from the request. Previously, `false` was omitted
   for every boolean input. `true` was sent as the string `"true"` for
