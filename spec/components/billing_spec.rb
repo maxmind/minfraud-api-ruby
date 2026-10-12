@@ -3,6 +3,8 @@
 require 'spec_helper'
 
 describe Minfraud::Components::Billing do
+  it_behaves_like 'an addressable component'
+
   describe 'validation' do
     before do
       Minfraud.configure { |c| c.enable_validation = 1 }

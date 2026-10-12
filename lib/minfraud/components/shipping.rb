@@ -6,8 +6,6 @@ module Minfraud
     #
     # @see https://dev.maxmind.com/minfraud/api-documentation/requests/?lang=en#schema--request--shipping
     class Shipping < Addressable
-      include ::Minfraud::Enum
-
       # The shipping delivery speed for the order. Must be one of +:same_day+,
       # +:overnight+, +:expedited+, or +:standard+.
       #
