@@ -18,6 +18,11 @@
     raises `InvalidInputError`.
   * `/order/has_gift_message`, `/order/is_gift`, and
     `/payment/was_authorized` already sent `true` as a JSON boolean.
+* The `*_values` class methods of enum attributes, such as
+  `Minfraud::Components::Event.type_values`, now exist only on the class
+  that declares the enum and its subclasses. Previously, every class
+  responded to them. `mapping` on a subclass now includes the enums of
+  its parent class.
 
 ## v2.10.0 (2026-07-21)
 
