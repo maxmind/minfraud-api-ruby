@@ -12,6 +12,13 @@ module Minfraud
   #
   # rubocop:disable Metrics/ModuleLength
   module Validates
+    RFC3339_REGEX = /
+      \A(\d{4})-(\d{2})-(\d{2})
+      T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?
+      (?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)\z
+    /x
+    private_constant :RFC3339_REGEX
+
     # Validates that a string value does not exceed a maximum length.
     #
     # @param field [String] The field name for error messages.
@@ -282,10 +289,12 @@ module Minfraud
     def validate_rfc3339(field, value)
       return if value.nil?
 
-      # rubocop:disable-next Style/RescueStandardError
-      begin
-        DateTime.rfc3339(value)
-      rescue
+      # The regex checks the format, time, and offset that the web service
+      # requires. valid_date? rejects dates that do not exist, such as
+      # February 30. The web service uses the Gregorian calendar for all
+      # years.
+      match = RFC3339_REGEX.match(value.to_s)
+      if !match || !Date.valid_date?(match[1].to_i, match[2].to_i, match[3].to_i, Date::GREGORIAN)
         raise InvalidInputError, "The #{field} value is not valid. It must be in the RFC 3339 date-time format."
       end
 
