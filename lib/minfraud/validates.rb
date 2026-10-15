@@ -12,6 +12,13 @@ module Minfraud
   #
   # rubocop:disable Metrics/ModuleLength
   module Validates
+    RFC3339_REGEX = /
+      \A(\d{4})-(\d{2})-(\d{2})
+      T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?
+      (?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)\z
+    /x
+    private_constant :RFC3339_REGEX
+
     # Validates that a string value does not exceed a maximum length.
     #
     # @param field [String] The field name for error messages.
@@ -22,7 +29,11 @@ module Minfraud
     #
     # @return [nil]
     def validate_string(field, length, value)
-      return if !value
+      return if value.nil?
+
+      if [true, false].include?(value)
+        raise InvalidInputError, "The #{field} value is not valid. It must not be a boolean."
+      end
 
       if value.to_s.length > length
         raise InvalidInputError, "The #{field} value is not valid. The maximum length is #{length}."
@@ -38,7 +49,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_md5(field, value)
-      return if !value
+      return if value.nil?
 
       if !value.to_s.match(/\A[a-fA-F0-9]{32}\z/)
         raise InvalidInputError, "The #{field} value is not valid. It must be an MD5 hash as a string."
@@ -54,7 +65,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_uuid(field, value)
-      return if !value
+      return if value.nil?
 
       stripped_value = value.to_s.delete('-')
 
@@ -75,7 +86,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_subdivision_code(field, value)
-      return if !value
+      return if value.nil?
 
       if !value.to_s.match(/\A[0-9A-Z]{1,4}\z/)
         raise InvalidInputError, "The #{field} value is not valid. It must be an ISO 3166-2 subdivision code."
@@ -91,7 +102,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_country_code(field, value)
-      return if !value
+      return if value.nil?
 
       if !value.to_s.match(/\A[A-Z]{2}\z/)
         raise InvalidInputError, "The #{field} value is not valid. It must be an ISO 3166-1 alpha-2 country code."
@@ -108,7 +119,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_telephone_country_code(field, value)
-      return if !value
+      return if value.nil?
 
       if !value.to_s.match(/\A[0-9]{1,4}\z/)
         raise InvalidInputError, "The #{field} value is not valid. It must be at most 4 digits."
@@ -125,7 +136,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_regex(field, regex, value)
-      return if !value
+      return if value.nil?
 
       if !regex.match(value.to_s)
         raise InvalidInputError, "The #{field} value is not valid. It must match the pattern #{regex}."
@@ -141,7 +152,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_credit_card_token(field, value)
-      return if !value
+      return if value.nil?
 
       s = value.to_s
 
@@ -163,7 +174,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_custom_input_value(field, value)
-      return if !value
+      return if value.nil?
 
       if [true, false].include?(value)
         return
@@ -189,7 +200,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_ip(field, value)
-      return if !value
+      return if value.nil?
 
       s = value.to_s
       if s.include? '/'
@@ -216,7 +227,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_nonnegative_number(field, value)
-      return if !value
+      return if value.nil?
 
       if !value.is_a? Numeric
         raise InvalidInputError, "The #{field} value is not valid. It must be numeric."
@@ -237,7 +248,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_nonnegative_integer(field, value)
-      return if !value
+      return if value.nil?
 
       if !value.is_a? Integer
         raise InvalidInputError, "The #{field} is not valid. It must be an integer."
@@ -257,9 +268,9 @@ module Minfraud
     #
     # @return [nil]
     def validate_email(field, value)
-      return if !value
+      return if value.nil?
 
-      if /.@./.match?(value)
+      if /.@./.match?(value.to_s)
         validate_string(field, 255, value)
         return
       end
@@ -276,12 +287,14 @@ module Minfraud
     #
     # @return [nil]
     def validate_rfc3339(field, value)
-      return if !value
+      return if value.nil?
 
-      # rubocop:disable-next Style/RescueStandardError
-      begin
-        DateTime.rfc3339(value)
-      rescue
+      # The regex checks the format, time, and offset that the web service
+      # requires. valid_date? rejects dates that do not exist, such as
+      # February 30. The web service uses the Gregorian calendar for all
+      # years.
+      match = RFC3339_REGEX.match(value.to_s)
+      if !match || !Date.valid_date?(match[1].to_i, match[2].to_i, match[3].to_i, Date::GREGORIAN)
         raise InvalidInputError, "The #{field} value is not valid. It must be in the RFC 3339 date-time format."
       end
 
@@ -297,7 +310,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_boolean(field, value)
-      return if !value
+      return if value.nil?
 
       if ![false, true].include? value
         raise InvalidInputError, "The #{field} value is not valid. It must be boolean."
@@ -313,7 +326,7 @@ module Minfraud
     #
     # @return [nil]
     def validate_uri(field, value)
-      return if !value
+      return if value.nil?
 
       if value.to_s.length > 1_024
         raise InvalidInputError, "The #{field} value is not valid. It must not exceed 1024 characters."

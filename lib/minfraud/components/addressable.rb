@@ -5,6 +5,7 @@ module Minfraud
     # This is a parent class for the Billing and Shipping components.
     class Addressable < Base
       include Minfraud::Validates
+      include ::Minfraud::Enum
 
       # The first name of the end user as provided in their billing / shipping
       # information.
@@ -74,20 +75,51 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :phone_country_code
 
+      # The most recent method used to verify the phone number. This must be
+      # one of +:delivered_code+, +:network+, or +:other+.
+      # +:delivered_code+ is a code delivered to the phone, such as by SMS,
+      # voice call, or messaging app. +:network+ is verification through the
+      # mobile network operator, such as silent network authentication.
+      #
+      # @!attribute phone_verification_method
+      #
+      # @return [Symbol, nil]
+      enum_accessor :phone_verification_method, %i[delivered_code network other]
+
+      # Whether the most recent verification of the phone number
+      # succeeded. Do not include this field if no verification was
+      # attempted.
+      #
+      # @return [Boolean, nil]
+      attr_accessor :phone_was_verification_successful
+
+      # The date and time of the most recent verification of the phone
+      # number. The string must be in the RFC 3339 date-time format, e.g.,
+      # "2012-04-12T23:20:50.52Z". The time must not be before
+      # 1970-01-01T00:00:00Z or more than two days in the future.
+      #
+      # @see https://datatracker.ietf.org/doc/html/rfc3339
+      #
+      # @return [String, nil]
+      attr_accessor :phone_verification_time
+
       # @param params [Hash] Hash of parameters. Each key/value should
       #   correspond to one of the available attributes.
       def initialize(params = {})
-        @first_name         = params[:first_name]
-        @last_name          = params[:last_name]
-        @company            = params[:company]
-        @address            = params[:address]
-        @address_2          = params[:address_2]
-        @city               = params[:city]
-        @region             = params[:region]
-        @country            = params[:country]
-        @postal             = params[:postal]
-        @phone_number       = params[:phone_number]
-        @phone_country_code = params[:phone_country_code]
+        @first_name                        = params[:first_name]
+        @last_name                         = params[:last_name]
+        @company                           = params[:company]
+        @address                           = params[:address]
+        @address_2                         = params[:address_2]
+        @city                              = params[:city]
+        @region                            = params[:region]
+        @country                           = params[:country]
+        @postal                            = params[:postal]
+        @phone_number                      = params[:phone_number]
+        @phone_country_code                = params[:phone_country_code]
+        self.phone_verification_method     = params[:phone_verification_method]
+        @phone_was_verification_successful = params[:phone_was_verification_successful]
+        @phone_verification_time           = params[:phone_verification_time]
 
         validate
       end
@@ -108,6 +140,8 @@ module Minfraud
         validate_string('postal', 255, @postal)
         validate_string('phone_number', 255, @phone_number)
         validate_telephone_country_code('phone_country_code', @phone_country_code)
+        validate_boolean('phone_was_verification_successful', @phone_was_verification_successful)
+        validate_rfc3339('phone_verification_time', @phone_verification_time)
       end
     end
   end
