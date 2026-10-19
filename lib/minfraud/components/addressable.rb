@@ -96,7 +96,8 @@ module Minfraud
       # The date and time of the most recent verification of the phone
       # number. The string must be in the RFC 3339 date-time format, e.g.,
       # "2012-04-12T23:20:50.52Z". The time must not be before
-      # 1970-01-01T00:00:00Z or more than two days in the future.
+      # 1970-01-01T00:00:00Z or more than two days in the future. The web
+      # service ignores a time outside this range and returns a warning.
       #
       # @see https://datatracker.ietf.org/doc/html/rfc3339
       #
