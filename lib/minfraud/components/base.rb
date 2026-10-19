@@ -27,9 +27,9 @@ module Minfraud
       # @return [Hash]
       def populate!(hash, v_sym)
         value = instance_variable_get(v_sym)
-        key   = v_sym.to_s.gsub(/@/, '')
         return hash if value.nil?
 
+        key = v_sym.to_s.delete_prefix('@')
         hash.merge!(key => represent(value))
       end
 
