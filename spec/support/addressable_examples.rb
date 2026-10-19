@@ -33,8 +33,13 @@ RSpec.shared_examples 'an addressable component' do
   end
 
   context 'with validation' do
-    before do
+    around do |example|
+      previous = Minfraud.enable_validation
+
       Minfraud.configure { |c| c.enable_validation = 1 }
+      example.run
+    ensure
+      Minfraud.configure { |c| c.enable_validation = previous }
     end
 
     it 'raises an exception for an invalid phone_was_verification_successful' do
