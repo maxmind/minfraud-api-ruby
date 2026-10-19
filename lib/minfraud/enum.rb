@@ -22,10 +22,16 @@ module Minfraud
       #
       # @return [Hash]
       def mapping
+        # rubocop:disable ThreadSafety/ClassInstanceVariable
+        # This is a false positive - this only reads the mapping that
+        # enum_accessor sets during class definition
+        declared = @declared_mapping || {}
+        # rubocop:enable ThreadSafety/ClassInstanceVariable
+
         if superclass.respond_to?(:mapping)
-          superclass.mapping.merge(declared_mapping)
+          superclass.mapping.merge(declared)
         else
-          declared_mapping.dup
+          declared.dup
         end
       end
 
@@ -37,7 +43,7 @@ module Minfraud
       #
       # @return [nil]
       def enum_accessor(attribute, assignable_values)
-        values                      = assignable_values.map(&:intern)
+        values                      = assignable_values.map(&:intern).freeze
         declared_mapping[attribute] = values
 
         define_singleton_method("#{attribute}_values") { values }
@@ -45,9 +51,10 @@ module Minfraud
         class_eval do
           define_method(attribute.to_s) { instance_variable_get("@#{attribute}") }
           define_method "#{attribute}=" do |value|
-            raise NotEnumValueError, 'Value is not permitted' if value && !values.include?(value.intern)
+            value = value.intern if value.is_a?(String)
+            raise NotEnumValueError, 'Value is not permitted' if !value.nil? && !values.include?(value)
 
-            instance_variable_set("@#{attribute}", value ? value.intern : nil)
+            instance_variable_set("@#{attribute}", value)
           end
         end
 
@@ -58,7 +65,8 @@ module Minfraud
 
       def declared_mapping
         # rubocop:disable ThreadSafety/ClassInstanceVariable
-        # This is a false positive - this is set during class definition and then only read
+        # This is a false positive - only enum_accessor calls this, during class
+        # definition
         @declared_mapping ||= {}
         # rubocop:enable ThreadSafety/ClassInstanceVariable
       end

@@ -33,6 +33,11 @@
   that declares the enum and its subclasses. Previously, every class
   responded to them. `mapping` on a subclass now includes the enums of
   its parent class.
+* Enum setters, such as `Minfraud::Components::Event#type=`, now raise
+  `NotEnumValueError` for a value that is not a String, a Symbol, or
+  `nil`. Previously, `false` cleared the attribute, and `true` raised
+  `NoMethodError`. The `*_values` class methods now return a frozen
+  array.
 * With validation on, `Minfraud::Components::Event` now rejects a `time`
   that the web service rejects. Previously, the client accepted hour 24,
   second 60, a UTC offset of 24 hours or more, and a lowercase `t` or
