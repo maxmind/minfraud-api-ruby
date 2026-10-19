@@ -20,7 +20,12 @@
     service rejects a boolean for a string custom input with an
     `INPUT_INVALID` warning. Pass a string, such as `'true'`, instead.
   * With validation on, `true` or `false` for a non-boolean input now
-    raises `InvalidInputError`.
+    raises `InvalidInputError`. This includes `token` on
+    `Minfraud::Components::CreditCard`, `tracking_token` on
+    `Minfraud::Components::Device`, and `chargeback_code`, `notes`, and
+    `transaction_id` on `Minfraud::Components::Report::Transaction`.
+    Previously, these accepted a boolean, and `transaction_id: false`
+    raised `NoMethodError`.
   * `/order/has_gift_message`, `/order/is_gift`, and
     `/payment/was_authorized` already sent `true` as a JSON boolean.
 * The `*_values` class methods of enum attributes, such as

@@ -40,7 +40,7 @@ module Minfraud
       #
       # @return [Object]
       def represent(value)
-        [true, false].include?(value) ? value : value.to_s
+        Minfraud::Validates.boolean?(value) ? value : value.to_s
       end
     end
   end

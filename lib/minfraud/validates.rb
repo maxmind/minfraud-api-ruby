@@ -31,9 +31,7 @@ module Minfraud
     def validate_string(field, length, value)
       return if value.nil?
 
-      if [true, false].include?(value)
-        raise InvalidInputError, "The #{field} value is not valid. It must not be a boolean."
-      end
+      validate_not_boolean(field, value)
 
       if value.to_s.length > length
         raise InvalidInputError, "The #{field} value is not valid. The maximum length is #{length}."
@@ -51,6 +49,8 @@ module Minfraud
     def validate_md5(field, value)
       return if value.nil?
 
+      validate_not_boolean(field, value)
+
       if !value.to_s.match(/\A[a-fA-F0-9]{32}\z/)
         raise InvalidInputError, "The #{field} value is not valid. It must be an MD5 hash as a string."
       end
@@ -66,6 +66,8 @@ module Minfraud
     # @return [nil]
     def validate_uuid(field, value)
       return if value.nil?
+
+      validate_not_boolean(field, value)
 
       stripped_value = value.to_s.delete('-')
 
@@ -88,6 +90,8 @@ module Minfraud
     def validate_subdivision_code(field, value)
       return if value.nil?
 
+      validate_not_boolean(field, value)
+
       if !value.to_s.match(/\A[0-9A-Z]{1,4}\z/)
         raise InvalidInputError, "The #{field} value is not valid. It must be an ISO 3166-2 subdivision code."
       end
@@ -103,6 +107,8 @@ module Minfraud
     # @return [nil]
     def validate_country_code(field, value)
       return if value.nil?
+
+      validate_not_boolean(field, value)
 
       if !value.to_s.match(/\A[A-Z]{2}\z/)
         raise InvalidInputError, "The #{field} value is not valid. It must be an ISO 3166-1 alpha-2 country code."
@@ -121,6 +127,8 @@ module Minfraud
     def validate_telephone_country_code(field, value)
       return if value.nil?
 
+      validate_not_boolean(field, value)
+
       if !value.to_s.match(/\A[0-9]{1,4}\z/)
         raise InvalidInputError, "The #{field} value is not valid. It must be at most 4 digits."
       end
@@ -138,6 +146,8 @@ module Minfraud
     def validate_regex(field, regex, value)
       return if value.nil?
 
+      validate_not_boolean(field, value)
+
       if !regex.match(value.to_s)
         raise InvalidInputError, "The #{field} value is not valid. It must match the pattern #{regex}."
       end
@@ -153,6 +163,8 @@ module Minfraud
     # @return [nil]
     def validate_credit_card_token(field, value)
       return if value.nil?
+
+      validate_not_boolean(field, value)
 
       s = value.to_s
 
@@ -176,9 +188,7 @@ module Minfraud
     def validate_custom_input_value(field, value)
       return if value.nil?
 
-      if [true, false].include?(value)
-        return
-      end
+      return if boolean?(value)
 
       if value.is_a? Numeric
         if value < -1e13 + 1 || value > 1e13 - 1
@@ -201,6 +211,8 @@ module Minfraud
     # @return [nil]
     def validate_ip(field, value)
       return if value.nil?
+
+      validate_not_boolean(field, value)
 
       s = value.to_s
       if s.include? '/'
@@ -229,6 +241,8 @@ module Minfraud
     def validate_nonnegative_number(field, value)
       return if value.nil?
 
+      validate_not_boolean(field, value)
+
       if !value.is_a? Numeric
         raise InvalidInputError, "The #{field} value is not valid. It must be numeric."
       end
@@ -249,6 +263,8 @@ module Minfraud
     # @return [nil]
     def validate_nonnegative_integer(field, value)
       return if value.nil?
+
+      validate_not_boolean(field, value)
 
       if !value.is_a? Integer
         raise InvalidInputError, "The #{field} is not valid. It must be an integer."
@@ -289,6 +305,8 @@ module Minfraud
     def validate_rfc3339(field, value)
       return if value.nil?
 
+      validate_not_boolean(field, value)
+
       # The regex checks the format, time, and offset that the web service
       # requires. valid_date? rejects dates that do not exist, such as
       # February 30. The web service uses the Gregorian calendar for all
@@ -312,7 +330,7 @@ module Minfraud
     def validate_boolean(field, value)
       return if value.nil?
 
-      if ![false, true].include? value
+      if !boolean?(value)
         raise InvalidInputError, "The #{field} value is not valid. It must be boolean."
       end
     end
@@ -328,6 +346,8 @@ module Minfraud
     def validate_uri(field, value)
       return if value.nil?
 
+      validate_not_boolean(field, value)
+
       if value.to_s.length > 1_024
         raise InvalidInputError, "The #{field} value is not valid. It must not exceed 1024 characters."
       end
@@ -342,6 +362,30 @@ module Minfraud
         raise InvalidInputError, "The #{field} value is not valid. It must be an absolute URI."
       end
     end
+
+    # Validates that a value is not a boolean.
+    #
+    # @param field [String] The field name for error messages.
+    # @param value [Object] The value to validate.
+    #
+    # @raise [InvalidInputError] If the value is true or false.
+    #
+    # @return [nil]
+    def validate_not_boolean(field, value)
+      if boolean?(value)
+        raise InvalidInputError, "The #{field} value is not valid. It must not be a boolean."
+      end
+    end
+
+    # Returns true if the value is true or false.
+    #
+    # @param value [Object] The value to check.
+    #
+    # @return [Boolean]
+    def boolean?(value)
+      [true, false].include?(value)
+    end
+    module_function :boolean?
     # rubocop:enable Metrics/ModuleLength
   end
 end

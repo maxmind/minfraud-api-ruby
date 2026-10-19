@@ -94,6 +94,9 @@ module Minfraud
           validate_ip('ip_address', @ip_address)
           validate_string('maxmind_id', 8, @maxmind_id)
           validate_uuid('minfraud_id', @minfraud_id)
+          validate_not_boolean('chargeback_code', @chargeback_code)
+          validate_not_boolean('notes', @notes)
+          validate_not_boolean('transaction_id', @transaction_id)
 
           if ip_address.nil? &&
              (minfraud_id.nil? || empty_uuid?(minfraud_id)) &&

@@ -56,7 +56,7 @@ describe Minfraud::Components::Base do
     end
   end
 
-  describe 'false with validation' do
+  describe 'booleans with validation' do
     before do
       Minfraud.configure { |c| c.enable_validation = 1 }
     end
@@ -67,21 +67,29 @@ describe Minfraud::Components::Base do
 
     [
       [Minfraud::Components::Billing, :company],
-      [Minfraud::Components::Email, :address],
+      [Minfraud::Components::Billing, :country],
+      [Minfraud::Components::Billing, :phone_country_code],
+      [Minfraud::Components::Billing, :region],
+      [Minfraud::Components::CreditCard, :issuer_id_number],
+      [Minfraud::Components::CreditCard, :token],
       [Minfraud::Components::Device, :ip_address],
+      [Minfraud::Components::Device, :tracking_token],
+      [Minfraud::Components::Email, :address],
       [Minfraud::Components::Event, :time],
-    ].each do |component, field|
-      it "raises an exception for #{component}##{field}" do
+      [Minfraud::Components::Order, :amount],
+      [Minfraud::Components::Order, :currency],
+      [Minfraud::Components::Order, :referrer_uri],
+      [Minfraud::Components::Report::Transaction, :chargeback_code],
+      [Minfraud::Components::Report::Transaction, :minfraud_id],
+      [Minfraud::Components::Report::Transaction, :notes],
+      [Minfraud::Components::Report::Transaction, :transaction_id],
+      [Minfraud::Components::ShoppingCartItem, :quantity],
+    ].product([true, false]).each do |(component, field), value|
+      it "raises an exception for #{value} in #{component}##{field}" do
         expect do
-          component.new(field => false)
-        end.to raise_exception(Minfraud::InvalidInputError)
+          component.new(field => value)
+        end.to raise_exception(Minfraud::InvalidInputError, /must not be a boolean/)
       end
-    end
-
-    it 'raises an exception for true in a string field' do
-      expect do
-        Minfraud::Components::Billing.new(company: true)
-      end.to raise_exception(Minfraud::InvalidInputError)
     end
 
     [
