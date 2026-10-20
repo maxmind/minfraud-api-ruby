@@ -17,14 +17,22 @@ module Minfraud
     # types.
     module ClassMethods
       # Returns a hash in the following format: attribute_name =>
-      # permitted_values
+      # permitted_values. It includes the attributes declared on parent
+      # classes.
       #
       # @return [Hash]
       def mapping
         # rubocop:disable ThreadSafety/ClassInstanceVariable
-        # This is a false positive - this is set during class definition and then only read
-        @mapping ||= {}
+        # This is a false positive - this only reads the mapping that
+        # enum_accessor sets during class definition
+        declared = @declared_mapping || {}
         # rubocop:enable ThreadSafety/ClassInstanceVariable
+
+        if superclass.respond_to?(:mapping)
+          superclass.mapping.merge(declared)
+        else
+          declared.dup
+        end
       end
 
       # Create a set of methods for enum-like behavior of the attribute.
@@ -35,22 +43,32 @@ module Minfraud
       #
       # @return [nil]
       def enum_accessor(attribute, assignable_values)
-        mapping[attribute] = assignable_values.map(&:intern)
+        values                      = assignable_values.map(&:intern).freeze
+        declared_mapping[attribute] = values
 
-        self.class.instance_eval do
-          define_method("#{attribute}_values") { mapping[attribute] }
-        end
+        define_singleton_method("#{attribute}_values") { values }
 
         class_eval do
           define_method(attribute.to_s) { instance_variable_get("@#{attribute}") }
           define_method "#{attribute}=" do |value|
-            raise NotEnumValueError, 'Value is not permitted' if value && !self.class.mapping[attribute].include?(value.intern)
+            value = value.intern if value.is_a?(String)
+            raise NotEnumValueError, 'Value is not permitted' if !value.nil? && !values.include?(value)
 
-            instance_variable_set("@#{attribute}", value ? value.intern : nil)
+            instance_variable_set("@#{attribute}", value)
           end
         end
 
         nil
+      end
+
+      private
+
+      def declared_mapping
+        # rubocop:disable ThreadSafety/ClassInstanceVariable
+        # This is a false positive - only enum_accessor calls this, during class
+        # definition
+        @declared_mapping ||= {}
+        # rubocop:enable ThreadSafety/ClassInstanceVariable
       end
     end
   end

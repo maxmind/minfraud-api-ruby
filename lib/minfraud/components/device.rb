@@ -69,6 +69,7 @@ module Minfraud
         validate_string('accept_language', 255, @accept_language)
         validate_nonnegative_number('session_age', @session_age)
         validate_string('session_id', 255, @session_id)
+        validate_not_boolean('tracking_token', @tracking_token)
       end
     end
   end
