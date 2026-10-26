@@ -38,7 +38,7 @@ RSpec.shared_examples 'a component with verification inputs' do |prefix|
     it "raises an exception for a boolean #{prefix}verification_time" do
       expect do
         described_class.new(time_field => true)
-      end.to raise_exception(Minfraud::InvalidInputError)
+      end.to raise_exception(Minfraud::InvalidInputError, /must not be a boolean/)
     end
 
     it "raises an exception for an invalid #{prefix}was_verification_successful" do
