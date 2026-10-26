@@ -18,7 +18,7 @@ RSpec.shared_examples 'an addressable component' do
   end
 
   it 'sends phone_verification_method as a string' do
-    expect(described_class.new(phone_verification_method: :network).to_json).to eq(
+    expect(described_class.new(phone_verification_method: 'network').to_json).to eq(
       'phone_verification_method' => 'network',
     )
   end
