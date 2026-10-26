@@ -23,6 +23,5 @@ RSpec.shared_examples 'an addressable component' do
     )
   end
 
-  it_behaves_like 'a component with verification inputs', 'phone_',
-                  phone_verification_method: :delivered_code
+  it_behaves_like 'a component with verification inputs', 'phone_'
 end

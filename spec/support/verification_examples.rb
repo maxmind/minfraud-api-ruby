@@ -2,8 +2,7 @@
 
 # The prefix is the text before verification_time and
 # was_verification_successful in the field names, such as 'phone_'.
-# other_valid holds more valid inputs to send with the verification values.
-RSpec.shared_examples 'a component with verification inputs' do |prefix, other_valid = {}|
+RSpec.shared_examples 'a component with verification inputs' do |prefix|
   let(:time_field)       { :"#{prefix}verification_time" }
   let(:successful_field) { :"#{prefix}was_verification_successful" }
 
@@ -56,7 +55,6 @@ RSpec.shared_examples 'a component with verification inputs' do |prefix, other_v
 
     it 'does not raise an exception for valid verification values' do
       described_class.new(
-        **other_valid,
         time_field       => '2026-10-01T14:30:00Z',
         successful_field => false,
       )
