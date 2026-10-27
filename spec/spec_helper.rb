@@ -3,3 +3,4 @@
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'minfraud'
 require_relative 'support/addressable_examples'
+require_relative 'support/verification_examples'

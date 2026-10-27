@@ -90,7 +90,7 @@ assessment = Minfraud::Assessments.new(
     party:          :customer,
     transaction_id: 'txn3134133',
     shop_id:        's2123',
-    time:           '2012-04-12T23:20:50+00:00',
+    time:           '2026-10-05T23:20:50+00:00',
     type:           :purchase,
   },
   account: {
@@ -98,8 +98,10 @@ assessment = Minfraud::Assessments.new(
     username_md5: '4f9726678c438914fa04bdb8c1a24088',
   },
   email: {
-    address: 'test@maxmind.com',
-    domain:  'maxmind.com',
+    address:                     'test@maxmind.com',
+    domain:                      'maxmind.com',
+    verification_time:           '2026-10-01T14:30:00Z',
+    was_verification_successful: true,
   },
   billing: {
     first_name:                        'First',
