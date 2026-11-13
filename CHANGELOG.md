@@ -45,6 +45,7 @@
   that the web service rejects. Previously, the client accepted hour 24,
   second 60, a UTC offset of 24 hours or more, and a lowercase `t` or
   `z`.
+* Added the processor `:ryft` to `Minfraud::Components::Payment`.
 
 ## v2.10.0 (2026-07-21)
 

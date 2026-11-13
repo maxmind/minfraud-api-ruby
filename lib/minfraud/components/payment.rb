@@ -169,6 +169,7 @@ module Minfraud
         rede
         redpagos
         rewardspay
+        ryft
         safecharge
         sagepay
         securepay
