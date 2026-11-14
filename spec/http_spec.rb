@@ -32,9 +32,10 @@ describe Minfraud::Assessments do
       },
     )
 
-    score_model = assessment.score.body
+    response = assessment.score
 
-    expect(score_model.risk_score).to eq 42.1
+    expect(response.body.risk_score).to eq 42.1
+    expect(response.raw_body).to eq '{"risk_score":42.1}'
   end
 
   it 'makes an HTTP request resulting in an HTTP 401' do
