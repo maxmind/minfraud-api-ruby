@@ -2,6 +2,9 @@
 
 ## v2.11.0
 
+* Added `raw_body` to `Minfraud::HTTPService::Response`. It is the response
+  body as the web service sent it, before parsing. Use it to store or log
+  the full response, including any fields this library does not model yet.
 * Added the `phone_verification_method`,
   `phone_was_verification_successful`, and `phone_verification_time`
   attributes to `Minfraud::Components::Billing` and
