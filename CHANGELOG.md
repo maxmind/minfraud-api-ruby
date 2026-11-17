@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.11.0
+## v2.11.0 (2026-11-18)
 
 * Added the `phone_verification_method`,
   `phone_was_verification_successful`, and `phone_verification_time`
