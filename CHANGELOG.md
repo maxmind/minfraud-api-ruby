@@ -46,6 +46,10 @@
   second 60, a UTC offset of 24 hours or more, and a lowercase `t` or
   `z`.
 * Added the processor `:ryft` to `Minfraud::Components::Payment`.
+* The minimum version of the `maxmind-geoip2` gem is now 1.7.0. It
+  requires `maxmind-db` 1.5.0, which limits the work and memory of each
+  decode of a crafted database and makes lookups faster. See the
+  [maxmind-geoip2 1.7.0 changelog](https://github.com/maxmind/GeoIP2-ruby/blob/v1.7.0/CHANGELOG.md).
 
 ## v2.10.0 (2026-07-21)
 
