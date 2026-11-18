@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    minfraud (2.10.0)
+    minfraud (2.11.0)
       connection_pool (>= 2.2, < 4.0)
       http (>= 4.3, < 7.0)
-      maxmind-geoip2 (~> 1.6)
+      maxmind-geoip2 (~> 1.7)
       simpleidn (~> 0.1, >= 0.1.1)
 
 GEM
@@ -42,11 +42,11 @@ GEM
     llhttp-ffi (0.5.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    maxmind-db (1.4.0)
-    maxmind-geoip2 (1.6.0)
+    maxmind-db (1.5.0)
+    maxmind-geoip2 (1.7.0)
       connection_pool (>= 2.2, < 4.0)
       http (>= 4.3, < 7.0)
-      maxmind-db (~> 1.4)
+      maxmind-db (~> 1.5)
     parallel (1.28.0)
     parser (3.3.13.0)
       ast (~> 2.4.1)
