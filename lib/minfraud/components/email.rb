@@ -31,20 +31,26 @@ module Minfraud
       # @return [Boolean, nil]
       attr_accessor :hash_address
 
-      # The date and time of the most recent attempt to verify the email
-      # address, if known. The string must be in the RFC 3339 date-time
-      # format, e.g., "2012-04-12T23:20:50.52Z". The time must not be before
-      # 1970-01-01T00:00:00Z or more than two days in the future. The web
-      # service ignores a time outside this range and returns a warning.
+      # The date and time that the end user completed the most recent
+      # verification of the email address, if known. Set this only if
+      # +was_verification_successful+ is +true+. The string must be in the
+      # RFC 3339 date-time format, e.g., "2012-04-12T23:20:50.52Z". The time
+      # must not be before 1970-01-01T00:00:00Z or more than two days in the
+      # future. The web service ignores a time outside this range and returns
+      # a warning.
       #
       # @see https://datatracker.ietf.org/doc/html/rfc3339
       #
       # @return [String, nil]
       attr_accessor :verification_time
 
-      # Whether the most recent verification that the end user controls the
-      # email address succeeded, for example by confirming a link sent to the
-      # address. Do not include this field if no verification was attempted.
+      # Whether the end user has verified that they control the email
+      # address, as of the time of the event. Set this to +true+ if the user
+      # completed a verification, for example by confirming a link sent to
+      # the address. Set it to +false+ if the address is not verified. This
+      # includes a verification that is pending, abandoned, expired, or
+      # failed, and an address that you did not try to verify. Leaving this
+      # unset is not equivalent to +false+.
       #
       # @return [Boolean, nil]
       attr_accessor :was_verification_successful
