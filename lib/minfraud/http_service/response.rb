@@ -23,6 +23,13 @@ module Minfraud
       #   Minfraud::Model::Factors, Minfraud::Model::Error, nil]
       attr_reader :body
 
+      # The response body as the web service sent it, before parsing. Use it
+      # to store or log the full response, including any fields this library
+      # does not model yet.
+      #
+      # @return [String]
+      attr_reader :raw_body
+
       # @param endpoint [Symbol, nil] endpoint name, like :score.
       #
       # @param locales [Array<String>, nil] locales, like ["en"].
@@ -33,7 +40,8 @@ module Minfraud
       #
       # @raise [JSON::ParserError] if there was invalid JSON in the response.
       def initialize(endpoint, locales, response, body)
-        @status = response.code
+        @status   = response.code
+        @raw_body = body
 
         @body = make_body(
           endpoint,
