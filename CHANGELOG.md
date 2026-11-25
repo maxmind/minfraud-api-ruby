@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.11.1
+
+* Updated the documentation for the email and phone verification
+  attributes. `false` for `was_verification_successful` and
+  `phone_was_verification_successful` now means that the email address or
+  phone number is not verified as of the time of the event, for any reason.
+  Set a verification time only when the value is `true`. Set
+  `phone_verification_method` for any verification that you tried. There are
+  no code changes.
+
 ## v2.11.0 (2026-11-18)
 
 * Added `raw_body` to `Minfraud::HTTPService::Response`. It is the response

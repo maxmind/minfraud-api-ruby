@@ -75,8 +75,11 @@ module Minfraud
       # @return [String, nil]
       attr_accessor :phone_country_code
 
-      # The most recent method used to verify the phone number. This must be
-      # one of +:delivered_code+, +:network+, or +:other+.
+      # The method used for the most recent verification of the phone
+      # number. Set this if you tried to verify the phone number, even if the
+      # user did not complete the verification. Do not set this if you did
+      # not try to verify the phone number. This must be one of
+      # +:delivered_code+, +:network+, or +:other+.
       # +:delivered_code+ is a code delivered to the phone, such as by SMS,
       # voice call, or messaging app. +:network+ is verification through the
       # mobile network operator, such as silent network authentication.
@@ -86,18 +89,23 @@ module Minfraud
       # @return [Symbol, nil]
       enum_accessor :phone_verification_method, %i[delivered_code network other]
 
-      # Whether the most recent verification of the phone number
-      # succeeded. Do not include this field if no verification was
-      # attempted.
+      # Whether the end user has verified that they control the phone
+      # number, as of the time of the event. Set this to +true+ if the user
+      # completed a verification. Set it to +false+ if the phone number is
+      # not verified. This includes a verification that is pending,
+      # abandoned, expired, or failed, and a phone number that you did not
+      # try to verify. Leaving this unset is not equivalent to +false+.
       #
       # @return [Boolean, nil]
       attr_accessor :phone_was_verification_successful
 
-      # The date and time of the most recent verification of the phone
-      # number. The string must be in the RFC 3339 date-time format, e.g.,
-      # "2012-04-12T23:20:50.52Z". The time must not be before
-      # 1970-01-01T00:00:00Z or more than two days in the future. The web
-      # service ignores a time outside this range and returns a warning.
+      # The date and time that the end user completed the most recent
+      # verification of the phone number, if known. Set this only if
+      # +phone_was_verification_successful+ is +true+. The string must be in
+      # the RFC 3339 date-time format, e.g., "2012-04-12T23:20:50.52Z". The
+      # time must not be before 1970-01-01T00:00:00Z or more than two days in
+      # the future. The web service ignores a time outside this range and
+      # returns a warning.
       #
       # @see https://datatracker.ietf.org/doc/html/rfc3339
       #
